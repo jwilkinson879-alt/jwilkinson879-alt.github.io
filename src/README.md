@@ -23,7 +23,8 @@ src/
     maker/
       airport/HLI-*.dxf       v2 floor plans uploaded to Maker (6 floors, metres)
       stadium/HLS-*.dxf       v2 floor plans uploaded to Maker (6 floors, metres)
-      README.txt              floor order and layers (A-WALL, A-WALL-EXT, A-DOOR, A-TEXT, A-REF)
+      science/HSC-*.dxf       floor plans uploaded to Maker (5 floors, metres; WALLS/DOORS/ROOMS/OBJECTS/LABELS)
+      README.txt              floor order and layers for each venue
   backlot/
     mappedin-demo-venue.html  Backlot twin on the Mappedin public demo venue
     mockup-3d.html            first three.js mock-up of the Backlot model
@@ -50,7 +51,7 @@ These files never made it into a published page, so they are gone. Rebuild them 
 
 - **Venue generators** (gen_airport.py, gen_stadium.py, gen_science.py). Their output is venue.json, so edit that directly or write a new generator against it. The `brief` field in each venue.json is only a one-line summary, not the full brief.
 - **MVF generator** (gen_mvf_hsc.mjs). Its output for the science centre is mappedin/hsc.mvf.json. Known issue to fix in any rewrite: the L3 and B1 cores sit in different places from G–L2, so the shafts don't stack.
-- **DXF converters.** mvf_to_dxf.py wrote the science centre DXFs (layers WALLS, DOORS, ROOMS, OBJECTS and LABELS). The v2 converter wrote the airport and stadium DXFs from plan-hli.json and plan-hls.json, which are also lost. The v2 DXFs themselves survive in `harbourline/maker/`; the science centre DXFs and the plan files do not.
+- **DXF converters.** mvf_to_dxf.py wrote the science centre DXFs (layers WALLS, DOORS, ROOMS, OBJECTS and LABELS). The v2 converter wrote the airport and stadium DXFs from plan-hli.json and plan-hls.json, which are also lost. All the DXFs themselves survive in `harbourline/maker/`; only the plan files do not.
 - **Maker automation helpers** (cal.py, nm.py, cn.py, hw.py, gen.py). The calibration notes and gotchas live in the Project doc `claude/mappedin-sdk-twin.md`.
 - **Public-site build** (build_public.py). It produced the landing page, llms.txt, robots.txt and sitemap.xml.
 - **Command centre parts** (part1.html, part2–4.js). The assembled page in ksa-portfolio/ is complete and is now the source.

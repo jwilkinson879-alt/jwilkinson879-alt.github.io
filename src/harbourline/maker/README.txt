@@ -10,3 +10,8 @@ STADIUM - Harbourline Stadium (6 floors). Order top to bottom:
 
 Layers: A-WALL (room walls with real door gaps), A-WALL-EXT (exterior), A-DOOR (door leaf + swing), A-TEXT (room names; cores prefixed LIFT/ESC/STAIR).
 Corridors and open halls have no outline on purpose, so Maker keeps them as one walkable space.
+
+SCIENCE CENTRE - Harbourline Science Centre (5 floors), folder science/. Order top to bottom:
+  HSC-L3 Learning, roof & plant / HSC-L2 Galleries & planetarium / HSC-L1 Galleries & touring hall / HSC-G Entry & discovery -- ground line -- HSC-B1 Collections & BOH
+  Written from hsc.mvf.json by mvf_to_dxf.py (metres). Layers: WALLS, DOORS, ROOMS, OBJECTS, LABELS.
+  Known issue: the L3 and B1 cores sit in different places from G-L2, so the shafts don't stack.
