@@ -1,0 +1,16 @@
+{
+ "title": "Harbourline Science Centre Twin",
+ "brand": "    <div class=\"brand\"><div class=\"eyebrow\">Venue ops twin <span>· science centre · 5 levels · 162 spaces</span></div><h1><b>HSC</b> Harbourline Science Centre</h1></div>",
+ "nav": "    <nav class=\"venues\" aria-label=\"Venues\"><a href=\"https://claude.ai/artifact/Kbqtt3PLAnaWaWJe5nsXzt\" target=\"_blank\" rel=\"noopener\">Airport</a><a href=\"https://claude.ai/artifact/F8k9ZcPV8fg2LYbrscgWM2\" target=\"_blank\" rel=\"noopener\">Stadium</a><a href=\"https://claude.ai/artifact/4CRqCWZEHirN4QJ6doNMuB\" target=\"_blank\" rel=\"noopener\" aria-current=\"page\">Science centre</a></nav>",
+ "list_tab": "        <button id=\"tab-list\" aria-pressed=\"false\" style=\"flex:1\">Sessions</button>",
+ "hint": "        <div class=\"hint\">Drag to orbit · right-drag to pan · scroll to zoom · hover or click any space</div>",
+ "footer_note": "  <footer class=\"credit\"><p class=\"note\">Generated from a structured venue brief on the same engine as Harbourline International and Harbourline Stadium: 162 spaces, 61 interactive exhibits, a free atrium with one-way ticket gates, a timed-entry touring hall, a planetarium, climate-controlled loan galleries and collection store, 13 connectors and 75 tracked assets. Only the venue brief and this scenario pack differ.</p>",
+ "extra_css": [],
+ "stage_pre": [],
+ "scripts": [
+  "",
+  "<script src=\"https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js\"></script>",
+  "<script src=\"https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js\"></script>",
+  "<script>"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "title": "Harbourline Stadium Twin",
+ "brand": "    <div class=\"brand\"><div class=\"eyebrow\">Venue ops twin <span>· 86,400-seat oval · 6 levels · 429 spaces</span></div><h1><b>HLS</b> Harbourline Stadium</h1></div>",
+ "nav": "    <nav class=\"venues\" aria-label=\"Venues\"><a href=\"https://claude.ai/artifact/Kbqtt3PLAnaWaWJe5nsXzt\" target=\"_blank\" rel=\"noopener\">Airport</a><a href=\"https://claude.ai/artifact/F8k9ZcPV8fg2LYbrscgWM2\" target=\"_blank\" rel=\"noopener\" aria-current=\"page\">Stadium</a><a href=\"https://claude.ai/artifact/4CRqCWZEHirN4QJ6doNMuB\" target=\"_blank\" rel=\"noopener\">Science centre</a></nav>",
+ "list_tab": "        <button id=\"tab-list\" aria-pressed=\"false\" style=\"flex:1\">Gates</button>",
+ "hint": "        <div class=\"hint\">Drag to orbit · right-drag to pan · scroll to zoom · hover or click any space</div>",
+ "footer_note": "  <footer class=\"credit\"><p class=\"note\">Generated from a structured venue brief on the same engine as Harbourline International: 429 spaces, 72 seating bays across three tiers, 8 entry gates with one-way ticket scans and separate exits, 41 vertical and gate connectors, 38 tracked assets and a step-free-aware walk network linked to the rail station, shuttle interchange and rideshare rank. Only the venue brief and this scenario pack differ from the airport.</p>",
+ "extra_css": [],
+ "stage_pre": [],
+ "scripts": [
+  "",
+  "<script src=\"https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js\"></script>",
+  "<script src=\"https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js\"></script>",
+  "<script>"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "title": "Harbourline Ops Twin",
+ "brand": "    <div class=\"brand\"><div class=\"eyebrow\">Venue ops twin <span>· hub airport · 6 levels · 324 spaces</span></div><h1><b>HLI</b> Harbourline International</h1></div>",
+ "nav": "    <nav class=\"venues\" aria-label=\"Venues\"><a href=\"https://claude.ai/artifact/Kbqtt3PLAnaWaWJe5nsXzt\" target=\"_blank\" rel=\"noopener\" aria-current=\"page\">Airport</a><a href=\"https://claude.ai/artifact/F8k9ZcPV8fg2LYbrscgWM2\" target=\"_blank\" rel=\"noopener\">Stadium</a><a href=\"https://claude.ai/artifact/4CRqCWZEHirN4QJ6doNMuB\" target=\"_blank\" rel=\"noopener\">Science centre</a></nav>",
+ "list_tab": "        <button id=\"tab-list\" aria-pressed=\"false\" style=\"flex:1\">Flights</button>",
+ "hint": "        <div class=\"hint\">Drag to orbit · right-drag to pan · scroll to zoom · hover or click any space</div>",
+ "footer_note": "  <footer class=\"credit\"><p class=\"note\">Generated from a structured venue brief: 324 spaces, 28 gates, 28 vertical and checkpoint connectors, 46 tracked assets and a walk network with one-way security, immigration and customs. The same engine drives the Harbourline Stadium twin; only the venue brief and scenario pack change. In production the geometry comes from Mappedin and the live state from ops feeds.</p>",
+ "extra_css": [],
+ "stage_pre": [],
+ "scripts": [
+  "",
+  "<script src=\"https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js\"></script>",
+  "<script src=\"https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js\"></script>",
+  "<script>"
+ ]
+}

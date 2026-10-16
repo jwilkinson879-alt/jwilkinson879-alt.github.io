@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Backlot Ops Twin</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mappedin/mappedin-js@6.27.0/lib/index.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: venue-signage header, live 3D twin left, agent + guest panel right; stacks on phones */
+:root{
+  --bg:#EEF1F4; --surface:#FFFFFF; --ink:#18212C; --muted:#5B6878; --line:#D3DAE2;
+  --floor:#F7F9FB; --accent:#1E6A8D; --good:#2F8656; --warn:#B98000; --crit:#C2392E;
+  --scene:#E4E9EE; --slab:#CBD3DC; --wall:#8E9CAB; --c-ok:#A8D8BA; --c-warn:#F0C25A; --c-crit:#E77B6F; --c-idle:#DCE2E8; --people:#2A3542;
+  --display:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10161D; --surface:#18212B; --ink:#E6ECF2; --muted:#98A6B5; --line:#2C3946;
+  --floor:#141C25; --accent:#5BB2DA; --good:#56B97F; --warn:#E2B23B; --crit:#EF6A5E;
+  --scene:#0D1218; --slab:#243140; --wall:#6C7E92; --c-ok:#3E8F62; --c-warn:#B88A22; --c-crit:#B4483E; --c-idle:#2B3846; --people:#DCE6F0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10161D; --surface:#18212B; --ink:#E6ECF2; --muted:#98A6B5; --line:#2C3946;
+  --floor:#141C25; --accent:#5BB2DA; --good:#56B97F; --warn:#E2B23B; --crit:#EF6A5E;
+  --scene:#0D1218; --slab:#243140; --wall:#6C7E92; --c-ok:#3E8F62; --c-warn:#B88A22; --c-crit:#B4483E; --c-idle:#2B3846; --people:#DCE6F0; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45;padding-inline:16px;padding-block:16px 32px}
+.wrap{max-width:1360px;margin:0 auto;display:grid;gap:14px}
+header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;justify-content:space-between}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand h1{font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:.02em;margin:0;text-transform:uppercase}
+.brand span{color:var(--muted);font-size:13px}
+.clock{font-family:var(--mono);font-size:22px;font-variant-numeric:tabular-nums;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:4px 12px}
+.clock small{font-family:var(--body);font-size:12px;color:var(--muted);margin-left:8px;letter-spacing:.06em;text-transform:uppercase}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.bar>div{display:flex;flex-wrap:wrap;gap:10px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.seg button{font:600 13px var(--body);letter-spacing:.05em;text-transform:uppercase;border:0;background:none;color:var(--muted);padding:8px 13px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+.btn{font:600 14px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:8px 14px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn:disabled{opacity:.45;cursor:default}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.steps{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px;background:var(--surface);counter-increment:s}
+.steps li::before{content:counter(s) " ";font-family:var(--mono);font-size:11px;margin-right:2px}
+.steps li.done{color:var(--ink)} .steps li.now{border-color:var(--accent);color:var(--accent);font-weight:600}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start}
+@media (max-width:1000px){.main{grid-template-columns:minmax(0,1fr)}}
+.mapcard{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;min-width:0}
+.maphead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline;padding:2px 4px 10px}
+.maphead h2{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px;border:1px solid var(--line)}
+.stage{position:relative;width:100%;aspect-ratio:16/10;max-height:72vh;border-radius:6px;overflow:hidden;background:var(--scene);touch-action:none}
+@media (max-width:600px){.stage{aspect-ratio:4/5}}
+.stage canvas{display:block;width:100%;height:100%;cursor:grab}
+.overlay{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.rl{position:absolute;transform:translate(-50%,-50%);text-align:center;white-space:nowrap;line-height:1.15}
+.rl b{display:block;font:600 12px var(--body);color:var(--ink);text-shadow:0 0 3px var(--scene),0 0 3px var(--scene)}
+.rl span{font:500 11px var(--mono);color:var(--muted);text-shadow:0 0 3px var(--scene),0 0 3px var(--scene)}
+.pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center}
+.pin .tag{display:flex;align-items:center;gap:6px;background:var(--surface);border:1.5px solid var(--c);border-radius:6px;padding:3px 8px 3px 3px;font:500 12px var(--mono);color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.18);white-space:nowrap}
+.pin .g{width:20px;height:20px;border-radius:4px;background:var(--c);color:var(--surface);font:700 12px var(--body);display:grid;place-items:center}
+.pin .stem{width:2px;height:26px;background:var(--c)}
+.pin.live .g{animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.pin.live .g{animation:none}}
+.hint{position:absolute;left:10px;bottom:8px;font-size:12px;color:var(--muted);text-shadow:0 0 3px var(--scene)}
+.floors{position:absolute;right:10px;top:10px}
+.floors .seg button{padding:6px 10px;font-size:12px}
+.detail{margin-top:10px;border-top:1px solid var(--line);padding:10px 4px 2px;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13.5px}
+.detail b{font-family:var(--display);font-size:17px;letter-spacing:.03em;text-transform:uppercase}
+.detail .kv{color:var(--muted)} .detail .kv span{color:var(--ink);font-family:var(--mono);font-size:13px}
+aside{display:grid;gap:12px;min-width:0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;display:grid;gap:10px;min-width:0}
+.feed{display:grid;gap:10px;max-height:620px;overflow:auto;padding-right:2px}
+.card{border:1px solid var(--line);border-left-width:4px;border-radius:6px;padding:10px 12px;display:grid;gap:6px;background:var(--floor)}
+.card.sev-crit{border-left-color:var(--crit)} .card.sev-warn{border-left-color:var(--warn)} .card.sev-good{border-left-color:var(--good)} .card.sev-info{border-left-color:var(--accent)}
+.card .top{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted)}
+.card .who{font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.card h3{margin:0;font-size:15px;line-height:1.3;text-wrap:balance}
+.card p{margin:0;font-size:13.5px;color:var(--muted)}
+.chip{display:inline-block;font:500 11px var(--mono);border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted);white-space:nowrap}
+.chip.wait{border-color:var(--warn);color:var(--warn)} .chip.act{border-color:var(--good);color:var(--good)}
+.acts{display:flex;flex-wrap:wrap;gap:6px} .acts .btn{padding:5px 10px;font-size:13px}
+.status{font-size:12.5px;font-weight:600;color:var(--good)}
+.phone{border:1px solid var(--line);border-radius:22px;padding:10px;background:var(--floor);max-width:340px;width:100%;margin:0 auto;display:grid;gap:8px}
+.phone .ph{display:flex;justify-content:space-between;font:600 12px var(--body);color:var(--muted);letter-spacing:.05em;text-transform:uppercase;padding:2px 6px}
+.chat{display:grid;gap:8px;min-height:260px;align-content:start;max-height:420px;overflow:auto}
+.msg{max-width:88%;padding:8px 11px;border-radius:12px;font-size:14px}
+.msg.g{justify-self:end;background:var(--accent);color:var(--surface);border-bottom-right-radius:4px}
+.msg.a{justify-self:start;background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg ol{margin:6px 0 0;padding-left:18px} .msg li{margin:2px 0}
+.offer{border:1px dashed var(--accent);border-radius:10px;padding:8px 10px;font-size:13px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.empty{color:var(--muted);font-size:13.5px;padding:8px 4px}
+.note{color:var(--muted);font-size:12.5px;max-width:80ch;margin:0}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.kpi{border:1px solid var(--line);border-radius:6px;padding:8px 10px;background:var(--surface)}
+.kpi div{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi strong{font:500 18px var(--mono);font-variant-numeric:tabular-nums}
+.fallback{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px;padding:24px;text-align:center}
+</style>
+<style>
+#map{position:absolute;inset:0}
+.loading{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px;padding:24px;text-align:center;z-index:2;pointer-events:none}
+.mk{display:flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--c);border-radius:6px;padding:3px 8px 3px 3px;font:500 12px "JetBrains Mono",monospace;color:#18212C;box-shadow:0 2px 8px rgba(0,0,0,.18);white-space:nowrap}
+.mk .g{width:20px;height:20px;border-radius:4px;background:var(--c);color:#fff;font:700 12px sans-serif;display:grid;place-items:center}
+.mk.live .g{animation:blink 1.2s ease-in-out infinite}
+</style>
+</head><body>
+
+<div class="wrap">
+  <header>
+    <div class="brand"><h1>Backlot Studio Tour · Ops Twin</h1><span>Live on the Mappedin demo venue · fictional operation, synthetic data</span></div>
+    <div class="clock" id="clock">09:30<small id="clockday">Sat</small></div>
+  </header>
+
+  <div class="bar">
+    <div>
+      <div class="seg" role="group" aria-label="Map layer" id="layers">
+        <button id="ly-all" data-l="all" aria-pressed="true">All</button>
+        <button id="ly-building" data-l="building" aria-pressed="false">Building</button>
+        <button id="ly-visit" data-l="visit" aria-pressed="false">Visit</button>
+        <button id="ly-handover" data-l="handover" aria-pressed="false">Handover</button>
+      </div>
+    </div>
+    <div>
+      <button class="btn" id="restart">Restart</button>
+      <button class="btn primary" id="next">Next beat →</button>
+    </div>
+  </div>
+  <ol class="steps" id="steps"></ol>
+
+  <div class="main">
+    <section class="mapcard">
+      <div class="maphead"><h2 id="maptitle">All layers</h2><div class="legend" id="legend"></div></div>
+      <div class="stage" id="stage"><div id="map"></div><div class="loading" id="loading">Loading the Mappedin venue…</div><div class="hint">Drag to pan · right-drag to rotate · scroll to zoom · click a coloured room</div></div>
+      <div class="detail" id="detail"><span class="empty">Click a room in the twin to see its live state.</span></div>
+    </section>
+    <aside>
+      <div class="kpis">
+        <div class="kpi"><div>Open alerts</div><strong id="k-alerts">0</strong></div>
+        <div class="kpi"><div>Longest queue</div><strong id="k-queue">8 min</strong></div>
+        <div class="kpi"><div>Venue ready</div><strong id="k-ready">86%</strong></div>
+      </div>
+      <div class="seg" role="group" aria-label="Panel" style="display:flex">
+        <button id="tab-feed" aria-pressed="true" style="flex:1">Agents &amp; people</button>
+        <button id="tab-guest" aria-pressed="false" style="flex:1">Guest companion</button>
+      </div>
+      <div class="panel" id="p-feed"><div class="feed" id="feed"></div></div>
+      <div class="panel" id="p-guest" hidden>
+        <div class="phone">
+          <div class="ph"><span>Backlot companion</span><span id="phtime">09:30</span></div>
+          <div class="chat" id="chat"></div>
+        </div>
+      </div>
+      <p class="note">Every agent action shows its autonomy level. Anything that changes a building system or speaks to guests waits for a person; markers, triage and briefings run on their own.</p>
+    </aside>
+  </div>
+  <p class="note">Mock-up only. The map is Mappedin's public demo venue rendered with the Mappedin Web SDK. Backlot rooms are mapped onto its spaces until the Backlot map is on Mappedin Pro. Room colours, labels, markers, step-free routes and camera moves are all native SDK calls; the scripted beats stand in for n8n feeds and agents.</p>
+</div>
+
+<script type="module">
+import { getMapData, show3dMap } from 'https://cdn.jsdelivr.net/npm/@mappedin/mappedin-js@6.27.0/+esm';
+
+// Mappedin public demo venue (from Mappedin's getting-started docs). Swap MAP for the Backlot map once it is on Pro.
+const MAP = { key: 'mik_yeBk0Vf0nNJtpesfu560e07e5', secret: 'mis_2g9ST8ZcSFb5R9fPnsvYhrX3RyRwPtDGbMGweCYKEq385431022', mapId: '65c0ff7430b94e3fabd5bb8c' };
+const ENTRANCE_POI = 's_81b643429c5af143';
+
+// Backlot role -> demo-venue space. In the real build these become the external IDs from the room list.
+const S = [ // role id, Backlot name, zone, demo space id, capacity
+  ['GF-PRE-01', 'Pre-show theatre', 'Exhibits A', 's_d33e419c4bb801c0', 180],
+  ['GF-EXH-01', 'Exhibit Hall A', 'Exhibits A', 's_5d2f5e3a61ba4fe4', 260],
+  ['GF-EXH-02', 'Exhibit Hall B', 'Exhibits B', 's_c4bbb9b22a85cf30', 260],
+  ['GF-SET-01', 'Set walk-through', 'Exhibits B', 's_75d2b2934fe2495f', 220],
+  ['GF-TIX-01', 'Tickets & security', 'Arrival', 's_310f7df34a3c6853', 150],
+  ['GF-FNB-01', 'Cafe & food court', 'Food & Beverage', 's_fa005f3d5fada368', 220],
+  ['GF-RET-01', 'Retail store', 'Retail', 's_c33647c792604ae1', 160],
+  ['GF-WC-01', 'Toilets', 'Food & Beverage', 's_68d4c98a85194440', 0],
+  ['GF-OPS-01', 'Control room', 'Back-of-house', 's_144702bf49e8c794', 0],
+  ['L1-EVT-01', 'Event space', 'Events', 's_8b3aac9b4b9dc9ef', 400],
+  ['L1-PLANT-01', 'Plant room', 'Back-of-house', 's_0b35e438d8b666f6', 0]
+];
+const READY0 = { 'Arrival': 100, 'Exhibits A': 92, 'Exhibits B': 82, 'Food & Beverage': 74, 'Retail': 95, 'Events': 60, 'Back-of-house': 88 };
+const ROUTE_A = ['ENTRANCE', 'GF-EXH-01', 'GF-EXH-02', 'GF-FNB-01'];
+const ROUTE_B = ['ENTRANCE', 'GF-EXH-01', 'GF-EXH-02', 'GF-SET-01', 'GF-FNB-01'];
+const BEATS = [
+  { t: '09:30', d: 'Sat', label: 'Doors open' },
+  { t: '10:40', d: 'Sat', label: 'Hall B overheats' },
+  { t: '11:15', d: 'Sat', label: 'Family asks for a plan' },
+  { t: '11:30', d: 'Sat', label: 'Queue breach' },
+  { t: '13:05', d: 'Sat', label: 'Leak reported' },
+  { t: '07:30', d: 'Sun', label: 'Zone briefing' }
+];
+let st, layer = 'all', sel = null, timers = [], mapData, mapView, entrance, spaceObj = {}, roleBySpace = {};
+
+function fresh() {
+  const spaces = {};
+  S.forEach((r, i) => { spaces[r[0]] = { id: r[0], name: r[1], zone: r[2], cap: r[4], temp: 22.3 + (i % 5) / 5, co2: 620 + (i * 37) % 180, occ: r[4] ? 0.2 + (i % 6) / 25 : 0, queue: null, energy: 'ok' }; });
+  spaces['GF-EXH-01'].queue = 5; spaces['GF-SET-01'].queue = 8; spaces['GF-PRE-01'].queue = 4; spaces['L1-EVT-01'].occ = 0;
+  return { beat: 0, spaces, ready: { ...READY0 }, markers: [], feed: [], route: null, chat: [], ids: 0, ahuFault: false };
+}
+const later = (ms, fn) => timers.push(setTimeout(() => { fn(); render(); }, ms));
+const uid = () => ++st.ids;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+function comfort(s) { if (s.zone === 'Back-of-house' && s.id !== 'L1-PLANT-01') return 'idle'; if (s.temp >= 26 || s.co2 >= 1100) return 'crit'; if (s.temp >= 24.5 || s.co2 >= 950) return 'warn'; return 'ok'; }
+function occState(s) { if (!s.cap) return 'idle'; if (s.queue != null && s.queue >= 20) return 'crit'; return s.occ >= .85 ? 'crit' : s.occ >= .65 ? 'warn' : 'ok'; }
+function readyState(z) { const r = st.ready[z]; return r >= 95 ? 'ok' : r >= 80 ? 'warn' : 'crit'; }
+function keyFor(s) {
+  if (layer === 'building') { if (s.id === 'L1-PLANT-01') return st.ahuFault ? 'crit' : 'ok'; return s.energy === 'warn' && comfort(s) === 'ok' ? 'warn' : comfort(s); }
+  if (layer === 'visit') return occState(s);
+  if (layer === 'handover') return readyState(s.zone);
+  const a = [comfort(s), occState(s), s.energy === 'warn' ? 'warn' : 'ok']; if (s.id === 'L1-PLANT-01' && st.ahuFault) a.push('crit');
+  return a.includes('crit') ? 'crit' : a.includes('warn') ? 'warn' : 'idle';
+}
+function metric(s) {
+  if (layer === 'building') return s.id === 'L1-EVT-01' && s.energy === 'warn' ? 'cooling an empty room' : s.id === 'L1-PLANT-01' ? (st.ahuFault ? 'AHU-03 alarm' : 'plant running') : s.zone === 'Back-of-house' ? '' : `${s.temp.toFixed(1)}°C · ${Math.round(s.co2)} ppm`;
+  if (layer === 'visit') return !s.cap ? '' : (s.queue != null ? `queue ${s.queue} min · ` : '') + `${Math.round(s.occ * 100)}%`;
+  if (layer === 'handover') return `${st.ready[s.zone]}% ready`;
+  if (s.queue != null && s.cap) return `queue ${s.queue} min`;
+  return s.cap ? `${Math.round(s.occ * 100)}% full` : '';
+}
+
+// ---------- Mappedin rendering ----------
+let lastLabels = '', lastMarkers = '', lastRoute = '';
+function paintMap(force) {
+  if (!mapView) return;
+  const C = { ok: css('--c-ok'), warn: css('--c-warn'), crit: css('--c-crit'), idle: css('--c-idle') };
+  Object.values(st.spaces).forEach(s => {
+    const sp = spaceObj[s.id]; if (!sp) return;
+    mapView.updateState(sp, { color: sel === s.id ? css('--accent') : C[keyFor(s)], interactive: true });
+  });
+  const lab = JSON.stringify(Object.values(st.spaces).map(s => [s.id, metric(s)]));
+  if (force || lab !== lastLabels) {
+    lastLabels = lab; mapView.Labels.removeAll();
+    Object.values(st.spaces).forEach(s => { const sp = spaceObj[s.id]; if (!sp) return; const m = metric(s); mapView.Labels.add(sp, m ? `${s.name} · ${m}` : s.name); });
+  }
+  const vis = st.markers.filter(m => layer === 'all' || m.layer === layer);
+  const mk = JSON.stringify(vis.map(m => [m.target, m.sev, m.glyph, m.label, !!m.live]));
+  if (force || mk !== lastMarkers) {
+    lastMarkers = mk; mapView.Markers.removeAll();
+    const col = { crit: css('--crit'), warn: css('--warn'), good: css('--good'), info: css('--accent') };
+    vis.forEach(m => {
+      const tgt = m.target === 'ENTRANCE' ? entrance : spaceObj[m.target]; if (!tgt) return;
+      mapView.Markers.add(tgt, `<div class="mk${m.live ? ' live' : ''}" style="--c:${col[m.sev]}"><span class="g">${m.glyph}</span>${m.label}</div>`, { rank: 'always-visible', anchor: 'top' });
+    });
+  }
+  drawRoute(force);
+}
+async function drawRoute(force) {
+  const key = st.route && (layer === 'visit' || layer === 'all') ? st.route.join('>') : '';
+  if (!force && key === lastRoute) return; lastRoute = key;
+  mapView.Paths.removeAll();
+  if (!key) return;
+  const pts = st.route.map(r => r === 'ENTRANCE' ? entrance : spaceObj[r]).filter(Boolean);
+  for (let i = 0; i < pts.length - 1; i++) {
+    const dir = await mapData.getDirections(pts[i], pts[i + 1], { accessible: true });
+    if (dir && lastRoute === key) mapView.Paths.add(dir.coordinates, { color: css('--accent'), width: 1.2 });
+  }
+}
+function focusOn(id) { if (!mapView) return; const t = id === 'overview' ? null : id === 'ENTRANCE' ? entrance : spaceObj[id]; try { t ? mapView.Camera.focusOn(t) : mapView.Camera.focusOn(Object.values(spaceObj)); } catch (e) { } }
+
+// ---------- panels ----------
+function renderLegend() {
+  const L = { all: [['--c-warn', 'Needs a look'], ['--c-crit', 'Act now'], ['--accent', 'Guest route']], building: [['--c-ok', 'In band'], ['--c-warn', 'Drifting or wasting'], ['--c-crit', 'Out of band']], visit: [['--c-ok', 'Comfortable'], ['--c-warn', 'Busy'], ['--c-crit', 'Crowded or long queue']], handover: [['--c-ok', '95%+ ready'], ['--c-warn', '80–94%'], ['--c-crit', 'Under 80%']] }[layer];
+  document.getElementById('legend').innerHTML = L.map(([c, t]) => `<span><i style="background:var(${c})"></i>${t}</span>`).join('');
+  document.getElementById('maptitle').textContent = { all: 'All layers', building: 'Running the building', visit: 'The visit', handover: 'Handover to operations' }[layer];
+}
+function renderDetail() {
+  const d = document.getElementById('detail');
+  if (!sel) { d.innerHTML = '<span class="empty">Click a coloured room on the map to see its live state.</span>'; return; }
+  const s = st.spaces[sel], kv = (k, v) => `<span class="kv">${k} <span>${v}</span></span>`;
+  d.innerHTML = `<b>${s.name}</b>` + kv('ID', s.id) + kv('Zone', s.zone) + kv('Temp', s.temp.toFixed(1) + '°C') + kv('CO₂', Math.round(s.co2) + ' ppm') + (s.cap ? kv('Occupancy', Math.round(s.occ * 100) + '%') : '') + (s.queue != null ? kv('Queue', s.queue + ' min') : '') + kv('Zone readiness', st.ready[s.zone] + '%');
+}
+const LV = { act: '<span class="chip act">Act</span>', wait: '<span class="chip wait">Propose &amp; wait</span>', inform: '<span class="chip">Inform</span>' };
+function renderFeed() {
+  const f = document.getElementById('feed'); f.textContent = '';
+  st.feed.slice().reverse().forEach(c => {
+    const div = document.createElement('div'); div.className = 'card sev-' + c.sev;
+    div.innerHTML = `<div class="top"><span class="who">${c.who}</span><span>${c.time} ${LV[c.level] || ''}</span></div><h3>${c.title}</h3>${c.body ? `<p>${c.body}</p>` : ''}`;
+    if (c.status) { const s = document.createElement('div'); s.className = 'status'; s.textContent = c.status; div.appendChild(s); }
+    else if (c.actions) { const a = document.createElement('div'); a.className = 'acts'; c.actions.forEach(([lab, fn, primary]) => { const b = document.createElement('button'); b.className = 'btn' + (primary ? ' primary' : ''); b.textContent = lab; b.onclick = () => { fn(c); render(); }; a.appendChild(b); }); div.appendChild(a); }
+    f.appendChild(div);
+  });
+}
+function renderChat() {
+  const c = document.getElementById('chat');
+  if (!st.chat.length) { c.innerHTML = '<div class="empty">The guest companion lights up at beat 3, when a family asks for a plan.</div>'; return; }
+  c.innerHTML = st.chat.map(m => m.offer ? `<div class="offer"><span>${m.text}</span><button class="btn primary" style="padding:4px 10px;font-size:12.5px" ${m.done ? 'disabled' : ''} data-offer="1">${m.done ? 'Ordered' : 'Pre-order'}</button></div>` : `<div class="msg ${m.from}">${m.text}</div>`).join('');
+  const b = c.querySelector('[data-offer]'); if (b && !b.disabled) b.onclick = () => { st.chat.find(m => m.offer).done = true; st.chat.push({ from: 'a', text: "Done. Two kids' meals and two flat whites will be ready at the café collection point at 12:35." }); feed({ who: 'Guest agent', level: 'act', sev: 'good', title: 'Pre-order placed: café, 12:35 collection', body: 'Logged against GF-FNB-01 for conversion by zone.' }); render(); };
+  c.scrollTop = c.scrollHeight;
+}
+function renderTop() {
+  const b = BEATS[st.beat];
+  document.getElementById('clock').firstChild.nodeValue = b.t;
+  document.getElementById('clockday').textContent = b.d; document.getElementById('phtime').textContent = b.t;
+  document.getElementById('steps').innerHTML = BEATS.map((x, i) => `<li class="${i < st.beat ? 'done' : i === st.beat ? 'now' : ''}">${x.t} ${x.label}</li>`).join('');
+  document.getElementById('next').disabled = st.beat >= BEATS.length - 1;
+  document.getElementById('k-alerts').textContent = st.markers.filter(m => m.sev === 'crit' || m.sev === 'warn').length;
+  document.getElementById('k-queue').textContent = Math.max(...Object.values(st.spaces).map(s => s.queue || 0)) + ' min';
+  const zs = Object.values(st.ready); document.getElementById('k-ready').textContent = Math.round(zs.reduce((a, b) => a + b, 0) / zs.length) + '%';
+  document.querySelectorAll('#layers button').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === layer));
+}
+function render() { renderTop(); renderLegend(); renderDetail(); renderFeed(); renderChat(); paintMap(false); }
+function feed(c) { c.id = uid(); c.time = c.time || BEATS[st.beat].t; st.feed.push(c); return c; }
+function marker(m) { m.id = uid(); st.markers.push(m); return m; }
+function dropMarker(id) { st.markers = st.markers.filter(m => m.id !== id); }
+function showTab(t) { const g = t === 'guest'; document.getElementById('p-guest').hidden = !g; document.getElementById('p-feed').hidden = g; document.getElementById('tab-guest').setAttribute('aria-pressed', g); document.getElementById('tab-feed').setAttribute('aria-pressed', !g); }
+
+// ---------- scripted beats ----------
+const RUN = [
+  () => { feed({ who: 'Handover agent', level: 'act', sev: 'info', title: 'Opening check: 0 critical items', body: 'Exhibits B at 82% ready. AHU-03 commissioning certificate still missing (owner: M&E contractor).' }); },
+  () => {
+    layer = 'building'; const B = st.spaces['GF-EXH-02']; B.temp = 26.8; B.co2 = 1150; B.occ = .88; st.ahuFault = true; st.spaces['L1-EVT-01'].energy = 'warn';
+    const fm = marker({ target: 'L1-PLANT-01', sev: 'crit', glyph: '!', label: 'AHU-03 low airflow', layer: 'building', live: true });
+    const pm = marker({ target: 'GF-EXH-02', sev: 'warn', glyph: '?', label: 'Hall B 26.8°C', layer: 'building' });
+    focusOn('GF-EXH-02');
+    feed({ who: 'Building agent', level: 'wait', sev: 'crit', title: 'Raise fresh air in Hall B for 30 min and set back the event space until 16:30', body: 'Occupancy in Hall B jumped to 88% and AHU-03 is reporting low airflow, so the hall is under-ventilated for this crowd. The event space is cooling an empty room until the 18:00 function.',
+      actions: [['Approve', c => { c.status = 'Approved by duty engineer'; feed({ who: 'Duty engineer', level: '', sev: 'good', title: 'Approved: fresh-air boost and event-space setback' }); st.spaces['L1-EVT-01'].energy = 'ok';
+        later(1800, () => { B.temp = 25.0; B.co2 = 980; });
+        later(4200, () => { B.temp = 23.6; B.co2 = 780; B.occ = .7; dropMarker(pm.id); fm.live = false; fm.sev = 'warn'; fm.label = 'AHU-03 · boost on'; feed({ who: 'Building agent', level: 'inform', sev: 'good', title: 'Hall B back within band', body: '23.6°C and 780 ppm. Boost ends at 11:10 unless occupancy stays high.' }); }); }, true],
+      ['Edit', c => { c.status = 'Edited: boost set to 20 min, then approved'; st.spaces['L1-EVT-01'].energy = 'ok'; later(2500, () => { B.temp = 24.0; B.co2 = 820; dropMarker(pm.id); }); }],
+      ['Send technician', () => { marker({ target: 'GF-OPS-01', sev: 'info', glyph: 'T', label: 'WO-1042 · tech en route', layer: 'building' }); feed({ who: 'Building agent', level: 'act', sev: 'info', title: 'Work order WO-1042 created for AHU-03', body: 'Nearest technician routed from the control room. The proposal is still open.' }); }]] });
+  },
+  () => {
+    layer = 'visit'; showTab('guest'); st.ahuFault = false;
+    const SW = st.spaces['GF-SET-01']; SW.queue = 25; SW.occ = .9; st.spaces['GF-EXH-01'].occ = .32; st.spaces['GF-FNB-01'].occ = .55;
+    marker({ target: 'ENTRANCE', sev: 'info', glyph: 'G', label: 'Family · step-free', layer: 'visit' });
+    st.route = ROUTE_A; focusOn('overview');
+    st.chat.push({ from: 'g', text: 'We have 90 minutes before lunch, with two kids and a pushchair. They want to see the props.' });
+    st.chat.push({ from: 'a', text: "Here's a step-free plan that avoids the 25 min queue at the set walk-through:<ol><li>Exhibit Hall A: props gallery, quiet right now</li><li>Exhibit Hall B: costume floor</li><li>Café &amp; food court at 12:35</li></ol>I'll tell you if the set walk-through queue drops so you can fit it in." });
+    st.chat.push({ offer: true, text: 'Pre-order lunch for 12:35 collection?' });
+    feed({ who: 'Guest agent', level: 'act', sev: 'info', title: 'Route planned for a family of four', body: 'Step-free, avoids the GF-SET-01 queue. Route and offer logged.' });
+  },
+  () => {
+    layer = 'visit'; const SW = st.spaces['GF-SET-01']; SW.queue = 27; SW.occ = .95;
+    const qm = marker({ target: 'GF-SET-01', sev: 'crit', glyph: 'Q', label: 'Queue 27 min', layer: 'visit', live: true });
+    focusOn('GF-SET-01');
+    feed({ who: 'Guest agent', level: 'wait', sev: 'crit', title: 'Open the second entrance to the set walk-through and move a host to Hall A', body: 'The queue passed 25 min and is still rising. Hall A is at 32%, so guests can be steered there while the queue clears.',
+      actions: [['Accept', c => { c.status = 'Accepted by duty manager'; dropMarker(qm.id); marker({ target: 'GF-SET-01', sev: 'info', glyph: 'T', label: 'Host · entrance 2', layer: 'visit' }); feed({ who: 'Duty manager', level: '', sev: 'good', title: 'Accepted: entrance 2 open, host moved' });
+        later(2500, () => { SW.queue = 12; SW.occ = .7; st.route = ROUTE_B; st.chat.push({ from: 'a', text: "Good news: the set walk-through queue is down to 12 min. I've added it after Hall B, and you'll still reach the café by 12:35." }); feed({ who: 'Guest agent', level: 'inform', sev: 'good', title: 'Queue down to 12 min, guest routes updated', body: 'Routes for 143 guests now include the set walk-through.' }); }); }, true],
+      ['Reject', c => { c.status = 'Rejected by duty manager: short-staffed. The agent keeps steering guests to Hall A.'; }]] });
+  },
+  () => {
+    layer = 'handover'; showTab('feed');
+    const om = marker({ target: 'GF-WC-01', sev: 'warn', glyph: '!', label: 'Leak · Park Inspect', layer: 'handover', live: true });
+    focusOn('GF-WC-01');
+    feed({ who: 'Handover agent', level: 'wait', sev: 'warn', title: 'New observation: water leak under the toilet basins (GF-WC-01)', body: 'Suggested triage: Risk · High · owner Plumbing contractor. No duplicates found. Raised by an inspector with a photo at 13:04.',
+      actions: [['Confirm triage', c => { c.status = 'Confirmed by inspector'; om.live = false; om.label = 'Leak · plumbing · High'; st.ready['Food & Beverage'] = 70; feed({ who: 'Handover agent', level: 'act', sev: 'info', title: 'Owner notified, F&B readiness now 70%', body: "Added to tomorrow's 07:30 briefing." }); }, true],
+      ['Correct', c => { c.status = 'Corrected by inspector: severity Medium'; om.live = false; om.sev = 'info'; om.label = 'Leak · Medium'; }]] });
+  },
+  () => {
+    layer = 'handover'; showTab('feed'); focusOn('overview'); st.route = null;
+    Object.values(st.spaces).forEach(s => { if (s.cap) s.occ = 0; });
+    feed({ who: 'Handover agent', level: 'act', sev: 'info', title: '07:30 zone briefing', body: 'Exhibits B: AHU-03 certificate uploaded at 07:12, all 11 checks complete. F&B: leak open, plumbing due 10:00. Events: 60%, AV commissioning outstanding.',
+      actions: [['Sign off Exhibits B', c => { c.status = 'Exhibits B signed off by operations director at ' + BEATS[st.beat].t; st.ready['Exhibits B'] = 100; st.markers.filter(m => m.label.startsWith('AHU-03')).forEach(m => dropMarker(m.id)); }, true], ['Open zone on map', () => { sel = 'GF-EXH-02'; focusOn('GF-EXH-02'); }]] });
+  }
+];
+
+function start() { timers.forEach(clearTimeout); timers = []; st = fresh(); layer = 'all'; sel = null; showTab('feed'); RUN[0](); render(); paintMap(true); focusOn('overview'); }
+document.getElementById('next').onclick = () => { if (st.beat < BEATS.length - 1) { st.beat++; RUN[st.beat](); render(); } };
+document.getElementById('restart').onclick = start;
+document.querySelectorAll('#layers button').forEach(b => b.onclick = () => { layer = b.dataset.l; render(); });
+document.getElementById('tab-feed').onclick = () => showTab('feed');
+document.getElementById('tab-guest').onclick = () => showTab('guest');
+try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => paintMap(true)); } catch (e) { }
+
+setInterval(() => { if (!st) return; let i = 0;
+  Object.values(st.spaces).forEach(s => { i++; const w = Math.sin(Date.now() / 9000 + i);
+    if (comfort(s) === 'ok' && s.temp < 24) s.temp = Math.min(24.2, Math.max(21.5, s.temp + w * 0.05));
+    if (s.cap && s.occ > 0.05 && s.occ < .8) s.occ = Math.min(.79, Math.max(.1, s.occ + w * 0.01)); });
+  renderDetail(); paintMap(false); }, 4000);
+
+st = fresh(); render();
+try {
+  mapData = await getMapData(MAP);
+  const mapEl = document.getElementById('map');
+  for (let i = 0; i < 300 && (!mapEl.clientWidth || !mapEl.clientHeight); i++) await new Promise(r => setTimeout(r, 100));
+  mapView = await show3dMap(document.getElementById('map'), mapData);
+  S.forEach(r => { const sp = mapData.getById('space', r[3]); if (sp) { spaceObj[r[0]] = sp; roleBySpace[sp.id] = r[0]; } });
+  const poi = mapData.getById('point-of-interest', ENTRANCE_POI); entrance = poi ? poi.coordinate : Object.values(spaceObj)[0];
+  mapView.on('click', e => { const sp = (e.spaces || [])[0]; const role = sp && roleBySpace[sp.id]; sel = role || null; renderDetail(); paintMap(false); });
+  document.getElementById('loading').hidden = true;
+  start();
+} catch (e) {
+  document.getElementById('loading').textContent = 'The map could not load: ' + e.message;
+}
+
+</script>
+</body></html>

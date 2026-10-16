@@ -1,0 +1,6457 @@
+{
+ "id": "HLI",
+ "name": "Harbourline International",
+ "kind": "airport",
+ "levels": [
+  {
+   "id": "T",
+   "name": "Transport",
+   "elev": -8
+  },
+  {
+   "id": "L0",
+   "name": "Baggage & BOH",
+   "elev": 0
+  },
+  {
+   "id": "L1",
+   "name": "Arrivals",
+   "elev": 6
+  },
+  {
+   "id": "L2",
+   "name": "Departures",
+   "elev": 12
+  },
+  {
+   "id": "L3",
+   "name": "Mezzanine",
+   "elev": 18
+  },
+  {
+   "id": "L4",
+   "name": "Plant & Ops",
+   "elev": 24
+  }
+ ],
+ "spaces": [
+  {
+   "id": "T-RAIL-P1",
+   "name": "Rail platform 1",
+   "lv": "T",
+   "x": 0,
+   "y": 0,
+   "w": 120,
+   "h": 12,
+   "kind": "hall",
+   "cat": "transport",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 600
+  },
+  {
+   "id": "T-RAIL-P2",
+   "name": "Rail platform 2",
+   "lv": "T",
+   "x": 0,
+   "y": 14,
+   "w": 120,
+   "h": 12,
+   "kind": "hall",
+   "cat": "transport",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 600
+  },
+  {
+   "id": "T-RAIL-CON",
+   "name": "Rail concourse",
+   "lv": "T",
+   "x": 0,
+   "y": 28,
+   "w": 120,
+   "h": 52,
+   "kind": "hall",
+   "cat": "transport",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 900,
+   "ahu": "AHU-01"
+  },
+  {
+   "id": "T-U01",
+   "name": "Rail ticket office",
+   "lv": "T",
+   "x": 0,
+   "y": 80,
+   "w": 20,
+   "h": 14,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 30,
+   "ahu": "AHU-01"
+  },
+  {
+   "id": "T-U02",
+   "name": "Rail information",
+   "lv": "T",
+   "x": 20,
+   "y": 80,
+   "w": 20,
+   "h": 14,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 30,
+   "ahu": "AHU-01"
+  },
+  {
+   "id": "T-U03",
+   "name": "Platform Coffee",
+   "lv": "T",
+   "x": 40,
+   "y": 80,
+   "w": 20,
+   "h": 14,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 30,
+   "ahu": "AHU-01"
+  },
+  {
+   "id": "T-U04",
+   "name": "Washrooms (rail)",
+   "lv": "T",
+   "x": 60,
+   "y": 80,
+   "w": 20,
+   "h": 14,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 30,
+   "ahu": "AHU-01"
+  },
+  {
+   "id": "T-U05",
+   "name": "Left luggage",
+   "lv": "T",
+   "x": 80,
+   "y": 80,
+   "w": 20,
+   "h": 14,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 30,
+   "ahu": "AHU-01"
+  },
+  {
+   "id": "T-U06",
+   "name": "Convenience store (rail)",
+   "lv": "T",
+   "x": 100,
+   "y": 80,
+   "w": 20,
+   "h": 14,
+   "kind": "room",
+   "cat": "retail",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 30,
+   "ahu": "AHU-01"
+  },
+  {
+   "id": "T-LINK",
+   "name": "Transport link",
+   "lv": "T",
+   "x": 120,
+   "y": 46,
+   "w": 180,
+   "h": 16,
+   "kind": "corridor",
+   "cat": "transport",
+   "side": "land",
+   "zone": "Rail",
+   "cap": 300
+  },
+  {
+   "id": "T-CARPARK",
+   "name": "Car park link (P1-P6)",
+   "lv": "T",
+   "x": 220,
+   "y": 0,
+   "w": 80,
+   "h": 46,
+   "kind": "hall",
+   "cat": "transport",
+   "side": "land",
+   "zone": "Car park",
+   "cap": 400
+  },
+  {
+   "id": "T-TAXI",
+   "name": "Rideshare & taxi pick-up",
+   "lv": "T",
+   "x": 130,
+   "y": 0,
+   "w": 80,
+   "h": 40,
+   "kind": "hall",
+   "cat": "transport",
+   "side": "land",
+   "zone": "Car park",
+   "cap": 250
+  },
+  {
+   "id": "T-APM-MT",
+   "name": "APM station - Main Terminal",
+   "lv": "T",
+   "x": 140,
+   "y": 64,
+   "w": 40,
+   "h": 48,
+   "kind": "hall",
+   "cat": "apm",
+   "side": "air",
+   "zone": "APM",
+   "cap": 400,
+   "ahu": "AHU-02"
+  },
+  {
+   "id": "T-APM-TRACK",
+   "name": "APM guideway",
+   "lv": "T",
+   "x": 152,
+   "y": 112,
+   "w": 16,
+   "h": 388,
+   "kind": "track",
+   "cat": "apm",
+   "side": "apm",
+   "zone": "APM",
+   "cap": 0
+  },
+  {
+   "id": "T-APM-SAT",
+   "name": "APM station - Satellite",
+   "lv": "T",
+   "x": 140,
+   "y": 500,
+   "w": 40,
+   "h": 48,
+   "kind": "hall",
+   "cat": "apm",
+   "side": "air",
+   "zone": "APM",
+   "cap": 400,
+   "ahu": "AHU-S1"
+  },
+  {
+   "id": "L0-BOH-COR",
+   "name": "BOH service road",
+   "lv": "L0",
+   "x": 0,
+   "y": 30,
+   "w": 300,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 80
+  },
+  {
+   "id": "L0-S01",
+   "name": "Staff entrance & screening",
+   "lv": "L0",
+   "x": 0,
+   "y": 0,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S02",
+   "name": "ID pass office",
+   "lv": "L0",
+   "x": 30,
+   "y": 0,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S03",
+   "name": "Staff canteen",
+   "lv": "L0",
+   "x": 50,
+   "y": 0,
+   "w": 40,
+   "h": 30,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S04",
+   "name": "Lockers - crew",
+   "lv": "L0",
+   "x": 90,
+   "y": 0,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S05",
+   "name": "Lockers - ground staff",
+   "lv": "L0",
+   "x": 110,
+   "y": 0,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-WORKSHOP",
+   "name": "Engineering workshop",
+   "lv": "L0",
+   "x": 130,
+   "y": 0,
+   "w": 40,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S07",
+   "name": "Stores 1",
+   "lv": "L0",
+   "x": 170,
+   "y": 0,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S08",
+   "name": "Stores 2",
+   "lv": "L0",
+   "x": 190,
+   "y": 0,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S09",
+   "name": "Cleaning hub",
+   "lv": "L0",
+   "x": 210,
+   "y": 0,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S10",
+   "name": "Waste & recycling",
+   "lv": "L0",
+   "x": 230,
+   "y": 0,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S11",
+   "name": "Staff medical",
+   "lv": "L0",
+   "x": 250,
+   "y": 0,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "service",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-S12",
+   "name": "Loading dock",
+   "lv": "L0",
+   "x": 270,
+   "y": 0,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-MAKEUP",
+   "name": "Baggage make-up hall",
+   "lv": "L0",
+   "x": 0,
+   "y": 40,
+   "w": 140,
+   "h": 80,
+   "kind": "hall",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 60,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-MU1",
+   "name": "Make-up carousel MU1",
+   "lv": "L0",
+   "x": 12,
+   "y": 62,
+   "w": 10,
+   "h": 38,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-MU2",
+   "name": "Make-up carousel MU2",
+   "lv": "L0",
+   "x": 33,
+   "y": 62,
+   "w": 10,
+   "h": 38,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-MU3",
+   "name": "Make-up carousel MU3",
+   "lv": "L0",
+   "x": 54,
+   "y": 62,
+   "w": 10,
+   "h": 38,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-MU4",
+   "name": "Make-up carousel MU4",
+   "lv": "L0",
+   "x": 75,
+   "y": 62,
+   "w": 10,
+   "h": 38,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-MU5",
+   "name": "Make-up carousel MU5",
+   "lv": "L0",
+   "x": 96,
+   "y": 62,
+   "w": 10,
+   "h": 38,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-MU6",
+   "name": "Make-up carousel MU6",
+   "lv": "L0",
+   "x": 117,
+   "y": 62,
+   "w": 10,
+   "h": 38,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-HBS",
+   "name": "Hold baggage screening",
+   "lv": "L0",
+   "x": 140,
+   "y": 40,
+   "w": 60,
+   "h": 40,
+   "kind": "room",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 12,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-EBS",
+   "name": "Early bag store",
+   "lv": "L0",
+   "x": 140,
+   "y": 80,
+   "w": 60,
+   "h": 40,
+   "kind": "room",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 6
+  },
+  {
+   "id": "L0-SORT",
+   "name": "Sortation hall",
+   "lv": "L0",
+   "x": 200,
+   "y": 40,
+   "w": 100,
+   "h": 80,
+   "kind": "hall",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 30,
+   "ahu": "AHU-03"
+  },
+  {
+   "id": "L0-FEED1",
+   "name": "Reclaim feed R1",
+   "lv": "L0",
+   "x": 208,
+   "y": 70,
+   "w": 6,
+   "h": 40,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-FEED2",
+   "name": "Reclaim feed R2",
+   "lv": "L0",
+   "x": 223,
+   "y": 70,
+   "w": 6,
+   "h": 40,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-FEED3",
+   "name": "Reclaim feed R3",
+   "lv": "L0",
+   "x": 238,
+   "y": 70,
+   "w": 6,
+   "h": 40,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-FEED4",
+   "name": "Reclaim feed R4",
+   "lv": "L0",
+   "x": 253,
+   "y": 70,
+   "w": 6,
+   "h": 40,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-FEED5",
+   "name": "Reclaim feed R5",
+   "lv": "L0",
+   "x": 268,
+   "y": 70,
+   "w": 6,
+   "h": 40,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0-FEED6",
+   "name": "Reclaim feed R6",
+   "lv": "L0",
+   "x": 283,
+   "y": 70,
+   "w": 6,
+   "h": 40,
+   "kind": "object",
+   "cat": "baggage",
+   "side": "boh",
+   "zone": "Baggage",
+   "cap": 0
+  },
+  {
+   "id": "L0S-COR",
+   "name": "Satellite BOH corridor",
+   "lv": "L0",
+   "x": 0,
+   "y": 505,
+   "w": 320,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 40
+  },
+  {
+   "id": "L0S-U01",
+   "name": "Satellite workshop",
+   "lv": "L0",
+   "x": 0,
+   "y": 515,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 15
+  },
+  {
+   "id": "L0S-U02",
+   "name": "Satellite stores",
+   "lv": "L0",
+   "x": 40,
+   "y": 515,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 15
+  },
+  {
+   "id": "L0S-U03",
+   "name": "Ramp crew room",
+   "lv": "L0",
+   "x": 80,
+   "y": 515,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 15
+  },
+  {
+   "id": "L0S-U04",
+   "name": "Cleaning hub (satellite)",
+   "lv": "L0",
+   "x": 120,
+   "y": 515,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 15
+  },
+  {
+   "id": "L0S-U05",
+   "name": "Baggage transfer hall",
+   "lv": "L0",
+   "x": 160,
+   "y": 515,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 15
+  },
+  {
+   "id": "L0S-U06",
+   "name": "Catering lift lobby",
+   "lv": "L0",
+   "x": 200,
+   "y": 515,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 15
+  },
+  {
+   "id": "L0S-U07",
+   "name": "Satellite substation",
+   "lv": "L0",
+   "x": 240,
+   "y": 515,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 15
+  },
+  {
+   "id": "L0S-U08",
+   "name": "Water & drainage",
+   "lv": "L0",
+   "x": 280,
+   "y": 515,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite BOH",
+   "cap": 15
+  },
+  {
+   "id": "L1-STERILE",
+   "name": "Arrivals sterile corridor",
+   "lv": "L1",
+   "x": 0,
+   "y": 110,
+   "w": 300,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 500,
+   "ahu": "AHU-04"
+  },
+  {
+   "id": "L1-IMM",
+   "name": "Immigration hall",
+   "lv": "L1",
+   "x": 0,
+   "y": 60,
+   "w": 110,
+   "h": 50,
+   "kind": "hall",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 700,
+   "ahu": "AHU-04"
+  },
+  {
+   "id": "L1-EG01",
+   "name": "eGate 1",
+   "lv": "L1",
+   "x": 8,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG02",
+   "name": "eGate 2",
+   "lv": "L1",
+   "x": 18,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG03",
+   "name": "eGate 3",
+   "lv": "L1",
+   "x": 28,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG04",
+   "name": "eGate 4",
+   "lv": "L1",
+   "x": 38,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG05",
+   "name": "eGate 5",
+   "lv": "L1",
+   "x": 48,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG06",
+   "name": "eGate 6",
+   "lv": "L1",
+   "x": 58,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG07",
+   "name": "eGate 7",
+   "lv": "L1",
+   "x": 68,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG08",
+   "name": "eGate 8",
+   "lv": "L1",
+   "x": 78,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG09",
+   "name": "eGate 9",
+   "lv": "L1",
+   "x": 88,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-EG10",
+   "name": "eGate 10",
+   "lv": "L1",
+   "x": 98,
+   "y": 68,
+   "w": 4,
+   "h": 4,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-DESK1",
+   "name": "Border desk 1",
+   "lv": "L1",
+   "x": 10,
+   "y": 82,
+   "w": 6,
+   "h": 3,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-DESK2",
+   "name": "Border desk 2",
+   "lv": "L1",
+   "x": 22,
+   "y": 82,
+   "w": 6,
+   "h": 3,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-DESK3",
+   "name": "Border desk 3",
+   "lv": "L1",
+   "x": 34,
+   "y": 82,
+   "w": 6,
+   "h": 3,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-DESK4",
+   "name": "Border desk 4",
+   "lv": "L1",
+   "x": 46,
+   "y": 82,
+   "w": 6,
+   "h": 3,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-DESK5",
+   "name": "Border desk 5",
+   "lv": "L1",
+   "x": 58,
+   "y": 82,
+   "w": 6,
+   "h": 3,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-DESK6",
+   "name": "Border desk 6",
+   "lv": "L1",
+   "x": 70,
+   "y": 82,
+   "w": 6,
+   "h": 3,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-DESK7",
+   "name": "Border desk 7",
+   "lv": "L1",
+   "x": 82,
+   "y": 82,
+   "w": 6,
+   "h": 3,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-DESK8",
+   "name": "Border desk 8",
+   "lv": "L1",
+   "x": 94,
+   "y": 82,
+   "w": 6,
+   "h": 3,
+   "kind": "object",
+   "cat": "border",
+   "side": "sterile",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-RECLAIM",
+   "name": "Baggage reclaim hall",
+   "lv": "L1",
+   "x": 110,
+   "y": 50,
+   "w": 190,
+   "h": 60,
+   "kind": "hall",
+   "cat": "baggage",
+   "side": "air",
+   "zone": "Arrivals",
+   "cap": 900,
+   "ahu": "AHU-04"
+  },
+  {
+   "id": "L1-R1",
+   "name": "Reclaim belt R1",
+   "lv": "L1",
+   "x": 126,
+   "y": 62,
+   "w": 6,
+   "h": 34,
+   "kind": "object",
+   "cat": "belt",
+   "side": "air",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-R2",
+   "name": "Reclaim belt R2",
+   "lv": "L1",
+   "x": 155,
+   "y": 62,
+   "w": 6,
+   "h": 34,
+   "kind": "object",
+   "cat": "belt",
+   "side": "air",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-R3",
+   "name": "Reclaim belt R3",
+   "lv": "L1",
+   "x": 184,
+   "y": 62,
+   "w": 6,
+   "h": 34,
+   "kind": "object",
+   "cat": "belt",
+   "side": "air",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-R4",
+   "name": "Reclaim belt R4",
+   "lv": "L1",
+   "x": 213,
+   "y": 62,
+   "w": 6,
+   "h": 34,
+   "kind": "object",
+   "cat": "belt",
+   "side": "air",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-R5",
+   "name": "Reclaim belt R5",
+   "lv": "L1",
+   "x": 242,
+   "y": 62,
+   "w": 6,
+   "h": 34,
+   "kind": "object",
+   "cat": "belt",
+   "side": "air",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-R6",
+   "name": "Reclaim belt R6",
+   "lv": "L1",
+   "x": 271,
+   "y": 62,
+   "w": 6,
+   "h": 34,
+   "kind": "object",
+   "cat": "belt",
+   "side": "air",
+   "zone": "Arrivals",
+   "cap": 0
+  },
+  {
+   "id": "L1-CUSTOMS",
+   "name": "Customs - green/red channels",
+   "lv": "L1",
+   "x": 140,
+   "y": 40,
+   "w": 60,
+   "h": 10,
+   "kind": "hall",
+   "cat": "border",
+   "side": "air",
+   "zone": "Arrivals",
+   "cap": 80
+  },
+  {
+   "id": "L1-ARRHALL",
+   "name": "Arrivals hall",
+   "lv": "L1",
+   "x": 0,
+   "y": 12,
+   "w": 300,
+   "h": 28,
+   "kind": "hall",
+   "cat": "landside",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 1200,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A01",
+   "name": "Car hire - Atlas",
+   "lv": "L1",
+   "x": 0,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A02",
+   "name": "Car hire - Bayline",
+   "lv": "L1",
+   "x": 20,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A03",
+   "name": "Car hire - Coastal",
+   "lv": "L1",
+   "x": 40,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A04",
+   "name": "Hotel & tourism desk",
+   "lv": "L1",
+   "x": 60,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A05",
+   "name": "Meet & greet",
+   "lv": "L1",
+   "x": 80,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A06",
+   "name": "Information desk",
+   "lv": "L1",
+   "x": 100,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A07",
+   "name": "Anchor Pharmacy",
+   "lv": "L1",
+   "x": 120,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "retail",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A08",
+   "name": "Tidewater Cafe",
+   "lv": "L1",
+   "x": 140,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A09",
+   "name": "Arrivals convenience",
+   "lv": "L1",
+   "x": 160,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "retail",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A10",
+   "name": "Currency exchange",
+   "lv": "L1",
+   "x": 180,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A11",
+   "name": "Washrooms (arrivals)",
+   "lv": "L1",
+   "x": 200,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A12",
+   "name": "Bus & coach desk",
+   "lv": "L1",
+   "x": 220,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A13",
+   "name": "SIM & connectivity",
+   "lv": "L1",
+   "x": 240,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "retail",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A14",
+   "name": "Lost property",
+   "lv": "L1",
+   "x": 260,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "service",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-A15",
+   "name": "Seaglass Bakery (arrivals)",
+   "lv": "L1",
+   "x": 280,
+   "y": 0,
+   "w": 20,
+   "h": 12,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "land",
+   "zone": "Arrivals",
+   "cap": 25,
+   "ahu": "AHU-05"
+  },
+  {
+   "id": "L1-PA-COR",
+   "name": "Pier A arrivals corridor",
+   "lv": "L1",
+   "x": 140,
+   "y": 120,
+   "w": 20,
+   "h": 260,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "sterile",
+   "zone": "Pier A",
+   "cap": 400,
+   "ahu": "AHU-PA1"
+  },
+  {
+   "id": "L1S-COR",
+   "name": "Satellite arrivals corridor",
+   "lv": "L1",
+   "x": 0,
+   "y": 515,
+   "w": 320,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "sterile",
+   "zone": "Satellite",
+   "cap": 300,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2-CHECKIN",
+   "name": "Check-in hall",
+   "lv": "L2",
+   "x": 0,
+   "y": 0,
+   "w": 300,
+   "h": 60,
+   "kind": "hall",
+   "cat": "checkin",
+   "side": "land",
+   "zone": "Check-in",
+   "cap": 1600,
+   "ahu": "AHU-06"
+  },
+  {
+   "id": "L2-ISL-A",
+   "name": "Check-in island A",
+   "lv": "L2",
+   "x": 25,
+   "y": 22,
+   "w": 40,
+   "h": 16,
+   "kind": "object",
+   "cat": "checkin",
+   "side": "land",
+   "zone": "Check-in",
+   "cap": 0
+  },
+  {
+   "id": "L2-ISL-B",
+   "name": "Check-in island B",
+   "lv": "L2",
+   "x": 95,
+   "y": 22,
+   "w": 40,
+   "h": 16,
+   "kind": "object",
+   "cat": "checkin",
+   "side": "land",
+   "zone": "Check-in",
+   "cap": 0
+  },
+  {
+   "id": "L2-ISL-C",
+   "name": "Check-in island C",
+   "lv": "L2",
+   "x": 165,
+   "y": 22,
+   "w": 40,
+   "h": 16,
+   "kind": "object",
+   "cat": "checkin",
+   "side": "land",
+   "zone": "Check-in",
+   "cap": 0
+  },
+  {
+   "id": "L2-ISL-D",
+   "name": "Check-in island D",
+   "lv": "L2",
+   "x": 235,
+   "y": 22,
+   "w": 40,
+   "h": 16,
+   "kind": "object",
+   "cat": "checkin",
+   "side": "land",
+   "zone": "Check-in",
+   "cap": 0
+  },
+  {
+   "id": "L2-BAGDROP",
+   "name": "Self bag drop",
+   "lv": "L2",
+   "x": 280,
+   "y": 20,
+   "w": 18,
+   "h": 24,
+   "kind": "object",
+   "cat": "checkin",
+   "side": "land",
+   "zone": "Check-in",
+   "cap": 0
+  },
+  {
+   "id": "L2-SEC",
+   "name": "Central security",
+   "lv": "L2",
+   "x": 100,
+   "y": 60,
+   "w": 100,
+   "h": 22,
+   "kind": "hall",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 600,
+   "ahu": "AHU-06"
+  },
+  {
+   "id": "L2-LANE01",
+   "name": "Security lane 1",
+   "lv": "L2",
+   "x": 102.0,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE02",
+   "name": "Security lane 2",
+   "lv": "L2",
+   "x": 106.1,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE03",
+   "name": "Security lane 3",
+   "lv": "L2",
+   "x": 110.2,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE04",
+   "name": "Security lane 4",
+   "lv": "L2",
+   "x": 114.3,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE05",
+   "name": "Security lane 5",
+   "lv": "L2",
+   "x": 118.4,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE06",
+   "name": "Security lane 6",
+   "lv": "L2",
+   "x": 122.5,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE07",
+   "name": "Security lane 7",
+   "lv": "L2",
+   "x": 126.6,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE08",
+   "name": "Security lane 8",
+   "lv": "L2",
+   "x": 130.7,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE09",
+   "name": "Security lane 9",
+   "lv": "L2",
+   "x": 134.8,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE10",
+   "name": "Security lane 10",
+   "lv": "L2",
+   "x": 138.9,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE11",
+   "name": "Security lane 11",
+   "lv": "L2",
+   "x": 143.0,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE12",
+   "name": "Security lane 12",
+   "lv": "L2",
+   "x": 147.1,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE13",
+   "name": "Security lane 13",
+   "lv": "L2",
+   "x": 151.2,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE14",
+   "name": "Security lane 14",
+   "lv": "L2",
+   "x": 155.3,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE15",
+   "name": "Security lane 15",
+   "lv": "L2",
+   "x": 159.4,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE16",
+   "name": "Security lane 16",
+   "lv": "L2",
+   "x": 163.5,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE17",
+   "name": "Security lane 17",
+   "lv": "L2",
+   "x": 167.6,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE18",
+   "name": "Security lane 18",
+   "lv": "L2",
+   "x": 171.7,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE19",
+   "name": "Security lane 19",
+   "lv": "L2",
+   "x": 175.8,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE20",
+   "name": "Security lane 20",
+   "lv": "L2",
+   "x": 179.9,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE21",
+   "name": "Security lane 21",
+   "lv": "L2",
+   "x": 184.0,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE22",
+   "name": "Security lane 22",
+   "lv": "L2",
+   "x": 188.1,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE23",
+   "name": "Security lane 23",
+   "lv": "L2",
+   "x": 192.2,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-LANE24",
+   "name": "Security lane 24",
+   "lv": "L2",
+   "x": 196.3,
+   "y": 66,
+   "w": 2.4,
+   "h": 10,
+   "kind": "object",
+   "cat": "security",
+   "side": "land",
+   "zone": "Security",
+   "cap": 0
+  },
+  {
+   "id": "L2-PLAZA",
+   "name": "Airside plaza",
+   "lv": "L2",
+   "x": 100,
+   "y": 82,
+   "w": 100,
+   "h": 38,
+   "kind": "hall",
+   "cat": "plaza",
+   "side": "air",
+   "zone": "Airside plaza",
+   "cap": 1500,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-DUTYFREE",
+   "name": "Harbour Duty Free (walk-through)",
+   "lv": "L2",
+   "x": 110,
+   "y": 82,
+   "w": 80,
+   "h": 12,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "Airside plaza",
+   "cap": 250,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-WW-COR",
+   "name": "West wing walkway",
+   "lv": "L2",
+   "x": 0,
+   "y": 95,
+   "w": 100,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 400,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-EW-COR",
+   "name": "East wing walkway",
+   "lv": "L2",
+   "x": 200,
+   "y": 95,
+   "w": 100,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 400,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-W001",
+   "name": "Saltline Books",
+   "lv": "L2",
+   "x": 0.0,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W002",
+   "name": "Harbour Coffee",
+   "lv": "L2",
+   "x": 12.5,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W003",
+   "name": "Tidewater Tech",
+   "lv": "L2",
+   "x": 25.0,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W004",
+   "name": "Tidewater Cafe",
+   "lv": "L2",
+   "x": 37.5,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W005",
+   "name": "Coastal Apparel",
+   "lv": "L2",
+   "x": 50.0,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W006",
+   "name": "The Galley",
+   "lv": "L2",
+   "x": 62.5,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W007",
+   "name": "Gull & Co. Gifts",
+   "lv": "L2",
+   "x": 75.0,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W008",
+   "name": "Saltwater Sushi",
+   "lv": "L2",
+   "x": 87.5,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W101",
+   "name": "Washrooms (west)",
+   "lv": "L2",
+   "x": 0.0,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W102",
+   "name": "Ferry Noodle Bar",
+   "lv": "L2",
+   "x": 12.5,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W103",
+   "name": "Lighthouse Sweets",
+   "lv": "L2",
+   "x": 25.0,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W104",
+   "name": "Breakwater Burgers",
+   "lv": "L2",
+   "x": 37.5,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W105",
+   "name": "Northwind Fashion",
+   "lv": "L2",
+   "x": 50.0,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W106",
+   "name": "Keel & Cask Bar",
+   "lv": "L2",
+   "x": 62.5,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W107",
+   "name": "Bay Optics",
+   "lv": "L2",
+   "x": 75.0,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-W108",
+   "name": "Family room",
+   "lv": "L2",
+   "x": 87.5,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "West wing",
+   "cap": 25,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L2-E001",
+   "name": "Voyage Essentials",
+   "lv": "L2",
+   "x": 200.0,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E002",
+   "name": "Seaglass Bakery",
+   "lv": "L2",
+   "x": 212.5,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 40,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E003",
+   "name": "Pier Watches",
+   "lv": "L2",
+   "x": 225.0,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E004",
+   "name": "Dockside Deli",
+   "lv": "L2",
+   "x": 237.5,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 40,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E005",
+   "name": "Driftwood Home",
+   "lv": "L2",
+   "x": 250.0,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E006",
+   "name": "Mariner's Grill",
+   "lv": "L2",
+   "x": 262.5,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 40,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E007",
+   "name": "Kite Kids",
+   "lv": "L2",
+   "x": 275.0,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E008",
+   "name": "Coral Juice",
+   "lv": "L2",
+   "x": 287.5,
+   "y": 105,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 40,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E101",
+   "name": "Prayer room",
+   "lv": "L2",
+   "x": 200.0,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E102",
+   "name": "Quayside Pizza",
+   "lv": "L2",
+   "x": 212.5,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 40,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E103",
+   "name": "Compass Luggage",
+   "lv": "L2",
+   "x": 225.0,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E104",
+   "name": "Lantern Dumplings",
+   "lv": "L2",
+   "x": 237.5,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 40,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E105",
+   "name": "Sandbar Beauty",
+   "lv": "L2",
+   "x": 250.0,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E106",
+   "name": "Spinnaker Salads",
+   "lv": "L2",
+   "x": 262.5,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 40,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E107",
+   "name": "Wavecrest Sports",
+   "lv": "L2",
+   "x": 275.0,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-E108",
+   "name": "Pharmacy (airside)",
+   "lv": "L2",
+   "x": 287.5,
+   "y": 80,
+   "w": 12.5,
+   "h": 15,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "East wing",
+   "cap": 25,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L2-PA-COR",
+   "name": "Pier A concourse",
+   "lv": "L2",
+   "x": 140,
+   "y": 120,
+   "w": 20,
+   "h": 260,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 900,
+   "ahu": "AHU-PA1"
+  },
+  {
+   "id": "L2-PA-WC",
+   "name": "Pier A washrooms",
+   "lv": "L2",
+   "x": 110,
+   "y": 120,
+   "w": 30,
+   "h": 20,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 30,
+   "ahu": "AHU-PA1"
+  },
+  {
+   "id": "L2-PA-CAFE",
+   "name": "Harbour Coffee (Pier A)",
+   "lv": "L2",
+   "x": 160,
+   "y": 120,
+   "w": 30,
+   "h": 20,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 40,
+   "ahu": "AHU-PA1"
+  },
+  {
+   "id": "L2-GATE-A1",
+   "name": "Gate A1",
+   "lv": "L2",
+   "x": 110,
+   "y": 140,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA1",
+   "gate": "A1"
+  },
+  {
+   "id": "L2-GATE-A2",
+   "name": "Gate A2",
+   "lv": "L2",
+   "x": 110,
+   "y": 180,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA1",
+   "gate": "A2"
+  },
+  {
+   "id": "L2-GATE-A3",
+   "name": "Gate A3",
+   "lv": "L2",
+   "x": 110,
+   "y": 220,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA1",
+   "gate": "A3"
+  },
+  {
+   "id": "L2-GATE-A4",
+   "name": "Gate A4",
+   "lv": "L2",
+   "x": 110,
+   "y": 260,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA2",
+   "gate": "A4"
+  },
+  {
+   "id": "L2-GATE-A5",
+   "name": "Gate A5",
+   "lv": "L2",
+   "x": 110,
+   "y": 300,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA2",
+   "gate": "A5"
+  },
+  {
+   "id": "L2-GATE-A6",
+   "name": "Gate A6",
+   "lv": "L2",
+   "x": 110,
+   "y": 340,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA2",
+   "gate": "A6"
+  },
+  {
+   "id": "L2-GATE-A7",
+   "name": "Gate A7",
+   "lv": "L2",
+   "x": 160,
+   "y": 140,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA1",
+   "gate": "A7"
+  },
+  {
+   "id": "L2-GATE-A8",
+   "name": "Gate A8",
+   "lv": "L2",
+   "x": 160,
+   "y": 180,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA1",
+   "gate": "A8"
+  },
+  {
+   "id": "L2-GATE-A9",
+   "name": "Gate A9",
+   "lv": "L2",
+   "x": 160,
+   "y": 220,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA1",
+   "gate": "A9"
+  },
+  {
+   "id": "L2-GATE-A10",
+   "name": "Gate A10",
+   "lv": "L2",
+   "x": 160,
+   "y": 260,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA2",
+   "gate": "A10"
+  },
+  {
+   "id": "L2-GATE-A11",
+   "name": "Gate A11",
+   "lv": "L2",
+   "x": 160,
+   "y": 300,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA2",
+   "gate": "A11"
+  },
+  {
+   "id": "L2-GATE-A12",
+   "name": "Gate A12",
+   "lv": "L2",
+   "x": 160,
+   "y": 340,
+   "w": 30,
+   "h": 40,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Pier A",
+   "cap": 220,
+   "ahu": "AHU-PA2",
+   "gate": "A12"
+  },
+  {
+   "id": "L2S-COR",
+   "name": "Satellite concourse",
+   "lv": "L2",
+   "x": 0,
+   "y": 510,
+   "w": 320,
+   "h": 20,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 1200,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-PLAZA",
+   "name": "Satellite plaza",
+   "lv": "L2",
+   "x": 120,
+   "y": 460,
+   "w": 80,
+   "h": 120,
+   "kind": "hall",
+   "cat": "plaza",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 800,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-U01",
+   "name": "Seafarer Spirits",
+   "lv": "L2",
+   "x": 124,
+   "y": 466,
+   "w": 18,
+   "h": 12,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 30,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-U02",
+   "name": "Beacon Brasserie",
+   "lv": "L2",
+   "x": 124,
+   "y": 480,
+   "w": 18,
+   "h": 12,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 30,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-U03",
+   "name": "Atlas News",
+   "lv": "L2",
+   "x": 178,
+   "y": 466,
+   "w": 18,
+   "h": 12,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 30,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-U04",
+   "name": "Rope & Anchor Pub",
+   "lv": "L2",
+   "x": 178,
+   "y": 480,
+   "w": 18,
+   "h": 12,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 30,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-U05",
+   "name": "Marina Jewels",
+   "lv": "L2",
+   "x": 124,
+   "y": 546,
+   "w": 18,
+   "h": 12,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 30,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-U06",
+   "name": "Trawler Fish Bar",
+   "lv": "L2",
+   "x": 124,
+   "y": 560,
+   "w": 18,
+   "h": 12,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 30,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-U07",
+   "name": "Current Electronics",
+   "lv": "L2",
+   "x": 178,
+   "y": 546,
+   "w": 18,
+   "h": 12,
+   "kind": "room",
+   "cat": "retail",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 30,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-U08",
+   "name": "Monsoon Curry",
+   "lv": "L2",
+   "x": 178,
+   "y": 560,
+   "w": 18,
+   "h": 12,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 30,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L2S-WC-W",
+   "name": "Washrooms (satellite west)",
+   "lv": "L2",
+   "x": 110,
+   "y": 530,
+   "w": 10,
+   "h": 20,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 20,
+   "ahu": "AHU-S3"
+  },
+  {
+   "id": "L2S-WC-E",
+   "name": "Washrooms (satellite east)",
+   "lv": "L2",
+   "x": 200,
+   "y": 530,
+   "w": 10,
+   "h": 20,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 20,
+   "ahu": "AHU-S4"
+  },
+  {
+   "id": "L2-GATE-B1",
+   "name": "Gate B1",
+   "lv": "L2",
+   "x": 0.0,
+   "y": 460,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S3",
+   "gate": "B1"
+  },
+  {
+   "id": "L2-GATE-B2",
+   "name": "Gate B2",
+   "lv": "L2",
+   "x": 27.5,
+   "y": 460,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S3",
+   "gate": "B2"
+  },
+  {
+   "id": "L2-GATE-B3",
+   "name": "Gate B3",
+   "lv": "L2",
+   "x": 55.0,
+   "y": 460,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S3",
+   "gate": "B3"
+  },
+  {
+   "id": "L2-GATE-B4",
+   "name": "Gate B4",
+   "lv": "L2",
+   "x": 82.5,
+   "y": 460,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S3",
+   "gate": "B4"
+  },
+  {
+   "id": "L2-GATE-B5",
+   "name": "Gate B5",
+   "lv": "L2",
+   "x": 0.0,
+   "y": 530,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S3",
+   "gate": "B5"
+  },
+  {
+   "id": "L2-GATE-B6",
+   "name": "Gate B6",
+   "lv": "L2",
+   "x": 27.5,
+   "y": 530,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S3",
+   "gate": "B6"
+  },
+  {
+   "id": "L2-GATE-B7",
+   "name": "Gate B7",
+   "lv": "L2",
+   "x": 55.0,
+   "y": 530,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S3",
+   "gate": "B7"
+  },
+  {
+   "id": "L2-GATE-B8",
+   "name": "Gate B8",
+   "lv": "L2",
+   "x": 82.5,
+   "y": 530,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S3",
+   "gate": "B8"
+  },
+  {
+   "id": "L2-GATE-B9",
+   "name": "Gate B9",
+   "lv": "L2",
+   "x": 210.0,
+   "y": 460,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S4",
+   "gate": "B9"
+  },
+  {
+   "id": "L2-GATE-B10",
+   "name": "Gate B10",
+   "lv": "L2",
+   "x": 237.5,
+   "y": 460,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S4",
+   "gate": "B10"
+  },
+  {
+   "id": "L2-GATE-B11",
+   "name": "Gate B11",
+   "lv": "L2",
+   "x": 265.0,
+   "y": 460,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S4",
+   "gate": "B11"
+  },
+  {
+   "id": "L2-GATE-B12",
+   "name": "Gate B12",
+   "lv": "L2",
+   "x": 292.5,
+   "y": 460,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S4",
+   "gate": "B12"
+  },
+  {
+   "id": "L2-GATE-B13",
+   "name": "Gate B13",
+   "lv": "L2",
+   "x": 210.0,
+   "y": 530,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S4",
+   "gate": "B13"
+  },
+  {
+   "id": "L2-GATE-B14",
+   "name": "Gate B14",
+   "lv": "L2",
+   "x": 237.5,
+   "y": 530,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S4",
+   "gate": "B14"
+  },
+  {
+   "id": "L2-GATE-B15",
+   "name": "Gate B15",
+   "lv": "L2",
+   "x": 265.0,
+   "y": 530,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S4",
+   "gate": "B15"
+  },
+  {
+   "id": "L2-GATE-B16",
+   "name": "Gate B16",
+   "lv": "L2",
+   "x": 292.5,
+   "y": 530,
+   "w": 27.5,
+   "h": 50,
+   "kind": "room",
+   "cat": "gate",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 200,
+   "ahu": "AHU-S4",
+   "gate": "B16"
+  },
+  {
+   "id": "L3-COR",
+   "name": "Mezzanine walkway",
+   "lv": "L3",
+   "x": 0,
+   "y": 98,
+   "w": 300,
+   "h": 8,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 400,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-LNG1",
+   "name": "Harbourline Lounge",
+   "lv": "L3",
+   "x": 0,
+   "y": 106,
+   "w": 60,
+   "h": 24,
+   "kind": "room",
+   "cat": "lounge",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 220,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-LNG2",
+   "name": "Business Lounge",
+   "lv": "L3",
+   "x": 60,
+   "y": 106,
+   "w": 60,
+   "h": 24,
+   "kind": "room",
+   "cat": "lounge",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 160,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-LNG3",
+   "name": "First Lounge",
+   "lv": "L3",
+   "x": 240,
+   "y": 106,
+   "w": 60,
+   "h": 24,
+   "kind": "room",
+   "cat": "lounge",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 60,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FOODHALL",
+   "name": "Skyline food hall",
+   "lv": "L3",
+   "x": 120,
+   "y": 106,
+   "w": 120,
+   "h": 24,
+   "kind": "hall",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 500,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FH1",
+   "name": "Harbour Coffee",
+   "lv": "L3",
+   "x": 122.0,
+   "y": 122,
+   "w": 13,
+   "h": 8,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 30,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FH2",
+   "name": "Tidewater Cafe",
+   "lv": "L3",
+   "x": 136.5,
+   "y": 122,
+   "w": 13,
+   "h": 8,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 30,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FH3",
+   "name": "The Galley",
+   "lv": "L3",
+   "x": 151.0,
+   "y": 122,
+   "w": 13,
+   "h": 8,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 30,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FH4",
+   "name": "Saltwater Sushi",
+   "lv": "L3",
+   "x": 165.5,
+   "y": 122,
+   "w": 13,
+   "h": 8,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 30,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FH5",
+   "name": "Ferry Noodle Bar",
+   "lv": "L3",
+   "x": 180.0,
+   "y": 122,
+   "w": 13,
+   "h": 8,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 30,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FH6",
+   "name": "Breakwater Burgers",
+   "lv": "L3",
+   "x": 194.5,
+   "y": 122,
+   "w": 13,
+   "h": 8,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 30,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FH7",
+   "name": "Keel & Cask Bar",
+   "lv": "L3",
+   "x": 209.0,
+   "y": 122,
+   "w": 13,
+   "h": 8,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 30,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-FH8",
+   "name": "Seaglass Bakery",
+   "lv": "L3",
+   "x": 223.5,
+   "y": 122,
+   "w": 13,
+   "h": 8,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 30,
+   "ahu": "AHU-08"
+  },
+  {
+   "id": "L3-S01",
+   "name": "Apron viewing gallery",
+   "lv": "L3",
+   "x": 0,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S02",
+   "name": "Tide Spa",
+   "lv": "L3",
+   "x": 30,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S03",
+   "name": "Kids play zone",
+   "lv": "L3",
+   "x": 60,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S04",
+   "name": "Quiet zone",
+   "lv": "L3",
+   "x": 90,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S05",
+   "name": "Prayer room (mezzanine)",
+   "lv": "L3",
+   "x": 120,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S06",
+   "name": "Washrooms (mezzanine)",
+   "lv": "L3",
+   "x": 150,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S07",
+   "name": "Work pods",
+   "lv": "L3",
+   "x": 180,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S08",
+   "name": "Gaming lounge",
+   "lv": "L3",
+   "x": 210,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S09",
+   "name": "Art wall",
+   "lv": "L3",
+   "x": 240,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3-S10",
+   "name": "Nap pods",
+   "lv": "L3",
+   "x": 270,
+   "y": 80,
+   "w": 30,
+   "h": 18,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Mezzanine",
+   "cap": 40,
+   "ahu": "AHU-07"
+  },
+  {
+   "id": "L3S-COR",
+   "name": "Satellite mezzanine",
+   "lv": "L3",
+   "x": 120,
+   "y": 515,
+   "w": 80,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 150,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L3S-U1",
+   "name": "Satellite lounge",
+   "lv": "L3",
+   "x": 120,
+   "y": 470,
+   "w": 80,
+   "h": 45,
+   "kind": "room",
+   "cat": "lounge",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 150,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L3S-U2",
+   "name": "Horizon Bar",
+   "lv": "L3",
+   "x": 120,
+   "y": 525,
+   "w": 80,
+   "h": 20,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 60,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L3S-U3",
+   "name": "Satellite viewing deck",
+   "lv": "L3",
+   "x": 120,
+   "y": 545,
+   "w": 80,
+   "h": 35,
+   "kind": "room",
+   "cat": "service",
+   "side": "air",
+   "zone": "Satellite",
+   "cap": 80,
+   "ahu": "AHU-S2"
+  },
+  {
+   "id": "L4-COR",
+   "name": "Plant & ops corridor",
+   "lv": "L4",
+   "x": 0,
+   "y": 55,
+   "w": 300,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 40
+  },
+  {
+   "id": "L4-AHU-01",
+   "name": "AHU-01 plant (rail & APM)",
+   "lv": "L4",
+   "x": 0,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-01"
+  },
+  {
+   "id": "L4-AHU-02",
+   "name": "AHU-02 plant (APM MT)",
+   "lv": "L4",
+   "x": 30,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-02"
+  },
+  {
+   "id": "L4-AHU-03",
+   "name": "AHU-03 plant (baggage)",
+   "lv": "L4",
+   "x": 60,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-03"
+  },
+  {
+   "id": "L4-AHU-04",
+   "name": "AHU-04 plant (immigration & reclaim)",
+   "lv": "L4",
+   "x": 90,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-04"
+  },
+  {
+   "id": "L4-AHU-05",
+   "name": "AHU-05 plant (arrivals hall)",
+   "lv": "L4",
+   "x": 120,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-05"
+  },
+  {
+   "id": "L4-AHU-06",
+   "name": "AHU-06 plant (check-in & security)",
+   "lv": "L4",
+   "x": 150,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-06"
+  },
+  {
+   "id": "L4-AHU-07",
+   "name": "AHU-07 plant (plaza & west)",
+   "lv": "L4",
+   "x": 180,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-07"
+  },
+  {
+   "id": "L4-AHU-08",
+   "name": "AHU-08 plant (east & mezzanine)",
+   "lv": "L4",
+   "x": 210,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-08"
+  },
+  {
+   "id": "L4-AHU-PA1",
+   "name": "AHU-PA1 plant (Pier A south)",
+   "lv": "L4",
+   "x": 240,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-PA1"
+  },
+  {
+   "id": "L4-AHU-PA2",
+   "name": "AHU-PA2 plant (Pier A north)",
+   "lv": "L4",
+   "x": 270,
+   "y": 65,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4,
+   "asset": "AHU-PA2"
+  },
+  {
+   "id": "L4-AOC",
+   "name": "Airport Operations Centre (AOC)",
+   "lv": "L4",
+   "x": 0,
+   "y": 95,
+   "w": 120,
+   "h": 25,
+   "kind": "room",
+   "cat": "ops",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 60
+  },
+  {
+   "id": "L4-SECCTRL",
+   "name": "Security control room",
+   "lv": "L4",
+   "x": 120,
+   "y": 95,
+   "w": 60,
+   "h": 25,
+   "kind": "room",
+   "cat": "ops",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 20
+  },
+  {
+   "id": "L4-CHILLER",
+   "name": "Chiller plant",
+   "lv": "L4",
+   "x": 180,
+   "y": 95,
+   "w": 60,
+   "h": 25,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 4
+  },
+  {
+   "id": "L4-HV",
+   "name": "HV substation",
+   "lv": "L4",
+   "x": 240,
+   "y": 95,
+   "w": 60,
+   "h": 25,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 2
+  },
+  {
+   "id": "L4-S01",
+   "name": "BMS & energy office",
+   "lv": "L4",
+   "x": 0,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S02",
+   "name": "IT comms room 1",
+   "lv": "L4",
+   "x": 30,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S03",
+   "name": "IT comms room 2",
+   "lv": "L4",
+   "x": 60,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S04",
+   "name": "UPS room",
+   "lv": "L4",
+   "x": 90,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S05",
+   "name": "Water tanks",
+   "lv": "L4",
+   "x": 120,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S06",
+   "name": "Meeting room - Harbour",
+   "lv": "L4",
+   "x": 150,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S07",
+   "name": "Meeting room - Quay",
+   "lv": "L4",
+   "x": 180,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S08",
+   "name": "Airline ops offices",
+   "lv": "L4",
+   "x": 210,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S09",
+   "name": "Facilities office",
+   "lv": "L4",
+   "x": 240,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4-S10",
+   "name": "Training room",
+   "lv": "L4",
+   "x": 270,
+   "y": 25,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "Ops",
+   "cap": 12
+  },
+  {
+   "id": "L4S-COR",
+   "name": "Satellite plant corridor",
+   "lv": "L4",
+   "x": 100,
+   "y": 515,
+   "w": 120,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Satellite plant",
+   "cap": 10
+  },
+  {
+   "id": "L4-AHU-S1",
+   "name": "AHU-S1 plant (satellite)",
+   "lv": "L4",
+   "x": 100,
+   "y": 525,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Satellite plant",
+   "cap": 4,
+   "asset": "AHU-S1"
+  },
+  {
+   "id": "L4-AHU-S2",
+   "name": "AHU-S2 plant (satellite)",
+   "lv": "L4",
+   "x": 130,
+   "y": 525,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Satellite plant",
+   "cap": 4,
+   "asset": "AHU-S2"
+  },
+  {
+   "id": "L4-AHU-S3",
+   "name": "AHU-S3 plant (satellite)",
+   "lv": "L4",
+   "x": 160,
+   "y": 525,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Satellite plant",
+   "cap": 4,
+   "asset": "AHU-S3"
+  },
+  {
+   "id": "L4-AHU-S4",
+   "name": "AHU-S4 plant (satellite)",
+   "lv": "L4",
+   "x": 190,
+   "y": 525,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Satellite plant",
+   "cap": 4,
+   "asset": "AHU-S4"
+  },
+  {
+   "id": "T-LIFT-RAIL",
+   "name": "Rail lifts",
+   "lv": "T",
+   "x": 57.5,
+   "y": 37.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-RAIL",
+   "name": "Rail lifts",
+   "lv": "L1",
+   "x": 57.5,
+   "y": 23.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-RAIL",
+   "name": "Rail lifts",
+   "lv": "L2",
+   "x": 57.5,
+   "y": 47.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "T-ESC-RAIL",
+   "name": "Rail escalators",
+   "lv": "T",
+   "x": 77.5,
+   "y": 37.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-ESC-RAIL",
+   "name": "Rail escalators",
+   "lv": "L1",
+   "x": 77.5,
+   "y": 23.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-ESC-RAIL",
+   "name": "Rail escalators",
+   "lv": "L2",
+   "x": 77.5,
+   "y": 47.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "T-LIFT-CP",
+   "name": "Car park lifts",
+   "lv": "T",
+   "x": 257.5,
+   "y": 27.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-CP",
+   "name": "Car park lifts",
+   "lv": "L1",
+   "x": 257.5,
+   "y": 23.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-CP",
+   "name": "Car park lifts",
+   "lv": "L2",
+   "x": 257.5,
+   "y": 47.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-ESC-MZ",
+   "name": "Mezzanine escalators",
+   "lv": "L2",
+   "x": 127.5,
+   "y": 97.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-ESC-MZ",
+   "name": "Mezzanine escalators",
+   "lv": "L3",
+   "x": 127.5,
+   "y": 99.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-MZ",
+   "name": "Mezzanine lift",
+   "lv": "L2",
+   "x": 187.5,
+   "y": 97.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-LIFT-MZ",
+   "name": "Mezzanine lift",
+   "lv": "L3",
+   "x": 187.5,
+   "y": 99.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "T-ESC-APM",
+   "name": "APM escalators (MT)",
+   "lv": "T",
+   "x": 157.5,
+   "y": 77.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-ESC-APM",
+   "name": "APM escalators (MT)",
+   "lv": "L2",
+   "x": 157.5,
+   "y": 109.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "T-LIFT-APM",
+   "name": "APM lifts (MT)",
+   "lv": "T",
+   "x": 169.5,
+   "y": 87.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-APM",
+   "name": "APM lifts (MT)",
+   "lv": "L2",
+   "x": 169.5,
+   "y": 109.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "T-ESC-APM-ARR",
+   "name": "APM arrivals escalator (MT)",
+   "lv": "T",
+   "x": 147.5,
+   "y": 97.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-ESC-APM-ARR",
+   "name": "APM arrivals escalator (MT)",
+   "lv": "L1",
+   "x": 147.5,
+   "y": 112.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "T-ESC-SAT",
+   "name": "Satellite escalators",
+   "lv": "T",
+   "x": 157.5,
+   "y": 527.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-ESC-SAT",
+   "name": "Satellite escalators",
+   "lv": "L2",
+   "x": 157.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-ESC-SAT",
+   "name": "Satellite escalators",
+   "lv": "L3",
+   "x": 157.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "T-LIFT-SAT",
+   "name": "Satellite lifts",
+   "lv": "T",
+   "x": 167.5,
+   "y": 537.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-SAT",
+   "name": "Satellite lifts",
+   "lv": "L2",
+   "x": 167.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-LIFT-SAT",
+   "name": "Satellite lifts",
+   "lv": "L3",
+   "x": 167.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "T-ESC-SAT-ARR",
+   "name": "Satellite arrivals escalator",
+   "lv": "T",
+   "x": 147.5,
+   "y": 537.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-ESC-SAT-ARR",
+   "name": "Satellite arrivals escalator",
+   "lv": "L1",
+   "x": 147.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-PA1",
+   "name": "Pier A lift 1",
+   "lv": "L1",
+   "x": 147.5,
+   "y": 177.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-PA1",
+   "name": "Pier A lift 1",
+   "lv": "L2",
+   "x": 147.5,
+   "y": 177.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-STAIR-PA1",
+   "name": "Pier A stairs 1",
+   "lv": "L1",
+   "x": 147.5,
+   "y": 185.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-STAIR-PA1",
+   "name": "Pier A stairs 1",
+   "lv": "L2",
+   "x": 147.5,
+   "y": 185.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-PA2",
+   "name": "Pier A lift 2",
+   "lv": "L1",
+   "x": 147.5,
+   "y": 257.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-PA2",
+   "name": "Pier A lift 2",
+   "lv": "L2",
+   "x": 147.5,
+   "y": 257.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-STAIR-PA2",
+   "name": "Pier A stairs 2",
+   "lv": "L1",
+   "x": 147.5,
+   "y": 265.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-STAIR-PA2",
+   "name": "Pier A stairs 2",
+   "lv": "L2",
+   "x": 147.5,
+   "y": 265.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-PA3",
+   "name": "Pier A lift 3",
+   "lv": "L1",
+   "x": 147.5,
+   "y": 337.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-PA3",
+   "name": "Pier A lift 3",
+   "lv": "L2",
+   "x": 147.5,
+   "y": 337.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-STAIR-PA3",
+   "name": "Pier A stairs 3",
+   "lv": "L1",
+   "x": 147.5,
+   "y": 345.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-STAIR-PA3",
+   "name": "Pier A stairs 3",
+   "lv": "L2",
+   "x": 147.5,
+   "y": 345.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-SAT-ARR1",
+   "name": "Satellite gate lift 1",
+   "lv": "L1",
+   "x": 37.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-SAT-ARR1",
+   "name": "Satellite gate lift 1",
+   "lv": "L2",
+   "x": 37.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-SAT-ARR2",
+   "name": "Satellite gate lift 2",
+   "lv": "L1",
+   "x": 107.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-SAT-ARR2",
+   "name": "Satellite gate lift 2",
+   "lv": "L2",
+   "x": 107.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-SAT-ARR3",
+   "name": "Satellite gate lift 3",
+   "lv": "L1",
+   "x": 207.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-SAT-ARR3",
+   "name": "Satellite gate lift 3",
+   "lv": "L2",
+   "x": 207.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-SAT-ARR4",
+   "name": "Satellite gate lift 4",
+   "lv": "L1",
+   "x": 277.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "sterile",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-SAT-ARR4",
+   "name": "Satellite gate lift 4",
+   "lv": "L2",
+   "x": 277.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L0-LIFT-STAFF",
+   "name": "Staff & service lift (MT)",
+   "lv": "L0",
+   "x": 287.5,
+   "y": 32.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-STAFF",
+   "name": "Staff & service lift (MT)",
+   "lv": "L1",
+   "x": 287.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-STAFF",
+   "name": "Staff & service lift (MT)",
+   "lv": "L2",
+   "x": 287.5,
+   "y": 47.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "land",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L4-LIFT-STAFF",
+   "name": "Staff & service lift (MT)",
+   "lv": "L4",
+   "x": 287.5,
+   "y": 57.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L0-LIFT-STAFF-AS",
+   "name": "Airside staff lift",
+   "lv": "L0",
+   "x": 127.5,
+   "y": 32.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-STAFF-AS",
+   "name": "Airside staff lift",
+   "lv": "L1",
+   "x": 127.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-STAFF-AS",
+   "name": "Airside staff lift",
+   "lv": "L2",
+   "x": 127.5,
+   "y": 97.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L4-LIFT-STAFF-AS",
+   "name": "Airside staff lift",
+   "lv": "L4",
+   "x": 127.5,
+   "y": 57.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L0-LIFT-STAFF-S",
+   "name": "Satellite staff lift",
+   "lv": "L0",
+   "x": 297.5,
+   "y": 507.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-STAFF-S",
+   "name": "Satellite staff lift",
+   "lv": "L2",
+   "x": 297.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "air",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L4-LIFT-STAFF-S",
+   "name": "Satellite staff lift",
+   "lv": "L4",
+   "x": 207.5,
+   "y": 517.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  }
+ ],
+ "spines": [
+  {
+   "lv": "T",
+   "side": "land",
+   "pts": [
+    [
+     5,
+     20
+    ],
+    [
+     60,
+     20
+    ],
+    [
+     115,
+     20
+    ]
+   ]
+  },
+  {
+   "lv": "T",
+   "side": "land",
+   "pts": [
+    [
+     60,
+     20
+    ],
+    [
+     60,
+     54
+    ]
+   ]
+  },
+  {
+   "lv": "T",
+   "side": "land",
+   "pts": [
+    [
+     5,
+     54
+    ],
+    [
+     60,
+     54
+    ],
+    [
+     120,
+     54
+    ],
+    [
+     200,
+     54
+    ],
+    [
+     300,
+     54
+    ]
+   ]
+  },
+  {
+   "lv": "T",
+   "side": "land",
+   "pts": [
+    [
+     260,
+     54
+    ],
+    [
+     260,
+     20
+    ]
+   ]
+  },
+  {
+   "lv": "T",
+   "side": "land",
+   "pts": [
+    [
+     170,
+     54
+    ],
+    [
+     170,
+     20
+    ]
+   ]
+  },
+  {
+   "lv": "T",
+   "side": "air",
+   "pts": [
+    [
+     160,
+     70
+    ],
+    [
+     160,
+     106
+    ]
+   ]
+  },
+  {
+   "lv": "T",
+   "side": "air",
+   "pts": [
+    [
+     160,
+     506
+    ],
+    [
+     160,
+     542
+    ]
+   ]
+  },
+  {
+   "lv": "L0",
+   "side": "boh",
+   "pts": [
+    [
+     2,
+     35
+    ],
+    [
+     298,
+     35
+    ]
+   ]
+  },
+  {
+   "lv": "L0",
+   "side": "boh",
+   "pts": [
+    [
+     70,
+     35
+    ],
+    [
+     70,
+     80
+    ]
+   ]
+  },
+  {
+   "lv": "L0",
+   "side": "boh",
+   "pts": [
+    [
+     250,
+     35
+    ],
+    [
+     250,
+     80
+    ]
+   ]
+  },
+  {
+   "lv": "L0",
+   "side": "boh",
+   "pts": [
+    [
+     170,
+     35
+    ],
+    [
+     170,
+     40
+    ]
+   ]
+  },
+  {
+   "lv": "L0",
+   "side": "boh",
+   "pts": [
+    [
+     2,
+     510
+    ],
+    [
+     318,
+     510
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "sterile",
+   "pts": [
+    [
+     5,
+     115
+    ],
+    [
+     150,
+     115
+    ],
+    [
+     295,
+     115
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "sterile",
+   "pts": [
+    [
+     55,
+     115
+    ],
+    [
+     55,
+     85
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "sterile",
+   "pts": [
+    [
+     55,
+     85
+    ],
+    [
+     100,
+     85
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "air",
+   "pts": [
+    [
+     112,
+     85
+    ],
+    [
+     290,
+     85
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "air",
+   "pts": [
+    [
+     170,
+     85
+    ],
+    [
+     170,
+     47
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "land",
+   "pts": [
+    [
+     170,
+     40
+    ],
+    [
+     170,
+     26
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "land",
+   "pts": [
+    [
+     5,
+     26
+    ],
+    [
+     170,
+     26
+    ],
+    [
+     295,
+     26
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "sterile",
+   "pts": [
+    [
+     150,
+     115
+    ],
+    [
+     150,
+     375
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "sterile",
+   "pts": [
+    [
+     5,
+     520
+    ],
+    [
+     315,
+     520
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "land",
+   "pts": [
+    [
+     5,
+     10
+    ],
+    [
+     295,
+     10
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "land",
+   "pts": [
+    [
+     5,
+     50
+    ],
+    [
+     295,
+     50
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "land",
+   "pts": [
+    [
+     20,
+     10
+    ],
+    [
+     20,
+     50
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "land",
+   "pts": [
+    [
+     90,
+     10
+    ],
+    [
+     90,
+     50
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "land",
+   "pts": [
+    [
+     160,
+     10
+    ],
+    [
+     160,
+     50
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "land",
+   "pts": [
+    [
+     230,
+     10
+    ],
+    [
+     230,
+     50
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "land",
+   "pts": [
+    [
+     150,
+     50
+    ],
+    [
+     150,
+     72
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "air",
+   "pts": [
+    [
+     150,
+     78
+    ],
+    [
+     150,
+     100
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "air",
+   "pts": [
+    [
+     5,
+     100
+    ],
+    [
+     100,
+     100
+    ],
+    [
+     150,
+     100
+    ],
+    [
+     200,
+     100
+    ],
+    [
+     295,
+     100
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "air",
+   "pts": [
+    [
+     150,
+     100
+    ],
+    [
+     150,
+     120
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "air",
+   "pts": [
+    [
+     150,
+     120
+    ],
+    [
+     150,
+     378
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "air",
+   "pts": [
+    [
+     5,
+     520
+    ],
+    [
+     315,
+     520
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "air",
+   "pts": [
+    [
+     160,
+     466
+    ],
+    [
+     160,
+     520
+    ],
+    [
+     160,
+     574
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "air",
+   "pts": [
+    [
+     5,
+     102
+    ],
+    [
+     295,
+     102
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "air",
+   "pts": [
+    [
+     180,
+     102
+    ],
+    [
+     180,
+     126
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "air",
+   "pts": [
+    [
+     125,
+     520
+    ],
+    [
+     195,
+     520
+    ]
+   ]
+  },
+  {
+   "lv": "L4",
+   "side": "boh",
+   "pts": [
+    [
+     2,
+     60
+    ],
+    [
+     298,
+     60
+    ]
+   ]
+  },
+  {
+   "lv": "L4",
+   "side": "boh",
+   "pts": [
+    [
+     105,
+     520
+    ],
+    [
+     215,
+     520
+    ]
+   ]
+  }
+ ],
+ "connectors": [
+  {
+   "id": "LIFT-RAIL",
+   "name": "Rail lifts",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 60,
+     "y": 40,
+     "side": "land"
+    },
+    {
+     "lv": "L1",
+     "x": 60,
+     "y": 26,
+     "side": "land"
+    },
+    {
+     "lv": "L2",
+     "x": 60,
+     "y": 50,
+     "side": "land"
+    }
+   ]
+  },
+  {
+   "id": "ESC-RAIL",
+   "name": "Rail escalators",
+   "type": "esc",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 80,
+     "y": 40,
+     "side": "land"
+    },
+    {
+     "lv": "L1",
+     "x": 80,
+     "y": 26,
+     "side": "land"
+    },
+    {
+     "lv": "L2",
+     "x": 80,
+     "y": 50,
+     "side": "land"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-CP",
+   "name": "Car park lifts",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 260,
+     "y": 30,
+     "side": "land"
+    },
+    {
+     "lv": "L1",
+     "x": 260,
+     "y": 26,
+     "side": "land"
+    },
+    {
+     "lv": "L2",
+     "x": 260,
+     "y": 50,
+     "side": "land"
+    }
+   ]
+  },
+  {
+   "id": "ESC-MZ",
+   "name": "Mezzanine escalators",
+   "type": "esc",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "L2",
+     "x": 130,
+     "y": 100,
+     "side": "air"
+    },
+    {
+     "lv": "L3",
+     "x": 130,
+     "y": 102,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-MZ",
+   "name": "Mezzanine lift",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L2",
+     "x": 190,
+     "y": 100,
+     "side": "air"
+    },
+    {
+     "lv": "L3",
+     "x": 190,
+     "y": 102,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "ESC-APM",
+   "name": "APM escalators (MT)",
+   "type": "esc",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 160,
+     "y": 80,
+     "side": "air"
+    },
+    {
+     "lv": "L2",
+     "x": 160,
+     "y": 112,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-APM",
+   "name": "APM lifts (MT)",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 172,
+     "y": 90,
+     "side": "air"
+    },
+    {
+     "lv": "L2",
+     "x": 172,
+     "y": 112,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "ESC-APM-ARR",
+   "name": "APM arrivals escalator (MT)",
+   "type": "esc",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 150,
+     "y": 100,
+     "side": "air"
+    },
+    {
+     "lv": "L1",
+     "x": 150,
+     "y": 115,
+     "side": "sterile"
+    }
+   ]
+  },
+  {
+   "id": "APM",
+   "name": "Automated people mover",
+   "type": "apm",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 160,
+     "y": 106,
+     "side": "air"
+    },
+    {
+     "lv": "T",
+     "x": 160,
+     "y": 506,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "ESC-SAT",
+   "name": "Satellite escalators",
+   "type": "esc",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 160,
+     "y": 530,
+     "side": "air"
+    },
+    {
+     "lv": "L2",
+     "x": 160,
+     "y": 520,
+     "side": "air"
+    },
+    {
+     "lv": "L3",
+     "x": 160,
+     "y": 520,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-SAT",
+   "name": "Satellite lifts",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 170,
+     "y": 540,
+     "side": "air"
+    },
+    {
+     "lv": "L2",
+     "x": 170,
+     "y": 520,
+     "side": "air"
+    },
+    {
+     "lv": "L3",
+     "x": 170,
+     "y": 520,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "ESC-SAT-ARR",
+   "name": "Satellite arrivals escalator",
+   "type": "esc",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "T",
+     "x": 150,
+     "y": 540,
+     "side": "air"
+    },
+    {
+     "lv": "L1",
+     "x": 150,
+     "y": 520,
+     "side": "sterile"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-PA1",
+   "name": "Pier A lift 1",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 150,
+     "y": 180,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 150,
+     "y": 180,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "STAIR-PA1",
+   "name": "Pier A stairs 1",
+   "type": "stairs",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 150,
+     "y": 188,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 150,
+     "y": 188,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-PA2",
+   "name": "Pier A lift 2",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 150,
+     "y": 260,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 150,
+     "y": 260,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "STAIR-PA2",
+   "name": "Pier A stairs 2",
+   "type": "stairs",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 150,
+     "y": 268,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 150,
+     "y": 268,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-PA3",
+   "name": "Pier A lift 3",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 150,
+     "y": 340,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 150,
+     "y": 340,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "STAIR-PA3",
+   "name": "Pier A stairs 3",
+   "type": "stairs",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 150,
+     "y": 348,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 150,
+     "y": 348,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-SAT-ARR1",
+   "name": "Satellite gate lift 1",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 40,
+     "y": 520,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 40,
+     "y": 520,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-SAT-ARR2",
+   "name": "Satellite gate lift 2",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 110,
+     "y": 520,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 110,
+     "y": 520,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-SAT-ARR3",
+   "name": "Satellite gate lift 3",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 210,
+     "y": 520,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 210,
+     "y": 520,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-SAT-ARR4",
+   "name": "Satellite gate lift 4",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 280,
+     "y": 520,
+     "side": "sterile"
+    },
+    {
+     "lv": "L2",
+     "x": 280,
+     "y": 520,
+     "side": "air"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-STAFF",
+   "name": "Staff & service lift (MT)",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L0",
+     "x": 290,
+     "y": 35,
+     "side": "boh"
+    },
+    {
+     "lv": "L1",
+     "x": 290,
+     "y": 85,
+     "side": "air"
+    },
+    {
+     "lv": "L2",
+     "x": 290,
+     "y": 50,
+     "side": "land"
+    },
+    {
+     "lv": "L4",
+     "x": 290,
+     "y": 60,
+     "side": "boh"
+    }
+   ],
+   "staff": true
+  },
+  {
+   "id": "LIFT-STAFF-AS",
+   "name": "Airside staff lift",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L0",
+     "x": 130,
+     "y": 35,
+     "side": "boh"
+    },
+    {
+     "lv": "L1",
+     "x": 130,
+     "y": 85,
+     "side": "air"
+    },
+    {
+     "lv": "L2",
+     "x": 130,
+     "y": 100,
+     "side": "air"
+    },
+    {
+     "lv": "L4",
+     "x": 130,
+     "y": 60,
+     "side": "boh"
+    }
+   ],
+   "staff": true
+  },
+  {
+   "id": "LIFT-STAFF-S",
+   "name": "Satellite staff lift",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L0",
+     "x": 300,
+     "y": 510,
+     "side": "boh"
+    },
+    {
+     "lv": "L2",
+     "x": 300,
+     "y": 520,
+     "side": "air"
+    },
+    {
+     "lv": "L4",
+     "x": 210,
+     "y": 520,
+     "side": "boh"
+    }
+   ],
+   "staff": true
+  },
+  {
+   "id": "SCREEN-SEC",
+   "name": "Central security screening",
+   "type": "screen",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L2",
+     "x": 150,
+     "y": 72,
+     "side": "land"
+    },
+    {
+     "lv": "L2",
+     "x": 150,
+     "y": 78,
+     "side": "air"
+    }
+   ],
+   "oneway": true
+  },
+  {
+   "id": "SCREEN-IMM",
+   "name": "Immigration (arrivals)",
+   "type": "screen",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 100,
+     "y": 85,
+     "side": "sterile"
+    },
+    {
+     "lv": "L1",
+     "x": 112,
+     "y": 85,
+     "side": "air"
+    }
+   ],
+   "oneway": true
+  },
+  {
+   "id": "SCREEN-CUS",
+   "name": "Customs",
+   "type": "screen",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 170,
+     "y": 47,
+     "side": "air"
+    },
+    {
+     "lv": "L1",
+     "x": 170,
+     "y": 40,
+     "side": "land"
+    }
+   ],
+   "oneway": true
+  }
+ ],
+ "assets": [
+  {
+   "id": "AHU-01",
+   "name": "AHU-01 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-01"
+  },
+  {
+   "id": "AHU-02",
+   "name": "AHU-02 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-02"
+  },
+  {
+   "id": "AHU-03",
+   "name": "AHU-03 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-03"
+  },
+  {
+   "id": "AHU-04",
+   "name": "AHU-04 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-04"
+  },
+  {
+   "id": "AHU-05",
+   "name": "AHU-05 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-05"
+  },
+  {
+   "id": "AHU-06",
+   "name": "AHU-06 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-06"
+  },
+  {
+   "id": "AHU-07",
+   "name": "AHU-07 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-07"
+  },
+  {
+   "id": "AHU-08",
+   "name": "AHU-08 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-08"
+  },
+  {
+   "id": "AHU-PA1",
+   "name": "AHU-PA1 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-PA1"
+  },
+  {
+   "id": "AHU-PA2",
+   "name": "AHU-PA2 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-PA2"
+  },
+  {
+   "id": "AHU-S1",
+   "name": "AHU-S1 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-S1"
+  },
+  {
+   "id": "AHU-S2",
+   "name": "AHU-S2 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-S2"
+  },
+  {
+   "id": "AHU-S3",
+   "name": "AHU-S3 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-S3"
+  },
+  {
+   "id": "AHU-S4",
+   "name": "AHU-S4 air handling unit",
+   "kind": "ahu",
+   "space": "L4-AHU-S4"
+  },
+  {
+   "id": "R1",
+   "name": "Reclaim belt R1",
+   "kind": "belt",
+   "space": "L1-R1"
+  },
+  {
+   "id": "R2",
+   "name": "Reclaim belt R2",
+   "kind": "belt",
+   "space": "L1-R2"
+  },
+  {
+   "id": "R3",
+   "name": "Reclaim belt R3",
+   "kind": "belt",
+   "space": "L1-R3"
+  },
+  {
+   "id": "R4",
+   "name": "Reclaim belt R4",
+   "kind": "belt",
+   "space": "L1-R4"
+  },
+  {
+   "id": "R5",
+   "name": "Reclaim belt R5",
+   "kind": "belt",
+   "space": "L1-R5"
+  },
+  {
+   "id": "R6",
+   "name": "Reclaim belt R6",
+   "kind": "belt",
+   "space": "L1-R6"
+  },
+  {
+   "id": "LIFT-RAIL",
+   "name": "Rail lifts",
+   "kind": "lift",
+   "space": "T-LIFT-RAIL"
+  },
+  {
+   "id": "ESC-RAIL",
+   "name": "Rail escalators",
+   "kind": "esc",
+   "space": "T-ESC-RAIL"
+  },
+  {
+   "id": "LIFT-CP",
+   "name": "Car park lifts",
+   "kind": "lift",
+   "space": "T-LIFT-CP"
+  },
+  {
+   "id": "ESC-MZ",
+   "name": "Mezzanine escalators",
+   "kind": "esc",
+   "space": "L2-ESC-MZ"
+  },
+  {
+   "id": "LIFT-MZ",
+   "name": "Mezzanine lift",
+   "kind": "lift",
+   "space": "L2-LIFT-MZ"
+  },
+  {
+   "id": "ESC-APM",
+   "name": "APM escalators (MT)",
+   "kind": "esc",
+   "space": "T-ESC-APM"
+  },
+  {
+   "id": "LIFT-APM",
+   "name": "APM lifts (MT)",
+   "kind": "lift",
+   "space": "T-LIFT-APM"
+  },
+  {
+   "id": "ESC-APM-ARR",
+   "name": "APM arrivals escalator (MT)",
+   "kind": "esc",
+   "space": "T-ESC-APM-ARR"
+  },
+  {
+   "id": "APM",
+   "name": "Automated people mover",
+   "kind": "apm",
+   "space": "T-APM"
+  },
+  {
+   "id": "ESC-SAT",
+   "name": "Satellite escalators",
+   "kind": "esc",
+   "space": "T-ESC-SAT"
+  },
+  {
+   "id": "LIFT-SAT",
+   "name": "Satellite lifts",
+   "kind": "lift",
+   "space": "T-LIFT-SAT"
+  },
+  {
+   "id": "ESC-SAT-ARR",
+   "name": "Satellite arrivals escalator",
+   "kind": "esc",
+   "space": "T-ESC-SAT-ARR"
+  },
+  {
+   "id": "LIFT-PA1",
+   "name": "Pier A lift 1",
+   "kind": "lift",
+   "space": "L1-LIFT-PA1"
+  },
+  {
+   "id": "LIFT-PA2",
+   "name": "Pier A lift 2",
+   "kind": "lift",
+   "space": "L1-LIFT-PA2"
+  },
+  {
+   "id": "LIFT-PA3",
+   "name": "Pier A lift 3",
+   "kind": "lift",
+   "space": "L1-LIFT-PA3"
+  },
+  {
+   "id": "LIFT-SAT-ARR1",
+   "name": "Satellite gate lift 1",
+   "kind": "lift",
+   "space": "L1-LIFT-SAT-ARR1"
+  },
+  {
+   "id": "LIFT-SAT-ARR2",
+   "name": "Satellite gate lift 2",
+   "kind": "lift",
+   "space": "L1-LIFT-SAT-ARR2"
+  },
+  {
+   "id": "LIFT-SAT-ARR3",
+   "name": "Satellite gate lift 3",
+   "kind": "lift",
+   "space": "L1-LIFT-SAT-ARR3"
+  },
+  {
+   "id": "LIFT-SAT-ARR4",
+   "name": "Satellite gate lift 4",
+   "kind": "lift",
+   "space": "L1-LIFT-SAT-ARR4"
+  },
+  {
+   "id": "LIFT-STAFF",
+   "name": "Staff & service lift (MT)",
+   "kind": "lift",
+   "space": "L0-LIFT-STAFF"
+  },
+  {
+   "id": "LIFT-STAFF-AS",
+   "name": "Airside staff lift",
+   "kind": "lift",
+   "space": "L0-LIFT-STAFF-AS"
+  },
+  {
+   "id": "LIFT-STAFF-S",
+   "name": "Satellite staff lift",
+   "kind": "lift",
+   "space": "L0-LIFT-STAFF-S"
+  },
+  {
+   "id": "SCREEN-SEC",
+   "name": "Central security screening",
+   "kind": "checkpoint",
+   "space": ""
+  },
+  {
+   "id": "SCREEN-IMM",
+   "name": "Immigration (arrivals)",
+   "kind": "checkpoint",
+   "space": ""
+  },
+  {
+   "id": "SCREEN-CUS",
+   "name": "Customs",
+   "kind": "checkpoint",
+   "space": ""
+  }
+ ],
+ "flights": [
+  {
+   "flight": "HL 100",
+   "dest": "Singapore",
+   "std": "06:00",
+   "gate": "A1",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 113",
+   "dest": "Sydney",
+   "std": "09:23",
+   "gate": "A2",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 126",
+   "dest": "Hong Kong",
+   "std": "12:46",
+   "gate": "A3",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 139",
+   "dest": "Tokyo",
+   "std": "15:09",
+   "gate": "A4",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 152",
+   "dest": "London",
+   "std": "18:32",
+   "gate": "A5",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 165",
+   "dest": "Dubai",
+   "std": "21:55",
+   "gate": "A6",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 178",
+   "dest": "Auckland",
+   "std": "07:18",
+   "gate": "A7",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 191",
+   "dest": "Bangkok",
+   "std": "10:41",
+   "gate": "A8",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 204",
+   "dest": "Seoul",
+   "std": "13:04",
+   "gate": "A9",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 217",
+   "dest": "Manila",
+   "std": "16:27",
+   "gate": "A10",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 230",
+   "dest": "Bali",
+   "std": "19:50",
+   "gate": "A11",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 243",
+   "dest": "Perth",
+   "std": "22:13",
+   "gate": "A12",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 256",
+   "dest": "Melbourne",
+   "std": "08:36",
+   "gate": "B1",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 269",
+   "dest": "Jakarta",
+   "std": "11:59",
+   "gate": "B2",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 282",
+   "dest": "Taipei",
+   "std": "14:22",
+   "gate": "B3",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 295",
+   "dest": "Kuala Lumpur",
+   "std": "17:45",
+   "gate": "B4",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 308",
+   "dest": "Singapore",
+   "std": "20:08",
+   "gate": "B5",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 321",
+   "dest": "Sydney",
+   "std": "06:31",
+   "gate": "B6",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 334",
+   "dest": "Hong Kong",
+   "std": "09:54",
+   "gate": "B7",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 347",
+   "dest": "Tokyo",
+   "std": "12:17",
+   "gate": "B8",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 360",
+   "dest": "London",
+   "std": "15:40",
+   "gate": "B9",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 373",
+   "dest": "Dubai",
+   "std": "18:03",
+   "gate": "B10",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 386",
+   "dest": "Auckland",
+   "std": "21:26",
+   "gate": "B11",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 399",
+   "dest": "Bangkok",
+   "std": "07:49",
+   "gate": "B12",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 412",
+   "dest": "Seoul",
+   "std": "10:12",
+   "gate": "B13",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 425",
+   "dest": "Manila",
+   "std": "13:35",
+   "gate": "B14",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 438",
+   "dest": "Bali",
+   "std": "16:58",
+   "gate": "B15",
+   "status": "On time"
+  },
+  {
+   "flight": "HL 451",
+   "dest": "Perth",
+   "std": "19:21",
+   "gate": "B16",
+   "status": "On time"
+  }
+ ],
+ "brief": "Hub terminal + satellite concourse, 6 levels (T transport/APM, L0 baggage & BOH, L1 arrivals, L2 departures, L3 mezzanine, L4 plant & ops). Gates A1-A12 on Pier A, B1-B16 on the satellite, APM link."
+}

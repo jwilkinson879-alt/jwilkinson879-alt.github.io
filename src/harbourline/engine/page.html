@@ -1,0 +1,189 @@
+<title>{{title}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Josh Wilkinson · control-room brand. Single dark look by design.
+   Layout: console header (mark · venue · switcher · clock) → scenario rail → 3D twin left, ops column right → credit footer */
+:root{
+  color-scheme:dark;
+  --bg:#0B1220; --surface:#111A2B; --raise:#16213A; --floor:#0E1727; --ink:#E6EDF5; --muted:#8696AD; --faint:#5C6B82; --line:#1F2C44; --line2:#2A3A58;
+  --accent:#3DDC97; --accent-ink:#06210F; --good:#3DDC97; --warn:#F5B841; --crit:#FF6B4A; --cool:#6EA8FF;
+  --scene:#070D18; --edge:#2E4466; --grid:#16233A; --grid2:#1E3150;
+  --c-ok:#1E5A45; --c-warn:#7A5E1C; --c-crit:#8A3324; --c-idle:#152036; --c-cool:#24467E; --c-acc:#1B6C66; --people:#CFE3FF;
+  --t-gate:#1C3550; --t-retail:#2E2848; --t-fnb:#3A2F24; --t-wash:#1D3633; --t-boh:#1B2333; --t-plant:#202838; --t-hall:#16203A; --t-lounge:#2A2645; --t-seat:#1C2A44; --t-field:#1C3A26;
+  --display:"Inter Tight","Inter","Segoe UI",system-ui,sans-serif;
+  --body:"Inter Tight","Inter","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:3px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.45;padding-inline:16px;padding-block:0 28px;margin:0;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1500px;margin:0 auto;display:grid;gap:14px}
+/* header */
+header.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.mark{flex:none;display:grid;place-items:center;width:40px;height:40px;border:1.5px solid var(--accent);color:var(--accent);font:700 15px var(--mono);letter-spacing:.02em;text-decoration:none;border-radius:var(--r);position:relative}
+.mark::after{content:"";position:absolute;right:-1.5px;bottom:-1.5px;width:9px;height:9px;background:var(--accent)}
+.brand{min-width:0;flex:1 1 320px;display:grid;gap:2px}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow span{color:var(--faint)}
+.brand h1{font:650 26px/1.1 var(--display);letter-spacing:-.015em;margin:0;text-wrap:balance}
+.brand h1 b{font:600 13px var(--mono);letter-spacing:.08em;color:var(--accent);border:1px solid var(--line2);padding:2px 6px;border-radius:var(--r);vertical-align:5px;margin-right:8px}
+.venues{display:flex;gap:2px;flex-wrap:wrap;border:1px solid var(--line);border-radius:var(--r);padding:2px;background:var(--surface)}
+.venues a{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:2px}
+.venues a:hover{color:var(--ink);background:var(--raise)}
+.venues a[aria-current="page"]{color:var(--accent-ink);background:var(--accent)}
+.clock{font:500 22px var(--mono);font-variant-numeric:tabular-nums;color:var(--ink);display:flex;align-items:center;gap:8px;padding:4px 0 4px 14px;border-left:1px solid var(--line)}
+.clock::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(61,220,151,.18);order:-1;animation:live 2s ease-in-out infinite}
+.clock small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+@keyframes live{50%{opacity:.35}}
+/* control bar */
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.bar>div{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);flex-wrap:wrap}
+.seg button{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:0;background:none;color:var(--muted);padding:8px 12px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--raise);color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+.btn{font:600 13.5px var(--body);border:1px solid var(--line2);background:var(--surface);color:var(--ink);border-radius:var(--r);padding:8px 14px;cursor:pointer}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.4;cursor:default;filter:none}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* scenario rail: real sequence, so it is numbered */
+.steps{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:0;list-style:none;margin:0;padding:0;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);counter-reset:s}
+.steps li{position:relative;font-size:12.5px;color:var(--faint);padding:9px 12px 10px;border-right:1px solid var(--line);counter-increment:s;line-height:1.3;min-width:0}
+.steps li:last-child{border-right:0}
+.steps li::before{content:counter(s,decimal-leading-zero);display:block;font:500 10.5px var(--mono);letter-spacing:.1em;color:var(--faint);margin-bottom:2px}
+.steps li.done{color:var(--muted)} .steps li.done::before{color:var(--muted)}
+.steps li.now{color:var(--ink);background:var(--raise);box-shadow:inset 0 2px 0 var(--accent)}
+.steps li.now::before{color:var(--accent)}
+.steps .t{font:500 12px var(--mono);margin-right:7px;color:inherit}
+/* main */
+.main{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:14px;align-items:start}
+@media (max-width:1080px){.main{grid-template-columns:minmax(0,1fr)}}
+.mapcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:0;min-width:0;overflow:hidden}
+.maphead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line)}
+.maphead h2{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:0;color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:1px;margin-right:6px;vertical-align:-1px}
+.stage{position:relative;width:100%;aspect-ratio:16/10;max-width:100%;max-height:76vh;min-height:360px;overflow:hidden;background:var(--scene);touch-action:none}
+.stage canvas{display:block;width:100%;height:100%;cursor:grab}
+.overlay{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.rl{position:absolute;transform:translate(-50%,-50%);text-align:center;white-space:nowrap;line-height:1.15}
+.rl b{display:block;font:600 11px var(--body);color:var(--ink);text-shadow:0 0 4px var(--scene),0 0 4px var(--scene),0 0 2px var(--scene)}
+.rl span{font:500 10px var(--mono);color:var(--accent);text-shadow:0 0 4px var(--scene),0 0 3px var(--scene)}
+.lvtag{position:absolute;transform:translate(-100%,-50%);font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;text-shadow:0 0 4px var(--scene)}
+.pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center}
+.pin .tag{display:flex;align-items:center;gap:6px;background:rgba(11,18,32,.92);border:1px solid var(--c);border-radius:var(--r);padding:3px 8px 3px 3px;font:500 11px var(--mono);color:var(--ink);box-shadow:0 0 14px -2px var(--c);white-space:nowrap}
+.pin .g{width:18px;height:18px;border-radius:2px;background:var(--c);color:var(--bg);font:700 11px var(--mono);display:grid;place-items:center}
+.pin .stem{width:1px;height:24px;background:var(--c)}
+.pin.live .g{animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.pin.live .g,.clock::before{animation:none}}
+.tip{position:absolute;pointer-events:none;background:var(--raise);border:1px solid var(--line2);border-radius:var(--r);padding:7px 10px;font-size:12.5px;box-shadow:0 8px 24px rgba(0,0,0,.45);max-width:260px;z-index:3}
+.tip b{display:block;font-size:13px}
+.tip span{color:var(--muted);font-family:var(--mono);font-size:11px}
+.hint{position:absolute;left:12px;bottom:10px;font:500 11px var(--mono);letter-spacing:.04em;color:var(--faint);text-shadow:0 0 4px var(--scene)}
+.floors{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.floors .seg{flex-direction:column;background:rgba(17,26,43,.92)}
+.floors .seg button{padding:6px 10px;font-size:11px;text-align:left}
+.floors .seg button+button{border-left:0;border-top:1px solid var(--line)}
+.floors .seg button[aria-pressed="true"]{box-shadow:inset 2px 0 0 var(--accent)}
+.routebox{position:absolute;left:10px;top:10px;background:rgba(17,26,43,.94);border:1px solid var(--line2);border-left:2px solid var(--accent);border-radius:var(--r);padding:8px 12px;font-size:12.5px;display:grid;gap:4px;max-width:340px;color:var(--muted)}
+.routebox b{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.routebox label{display:flex;gap:6px;align-items:center;cursor:pointer;color:var(--ink)}
+.routebox input{accent-color:var(--accent)}
+.detail{border-top:1px solid var(--line);padding:10px 14px;display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;min-height:40px;align-items:baseline}
+.detail b{font:650 16px var(--display);letter-spacing:-.01em;color:var(--ink)}
+.detail .kv{color:var(--muted);font-size:12px} .detail .kv span{color:var(--ink);font-family:var(--mono);font-size:12.5px}
+aside{display:grid;gap:10px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+@media (max-width:460px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{padding:9px 11px;border-right:1px solid var(--line);min-width:0}
+.kpi:last-child{border-right:0}
+.kpi div{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.3}
+.kpi strong{display:block;margin-top:4px;font:500 16px var(--mono);font-variant-numeric:tabular-nums;color:var(--ink);overflow-wrap:anywhere}
+aside>.seg{display:flex}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px;display:grid;gap:8px;min-width:0}
+.feed{display:grid;gap:8px;max-height:640px;overflow:auto;padding-right:2px}
+.card{border:1px solid var(--line);border-left:3px solid var(--faint);border-radius:var(--r);padding:10px 12px;display:grid;gap:5px;background:var(--floor)}
+.card.sev-crit{border-left-color:var(--crit)} .card.sev-warn{border-left-color:var(--warn)} .card.sev-good{border-left-color:var(--good)} .card.sev-info{border-left-color:var(--muted)} .card.sev-cool{border-left-color:var(--cool)}
+.card .top{display:flex;justify-content:space-between;gap:8px;font:500 11px var(--mono);color:var(--muted);align-items:center}
+.card .who{letter-spacing:.1em;text-transform:uppercase}
+.card h3{margin:0;font:600 14.5px/1.3 var(--display);letter-spacing:-.005em;text-wrap:balance;color:var(--ink)}
+.card p{margin:0;font-size:13px;color:var(--muted)}
+.chip{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line2);border-radius:2px;padding:1px 6px;color:var(--muted);white-space:nowrap}
+.chip.wait{border-color:var(--warn);color:var(--warn)} .chip.act{border-color:var(--good);color:var(--good)} .chip.crit{border-color:var(--crit);color:var(--crit)} .chip.cool{border-color:var(--cool);color:var(--cool)} .chip.acc{border-color:var(--accent);color:var(--accent)}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px} .acts .btn{padding:6px 11px;font-size:13px}
+.status{font:500 12px var(--mono);color:var(--good)}
+.status::before{content:"✓ "}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px;border-bottom:1px solid var(--line2)}
+td{padding:6px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;color:var(--ink)}
+td.m{font-family:var(--mono);font-size:12.5px}
+tr.click{cursor:pointer} tr.click:hover td{background:var(--raise)}
+.scroll{max-height:560px;overflow:auto}
+.note{color:var(--muted);font-size:12.5px;max-width:95ch;margin:0}
+.fallback{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px;padding:24px;text-align:center}
+footer.credit{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.sig{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font:500 11.5px var(--mono);letter-spacing:.04em;color:var(--muted)}
+.sig b{color:var(--ink);font-weight:600}
+.sig a{color:var(--accent);text-decoration:none} .sig a:hover{text-decoration:underline}
+.sig .ver{color:var(--faint);margin-left:auto}
+.sig .jw{display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid var(--accent);color:var(--accent);font:700 9px var(--mono);border-radius:2px}
+::-webkit-scrollbar{width:8px;height:8px} ::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px} ::-webkit-scrollbar-track{background:transparent}
+{{extra_css}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="https://joshwilkinson.uk" target="_blank" rel="noopener" aria-label="Josh Wilkinson">JW</a>
+{{brand}}
+{{nav}}
+    <div class="clock" id="clock">05:30<small id="clockday">Tue</small></div>
+  </header>
+  <div class="bar">
+    <div>
+      <div class="seg" role="group" aria-label="Map layer" id="layers"></div>
+    </div>
+    <div>
+      <button class="btn" id="restart">Restart</button>
+      <button class="btn primary" id="next">Next scenario →</button>
+    </div>
+  </div>
+  <ol class="steps" id="steps"></ol>
+  <div class="main">
+    <section class="mapcard">
+      <div class="maphead"><h2 id="maptitle">All layers</h2><div class="legend" id="legend"></div></div>
+      <div class="stage" id="stage">
+{{stage_pre}}
+        <div class="overlay" id="overlay"></div>
+        <div class="tip" id="tip" hidden></div>
+        <div class="routebox" id="routebox" hidden></div>
+        <div class="floors"><div class="seg" role="group" aria-label="Levels" id="floors"></div></div>
+{{hint}}
+      </div>
+      <div class="detail" id="detail"><span class="note">Hover for a quick read, click a space for its live state. Pick a level on the right to see every label.</span></div>
+    </section>
+    <aside>
+      <div class="kpis" id="kpis"></div>
+      <div class="seg" role="group" aria-label="Panel" style="display:flex">
+        <button id="tab-feed" aria-pressed="true" style="flex:1">Agents &amp; people</button>
+{{list_tab}}
+        <button id="tab-assets" aria-pressed="false" style="flex:1">Assets</button>
+      </div>
+      <div class="panel" id="p-feed"><div class="feed" id="feed"></div></div>
+      <div class="panel" id="p-list" hidden><div class="scroll"><table><thead><tr id="listhead"></tr></thead><tbody id="list"></tbody></table></div></div>
+      <div class="panel" id="p-assets" hidden><div class="scroll"><table><thead><tr><th>Asset</th><th>Location</th><th>Status</th></tr></thead><tbody id="assetlist"></tbody></table></div></div>
+      <p class="note">Agents propose; people decide. Anything that moves people, changes a building system or dispatches staff waits for approval. Briefings, triage and monitoring run on their own.</p>
+    </aside>
+  </div>
+{{footer_note}}
+    <div class="sig"><span class="jw">JW</span><span>Designed &amp; prompted by <b>Josh Wilkinson</b></span><a href="https://joshwilkinson.uk" target="_blank" rel="noopener">joshwilkinson.uk</a><span class="ver">Harbourline twin engine · v1 · synthetic data</span></div></footer>
+</div>
+{{scripts}}

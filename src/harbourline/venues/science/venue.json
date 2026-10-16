@@ -1,0 +1,4291 @@
+{
+ "id": "HSC",
+ "name": "Harbourline Science Centre",
+ "kind": "museum",
+ "levels": [
+  {
+   "id": "B1",
+   "name": "Collections & BOH",
+   "elev": -5
+  },
+  {
+   "id": "G",
+   "name": "Entry & discovery",
+   "elev": 0
+  },
+  {
+   "id": "L1",
+   "name": "Galleries & touring hall",
+   "elev": 6
+  },
+  {
+   "id": "L2",
+   "name": "Galleries & planetarium",
+   "elev": 12
+  },
+  {
+   "id": "L3",
+   "name": "Learning, roof & plant",
+   "elev": 18
+  }
+ ],
+ "spaces": [
+  {
+   "id": "B1-COR",
+   "name": "Service corridor",
+   "lv": "B1",
+   "x": 0,
+   "y": 45,
+   "w": 160,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 30,
+   "ahu": "AHU-B1"
+  },
+  {
+   "id": "B1-DOCK",
+   "name": "Loading dock",
+   "lv": "B1",
+   "x": 0,
+   "y": 0,
+   "w": 30,
+   "h": 45,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-B1"
+  },
+  {
+   "id": "B1-WORKSHOP",
+   "name": "Exhibit workshop",
+   "lv": "B1",
+   "x": 30,
+   "y": 0,
+   "w": 40,
+   "h": 45,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-B1"
+  },
+  {
+   "id": "B1-CONS",
+   "name": "Conservation lab",
+   "lv": "B1",
+   "x": 70,
+   "y": 0,
+   "w": 30,
+   "h": 45,
+   "kind": "room",
+   "cat": "office",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-CS",
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "B1-STORE",
+   "name": "Collection store (climate controlled)",
+   "lv": "B1",
+   "x": 100,
+   "y": 0,
+   "w": 60,
+   "h": 45,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-CS",
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "B1-PLANT",
+   "name": "Chiller & boiler plant",
+   "lv": "B1",
+   "x": 0,
+   "y": 55,
+   "w": 50,
+   "h": 55,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 3,
+   "ahu": "AHU-B1"
+  },
+  {
+   "id": "B1-STAFF",
+   "name": "Staff room & lockers",
+   "lv": "B1",
+   "x": 50,
+   "y": 55,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-B1"
+  },
+  {
+   "id": "B1-WASTE",
+   "name": "Waste & recycling",
+   "lv": "B1",
+   "x": 80,
+   "y": 55,
+   "w": 20,
+   "h": 30,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-B1"
+  },
+  {
+   "id": "B1-STORES",
+   "name": "Exhibit stores",
+   "lv": "B1",
+   "x": 100,
+   "y": 55,
+   "w": 60,
+   "h": 55,
+   "kind": "room",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "BOH",
+   "cap": 20,
+   "ahu": "AHU-B1"
+  },
+  {
+   "id": "G-CAFE",
+   "name": "Harbour Café",
+   "lv": "G",
+   "x": 0,
+   "y": 0,
+   "w": 50,
+   "h": 30,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 160,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "G-ENTRY",
+   "name": "Entrance hall",
+   "lv": "G",
+   "x": 50,
+   "y": 0,
+   "w": 60,
+   "h": 30,
+   "kind": "hall",
+   "cat": "plaza",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 500,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "G-SHOP",
+   "name": "Science shop",
+   "lv": "G",
+   "x": 110,
+   "y": 0,
+   "w": 50,
+   "h": 30,
+   "kind": "room",
+   "cat": "retail",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 120,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "G-ATRIUM",
+   "name": "Atrium · Foucault pendulum",
+   "lv": "G",
+   "x": 50,
+   "y": 30,
+   "w": 60,
+   "h": 50,
+   "kind": "hall",
+   "cat": "plaza",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 700,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "G-SCHOOL",
+   "name": "School entrance & coach drop",
+   "lv": "G",
+   "x": 110,
+   "y": 30,
+   "w": 50,
+   "h": 25,
+   "kind": "hall",
+   "cat": "plaza",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 200,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "G-LUNCH",
+   "name": "School lunchroom",
+   "lv": "G",
+   "x": 110,
+   "y": 55,
+   "w": 50,
+   "h": 15,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 150,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "G-TIX",
+   "name": "Tickets & information",
+   "lv": "G",
+   "x": 52,
+   "y": 32,
+   "w": 14,
+   "h": 10,
+   "kind": "room",
+   "cat": "service",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 30,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "G-CLOAK",
+   "name": "Cloakroom & lockers",
+   "lv": "G",
+   "x": 94,
+   "y": 32,
+   "w": 14,
+   "h": 10,
+   "kind": "room",
+   "cat": "service",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 20,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "G-LOBBY",
+   "name": "Gallery lobby",
+   "lv": "G",
+   "x": 50,
+   "y": 80,
+   "w": 60,
+   "h": 12,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Galleries G",
+   "cap": 300,
+   "ahu": "AHU-G2"
+  },
+  {
+   "id": "G-WAVES",
+   "name": "Water & Waves gallery",
+   "lv": "G",
+   "x": 0,
+   "y": 30,
+   "w": 50,
+   "h": 80,
+   "kind": "hall",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 350,
+   "ahu": "AHU-G2"
+  },
+  {
+   "id": "G-EX01",
+   "name": "Wave tank",
+   "lv": "G",
+   "x": 5,
+   "y": 40,
+   "w": 14,
+   "h": 10,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 0,
+   "asset": "EX01"
+  },
+  {
+   "id": "G-EX02",
+   "name": "Tornado vortex",
+   "lv": "G",
+   "x": 31,
+   "y": 40,
+   "w": 10,
+   "h": 10,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 0,
+   "asset": "EX02"
+  },
+  {
+   "id": "G-EX03",
+   "name": "Water play table",
+   "lv": "G",
+   "x": 5,
+   "y": 66,
+   "w": 16,
+   "h": 12,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 0,
+   "asset": "EX03"
+  },
+  {
+   "id": "G-EX04",
+   "name": "Tide & harbour model",
+   "lv": "G",
+   "x": 29,
+   "y": 66,
+   "w": 16,
+   "h": 14,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 0,
+   "asset": "EX04"
+  },
+  {
+   "id": "G-TINKER",
+   "name": "Tinker Lab",
+   "lv": "G",
+   "x": 110,
+   "y": 70,
+   "w": 50,
+   "h": 40,
+   "kind": "room",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Tinker Lab",
+   "cap": 120,
+   "ahu": "AHU-G2"
+  },
+  {
+   "id": "G-KIDS",
+   "name": "Little Scientists (under 6s)",
+   "lv": "G",
+   "x": 60,
+   "y": 92,
+   "w": 50,
+   "h": 18,
+   "kind": "room",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Galleries G",
+   "cap": 90,
+   "ahu": "AHU-G2"
+  },
+  {
+   "id": "G-WC",
+   "name": "Toilets & changing places",
+   "lv": "G",
+   "x": 50,
+   "y": 92,
+   "w": 10,
+   "h": 18,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "paid",
+   "zone": "Galleries G",
+   "cap": 24,
+   "ahu": "AHU-G2"
+  },
+  {
+   "id": "G-FIRSTAID",
+   "name": "First aid",
+   "lv": "G",
+   "x": 110,
+   "y": 30,
+   "w": 12,
+   "h": 8,
+   "kind": "room",
+   "cat": "medical",
+   "side": "pub",
+   "zone": "Free zone",
+   "cap": 6,
+   "ahu": "AHU-G1"
+  },
+  {
+   "id": "L1-COR-N",
+   "name": "Gallery walk (north)",
+   "lv": "L1",
+   "x": 50,
+   "y": 22,
+   "w": 60,
+   "h": 8,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 150,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L1-COR-S",
+   "name": "Gallery walk (south)",
+   "lv": "L1",
+   "x": 50,
+   "y": 80,
+   "w": 60,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 150,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L1-COR-W",
+   "name": "Mars entry queue (west walk)",
+   "lv": "L1",
+   "x": 42,
+   "y": 22,
+   "w": 8,
+   "h": 68,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 220,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L1-COR-E",
+   "name": "Gallery walk (east)",
+   "lv": "L1",
+   "x": 110,
+   "y": 22,
+   "w": 8,
+   "h": 68,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 120,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L1-MARS-ROVER",
+   "name": "Mars · Rover garage",
+   "lv": "L1",
+   "x": 0,
+   "y": 0,
+   "w": 42,
+   "h": 40,
+   "kind": "room",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 150,
+   "ahu": "AHU-T"
+  },
+  {
+   "id": "L1-MARS-INTRO",
+   "name": "Mars · Arrival hall",
+   "lv": "L1",
+   "x": 0,
+   "y": 40,
+   "w": 42,
+   "h": 30,
+   "kind": "room",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 150,
+   "ahu": "AHU-T"
+  },
+  {
+   "id": "L1-MARS-METEOR",
+   "name": "Mars · Meteorite vault (loans)",
+   "lv": "L1",
+   "x": 0,
+   "y": 70,
+   "w": 20,
+   "h": 40,
+   "kind": "room",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 60,
+   "ahu": "AHU-T",
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "L1-MARS-HAB",
+   "name": "Mars · Habitat walk-through",
+   "lv": "L1",
+   "x": 20,
+   "y": 70,
+   "w": 22,
+   "h": 25,
+   "kind": "room",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 60,
+   "ahu": "AHU-T"
+  },
+  {
+   "id": "L1-MARS-SHOP",
+   "name": "Mars · Exit shop",
+   "lv": "L1",
+   "x": 20,
+   "y": 95,
+   "w": 22,
+   "h": 15,
+   "kind": "room",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 40,
+   "ahu": "AHU-T"
+  },
+  {
+   "id": "L1-EX05",
+   "name": "Mars rover prototype",
+   "lv": "L1",
+   "x": 8,
+   "y": 8,
+   "w": 16,
+   "h": 12,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 0,
+   "asset": "EX05"
+  },
+  {
+   "id": "L1-LIGHT",
+   "name": "Light & Sound gallery",
+   "lv": "L1",
+   "x": 50,
+   "y": 0,
+   "w": 60,
+   "h": 22,
+   "kind": "room",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Light & Sound",
+   "cap": 180,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L1-BODY",
+   "name": "Human Body gallery",
+   "lv": "L1",
+   "x": 118,
+   "y": 0,
+   "w": 42,
+   "h": 55,
+   "kind": "hall",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Human Body",
+   "cap": 220,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L1-ENG",
+   "name": "Engineering Studio",
+   "lv": "L1",
+   "x": 118,
+   "y": 55,
+   "w": 42,
+   "h": 55,
+   "kind": "hall",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Engineering",
+   "cap": 200,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L1-EX06",
+   "name": "Earthquake house",
+   "lv": "L1",
+   "x": 122,
+   "y": 4,
+   "w": 14,
+   "h": 12,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Engineering",
+   "cap": 0,
+   "asset": "EX06"
+  },
+  {
+   "id": "L1-EX07",
+   "name": "Van de Graaff theatre",
+   "lv": "L1",
+   "x": 58,
+   "y": 4,
+   "w": 16,
+   "h": 12,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Light & Sound",
+   "cap": 0,
+   "asset": "EX07"
+  },
+  {
+   "id": "L1-EX08",
+   "name": "Bridge-building pit",
+   "lv": "L1",
+   "x": 124,
+   "y": 84,
+   "w": 18,
+   "h": 14,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Engineering",
+   "cap": 0,
+   "asset": "EX08"
+  },
+  {
+   "id": "L1-CAFE",
+   "name": "Sky Café",
+   "lv": "L1",
+   "x": 60,
+   "y": 90,
+   "w": 40,
+   "h": 20,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 120,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L1-WC",
+   "name": "Toilets",
+   "lv": "L1",
+   "x": 100,
+   "y": 90,
+   "w": 10,
+   "h": 20,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 20,
+   "ahu": "AHU-L1"
+  },
+  {
+   "id": "L2-COR-N",
+   "name": "Gallery walk (north)",
+   "lv": "L2",
+   "x": 50,
+   "y": 22,
+   "w": 60,
+   "h": 8,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 150,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L2-COR-S",
+   "name": "Gallery walk (south)",
+   "lv": "L2",
+   "x": 50,
+   "y": 80,
+   "w": 60,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 150,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L2-COR-W",
+   "name": "Gallery walk (west)",
+   "lv": "L2",
+   "x": 42,
+   "y": 22,
+   "w": 8,
+   "h": 68,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 120,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L2-COR-E",
+   "name": "Gallery walk (east)",
+   "lv": "L2",
+   "x": 110,
+   "y": 22,
+   "w": 8,
+   "h": 68,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 120,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L2-ORIGINS",
+   "name": "Earth & Origins gallery",
+   "lv": "L2",
+   "x": 0,
+   "y": 0,
+   "w": 42,
+   "h": 60,
+   "kind": "hall",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Earth & Origins",
+   "cap": 160,
+   "ahu": "AHU-EO",
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "L2-CASE1",
+   "name": "Loan case · pyrite & meteorites",
+   "lv": "L2",
+   "x": 4,
+   "y": 4,
+   "w": 12,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Earth & Origins",
+   "cap": 0,
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "L2-CASE2",
+   "name": "Loan case · Burgess-type fossils",
+   "lv": "L2",
+   "x": 26,
+   "y": 4,
+   "w": 12,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Earth & Origins",
+   "cap": 0,
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "L2-CASE3",
+   "name": "Mineral wall",
+   "lv": "L2",
+   "x": 4,
+   "y": 46,
+   "w": 34,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Earth & Origins",
+   "cap": 0,
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "L2-FLIGHT",
+   "name": "Space & Flight gallery",
+   "lv": "L2",
+   "x": 0,
+   "y": 60,
+   "w": 42,
+   "h": 50,
+   "kind": "hall",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Space & Flight",
+   "cap": 200,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L2-EX09",
+   "name": "Flight simulator pods",
+   "lv": "L2",
+   "x": 4,
+   "y": 64,
+   "w": 14,
+   "h": 10,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Space & Flight",
+   "cap": 0,
+   "asset": "EX09"
+  },
+  {
+   "id": "L2-EX10",
+   "name": "Apollo command module (replica)",
+   "lv": "L2",
+   "x": 24,
+   "y": 90,
+   "w": 14,
+   "h": 14,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Space & Flight",
+   "cap": 0,
+   "asset": "EX10"
+  },
+  {
+   "id": "L2-CLIMATE",
+   "name": "Climate Futures gallery",
+   "lv": "L2",
+   "x": 50,
+   "y": 0,
+   "w": 60,
+   "h": 22,
+   "kind": "room",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Climate Futures",
+   "cap": 160,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L2-PLFOYER",
+   "name": "Planetarium foyer",
+   "lv": "L2",
+   "x": 118,
+   "y": 0,
+   "w": 42,
+   "h": 20,
+   "kind": "room",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Planetarium",
+   "cap": 180,
+   "ahu": "AHU-PL"
+  },
+  {
+   "id": "L2-PLANET",
+   "name": "Planetarium dome (180 seats)",
+   "lv": "L2",
+   "x": 118,
+   "y": 22,
+   "w": 42,
+   "h": 58,
+   "kind": "room",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Planetarium",
+   "cap": 180,
+   "ahu": "AHU-PL",
+   "shape": "ellipse"
+  },
+  {
+   "id": "L2-EX11",
+   "name": "Planetarium projector",
+   "lv": "L2",
+   "x": 135,
+   "y": 47,
+   "w": 8,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Planetarium",
+   "cap": 0,
+   "asset": "EX11"
+  },
+  {
+   "id": "L2-QUIET",
+   "name": "Quiet & sensory room",
+   "lv": "L2",
+   "x": 118,
+   "y": 82,
+   "w": 42,
+   "h": 28,
+   "kind": "room",
+   "cat": "service",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 20,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L2-MAKE",
+   "name": "Make & Test bay",
+   "lv": "L2",
+   "x": 60,
+   "y": 90,
+   "w": 40,
+   "h": 20,
+   "kind": "room",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 80,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L2-WC",
+   "name": "Toilets",
+   "lv": "L2",
+   "x": 100,
+   "y": 90,
+   "w": 10,
+   "h": 20,
+   "kind": "room",
+   "cat": "washroom",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 20,
+   "ahu": "AHU-L2"
+  },
+  {
+   "id": "L3-COR",
+   "name": "Learning corridor",
+   "lv": "L3",
+   "x": 0,
+   "y": 25,
+   "w": 160,
+   "h": 10,
+   "kind": "corridor",
+   "cat": "circulation",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 200,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-LEARN-1",
+   "name": "Learning studio 1",
+   "lv": "L3",
+   "x": 0,
+   "y": 0,
+   "w": 20,
+   "h": 25,
+   "kind": "room",
+   "cat": "service",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 32,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-LEARN-2",
+   "name": "Learning studio 2",
+   "lv": "L3",
+   "x": 20,
+   "y": 0,
+   "w": 20,
+   "h": 25,
+   "kind": "room",
+   "cat": "service",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 32,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-LEARN-3",
+   "name": "Learning studio 3",
+   "lv": "L3",
+   "x": 40,
+   "y": 0,
+   "w": 20,
+   "h": 25,
+   "kind": "room",
+   "cat": "service",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 32,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-LEARN-4",
+   "name": "Learning studio 4",
+   "lv": "L3",
+   "x": 60,
+   "y": 0,
+   "w": 20,
+   "h": 25,
+   "kind": "room",
+   "cat": "service",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 32,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-LEARN-5",
+   "name": "Learning studio 5",
+   "lv": "L3",
+   "x": 80,
+   "y": 0,
+   "w": 20,
+   "h": 25,
+   "kind": "room",
+   "cat": "service",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 32,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-LEARN-6",
+   "name": "Learning studio 6",
+   "lv": "L3",
+   "x": 100,
+   "y": 0,
+   "w": 20,
+   "h": 25,
+   "kind": "room",
+   "cat": "service",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 32,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-STAFFRM",
+   "name": "Educators' room",
+   "lv": "L3",
+   "x": 120,
+   "y": 0,
+   "w": 40,
+   "h": 25,
+   "kind": "room",
+   "cat": "office",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 15,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-OBS",
+   "name": "Rooftop observatory",
+   "lv": "L3",
+   "x": 0,
+   "y": 35,
+   "w": 40,
+   "h": 40,
+   "kind": "room",
+   "cat": "gallery",
+   "side": "paid",
+   "zone": "Roof",
+   "cap": 40,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-TERRACE",
+   "name": "Roof terrace",
+   "lv": "L3",
+   "x": 40,
+   "y": 35,
+   "w": 70,
+   "h": 40,
+   "kind": "hall",
+   "cat": "plaza",
+   "side": "paid",
+   "zone": "Roof",
+   "cap": 250
+  },
+  {
+   "id": "L3-SKY",
+   "name": "Skyline Room (events)",
+   "lv": "L3",
+   "x": 110,
+   "y": 35,
+   "w": 50,
+   "h": 40,
+   "kind": "room",
+   "cat": "fnb",
+   "side": "paid",
+   "zone": "Roof",
+   "cap": 200,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-SVC",
+   "name": "Plant corridor",
+   "lv": "L3",
+   "x": 0,
+   "y": 75,
+   "w": 160,
+   "h": 5,
+   "kind": "corridor",
+   "cat": "boh",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 10
+  },
+  {
+   "id": "L3-SEC",
+   "name": "Security control room",
+   "lv": "L3",
+   "x": 0,
+   "y": 80,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "ops",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 6,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-BMS",
+   "name": "BMS & facilities office",
+   "lv": "L3",
+   "x": 30,
+   "y": 80,
+   "w": 30,
+   "h": 30,
+   "kind": "room",
+   "cat": "ops",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 6,
+   "ahu": "AHU-L3"
+  },
+  {
+   "id": "L3-AHU-B1",
+   "name": "AHU-B1 plant",
+   "lv": "L3",
+   "x": 60,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-B1"
+  },
+  {
+   "id": "L3-AHU-CS",
+   "name": "AHU-CS plant",
+   "lv": "L3",
+   "x": 70,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-CS"
+  },
+  {
+   "id": "L3-AHU-G1",
+   "name": "AHU-G1 plant",
+   "lv": "L3",
+   "x": 80,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-G1"
+  },
+  {
+   "id": "L3-AHU-G2",
+   "name": "AHU-G2 plant",
+   "lv": "L3",
+   "x": 90,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-G2"
+  },
+  {
+   "id": "L3-AHU-T",
+   "name": "AHU-T plant",
+   "lv": "L3",
+   "x": 100,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-T"
+  },
+  {
+   "id": "L3-AHU-L1",
+   "name": "AHU-L1 plant",
+   "lv": "L3",
+   "x": 110,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-L1"
+  },
+  {
+   "id": "L3-AHU-EO",
+   "name": "AHU-EO plant",
+   "lv": "L3",
+   "x": 120,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-EO"
+  },
+  {
+   "id": "L3-AHU-L2",
+   "name": "AHU-L2 plant",
+   "lv": "L3",
+   "x": 130,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-L2"
+  },
+  {
+   "id": "L3-AHU-PL",
+   "name": "AHU-PL plant",
+   "lv": "L3",
+   "x": 140,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-PL"
+  },
+  {
+   "id": "L3-AHU-L3",
+   "name": "AHU-L3 plant",
+   "lv": "L3",
+   "x": 150,
+   "y": 80,
+   "w": 10,
+   "h": 30,
+   "kind": "room",
+   "cat": "plant",
+   "side": "boh",
+   "zone": "Plant",
+   "cap": 1,
+   "asset": "AHU-L3"
+  },
+  {
+   "id": "G-EX101",
+   "name": "Archimedes screw",
+   "lv": "G",
+   "x": 3,
+   "y": 85,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 0,
+   "asset": "EX101"
+  },
+  {
+   "id": "G-EX102",
+   "name": "Rain-making cloud",
+   "lv": "G",
+   "x": 18,
+   "y": 85,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 0,
+   "asset": "EX102"
+  },
+  {
+   "id": "G-EX103",
+   "name": "Harbour radar",
+   "lv": "G",
+   "x": 33,
+   "y": 85,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 0,
+   "asset": "EX103"
+  },
+  {
+   "id": "G-EX104",
+   "name": "Ship stability tank",
+   "lv": "G",
+   "x": 3,
+   "y": 98,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Water & Waves",
+   "cap": 0,
+   "asset": "EX104"
+  },
+  {
+   "id": "G-EX105",
+   "name": "Tinker bench 1",
+   "lv": "G",
+   "x": 113,
+   "y": 73,
+   "w": 9,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Tinker Lab",
+   "cap": 0,
+   "asset": "EX105"
+  },
+  {
+   "id": "G-EX106",
+   "name": "Tinker bench 2",
+   "lv": "G",
+   "x": 126,
+   "y": 73,
+   "w": 9,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Tinker Lab",
+   "cap": 0,
+   "asset": "EX106"
+  },
+  {
+   "id": "G-EX107",
+   "name": "Tinker bench 3",
+   "lv": "G",
+   "x": 139,
+   "y": 73,
+   "w": 9,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Tinker Lab",
+   "cap": 0,
+   "asset": "EX107"
+  },
+  {
+   "id": "G-EX108",
+   "name": "Tinker bench 4",
+   "lv": "G",
+   "x": 113,
+   "y": 84,
+   "w": 9,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Tinker Lab",
+   "cap": 0,
+   "asset": "EX108"
+  },
+  {
+   "id": "G-EX109",
+   "name": "Tinker bench 5",
+   "lv": "G",
+   "x": 126,
+   "y": 84,
+   "w": 9,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Tinker Lab",
+   "cap": 0,
+   "asset": "EX109"
+  },
+  {
+   "id": "G-EX110",
+   "name": "Tinker bench 6",
+   "lv": "G",
+   "x": 139,
+   "y": 84,
+   "w": 9,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Tinker Lab",
+   "cap": 0,
+   "asset": "EX110"
+  },
+  {
+   "id": "G-EX111",
+   "name": "Soft-play reef",
+   "lv": "G",
+   "x": 63,
+   "y": 95,
+   "w": 10,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Galleries G",
+   "cap": 0,
+   "asset": "EX111"
+  },
+  {
+   "id": "G-EX112",
+   "name": "Ball-run wall",
+   "lv": "G",
+   "x": 77,
+   "y": 95,
+   "w": 10,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Galleries G",
+   "cap": 0,
+   "asset": "EX112"
+  },
+  {
+   "id": "G-EX113",
+   "name": "Mini market",
+   "lv": "G",
+   "x": 91,
+   "y": 95,
+   "w": 10,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Galleries G",
+   "cap": 0,
+   "asset": "EX113"
+  },
+  {
+   "id": "L1-EX114",
+   "name": "Infinity mirrors",
+   "lv": "L1",
+   "x": 78,
+   "y": 2,
+   "w": 9,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Light & Sound",
+   "cap": 0,
+   "asset": "EX114"
+  },
+  {
+   "id": "L1-EX115",
+   "name": "Laser harp",
+   "lv": "L1",
+   "x": 91,
+   "y": 2,
+   "w": 9,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Light & Sound",
+   "cap": 0,
+   "asset": "EX115"
+  },
+  {
+   "id": "L1-EX116",
+   "name": "Echo tube",
+   "lv": "L1",
+   "x": 78,
+   "y": 12,
+   "w": 9,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Light & Sound",
+   "cap": 0,
+   "asset": "EX116"
+  },
+  {
+   "id": "L1-EX117",
+   "name": "Colour shadows",
+   "lv": "L1",
+   "x": 91,
+   "y": 12,
+   "w": 9,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Light & Sound",
+   "cap": 0,
+   "asset": "EX117"
+  },
+  {
+   "id": "L1-EX118",
+   "name": "Giant heart walk-through",
+   "lv": "L1",
+   "x": 136,
+   "y": 3,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Human Body",
+   "cap": 0,
+   "asset": "EX118"
+  },
+  {
+   "id": "L1-EX119",
+   "name": "Reaction timer",
+   "lv": "L1",
+   "x": 121,
+   "y": 16,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Human Body",
+   "cap": 0,
+   "asset": "EX119"
+  },
+  {
+   "id": "L1-EX120",
+   "name": "Skeleton bike",
+   "lv": "L1",
+   "x": 136,
+   "y": 16,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Human Body",
+   "cap": 0,
+   "asset": "EX120"
+  },
+  {
+   "id": "L1-EX121",
+   "name": "Microscope bar",
+   "lv": "L1",
+   "x": 121,
+   "y": 29,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Human Body",
+   "cap": 0,
+   "asset": "EX121"
+  },
+  {
+   "id": "L1-EX122",
+   "name": "Sleep lab",
+   "lv": "L1",
+   "x": 136,
+   "y": 29,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Human Body",
+   "cap": 0,
+   "asset": "EX122"
+  },
+  {
+   "id": "L1-EX123",
+   "name": "Wind tunnel",
+   "lv": "L1",
+   "x": 121,
+   "y": 58,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Engineering",
+   "cap": 0,
+   "asset": "EX123"
+  },
+  {
+   "id": "L1-EX124",
+   "name": "Robot arm bay",
+   "lv": "L1",
+   "x": 136,
+   "y": 58,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Engineering",
+   "cap": 0,
+   "asset": "EX124"
+  },
+  {
+   "id": "L1-EX125",
+   "name": "3D-print bar",
+   "lv": "L1",
+   "x": 121,
+   "y": 71,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Engineering",
+   "cap": 0,
+   "asset": "EX125"
+  },
+  {
+   "id": "L1-EX126",
+   "name": "Crane challenge",
+   "lv": "L1",
+   "x": 136,
+   "y": 71,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Engineering",
+   "cap": 0,
+   "asset": "EX126"
+  },
+  {
+   "id": "L1-EX127",
+   "name": "Mars terrain sandpit",
+   "lv": "L1",
+   "x": 3,
+   "y": 29,
+   "w": 12,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 0,
+   "asset": "EX127"
+  },
+  {
+   "id": "L1-EX128",
+   "name": "Drill-core station",
+   "lv": "L1",
+   "x": 19,
+   "y": 29,
+   "w": 12,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 0,
+   "asset": "EX128"
+  },
+  {
+   "id": "L1-EX129",
+   "name": "Meteorite case M1",
+   "lv": "L1",
+   "x": 3,
+   "y": 73,
+   "w": 12,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 0,
+   "asset": "EX129",
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "L1-EX130",
+   "name": "Meteorite case M2",
+   "lv": "L1",
+   "x": 3,
+   "y": 86,
+   "w": 12,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 0,
+   "asset": "EX130",
+   "clim": {
+    "rh": 50,
+    "t": 21
+   }
+  },
+  {
+   "id": "L1-EX131",
+   "name": "VR descent pods",
+   "lv": "L1",
+   "x": 23,
+   "y": 73,
+   "w": 12,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "tour",
+   "zone": "Mars: The Red Frontier",
+   "cap": 0,
+   "asset": "EX131"
+  },
+  {
+   "id": "L2-EX132",
+   "name": "Satellite gallery",
+   "lv": "L2",
+   "x": 18,
+   "y": 63,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Space & Flight",
+   "cap": 0,
+   "asset": "EX132"
+  },
+  {
+   "id": "L2-EX133",
+   "name": "Rocket engine cutaway",
+   "lv": "L2",
+   "x": 3,
+   "y": 76,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Space & Flight",
+   "cap": 0,
+   "asset": "EX133"
+  },
+  {
+   "id": "L2-EX134",
+   "name": "Jet engine",
+   "lv": "L2",
+   "x": 18,
+   "y": 76,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Space & Flight",
+   "cap": 0,
+   "asset": "EX134"
+  },
+  {
+   "id": "L2-EX135",
+   "name": "Ice-core freezer",
+   "lv": "L2",
+   "x": 52,
+   "y": 2,
+   "w": 9,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Climate Futures",
+   "cap": 0,
+   "asset": "EX135"
+  },
+  {
+   "id": "L2-EX136",
+   "name": "Carbon wall",
+   "lv": "L2",
+   "x": 78,
+   "y": 2,
+   "w": 9,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Climate Futures",
+   "cap": 0,
+   "asset": "EX136"
+  },
+  {
+   "id": "L2-EX137",
+   "name": "Sea-level table",
+   "lv": "L2",
+   "x": 52,
+   "y": 12,
+   "w": 9,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Climate Futures",
+   "cap": 0,
+   "asset": "EX137"
+  },
+  {
+   "id": "L2-EX138",
+   "name": "Storm simulator",
+   "lv": "L2",
+   "x": 78,
+   "y": 12,
+   "w": 9,
+   "h": 5,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Climate Futures",
+   "cap": 0,
+   "asset": "EX138"
+  },
+  {
+   "id": "L2-EX139",
+   "name": "Harbourline raptor (cast)",
+   "lv": "L2",
+   "x": 3,
+   "y": 16,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Earth & Origins",
+   "cap": 0,
+   "asset": "EX139"
+  },
+  {
+   "id": "L2-EX140",
+   "name": "Rock-cycle table",
+   "lv": "L2",
+   "x": 18,
+   "y": 16,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Earth & Origins",
+   "cap": 0,
+   "asset": "EX140"
+  },
+  {
+   "id": "L2-EX141",
+   "name": "Seismograph",
+   "lv": "L2",
+   "x": 3,
+   "y": 29,
+   "w": 11,
+   "h": 8,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Earth & Origins",
+   "cap": 0,
+   "asset": "EX141"
+  },
+  {
+   "id": "L2-EX142",
+   "name": "Test track",
+   "lv": "L2",
+   "x": 63,
+   "y": 93,
+   "w": 12,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 0,
+   "asset": "EX142"
+  },
+  {
+   "id": "L2-EX143",
+   "name": "Drop tower",
+   "lv": "L2",
+   "x": 79,
+   "y": 93,
+   "w": 12,
+   "h": 6,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Atrium ring",
+   "cap": 0,
+   "asset": "EX143"
+  },
+  {
+   "id": "L3-EX144",
+   "name": "35 cm telescope",
+   "lv": "L3",
+   "x": 3,
+   "y": 38,
+   "w": 10,
+   "h": 10,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Roof",
+   "cap": 0,
+   "asset": "EX144"
+  },
+  {
+   "id": "L3-EX145",
+   "name": "Studio 1 kit trolley",
+   "lv": "L3",
+   "x": 3,
+   "y": 3,
+   "w": 6,
+   "h": 4,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 0,
+   "asset": "EX145"
+  },
+  {
+   "id": "L3-EX146",
+   "name": "Studio 2 kit trolley",
+   "lv": "L3",
+   "x": 23,
+   "y": 3,
+   "w": 6,
+   "h": 4,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 0,
+   "asset": "EX146"
+  },
+  {
+   "id": "L3-EX147",
+   "name": "Studio 3 kit trolley",
+   "lv": "L3",
+   "x": 43,
+   "y": 3,
+   "w": 6,
+   "h": 4,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 0,
+   "asset": "EX147"
+  },
+  {
+   "id": "L3-EX148",
+   "name": "Studio 4 kit trolley",
+   "lv": "L3",
+   "x": 63,
+   "y": 3,
+   "w": 6,
+   "h": 4,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 0,
+   "asset": "EX148"
+  },
+  {
+   "id": "L3-EX149",
+   "name": "Studio 5 kit trolley",
+   "lv": "L3",
+   "x": 83,
+   "y": 3,
+   "w": 6,
+   "h": 4,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 0,
+   "asset": "EX149"
+  },
+  {
+   "id": "L3-EX150",
+   "name": "Studio 6 kit trolley",
+   "lv": "L3",
+   "x": 103,
+   "y": 3,
+   "w": 6,
+   "h": 4,
+   "kind": "object",
+   "cat": "exhibit",
+   "side": "paid",
+   "zone": "Learning",
+   "cap": 0,
+   "asset": "EX150"
+  },
+  {
+   "id": "G-LIFT-A",
+   "name": "Lift A",
+   "lv": "G",
+   "x": 57.5,
+   "y": 83.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-A",
+   "name": "Lift A",
+   "lv": "L1",
+   "x": 57.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-A",
+   "name": "Lift A",
+   "lv": "L2",
+   "x": 57.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-LIFT-A",
+   "name": "Lift A",
+   "lv": "L3",
+   "x": 57.5,
+   "y": 27.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "G-LIFT-B",
+   "name": "Lift B",
+   "lv": "G",
+   "x": 97.5,
+   "y": 83.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-B",
+   "name": "Lift B",
+   "lv": "L1",
+   "x": 97.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-B",
+   "name": "Lift B",
+   "lv": "L2",
+   "x": 97.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-LIFT-B",
+   "name": "Lift B",
+   "lv": "L3",
+   "x": 97.5,
+   "y": 27.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "G-ESC-1",
+   "name": "Atrium escalators",
+   "lv": "G",
+   "x": 87.5,
+   "y": 83.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-ESC-1",
+   "name": "Atrium escalators",
+   "lv": "L1",
+   "x": 87.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-ESC-1",
+   "name": "Atrium escalators",
+   "lv": "L2",
+   "x": 87.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "esc",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "G-STAIR-1",
+   "name": "Grand stair",
+   "lv": "G",
+   "x": 69.5,
+   "y": 83.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-STAIR-1",
+   "name": "Grand stair",
+   "lv": "L1",
+   "x": 69.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-STAIR-1",
+   "name": "Grand stair",
+   "lv": "L2",
+   "x": 69.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-STAIR-1",
+   "name": "Grand stair",
+   "lv": "L3",
+   "x": 69.5,
+   "y": 27.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-STAIR-W",
+   "name": "West fire stair",
+   "lv": "L1",
+   "x": 43.5,
+   "y": 21.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-STAIR-W",
+   "name": "West fire stair",
+   "lv": "L2",
+   "x": 43.5,
+   "y": 21.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-STAIR-W",
+   "name": "West fire stair",
+   "lv": "L3",
+   "x": 41.5,
+   "y": 27.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "B1-LIFT-SVC",
+   "name": "Service & goods lift",
+   "lv": "B1",
+   "x": 152.5,
+   "y": 47.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "G-LIFT-SVC",
+   "name": "Service & goods lift",
+   "lv": "G",
+   "x": 152.5,
+   "y": 83.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L1-LIFT-SVC",
+   "name": "Service & goods lift",
+   "lv": "L1",
+   "x": 152.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L2-LIFT-SVC",
+   "name": "Service & goods lift",
+   "lv": "L2",
+   "x": 152.5,
+   "y": 82.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "paid",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-LIFT-SVC",
+   "name": "Service & goods lift",
+   "lv": "L3",
+   "x": 152.5,
+   "y": 75.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "lift",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "B1-STAIR-SVC",
+   "name": "Staff stair",
+   "lv": "B1",
+   "x": 147.5,
+   "y": 47.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  },
+  {
+   "id": "L3-STAIR-SVC",
+   "name": "Staff stair",
+   "lv": "L3",
+   "x": 147.5,
+   "y": 75.5,
+   "w": 5,
+   "h": 5,
+   "kind": "core",
+   "cat": "stairs",
+   "side": "boh",
+   "zone": "Cores",
+   "cap": 0
+  }
+ ],
+ "spines": [
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     5,
+     50
+    ],
+    [
+     155,
+     50
+    ]
+   ]
+  },
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     15.0,
+     50
+    ],
+    [
+     15.0,
+     22.5
+    ]
+   ]
+  },
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     50.0,
+     50
+    ],
+    [
+     50.0,
+     22.5
+    ]
+   ]
+  },
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     85.0,
+     50
+    ],
+    [
+     85.0,
+     22.5
+    ]
+   ]
+  },
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     130.0,
+     50
+    ],
+    [
+     130.0,
+     22.5
+    ]
+   ]
+  },
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     25.0,
+     50
+    ],
+    [
+     25.0,
+     82.5
+    ]
+   ]
+  },
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     65.0,
+     50
+    ],
+    [
+     65.0,
+     70.0
+    ]
+   ]
+  },
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     90.0,
+     50
+    ],
+    [
+     90.0,
+     70.0
+    ]
+   ]
+  },
+  {
+   "lv": "B1",
+   "side": "boh",
+   "pts": [
+    [
+     130.0,
+     50
+    ],
+    [
+     130.0,
+     82.5
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "pub",
+   "pts": [
+    [
+     25,
+     15
+    ],
+    [
+     135,
+     15
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "pub",
+   "pts": [
+    [
+     80,
+     15
+    ],
+    [
+     80,
+     78
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "pub",
+   "pts": [
+    [
+     80,
+     50
+    ],
+    [
+     135,
+     50
+    ],
+    [
+     158,
+     50
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "pub",
+   "pts": [
+    [
+     135,
+     50
+    ],
+    [
+     135,
+     68
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "pub",
+   "pts": [
+    [
+     59,
+     15
+    ],
+    [
+     59,
+     37
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "pub",
+   "pts": [
+    [
+     101,
+     15
+    ],
+    [
+     101,
+     37
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "paid",
+   "pts": [
+    [
+     25,
+     86
+    ],
+    [
+     155,
+     86
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "paid",
+   "pts": [
+    [
+     25,
+     86
+    ],
+    [
+     25,
+     35
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "paid",
+   "pts": [
+    [
+     135,
+     86
+    ],
+    [
+     135,
+     100
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "paid",
+   "pts": [
+    [
+     85,
+     86
+    ],
+    [
+     85,
+     101
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "paid",
+   "pts": [
+    [
+     55,
+     86
+    ],
+    [
+     55,
+     101
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "pub",
+   "pts": [
+    [
+     68,
+     50
+    ],
+    [
+     68,
+     78
+    ]
+   ]
+  },
+  {
+   "lv": "G",
+   "side": "pub",
+   "pts": [
+    [
+     68,
+     78
+    ],
+    [
+     80,
+     78
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "paid",
+   "pts": [
+    [
+     46,
+     26
+    ],
+    [
+     114,
+     26
+    ],
+    [
+     114,
+     85
+    ],
+    [
+     46,
+     85
+    ],
+    [
+     46,
+     26
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "paid",
+   "pts": [
+    [
+     114,
+     85
+    ],
+    [
+     155,
+     85
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "tour",
+   "pts": [
+    [
+     38,
+     60
+    ],
+    [
+     21,
+     60
+    ],
+    [
+     21,
+     20
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "tour",
+   "pts": [
+    [
+     21,
+     60
+    ],
+    [
+     21,
+     102
+    ],
+    [
+     31,
+     102
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "tour",
+   "pts": [
+    [
+     21,
+     80
+    ],
+    [
+     38,
+     80
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "tour",
+   "pts": [
+    [
+     21,
+     90
+    ],
+    [
+     10,
+     90
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "paid",
+   "pts": [
+    [
+     80,
+     26
+    ],
+    [
+     80,
+     10
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "paid",
+   "pts": [
+    [
+     114,
+     30
+    ],
+    [
+     139,
+     30
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "paid",
+   "pts": [
+    [
+     114,
+     70
+    ],
+    [
+     139,
+     70
+    ],
+    [
+     139,
+     98
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "paid",
+   "pts": [
+    [
+     80,
+     85
+    ],
+    [
+     80,
+     100
+    ]
+   ]
+  },
+  {
+   "lv": "L1",
+   "side": "paid",
+   "pts": [
+    [
+     105,
+     85
+    ],
+    [
+     105,
+     100
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     46,
+     26
+    ],
+    [
+     114,
+     26
+    ],
+    [
+     114,
+     85
+    ],
+    [
+     46,
+     85
+    ],
+    [
+     46,
+     26
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     114,
+     85
+    ],
+    [
+     155,
+     85
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     46,
+     30
+    ],
+    [
+     21,
+     30
+    ],
+    [
+     21,
+     8
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     21,
+     30
+    ],
+    [
+     21,
+     52
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     46,
+     80
+    ],
+    [
+     21,
+     80
+    ],
+    [
+     21,
+     102
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     80,
+     26
+    ],
+    [
+     80,
+     10
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     114,
+     10
+    ],
+    [
+     139,
+     10
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     114,
+     50
+    ],
+    [
+     139,
+     50
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     139,
+     85
+    ],
+    [
+     139,
+     96
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     80,
+     85
+    ],
+    [
+     80,
+     100
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     105,
+     85
+    ],
+    [
+     105,
+     100
+    ]
+   ]
+  },
+  {
+   "lv": "L2",
+   "side": "paid",
+   "pts": [
+    [
+     114,
+     10
+    ],
+    [
+     114,
+     26
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     5,
+     30
+    ],
+    [
+     155,
+     30
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     10,
+     30
+    ],
+    [
+     10,
+     12
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     30,
+     30
+    ],
+    [
+     30,
+     12
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     50,
+     30
+    ],
+    [
+     50,
+     12
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     70,
+     30
+    ],
+    [
+     70,
+     12
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     90,
+     30
+    ],
+    [
+     90,
+     12
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     110,
+     30
+    ],
+    [
+     110,
+     12
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     140,
+     30
+    ],
+    [
+     140,
+     12
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     20,
+     30
+    ],
+    [
+     20,
+     55
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     75,
+     30
+    ],
+    [
+     75,
+     55
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "paid",
+   "pts": [
+    [
+     135,
+     30
+    ],
+    [
+     135,
+     55
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     5,
+     78
+    ],
+    [
+     155,
+     78
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     15,
+     78
+    ],
+    [
+     15,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     45,
+     78
+    ],
+    [
+     45,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     65,
+     78
+    ],
+    [
+     65,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     75,
+     78
+    ],
+    [
+     75,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     85,
+     78
+    ],
+    [
+     85,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     95,
+     78
+    ],
+    [
+     95,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     105,
+     78
+    ],
+    [
+     105,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     115,
+     78
+    ],
+    [
+     115,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     125,
+     78
+    ],
+    [
+     125,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     135,
+     78
+    ],
+    [
+     135,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     145,
+     78
+    ],
+    [
+     145,
+     95
+    ]
+   ]
+  },
+  {
+   "lv": "L3",
+   "side": "boh",
+   "pts": [
+    [
+     155,
+     78
+    ],
+    [
+     155,
+     95
+    ]
+   ]
+  }
+ ],
+ "connectors": [
+  {
+   "id": "GATE-MAIN",
+   "name": "Main ticket gates",
+   "type": "gate",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "G",
+     "x": 80,
+     "y": 78,
+     "side": "pub"
+    },
+    {
+     "lv": "G",
+     "x": 80,
+     "y": 86,
+     "side": "paid"
+    }
+   ],
+   "oneway": true,
+   "cost": 20
+  },
+  {
+   "id": "EXIT-MAIN",
+   "name": "Gallery exit",
+   "type": "gate",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "G",
+     "x": 68,
+     "y": 86,
+     "side": "paid"
+    },
+    {
+     "lv": "G",
+     "x": 68,
+     "y": 78,
+     "side": "pub"
+    }
+   ],
+   "oneway": true,
+   "cost": 5
+  },
+  {
+   "id": "GATE-SCHOOL",
+   "name": "School group check-in",
+   "type": "gate",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "G",
+     "x": 135,
+     "y": 68,
+     "side": "pub"
+    },
+    {
+     "lv": "G",
+     "x": 135,
+     "y": 86,
+     "side": "paid"
+    }
+   ],
+   "oneway": true,
+   "cost": 30
+  },
+  {
+   "id": "GATE-MARS",
+   "name": "Mars timed-entry scan",
+   "type": "gate",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 46,
+     "y": 60,
+     "side": "paid"
+    },
+    {
+     "lv": "L1",
+     "x": 38,
+     "y": 60,
+     "side": "tour"
+    }
+   ],
+   "oneway": true,
+   "cost": 30
+  },
+  {
+   "id": "EXIT-MARS",
+   "name": "Mars exit",
+   "type": "gate",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 38,
+     "y": 80,
+     "side": "tour"
+    },
+    {
+     "lv": "L1",
+     "x": 46,
+     "y": 80,
+     "side": "paid"
+    }
+   ],
+   "oneway": true,
+   "cost": 5
+  },
+  {
+   "id": "LIFT-A",
+   "name": "Lift A",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "G",
+     "x": 60,
+     "y": 86,
+     "side": "paid"
+    },
+    {
+     "lv": "L1",
+     "x": 60,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L2",
+     "x": 60,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L3",
+     "x": 60,
+     "y": 30,
+     "side": "paid"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-B",
+   "name": "Lift B",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "G",
+     "x": 100,
+     "y": 86,
+     "side": "paid"
+    },
+    {
+     "lv": "L1",
+     "x": 100,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L2",
+     "x": 100,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L3",
+     "x": 100,
+     "y": 30,
+     "side": "paid"
+    }
+   ]
+  },
+  {
+   "id": "ESC-1",
+   "name": "Atrium escalators",
+   "type": "esc",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "G",
+     "x": 90,
+     "y": 86,
+     "side": "paid"
+    },
+    {
+     "lv": "L1",
+     "x": 90,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L2",
+     "x": 90,
+     "y": 85,
+     "side": "paid"
+    }
+   ]
+  },
+  {
+   "id": "STAIR-1",
+   "name": "Grand stair",
+   "type": "stairs",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "G",
+     "x": 72,
+     "y": 86,
+     "side": "paid"
+    },
+    {
+     "lv": "L1",
+     "x": 72,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L2",
+     "x": 72,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L3",
+     "x": 72,
+     "y": 30,
+     "side": "paid"
+    }
+   ]
+  },
+  {
+   "id": "STAIR-W",
+   "name": "West fire stair",
+   "type": "stairs",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "L1",
+     "x": 46,
+     "y": 24,
+     "side": "paid"
+    },
+    {
+     "lv": "L2",
+     "x": 46,
+     "y": 24,
+     "side": "paid"
+    },
+    {
+     "lv": "L3",
+     "x": 44,
+     "y": 30,
+     "side": "paid"
+    }
+   ]
+  },
+  {
+   "id": "LIFT-SVC",
+   "name": "Service & goods lift",
+   "type": "lift",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "B1",
+     "x": 155,
+     "y": 50,
+     "side": "boh"
+    },
+    {
+     "lv": "G",
+     "x": 155,
+     "y": 86,
+     "side": "paid"
+    },
+    {
+     "lv": "L1",
+     "x": 155,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L2",
+     "x": 155,
+     "y": 85,
+     "side": "paid"
+    },
+    {
+     "lv": "L3",
+     "x": 155,
+     "y": 78,
+     "side": "boh"
+    }
+   ],
+   "staff": true
+  },
+  {
+   "id": "STAIR-SVC",
+   "name": "Staff stair",
+   "type": "stairs",
+   "acc": false,
+   "stops": [
+    {
+     "lv": "B1",
+     "x": 150,
+     "y": 50,
+     "side": "boh"
+    },
+    {
+     "lv": "L3",
+     "x": 150,
+     "y": 78,
+     "side": "boh"
+    }
+   ],
+   "staff": true
+  },
+  {
+   "id": "DOOR-L3",
+   "name": "Plant door (staff)",
+   "type": "stairs",
+   "acc": true,
+   "stops": [
+    {
+     "lv": "L3",
+     "x": 45,
+     "y": 30,
+     "side": "paid"
+    },
+    {
+     "lv": "L3",
+     "x": 45,
+     "y": 78,
+     "side": "boh"
+    }
+   ],
+   "staff": true,
+   "cost": 10
+  }
+ ],
+ "assets": [
+  {
+   "id": "AHU-B1",
+   "name": "AHU-B1 air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-B1"
+  },
+  {
+   "id": "AHU-CS",
+   "name": "AHU-CS air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-CS"
+  },
+  {
+   "id": "AHU-G1",
+   "name": "AHU-G1 air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-G1"
+  },
+  {
+   "id": "AHU-G2",
+   "name": "AHU-G2 air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-G2"
+  },
+  {
+   "id": "AHU-T",
+   "name": "AHU-T air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-T"
+  },
+  {
+   "id": "AHU-L1",
+   "name": "AHU-L1 air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-L1"
+  },
+  {
+   "id": "AHU-EO",
+   "name": "AHU-EO air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-EO"
+  },
+  {
+   "id": "AHU-L2",
+   "name": "AHU-L2 air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-L2"
+  },
+  {
+   "id": "AHU-PL",
+   "name": "AHU-PL air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-PL"
+  },
+  {
+   "id": "AHU-L3",
+   "name": "AHU-L3 air handling unit",
+   "kind": "ahu",
+   "space": "L3-AHU-L3"
+  },
+  {
+   "id": "EX01",
+   "name": "Wave tank",
+   "kind": "exhibit",
+   "space": "G-EX01"
+  },
+  {
+   "id": "EX02",
+   "name": "Tornado vortex",
+   "kind": "exhibit",
+   "space": "G-EX02"
+  },
+  {
+   "id": "EX03",
+   "name": "Water play table",
+   "kind": "exhibit",
+   "space": "G-EX03"
+  },
+  {
+   "id": "EX04",
+   "name": "Tide & harbour model",
+   "kind": "exhibit",
+   "space": "G-EX04"
+  },
+  {
+   "id": "EX05",
+   "name": "Mars rover prototype",
+   "kind": "exhibit",
+   "space": "L1-EX05"
+  },
+  {
+   "id": "EX06",
+   "name": "Earthquake house",
+   "kind": "exhibit",
+   "space": "L1-EX06"
+  },
+  {
+   "id": "EX07",
+   "name": "Van de Graaff theatre",
+   "kind": "exhibit",
+   "space": "L1-EX07"
+  },
+  {
+   "id": "EX08",
+   "name": "Bridge-building pit",
+   "kind": "exhibit",
+   "space": "L1-EX08"
+  },
+  {
+   "id": "EX09",
+   "name": "Flight simulator pods",
+   "kind": "exhibit",
+   "space": "L2-EX09"
+  },
+  {
+   "id": "EX10",
+   "name": "Apollo command module (replica)",
+   "kind": "exhibit",
+   "space": "L2-EX10"
+  },
+  {
+   "id": "EX11",
+   "name": "Planetarium projector",
+   "kind": "exhibit",
+   "space": "L2-EX11"
+  },
+  {
+   "id": "EX101",
+   "name": "Archimedes screw",
+   "kind": "exhibit",
+   "space": "G-EX101"
+  },
+  {
+   "id": "EX102",
+   "name": "Rain-making cloud",
+   "kind": "exhibit",
+   "space": "G-EX102"
+  },
+  {
+   "id": "EX103",
+   "name": "Harbour radar",
+   "kind": "exhibit",
+   "space": "G-EX103"
+  },
+  {
+   "id": "EX104",
+   "name": "Ship stability tank",
+   "kind": "exhibit",
+   "space": "G-EX104"
+  },
+  {
+   "id": "EX105",
+   "name": "Tinker bench 1",
+   "kind": "exhibit",
+   "space": "G-EX105"
+  },
+  {
+   "id": "EX106",
+   "name": "Tinker bench 2",
+   "kind": "exhibit",
+   "space": "G-EX106"
+  },
+  {
+   "id": "EX107",
+   "name": "Tinker bench 3",
+   "kind": "exhibit",
+   "space": "G-EX107"
+  },
+  {
+   "id": "EX108",
+   "name": "Tinker bench 4",
+   "kind": "exhibit",
+   "space": "G-EX108"
+  },
+  {
+   "id": "EX109",
+   "name": "Tinker bench 5",
+   "kind": "exhibit",
+   "space": "G-EX109"
+  },
+  {
+   "id": "EX110",
+   "name": "Tinker bench 6",
+   "kind": "exhibit",
+   "space": "G-EX110"
+  },
+  {
+   "id": "EX111",
+   "name": "Soft-play reef",
+   "kind": "exhibit",
+   "space": "G-EX111"
+  },
+  {
+   "id": "EX112",
+   "name": "Ball-run wall",
+   "kind": "exhibit",
+   "space": "G-EX112"
+  },
+  {
+   "id": "EX113",
+   "name": "Mini market",
+   "kind": "exhibit",
+   "space": "G-EX113"
+  },
+  {
+   "id": "EX114",
+   "name": "Infinity mirrors",
+   "kind": "exhibit",
+   "space": "L1-EX114"
+  },
+  {
+   "id": "EX115",
+   "name": "Laser harp",
+   "kind": "exhibit",
+   "space": "L1-EX115"
+  },
+  {
+   "id": "EX116",
+   "name": "Echo tube",
+   "kind": "exhibit",
+   "space": "L1-EX116"
+  },
+  {
+   "id": "EX117",
+   "name": "Colour shadows",
+   "kind": "exhibit",
+   "space": "L1-EX117"
+  },
+  {
+   "id": "EX118",
+   "name": "Giant heart walk-through",
+   "kind": "exhibit",
+   "space": "L1-EX118"
+  },
+  {
+   "id": "EX119",
+   "name": "Reaction timer",
+   "kind": "exhibit",
+   "space": "L1-EX119"
+  },
+  {
+   "id": "EX120",
+   "name": "Skeleton bike",
+   "kind": "exhibit",
+   "space": "L1-EX120"
+  },
+  {
+   "id": "EX121",
+   "name": "Microscope bar",
+   "kind": "exhibit",
+   "space": "L1-EX121"
+  },
+  {
+   "id": "EX122",
+   "name": "Sleep lab",
+   "kind": "exhibit",
+   "space": "L1-EX122"
+  },
+  {
+   "id": "EX123",
+   "name": "Wind tunnel",
+   "kind": "exhibit",
+   "space": "L1-EX123"
+  },
+  {
+   "id": "EX124",
+   "name": "Robot arm bay",
+   "kind": "exhibit",
+   "space": "L1-EX124"
+  },
+  {
+   "id": "EX125",
+   "name": "3D-print bar",
+   "kind": "exhibit",
+   "space": "L1-EX125"
+  },
+  {
+   "id": "EX126",
+   "name": "Crane challenge",
+   "kind": "exhibit",
+   "space": "L1-EX126"
+  },
+  {
+   "id": "EX127",
+   "name": "Mars terrain sandpit",
+   "kind": "exhibit",
+   "space": "L1-EX127"
+  },
+  {
+   "id": "EX128",
+   "name": "Drill-core station",
+   "kind": "exhibit",
+   "space": "L1-EX128"
+  },
+  {
+   "id": "EX129",
+   "name": "Meteorite case M1",
+   "kind": "exhibit",
+   "space": "L1-EX129"
+  },
+  {
+   "id": "EX130",
+   "name": "Meteorite case M2",
+   "kind": "exhibit",
+   "space": "L1-EX130"
+  },
+  {
+   "id": "EX131",
+   "name": "VR descent pods",
+   "kind": "exhibit",
+   "space": "L1-EX131"
+  },
+  {
+   "id": "EX132",
+   "name": "Satellite gallery",
+   "kind": "exhibit",
+   "space": "L2-EX132"
+  },
+  {
+   "id": "EX133",
+   "name": "Rocket engine cutaway",
+   "kind": "exhibit",
+   "space": "L2-EX133"
+  },
+  {
+   "id": "EX134",
+   "name": "Jet engine",
+   "kind": "exhibit",
+   "space": "L2-EX134"
+  },
+  {
+   "id": "EX135",
+   "name": "Ice-core freezer",
+   "kind": "exhibit",
+   "space": "L2-EX135"
+  },
+  {
+   "id": "EX136",
+   "name": "Carbon wall",
+   "kind": "exhibit",
+   "space": "L2-EX136"
+  },
+  {
+   "id": "EX137",
+   "name": "Sea-level table",
+   "kind": "exhibit",
+   "space": "L2-EX137"
+  },
+  {
+   "id": "EX138",
+   "name": "Storm simulator",
+   "kind": "exhibit",
+   "space": "L2-EX138"
+  },
+  {
+   "id": "EX139",
+   "name": "Harbourline raptor (cast)",
+   "kind": "exhibit",
+   "space": "L2-EX139"
+  },
+  {
+   "id": "EX140",
+   "name": "Rock-cycle table",
+   "kind": "exhibit",
+   "space": "L2-EX140"
+  },
+  {
+   "id": "EX141",
+   "name": "Seismograph",
+   "kind": "exhibit",
+   "space": "L2-EX141"
+  },
+  {
+   "id": "EX142",
+   "name": "Test track",
+   "kind": "exhibit",
+   "space": "L2-EX142"
+  },
+  {
+   "id": "EX143",
+   "name": "Drop tower",
+   "kind": "exhibit",
+   "space": "L2-EX143"
+  },
+  {
+   "id": "EX144",
+   "name": "35 cm telescope",
+   "kind": "exhibit",
+   "space": "L3-EX144"
+  },
+  {
+   "id": "EX145",
+   "name": "Studio 1 kit trolley",
+   "kind": "exhibit",
+   "space": "L3-EX145"
+  },
+  {
+   "id": "EX146",
+   "name": "Studio 2 kit trolley",
+   "kind": "exhibit",
+   "space": "L3-EX146"
+  },
+  {
+   "id": "EX147",
+   "name": "Studio 3 kit trolley",
+   "kind": "exhibit",
+   "space": "L3-EX147"
+  },
+  {
+   "id": "EX148",
+   "name": "Studio 4 kit trolley",
+   "kind": "exhibit",
+   "space": "L3-EX148"
+  },
+  {
+   "id": "EX149",
+   "name": "Studio 5 kit trolley",
+   "kind": "exhibit",
+   "space": "L3-EX149"
+  },
+  {
+   "id": "EX150",
+   "name": "Studio 6 kit trolley",
+   "kind": "exhibit",
+   "space": "L3-EX150"
+  },
+  {
+   "id": "LIFT-A",
+   "name": "Lift A",
+   "kind": "lift",
+   "space": "G-LIFT-A"
+  },
+  {
+   "id": "LIFT-B",
+   "name": "Lift B",
+   "kind": "lift",
+   "space": "G-LIFT-B"
+  },
+  {
+   "id": "ESC-1",
+   "name": "Atrium escalators",
+   "kind": "esc",
+   "space": "G-ESC-1"
+  },
+  {
+   "id": "LIFT-SVC",
+   "name": "Service & goods lift",
+   "kind": "lift",
+   "space": "B1-LIFT-SVC"
+  }
+ ],
+ "view": {
+  "cx": 80,
+  "cy": 55,
+  "dist": 108,
+  "lab": [
+   -6,
+   55
+  ]
+ },
+ "brief": "Science centre, 5 levels: B1 collections & BOH, G entry & discovery (free atrium, ticket gates, school entrance), L1 galleries + Mars touring hall (timed entry), L2 galleries + planetarium, L3 learning studios, roof, security control & plant."
+}
