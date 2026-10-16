@@ -1,6 +1,6 @@
 # Venue ops twin source
 
-Source for the operational digital twins: the Harbourline airport, stadium and science centre on a shared engine, the science centre on the Mappedin JS SDK, and the Backlot studio-tour prototype. It was recovered on 16 Oct 2026 from the published pages, after the original working files were lost between sessions.
+Source for the operational digital twins: the Harbourline airport, stadium and science centre on a shared engine, the science centre on the Mappedin JS SDK, the Backlot studio-tour prototype, and the KSA portfolio command centre. It was recovered on 16 Oct 2026 from the published pages, after the original working files were lost between sessions.
 
 ## Layout
 
@@ -23,6 +23,9 @@ src/
   backlot/
     mappedin-demo-venue.html  Backlot twin on the Mappedin public demo venue
     mockup-3d.html            first three.js mock-up of the Backlot model
+  ksa-portfolio/
+    command-centre.html       KSA portfolio command centre: national map, six asset twins,
+                              integration fabric and agent scenarios (single self-contained page)
 ```
 
 Each venue has three files. **venue.json** holds the levels, spaces, connectors, assets and walk spines; it is the output the venue generators produced. **pack.js** holds the scenario beats, layers, KPIs, list tab and the venue-specific keys and metrics. **page.json** holds the header, footer and tab labels.
@@ -45,7 +48,8 @@ These files never made it into a published page, so they are gone. Rebuild them 
 - **MVF generator** (gen_mvf_hsc.mjs). Its output for the science centre is mappedin/hsc.mvf.json. Known issue to fix in any rewrite: the L3 and B1 cores sit in different places from G–L2, so the shafts don't stack.
 - **DXF converter** (mvf_to_dxf.py). It wrote metre-scale DXFs with layers WALLS, DOORS, ROOMS, OBJECTS and LABELS, and every floor used one shared frame so Maker could not rescale them.
 - **Maker automation helpers** (cal.py, nm.py, cn.py, hw.py, gen.py). The calibration notes and gotchas live in the Project doc `claude/mappedin-sdk-twin.md`.
-- **Public-site build** (build_public.py). It produced the landing page, llms.txt, robots.txt, sitemap.xml and the disclaimer version of the Osool page.
+- **Public-site build** (build_public.py). It produced the landing page, llms.txt, robots.txt and sitemap.xml.
+- **Command centre parts** (part1.html, part2–4.js). The assembled page in ksa-portfolio/ is complete and is now the source.
 
 ## Maps in Mappedin Maker
 
