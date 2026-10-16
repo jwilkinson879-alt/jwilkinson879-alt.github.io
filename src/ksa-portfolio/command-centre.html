@@ -196,27 +196,27 @@ footer.credit{display:grid;gap:10px;border-top:1px solid var(--line);padding-top
 // ---------------- portfolio data (portfolio total verified; site splits illustrative) ----------------
 const TYPES={com:{name:'Commercial',c:'--com'},ret:{name:'Retail',c:'--ret'},res:{name:'Residential',c:'--res'}};
 const SITES=[
- {id:'olaya',name:'Olaya Cluster',sub:'Office towers 1–3 and retail podium',city:'Riyadh',region:'Central',type:'com',lon:46.675,lat:24.700,gla:2.6,twin:'olaya'},
- {id:'digital',name:'Digital City',sub:'Business park · portfolio HQ',city:'Riyadh',region:'Central',type:'com',lon:46.635,lat:24.765,gla:3.4,twin:'digital'},
- {id:'granadabp',name:'Granada Business Park',sub:'Office campus',city:'Riyadh',region:'Central',type:'com',lon:46.722,lat:24.792,gla:1.9},
- {id:'granada',name:'Granada Mall',sub:'Regional mall',city:'Riyadh',region:'Central',type:'ret',lon:46.738,lat:24.773,gla:2.2,twin:'granada'},
- {id:'dq',name:'Diplomatic Quarter',sub:'Residential and mixed use',city:'Riyadh',region:'Central',type:'res',lon:46.622,lat:24.684,gla:1.2},
- {id:'ishbilia',name:'Ishbilia Compound',sub:'Gated residential compound',city:'Riyadh',region:'Central',type:'res',lon:46.800,lat:24.800,gla:1.8,twin:'ishbilia'},
- {id:'obhur',name:'Obhur City',sub:'Mixed-use residential community',city:'Jeddah',region:'West',type:'res',lon:39.14,lat:21.76,gla:10.1,twin:'obhur'},
- {id:'obhurret',name:'Obhur City retail & amenities',sub:'Boulevard retail',city:'Jeddah',region:'West',type:'ret',lon:39.16,lat:21.72,gla:0.9},
+ {id:'officecl',name:'Riyadh Office Cluster',sub:'Office towers 1–3 and retail podium',city:'Riyadh',region:'Central',type:'com',lon:46.675,lat:24.700,gla:2.6,twin:'officecl'},
+ {id:'techpark',name:'Riyadh Tech Park',sub:'Business park · portfolio HQ',city:'Riyadh',region:'Central',type:'com',lon:46.635,lat:24.765,gla:3.4,twin:'techpark'},
+ {id:'northbp',name:'Riyadh North Business Park',sub:'Office campus',city:'Riyadh',region:'Central',type:'com',lon:46.722,lat:24.792,gla:1.9},
+ {id:'regmall',name:'Riyadh Regional Mall',sub:'Regional mall',city:'Riyadh',region:'Central',type:'ret',lon:46.738,lat:24.773,gla:2.2,twin:'regmall'},
+ {id:'westres',name:'Riyadh West Residences',sub:'Residential and mixed use',city:'Riyadh',region:'Central',type:'res',lon:46.622,lat:24.684,gla:1.2},
+ {id:'eastcmp',name:'Riyadh East Compound',sub:'Gated residential compound',city:'Riyadh',region:'Central',type:'res',lon:46.800,lat:24.800,gla:1.8,twin:'eastcmp'},
+ {id:'jedcoast',name:'Jeddah Coastal Community',sub:'Mixed-use residential community',city:'Jeddah',region:'West',type:'res',lon:39.14,lat:21.76,gla:10.1,twin:'jedcoast'},
+ {id:'jedcoastret',name:'Jeddah Coastal Community retail & amenities',sub:'Boulevard retail',city:'Jeddah',region:'West',type:'ret',lon:39.16,lat:21.72,gla:0.9},
  {id:'jedcom',name:'Jeddah office building',sub:'Illustrative site',city:'Jeddah',region:'West',type:'com',lon:39.18,lat:21.55,gla:0.8},
  {id:'mak1',name:'Makkah residential',sub:'Illustrative site',city:'Makkah',region:'West',type:'res',lon:39.83,lat:21.42,gla:1.3},
  {id:'mak2',name:'Makkah retail',sub:'Illustrative site',city:'Makkah',region:'West',type:'ret',lon:39.88,lat:21.38,gla:0.5},
  {id:'mad1',name:'Madinah residential',sub:'Illustrative site',city:'Madinah',region:'West',type:'res',lon:39.61,lat:24.47,gla:1.0},
  {id:'mad2',name:'Madinah retail centre',sub:'Illustrative site',city:'Madinah',region:'West',type:'ret',lon:39.57,lat:24.51,gla:0.6},
- {id:'rakah',name:'Rakah Compound',sub:'Furnished waterfront villas',city:'Al Khobar',region:'East',type:'res',lon:50.17,lat:26.36,gla:1.6,twin:'rakah'},
+ {id:'khobarwf',name:'Khobar Waterfront Compound',sub:'Furnished waterfront villas',city:'Al Khobar',region:'East',type:'res',lon:50.17,lat:26.36,gla:1.6,twin:'khobarwf'},
  {id:'dammamret',name:'Dammam retail centre',sub:'Illustrative site',city:'Dammam',region:'East',type:'ret',lon:50.08,lat:26.43,gla:0.8},
  {id:'jubail',name:'Jubail business park',sub:'Illustrative site',city:'Jubail',region:'East',type:'com',lon:49.62,lat:27.00,gla:0.7},
  {id:'khobar',name:'Khobar office tower',sub:'Illustrative site',city:'Al Khobar',region:'East',type:'com',lon:50.21,lat:26.29,gla:0.6}];
 const SITE=Object.fromEntries(SITES.map(s=>[s.id,s]));
 const LAYERS=[['all','All'],['maint','Maintenance & SLAs'],['care','PortfolioCare & tenants'],['lease','Leasing & occupancy'],['esec','Energy, metering & security']];
-const BEATS=[{t:'07:00',label:'Portfolio briefing'},{t:'09:15',label:'Chiller trip · Olaya Tower 2'},{t:'11:40',label:'Fibre cut · Obhur City Zone 2'},
- {t:'16:20',label:'Gate tailgating · Ishbilia'},{t:'21:30',label:'Ramadan peak · Granada Mall'},{t:'23:50',label:'Villa turnaround · Rakah'}];
+const BEATS=[{t:'07:00',label:'Portfolio briefing'},{t:'09:15',label:'Chiller trip · Riyadh Tower 2'},{t:'11:40',label:'Fibre cut · Jeddah Coastal Community Zone 2'},
+ {t:'16:20',label:'Gate tailgating · Riyadh East Compound'},{t:'21:30',label:'Ramadan peak · Riyadh Regional Mall'},{t:'23:50',label:'Villa turnaround · Khobar Waterfront'}];
 function rng(seed){ let h=2166136261; for(const c of seed) h=Math.imul(h^c.charCodeAt(0),16777619); return ()=>{ h^=h<<13; h^=h>>>17; h^=h<<5; return ((h>>>0)%10000)/10000; }; }
 let st, layer='all', view='map', twin=null, sel=null, timers=[];
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
@@ -246,7 +246,7 @@ function siteChips(s,v){ const L=layer, c=(t,k)=>`<span class="chip${k?' '+k:''}
 function agg(){ let wo=0,over=0,care=0,al=0,occN=0,occD=0,slaN=0,net=0,mw=0; SITES.forEach(s=>{ const v=st.site[s.id]; wo+=v.wo; over+=v.woOver; care+=v.care; al+=v.alarms; occN+=v.occ*s.gla; occD+=s.gla; slaN+=v.sla*s.gla; net+=v.net*s.gla; mw+=v.mw; });
   return {wo,over,care,al,occ:occN/occD,sla:slaN/occD,net:net/occD,mw}; }
 function renderKpis(){ const a=agg(); const K=[['Portfolio GLA','32.0M','sq ft · verified'],['Sites','17','3 regions'],['Open work orders',fmt(a.wo),fmt(a.over)+' overdue',a.over>420?'amber':''],
-  ['SLA compliance · Cat A',a.sla.toFixed(1)+'%','SERCO TFM',a.sla<95?'amber':''],['PortfolioCare open',fmt(a.care),'tickets'],['Occupancy',a.occ.toFixed(1)+'%','GLA-weighted'],
+  ['SLA compliance · Cat A',a.sla.toFixed(1)+'%','TFM partner',a.sla<95?'amber':''],['PortfolioCare open',fmt(a.care),'tickets'],['Occupancy',a.occ.toFixed(1)+'%','GLA-weighted'],
   ['Active alarms',a.al,'BMS · fire · security',a.al>=6?'bad':a.al>=3?'amber':''],['IT/OT network',a.net.toFixed(2)+'%','availability',a.net<99.4?'amber':'']];
   document.getElementById('kpis').innerHTML=K.map(k=>`<div class="kpi ${k[3]||''}"><div>${k[0]}</div><strong>${k[1]}</strong><small>${k[2]}</small></div>`).join(''); }
 // ---------------- asset-type lanes ----------------
@@ -314,11 +314,11 @@ function renderDetail(){ const d=document.getElementById('detail'); const kv=(k,
 const FAB_NODES=[
  {id:'f-bms',col:0,name:'BMS & chillers',sub:'BACnet · Modbus',rate:2400},{id:'f-lift',col:0,name:'Lifts & escalators',sub:'Remote monitoring',rate:180},{id:'f-fire',col:0,name:'Fire & life safety',sub:'Panels · sprinklers',rate:60},
  {id:'f-meter',col:0,name:'Utility meters',sub:'Electric · water · cooling',rate:5200},{id:'f-cctv',col:0,name:'CCTV cameras',sub:'ONVIF · analytics',rate:900},{id:'f-acs',col:0,name:'Access control',sub:'Gates · turnstiles · doors',rate:640},{id:'f-iot',col:0,name:'Footfall & occupancy',sub:'People counters · sensors',rate:1300},
- {id:'n-ot',col:1,name:'Converged OT network',sub:'Segmented VLANs',rate:0},{id:'n-fibre',col:1,name:'Fibre rings',sub:'Obhur · campuses',rate:0},{id:'n-it',col:1,name:'IT network & SD-WAN',sub:'17 sites',rate:0},{id:'n-sec',col:1,name:'OT cyber monitoring',sub:'NAC · anomaly detection',rate:0},
+ {id:'n-ot',col:1,name:'Converged OT network',sub:'Segmented VLANs',rate:0},{id:'n-fibre',col:1,name:'Fibre rings',sub:'Jeddah coastal · campuses',rate:0},{id:'n-it',col:1,name:'IT network & SD-WAN',sub:'17 sites',rate:0},{id:'n-sec',col:1,name:'OT cyber monitoring',sub:'NAC · anomaly detection',rate:0},
  {id:'p-max',col:2,name:'IBM Maximo',sub:'CMMS / EAM · work orders',rate:310},{id:'p-yardi',col:2,name:'Yardi',sub:'Property mgmt · leasing',rate:120},{id:'p-care',col:2,name:'PortfolioCare',sub:'Helpdesk · tenant app',rate:150},
  {id:'p-psim',col:2,name:'PSIM / VMS',sub:'Security operations',rate:420},{id:'p-energy',col:2,name:'Energy & metering',sub:'Billing · analytics',rate:260},{id:'p-erp',col:2,name:'ERP & procurement',sub:'Finance · contracts',rate:40},
  {id:'d-hub',col:3,name:'Integration hub',sub:'Event bus · APIs · MQTT',rate:0},{id:'d-data',col:3,name:'Data platform',sub:'Lakehouse · digital twins',rate:0},{id:'d-agents',col:3,name:'Agent layer',sub:'Propose · act · inform',rate:0},
- {id:'c-cmd',col:4,name:'Command centre',sub:'Duty managers · Digital City',rate:0},{id:'c-field',col:4,name:'SERCO & contractors',sub:'Mobile work orders',rate:0},{id:'c-ten',col:4,name:'Tenants & visitors',sub:'App · portal · SMS',rate:0}];
+ {id:'c-cmd',col:4,name:'Command centre',sub:'Duty managers · Riyadh Tech Park',rate:0},{id:'c-field',col:4,name:'TFM partner & contractors',sub:'Mobile work orders',rate:0},{id:'c-ten',col:4,name:'Tenants & visitors',sub:'App · portal · SMS',rate:0}];
 const FAB_LINKS=[['f-bms','n-ot'],['f-lift','n-ot'],['f-fire','n-ot'],['f-meter','n-fibre'],['f-meter','n-ot'],['f-cctv','n-fibre'],['f-cctv','n-ot'],['f-acs','n-ot'],['f-iot','n-it'],['n-sec','n-ot'],
  ['n-ot','d-hub'],['n-fibre','d-hub'],['n-it','d-hub'],['d-hub','p-max'],['d-hub','p-yardi'],['d-hub','p-care'],['d-hub','p-psim'],['d-hub','p-energy'],['d-hub','p-erp'],
  ['p-max','d-data'],['p-yardi','d-data'],['p-care','d-data'],['p-psim','d-data'],['p-energy','d-data'],['p-erp','d-data'],['d-data','d-agents'],['d-agents','c-cmd'],['c-cmd','c-field'],['c-cmd','c-ten'],['p-max','c-field'],['p-care','c-ten']];
@@ -351,9 +351,9 @@ function makeTwin(site,name,systems,fn){ const T={site,name,systems,parts:[],poi
   const line=(a,b)=>T.lines.push([a,b]);
   fn(box,pt,line); return T; }
 const TW={
- olaya:makeTwin('olaya','Olaya Tower 2','BMS · Maximo · PSIM · metering · OT network',(box,pt)=>{
-   box('og','Olaya Cluster site',0,0,-.3,170,120,.3,'ground');
-   box('T1','Olaya Tower 1',-60,8,0,30,30,88,'office',false,{label:1}); box('T3','Olaya Tower 3',60,8,0,30,30,96,'office',false,{label:1});
+ officecl:makeTwin('officecl','Riyadh Tower 2','BMS · Maximo · PSIM · metering · OT network',(box,pt)=>{
+   box('og','Riyadh Office Cluster site',0,0,-.3,170,120,.3,'ground');
+   box('T1','Riyadh Tower 1',-60,8,0,30,30,88,'office',false,{label:1}); box('T3','Riyadh Tower 3',60,8,0,30,30,96,'office',false,{label:1});
    ['Retail podium · ground','Retail podium · level 1','Retail podium · level 2'].forEach((n,i)=>box('P'+(i+1),n,0,0,i*5,62,44,4.8,'retail',true));
    for(let f=4;f<=33;f++) box('L'+String(f).padStart(2,'0'),'Tower 2 · level '+f,0,6,15+(f-4)*4,36,36,3.8,'office',true);
    box('RP','Tower 2 roof plant',0,6,135,30,30,5,'plant',false,{label:1});
@@ -366,8 +366,8 @@ const TW={
    for(let f=5;f<=30;f+=5) pt('MTR-L'+f,'Tenant meter · level '+f,'meter',-18.5,6,15+(f-4)*4+2);
    pt('NET-B1','Core switch · basement','net',22,22,0.5); pt('NET-L15','OT switch · level 15','net',18.5,18,57); pt('NET-RF','OT switch · roof','net',14,20,138);
  }),
- digital:makeTwin('digital','Digital City','BMS · district cooling · Maximo · PSIM · fibre ring',(box,pt,line)=>{
-   box('dg','Digital City site',0,0,-.3,330,250,.3,'ground'); box('plaza','Central plaza',0,0,0,230,26,.4,'amen',false,{label:1});
+ techpark:makeTwin('techpark','Riyadh Tech Park','BMS · district cooling · Maximo · PSIM · fibre ring',(box,pt,line)=>{
+   box('dg','Riyadh Tech Park site',0,0,-.3,330,250,.3,'ground'); box('plaza','Central plaza',0,0,0,230,26,.4,'amen',false,{label:1});
    const fl=[8,6,5,7,4,6,5,8]; const nm=['Portfolio HQ · command centre','Building 2','Building 3','Building 4','Building 5','Building 6','Building 7','Building 8'];
    for(let i=0;i<8;i++){ const x=-120+(i%4)*80, y=i<4?52:-52; box('B'+(i+1),nm[i],x,y,0,52,34,fl[i]*4.2,'office',true,{label:1});
      pt('RN-'+(i+1),'Fibre ring node · B'+(i+1),'net',x+28,y,2); pt('MTR-B'+(i+1),'Building meter · B'+(i+1),'meter',x-28,y,2); }
@@ -376,8 +376,8 @@ const TW={
    pt('G1','West gate','access',-160,0,1.5); pt('G2','East gate','access',160,0,1.5); pt('FACP','Campus fire panel','fire',0,-92,2); pt('GEN-1','Standby generators','power',30,-108,2);
    for(let i=0;i<12;i++){ const a=i/12*Math.PI*2; pt('CCTV-'+String(i+1).padStart(2,'0'),'Camera '+(i+1),'cctv',Math.cos(a)*158,Math.sin(a)*112,5); }
  }),
- granada:makeTwin('granada','Granada Mall','Footfall · BMS · Maximo · PSIM · parking',(box,pt)=>{
-   box('gg','Granada Mall site',0,0,-.3,400,300,.3,'ground');
+ regmall:makeTwin('regmall','Riyadh Regional Mall','Footfall · BMS · Maximo · PSIM · parking',(box,pt)=>{
+   box('gg','Riyadh Regional Mall site',0,0,-.3,400,300,.3,'ground');
    for(let lv=0;lv<2;lv++) for(let i=0;i<12;i++){ const c=i%6, r=Math.floor(i/6); const id=(lv?'L':'G')+String(i+1).padStart(2,'0');
      const fc=lv===1&&(i===2||i===3); box(id,fc?'Food court':(lv?'Level 1':'Ground')+' shops · zone '+(i+1),-90+c*36,r?25:-25,lv*7,35,49,6.8,'retail',true); }
    box('ANC-W','Anchor store · west',-135,0,0,40,100,14,'retail',true,{label:1}); box('ANC-E','Anchor store · east',135,0,0,40,100,14,'retail',true,{label:1});
@@ -390,8 +390,8 @@ const TW={
    [[-110,-52],[110,-52],[-110,52],[110,52]].forEach(([x,y],i)=>pt('ACS-'+(i+1),'Service door '+(i+1),'access',x,y,1.5));
    pt('FACP','Fire alarm panel','fire',-20,-52,2); pt('NET-1','Core switch','net',20,-52,2); pt('GEN-1','Standby generator','power',150,-95,1.5);
  }),
- ishbilia:makeTwin('ishbilia','Ishbilia Compound','Access control · resident app · CCTV · Maximo · metering',(box,pt)=>{
-   box('ig','Ishbilia Compound',0,0,-.3,350,290,.3,'ground');
+ eastcmp:makeTwin('eastcmp','Riyadh East Compound','Access control · resident app · CCTV · Maximo · metering',(box,pt)=>{
+   box('ig','Riyadh East Compound',0,0,-.3,350,290,.3,'ground');
    box('W-S','Perimeter wall · south',0,-140,0,340,1.5,3,'wall'); box('W-N','Perimeter wall · north',0,140,0,340,1.5,3,'wall');
    box('W-W','Perimeter wall · west',-170,0,0,1.5,280,3,'wall'); box('W-E','Perimeter wall · east',170,0,0,1.5,280,3,'wall');
    const rows='ABCDEFGHIJ'; let n=0;
@@ -405,8 +405,8 @@ const TW={
    pt('NET-1','Compound network hub','net',20,30,1); pt('FACP','Clubhouse fire panel','fire',-20,30,1); pt('GEN-1','Standby generator','power',-150,-130,1.5);
    pt('HVAC-C','Clubhouse chiller','hvac',0,22,8.5);
  }),
- obhur:makeTwin('obhur','Obhur City','Fibre ring · smart meters · CCTV · Maximo · Yardi',(box,pt,line)=>{
-   box('obg','Obhur City',0,0,-.3,540,380,.3,'ground'); box('BLVD','Central boulevard',0,0,0,500,22,.4,'amen',false,{label:1});
+ jedcoast:makeTwin('jedcoast','Jeddah Coastal Community','Fibre ring · smart meters · CCTV · Maximo · Yardi',(box,pt,line)=>{
+   box('obg','Jeddah Coastal Community',0,0,-.3,540,380,.3,'ground'); box('BLVD','Central boulevard',0,0,0,500,22,.4,'amen',false,{label:1});
    const Z=[[-130,95,'Zone 1'],[130,95,'Zone 2'],[-130,-95,'Zone 3'],[130,-95,'Zone 4']];
    Z.forEach(([cx,cy,zn],zi)=>{ for(let i=0;i<8;i++){ const x=cx-75+(i%4)*50, y=cy+(i<4?28:-28); const fl=6+((zi*3+i)%5); const id='Z'+(zi+1)+'-B'+String(i+1).padStart(2,'0');
        box(id,zn+' · block '+(i+1),x,y,0,36,17,fl*3.4,'res',true,{zone:zi+1}); pt('MTR-'+id,zn+' · block '+(i+1)+' meters','meter',x+19,y,2,{zone:zi+1}); }
@@ -420,8 +420,8 @@ const TW={
    [[-260,95],[260,95],[-260,-95],[260,-95]].forEach(([x,y],i)=>pt('ACS-'+(i+1),'Car park gate '+(i+1),'access',x,y,1.5,{zone:i+1}));
    pt('FACP','Community fire panel','fire',-200,22,1); pt('HVAC-DC','District cooling','hvac',-215,-30,1.5); pt('GEN-1','Standby generators','power',-230,-30,1.5);
  }),
- rakah:makeTwin('rakah','Rakah Compound','Yardi turnaround · Maximo · access · CCTV · metering',(box,pt)=>{
-   box('rg','Rakah Compound',0,0,-.3,440,320,.3,'ground'); box('SEA','Gulf waterfront',0,135,0,440,50,.2,'sea',false,{label:1});
+ khobarwf:makeTwin('khobarwf','Khobar Waterfront Compound','Yardi turnaround · Maximo · access · CCTV · metering',(box,pt)=>{
+   box('rg','Khobar Waterfront Compound',0,0,-.3,440,320,.3,'ground'); box('SEA','Gulf waterfront',0,135,0,440,50,.2,'sea',false,{label:1});
    const rows=[[70,22,'A'],[38,22,'B'],[6,22,'C'],[-26,20,'D']];
    rows.forEach(([yb,n,rl])=>{ for(let i=0;i<n;i++){ const x=-189+i*18+(rl==='D'?18:0), y=yb+Math.sin(i/3)*6; box('V-'+rl+String(i+1).padStart(2,'0'),'Villa '+rl+'-'+String(i+1).padStart(2,'0'),x,y,0,14,11,6.5,'res',true); } });
    box('CLUB','Clubhouse & marina café',0,-70,0,50,22,8,'amen',false,{label:1}); box('PLANT','Desalination & plant room',150,-90,0,30,18,6,'plant',false,{label:1});
@@ -517,11 +517,11 @@ function placeLabels(){ const T=TW[twin]; const seen={};
   Object.keys(pinEls).forEach(k=>{ if(!seenP[k]){ pinEls[k].remove(); delete pinEls[k]; } }); }
 // ---------------- views ----------------
 const mapEl=document.getElementById('map'), infobox=document.getElementById('infobox'), twinbar=document.getElementById('twinbar');
-const TWIN_ORDER=[['com',['olaya','digital']],['ret',['granada']],['res',['ishbilia','obhur','rakah']]];
+const TWIN_ORDER=[['com',['officecl','techpark']],['ret',['regmall']],['res',['eastcmp','jedcoast','khobarwf']]];
 function setView(v){ view=v; document.querySelectorAll('#views button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));
   const cv=T3&&T3.renderer.domElement; mapEl.style.display=v==='map'?'block':'none'; if(cv) cv.hidden=v!=='twin';
   twinbar.hidden=v!=='twin'; infobox.hidden=v!=='twin'||!twin; document.getElementById('hint').textContent=v==='map'?'Hover or click a site · the six TWIN sites open in 3D':'Drag to orbit · right-drag to pan · scroll to zoom · click any part';
-  if(v==='twin'&&!twin) setTwin('olaya'); if(v==='map'){ Object.values(labEls).forEach(e=>e.hidden=true); Object.values(pinEls).forEach(e=>e.hidden=true); renderMap(); }
+  if(v==='twin'&&!twin) setTwin('officecl'); if(v==='map'){ Object.values(labEls).forEach(e=>e.hidden=true); Object.values(pinEls).forEach(e=>e.hidden=true); renderMap(); }
   renderLegend(); renderDetail(); }
 function setTwin(key){ if(!T3){ setView('map'); return; } twin=key; sel=null; buildTwin(key); renderTwinbar(); renderInfo(); setView('twin'); }
 function openSite(id){ const s=SITE[id]; sel=id; if(s.twin&&T3){ setTwin(s.twin); } else { setView('map'); renderMap(); renderDetail(); } }
@@ -559,79 +559,79 @@ const ptsWhere=(key,f)=>TW[key].points.filter(f).map(q=>q.id);
 // ---------------- scenarios ----------------
 const RUN=[
  ()=>{ layer='all'; feed({who:'Portfolio ops agent',level:'act',sev:'info',title:'07:00 briefing · 17 sites, 32.0M sq ft, Ramadan operating hours in force',
-   body:'Malls trade until 02:00; Granada Mall footfall forecast +35% after Iftar. 1,420 planned maintenance tasks due this week across 3 regions. Rakah has 6 villas in turnaround against the 3-day target. OT cyber monitoring flagged 2 unpatched camera recorders at Obhur City for tonight\'s maintenance window. All CMMS, security and network integrations healthy.',
-   sys:['Maximo','Yardi','PortfolioCare','PSIM','OT network'],focus:{site:'digital'}});
-   st.site.obhur.alarms=1; },
- ()=>{ layer='maint'; setTwin('olaya'); const S=st.site.olaya; S.alarms=3; S.care+=18; setPts(['CH-2'],'crit'); setPts(['AHU-M','AHU-H'],'warn');
+   body:'Malls trade until 02:00; Riyadh Regional Mall footfall forecast +35% after Iftar. 1,420 planned maintenance tasks due this week across 3 regions. Khobar Waterfront has 6 villas in turnaround against the 3-day target. OT cyber monitoring flagged 2 unpatched camera recorders at Jeddah Coastal Community for tonight\'s maintenance window. All CMMS, security and network integrations healthy.',
+   sys:['Maximo','Yardi','PortfolioCare','PSIM','OT network'],focus:{site:'techpark'}});
+   st.site.jedcoast.alarms=1; },
+ ()=>{ layer='maint'; setTwin('officecl'); const S=st.site.officecl; S.alarms=3; S.care+=18; setPts(['CH-2'],'crit'); setPts(['AHU-M','AHU-H'],'warn');
    for(let f=18;f<=26;f++){ const o=st.obj['L'+f]; o.tk=2+(f%2); o.wo=Math.max(o.wo,1); }
-   fab('f-bms','warn','CH-2 trip · Olaya Tower 2'); fab('p-max','ok','WO-48213 auto-raised');
-   const m=marker({twin:'olaya',site:'olaya',target:'CH-2',sev:'crit',glyph:'!',label:'CH-2 trip · L22 at 26.8°C',live:true}); focus3('L22');
-   feed({who:'Building ops agent',level:'act',sev:'warn',title:'Chiller CH-2 tripped on high head pressure; WO-48213 raised in Maximo (P1)',body:'BMS alarm at 09:12 created the work order automatically, with the asset history, the last PPM and the O&M manual page attached. 9 tenants on levels 18–26 have already logged "too hot" in PortfolioCare.',sys:['BMS','Maximo','PortfolioCare'],focus:{twin:'olaya',target:'CH-2'}});
-   feed({who:'Building ops agent',level:'wait',sev:'crit',title:'Bring CH-3 online, trim fresh air on 18–26 by 15%, dispatch SERCO HVAC, and update tenants',
-     body:'CH-3 is on standby and can carry 70% of the load. With fresh air trimmed on the mid and high zones, levels 18–26 should be back under 24.5°C in about 35 min. Nearest qualified SERCO technician is at Olaya Tower 1 (6 min). Tenants on 18–26 get an PortfolioCare update with an ETA.',
-     sys:['BMS','Maximo','SERCO mobile','PortfolioCare'],focus:{twin:'olaya',target:'CH-2'},
+   fab('f-bms','warn','CH-2 trip · Riyadh Tower 2'); fab('p-max','ok','WO-48213 auto-raised');
+   const m=marker({twin:'officecl',site:'officecl',target:'CH-2',sev:'crit',glyph:'!',label:'CH-2 trip · L22 at 26.8°C',live:true}); focus3('L22');
+   feed({who:'Building ops agent',level:'act',sev:'warn',title:'Chiller CH-2 tripped on high head pressure; WO-48213 raised in Maximo (P1)',body:'BMS alarm at 09:12 created the work order automatically, with the asset history, the last PPM and the O&M manual page attached. 9 tenants on levels 18–26 have already logged "too hot" in PortfolioCare.',sys:['BMS','Maximo','PortfolioCare'],focus:{twin:'officecl',target:'CH-2'}});
+   feed({who:'Building ops agent',level:'wait',sev:'crit',title:'Bring CH-3 online, trim fresh air on 18–26 by 15%, dispatch TFM HVAC, and update tenants',
+     body:'CH-3 is on standby and can carry 70% of the load. With fresh air trimmed on the mid and high zones, levels 18–26 should be back under 24.5°C in about 35 min. Nearest qualified TFM technician is at Riyadh Tower 1 (6 min). Tenants on 18–26 get an PortfolioCare update with an ETA.',
+     sys:['BMS','Maximo','FM mobile','PortfolioCare'],focus:{twin:'officecl',target:'CH-2'},
      actions:[['Approve',c=>{ c.status='Approved by duty facilities manager'; drop(m.id); setPts(['CH-3'],'ok'); setPts(['CH-2'],'warn');
-       marker({twin:'olaya',site:'olaya',target:'CH-3',sev:'info',glyph:'↑',label:'CH-3 online'});
-       route('olaya',[[-60,-12,0],[-30,-30,0],[0,-20,0],[0,-12,0],[0,-12,138],[0,8,142]],'#F5B841',9000);
-       feed({who:'Field dispatch',level:'act',sev:'info',title:'SERCO technician accepted WO-48213 on mobile · ETA 6 min',body:'Tenants on 18–26 notified: "Cooling is being restored, expected by 09:55."',sys:['SERCO mobile','PortfolioCare']});
+       marker({twin:'officecl',site:'officecl',target:'CH-3',sev:'info',glyph:'↑',label:'CH-3 online'});
+       route('officecl',[[-60,-12,0],[-30,-30,0],[0,-20,0],[0,-12,0],[0,-12,138],[0,8,142]],'#F5B841',9000);
+       feed({who:'Field dispatch',level:'act',sev:'info',title:'TFM technician accepted WO-48213 on mobile · ETA 6 min',body:'Tenants on 18–26 notified: "Cooling is being restored, expected by 09:55."',sys:['FM mobile','PortfolioCare']});
        later(2500,()=>{ for(let f=18;f<=26;f++) st.obj['L'+f].tk=1; setPts(['AHU-M','AHU-H'],'ok'); });
        later(5000,()=>{ for(let f=18;f<=26;f++) st.obj['L'+f].tk=0; S.alarms=1; S.care-=16; fab('f-bms','ok',''); fab('p-max','ok','');
          feed({who:'Building ops agent',level:'inform',sev:'good',title:'Levels 18–26 back to 23.6°C; CH-2 compressor fault confirmed, parts ordered',body:'WO-48213 updated with the root cause and a spare-part request. 9 PortfolioCare tickets closed with a note to each tenant.',sys:['BMS','Maximo','PortfolioCare']}); }); },true],
       ['Dispatch only',c=>{ c.status='Edited: technician dispatched, no load changes'; drop(m.id); }]]}); },
- ()=>{ layer='esec'; setTwin('obhur'); const S=st.site.obhur; S.net=96.4; S.alarms=5; S.cams=93.8;
-   setPts(['FN-3'],'crit'); setPts(['FN-2'],'warn'); setPts(ptsWhere('obhur',q=>q.zone===2&&q.sys==='cctv'),'crit'); setPts(ptsWhere('obhur',q=>q.zone===2&&q.sys==='meter'),'warn'); setPts(['ACS-2'],'warn');
+ ()=>{ layer='esec'; setTwin('jedcoast'); const S=st.site.jedcoast; S.net=96.4; S.alarms=5; S.cams=93.8;
+   setPts(['FN-3'],'crit'); setPts(['FN-2'],'warn'); setPts(ptsWhere('jedcoast',q=>q.zone===2&&q.sys==='cctv'),'crit'); setPts(ptsWhere('jedcoast',q=>q.zone===2&&q.sys==='meter'),'warn'); setPts(['ACS-2'],'warn');
    fab('n-fibre','crit','Zone 2 segment down'); fab('f-cctv','warn','4 cameras offline'); fab('f-meter','warn','8 blocks no reads'); fab('n-sec','ok','');
-   const m=marker({twin:'obhur',site:'obhur',target:'FN-3',sev:'crit',glyph:'✕',label:'Fibre cut FN-2 → FN-3',live:true}); focus3('Z2-B03');
-   feed({who:'Network ops agent',level:'act',sev:'warn',title:'Fibre ring Zone 2 segment down; ring protection rerouted traffic in 48 ms',body:'Most of Zone 2 is back on the protect path. Still dark: 4 cameras and 8 blocks of smart meters on a spur off FN-3, and car park gate 2 is running on its local controller.',sys:['OT network','NMS','PSIM'],focus:{twin:'obhur',target:'FN-3'}});
+   const m=marker({twin:'jedcoast',site:'jedcoast',target:'FN-3',sev:'crit',glyph:'✕',label:'Fibre cut FN-2 → FN-3',live:true}); focus3('Z2-B03');
+   feed({who:'Network ops agent',level:'act',sev:'warn',title:'Fibre ring Zone 2 segment down; ring protection rerouted traffic in 48 ms',body:'Most of Zone 2 is back on the protect path. Still dark: 4 cameras and 8 blocks of smart meters on a spur off FN-3, and car park gate 2 is running on its local controller.',sys:['OT network','NMS','PSIM'],focus:{twin:'jedcoast',target:'FN-3'}});
    feed({who:'Network ops agent',level:'wait',sev:'crit',title:'Dispatch the fibre contractor, put Zone 2 cameras on edge recording, and estimate the missing meter reads',
      body:'OTDR puts the break about 1.3 km from FN-2, next to the Zone 2 roadworks permit. Plan: raise a P1 work order in Maximo, send the fibre contractor, switch the 4 cameras to on-board recording so footage is kept, and flag the 8 blocks for estimated billing in Yardi until reads resume. Residents in Zone 2 get an app notice about gate 2.',
-     sys:['Maximo','PSIM','Yardi','Resident app'],focus:{twin:'obhur',target:'FN-3'},
-     actions:[['Approve',c=>{ c.status='Approved by IT/OT duty engineer'; drop(m.id); setPts(ptsWhere('obhur',q=>q.zone===2&&q.sys==='cctv'),'warn');
-       route('obhur',[[-215,0,1],[0,0,1],[125,0,1],[125,170,1],[200,172,1]],'#F5B841',10000);
+     sys:['Maximo','PSIM','Yardi','Resident app'],focus:{twin:'jedcoast',target:'FN-3'},
+     actions:[['Approve',c=>{ c.status='Approved by IT/OT duty engineer'; drop(m.id); setPts(ptsWhere('jedcoast',q=>q.zone===2&&q.sys==='cctv'),'warn');
+       route('jedcoast',[[-215,0,1],[0,0,1],[125,0,1],[125,170,1],[200,172,1]],'#F5B841',10000);
        feed({who:'Field dispatch',level:'act',sev:'info',title:'Fibre contractor on site in 40 min; cameras recording to edge storage',sys:['Maximo','PSIM']});
-       later(5000,()=>{ setPts(ptsWhere('obhur',q=>q.zone===2),'ok'); setPts(['FN-2','FN-3','ACS-2'],'ok'); S.net=99.6; S.alarms=1; S.cams=99.2; fab('n-fibre','ok',''); fab('f-cctv','ok',''); fab('f-meter','ok','');
+       later(5000,()=>{ setPts(ptsWhere('jedcoast',q=>q.zone===2),'ok'); setPts(['FN-2','FN-3','ACS-2'],'ok'); S.net=99.6; S.alarms=1; S.cams=99.2; fab('n-fibre','ok',''); fab('f-cctv','ok',''); fab('f-meter','ok','');
          feed({who:'Network ops agent',level:'inform',sev:'good',title:'Zone 2 spliced and back on the ring at 13:05',body:'Edge footage backfilled to the VMS. 8 blocks of meter reads recovered, so no estimated bills needed. Roadworks contractor notified to update the permit drawing with the fibre route.',sys:['OT network','PSIM','Yardi']}); }); },true],
       ['Contractor only',c=>{ c.status='Edited: contractor dispatched, cameras left offline'; drop(m.id); }]]}); },
- ()=>{ layer='esec'; setTwin('ishbilia'); const S=st.site.ishbilia; S.alarms=3; setPts(['G2'],'crit'); setPts(['CCTV-01','CCTV-02'],'warn'); fab('f-acs','warn','Gate 2 tailgating'); fab('p-psim','warn','3 events · 10 min');
-   const m=marker({twin:'ishbilia',site:'ishbilia',target:'G2',sev:'crit',glyph:'!',label:'3 tailgates · Gate 2',live:true}); focus3('G2');
+ ()=>{ layer='esec'; setTwin('eastcmp'); const S=st.site.eastcmp; S.alarms=3; setPts(['G2'],'crit'); setPts(['CCTV-01','CCTV-02'],'warn'); fab('f-acs','warn','Gate 2 tailgating'); fab('p-psim','warn','3 events · 10 min');
+   const m=marker({twin:'eastcmp',site:'eastcmp',target:'G2',sev:'crit',glyph:'!',label:'3 tailgates · Gate 2',live:true}); focus3('G2');
    feed({who:'Security agent',level:'wait',sev:'crit',title:'Gate 2: 3 tailgating events in 10 minutes, confirmed on camera; 41 Iftar visitors due 16:00–19:00',
      body:'Video analytics matched each event to a second vehicle following a resident through the barrier. Plan: make lane 2 resident-only with a guard from guard house 1, send pre-registered visitors to lane 1 with a QR code from the resident app (500 residents already use it), and alert the security supervisor.',
-     sys:['Access control','VMS analytics','PSIM','Resident app'],focus:{twin:'ishbilia',target:'G2'},
-     actions:[['Approve',c=>{ c.status='Approved by security supervisor'; drop(m.id); setPts(['G2'],'warn'); route('ishbilia',[[12,-146,0],[12,-152,0],[175,-152,0],[175,10,0]],'#3DDC97',8000);
+     sys:['Access control','VMS analytics','PSIM','Resident app'],focus:{twin:'eastcmp',target:'G2'},
+     actions:[['Approve',c=>{ c.status='Approved by security supervisor'; drop(m.id); setPts(['G2'],'warn'); route('eastcmp',[[12,-146,0],[12,-152,0],[175,-152,0],[175,10,0]],'#3DDC97',8000);
        feed({who:'Security agent',level:'act',sev:'info',title:'Lane 2 set to resident-only; 41 visitors sent QR passes for lane 1',sys:['Access control','Resident app']});
        later(4500,()=>{ setPts(['G2','CCTV-01','CCTV-02'],'ok'); S.alarms=0; fab('f-acs','ok',''); fab('p-psim','ok','');
          feed({who:'Security agent',level:'inform',sev:'good',title:'No further tailgating; 38 of 41 visitors arrived on QR',body:'Agent proposes a permanent anti-tailgate loop at Gate 2 and has drafted the capex request.',sys:['PSIM','ERP']}); }); },true],
       ['Alert supervisor only',c=>{ c.status='Edited: supervisor alerted, lanes unchanged'; drop(m.id); }]]}); },
- ()=>{ layer='all'; setTwin('granada'); const S=st.site.granada; S.footfall=Math.round(S.footfall*1.18); S.care+=34; S.alarms=2;
+ ()=>{ layer='all'; setTwin('regmall'); const S=st.site.regmall; S.footfall=Math.round(S.footfall*1.18); S.care+=34; S.alarms=2;
    st.obj.P1.fill=98; st.obj.P2.fill=96; st.obj.P3.fill=91; st.obj.P4.fill=0; ['L03','L04'].forEach(k=>st.obj[k].tk=3); setPts(['E1','E2','E3','E4','E5','E6'],'warn'); setPts(['AHU-3','AHU-4'],'warn');
    fab('f-iot','warn','Footfall 118% of forecast'); fab('p-care','warn','+34 tickets · 1 h');
-   const m=marker({twin:'granada',site:'granada',target:'L03',sev:'crit',glyph:'!',label:'Food court · CO₂ 1,150 ppm',live:true}); const pm=marker({twin:'granada',site:'granada',target:'P1',sev:'warn',glyph:'P',label:'P1 98% · P2 96%'});
+   const m=marker({twin:'regmall',site:'regmall',target:'L03',sev:'crit',glyph:'!',label:'Food court · CO₂ 1,150 ppm',live:true}); const pm=marker({twin:'regmall',site:'regmall',target:'P1',sev:'warn',glyph:'P',label:'P1 98% · P2 96%'});
    focus3('L04');
    feed({who:'Retail ops agent',level:'wait',sev:'crit',title:'Ramadan peak: footfall 118% of forecast, car parks nearly full, food court CO₂ at 1,150 ppm',
-     body:'People counters show 9,800 visitors in the last hour. Plan: open overflow car park P4 and switch the road signs, move 6 guards to the food court and entrances 1–3, double the food-court cleaning cycle with SERCO soft services, and raise fresh air on AHU-3 and AHU-4 until CO₂ is under 900 ppm. 34 PortfolioCare messages in the last hour are mostly about parking.',
-     sys:['Footfall','Parking','BMS','SERCO mobile','PortfolioCare'],focus:{twin:'granada',target:'L03'},
+     body:'People counters show 9,800 visitors in the last hour. Plan: open overflow car park P4 and switch the road signs, move 6 guards to the food court and entrances 1–3, double the food-court cleaning cycle with TFM soft services, and raise fresh air on AHU-3 and AHU-4 until CO₂ is under 900 ppm. 34 PortfolioCare messages in the last hour are mostly about parking.',
+     sys:['Footfall','Parking','BMS','FM mobile','PortfolioCare'],focus:{twin:'regmall',target:'L03'},
      actions:[['Approve',c=>{ c.status='Approved by mall duty manager'; drop(m.id); drop(pm.id); st.obj.P4.fill=38; st.obj.P1.fill=88; st.obj.P2.fill=86; setPts(['AHU-3','AHU-4'],'ok');
-       route('granada',[[-110,-52,0],[-60,-40,0],[-30,0,7]],'#3DDC97',7000);
-       feed({who:'Retail ops agent',level:'act',sev:'info',title:'P4 open and signed; 6 guards repositioned; cleaning cycle every 20 min',sys:['Parking','PSIM','SERCO mobile']});
+       route('regmall',[[-110,-52,0],[-60,-40,0],[-30,0,7]],'#3DDC97',7000);
+       feed({who:'Retail ops agent',level:'act',sev:'info',title:'P4 open and signed; 6 guards repositioned; cleaning cycle every 20 min',sys:['Parking','PSIM','FM mobile']});
        later(4500,()=>{ ['L03','L04'].forEach(k=>st.obj[k].tk=0); setPts(['E1','E2','E3','E4','E5','E6'],'ok'); S.care-=30; S.alarms=0; fab('f-iot','ok','Footfall 104% of forecast'); fab('p-care','ok','');
          feed({who:'Retail ops agent',level:'inform',sev:'good',title:'CO₂ down to 820 ppm; parking complaints stopped after P4 opened',body:'Agent logged tonight as a pattern for the last 10 nights of Ramadan and pre-scheduled P4 and extra cleaning from 21:00.',sys:['BMS','Footfall','Maximo']}); }); },true],
       ['Parking only',c=>{ c.status='Edited: P4 opened only'; drop(pm.id); st.obj.P4.fill=38; }]]}); },
- ()=>{ layer='lease'; setTwin('rakah'); const S=st.site.rakah; const vs=TW.rakah.parts.filter(p=>p.unit);
+ ()=>{ layer='lease'; setTwin('khobarwf'); const S=st.site.khobarwf; const vs=TW.khobarwf.parts.filter(p=>p.unit);
    vs.forEach((p,i)=>{ if(i%6===1&&i<85) st.obj[p.id].occ='over'; else if(i%9===4) st.obj[p.id].occ='turn'; }); const over=vs.filter(p=>st.obj[p.id].occ==='over').length; S.turn=5.6;
    fab('p-yardi','warn',over+' villas past 3-day target'); fab('p-max','warn','Make-ready WOs ageing');
-   const m=marker({twin:'rakah',site:'rakah',target:'V-B08',sev:'crit',glyph:'!',label:over+' villas overdue',live:true});
+   const m=marker({twin:'khobarwf',site:'khobarwf',target:'V-B08',sev:'crit',glyph:'!',label:over+' villas overdue',live:true});
    feed({who:'Leasing agent',level:'wait',sev:'crit',title:`${over} villas past the 3-day turnaround target; 9 have move-ins booked this week`,
-     body:'Make-ready work orders are waiting on one SERCO crew for painting and AC servicing. Plan: give the 9 villas with move-ins to a second approved contractor on a weekend shift, keep the rest with SERCO, and update availability dates in Yardi so leasing stops offering 23 Mar.',
-     sys:['Yardi','Maximo','SERCO mobile'],focus:{twin:'rakah',target:'V-B08'},
+     body:'Make-ready work orders are waiting on one TFM crew for painting and AC servicing. Plan: give the 9 villas with move-ins to a second approved contractor on a weekend shift, keep the rest with the TFM partner, and update availability dates in Yardi so leasing stops offering 23 Mar.',
+     sys:['Yardi','Maximo','FM mobile'],focus:{twin:'khobarwf',target:'V-B08'},
      actions:[['Approve',c=>{ c.status='Approved by residential operations lead'; drop(m.id);
        vs.forEach(p=>{ if(st.obj[p.id].occ==='over') st.obj[p.id].occ='turn'; }); S.turn=3.4; fab('p-yardi','ok','Availability updated'); fab('p-max','ok','');
        feed({who:'Leasing agent',level:'inform',sev:'good',title:'Second contractor booked; all 9 move-ins protected',body:'Yardi availability updated; prospects offered new dates automatically.',sys:['Yardi','Maximo']}); },true],
-      ['Keep SERCO only',c=>{ c.status='Declined: SERCO to add overtime instead'; drop(m.id); }]]});
-   feed({who:'Contract assurance agent',level:'wait',sev:'warn',title:'Month-end SERCO TFM pack drafted: Cat A 96.2%, Cat B 91.8% (turnaround KPI missed)',
-     body:'Built from Maximo work orders, PortfolioCare tickets and Yardi turnaround dates for all 17 sites. Proposed performance deduction SAR 184k under the Cat B schedule. Needs your review before it goes to SERCO.',
-     sys:['Maximo','PortfolioCare','Yardi','ERP'],actions:[['Send for review',c=>{ c.status='Sent to the head of FM for review'; },true],['Hold',c=>{ c.status='Held until the Rakah recovery plan lands'; }]]});
-   feed({who:'Energy agent',level:'inform',sev:'cool',title:'Digital City night setback active on buildings 2–8; HQ command floor stays on',body:'Saves about 1.1 MW overnight. Pre-cool starts at 05:30.',sys:['BMS','Energy & metering'],focus:{twin:'digital',target:'B1'}});
-   TW.digital.parts.forEach(p=>{ if(p.unit&&p.id!=='B1') st.obj[p.id].setback=true; }); st.site.digital.mw=+(st.site.digital.mw*0.7).toFixed(1); }
+      ['Keep TFM partner only',c=>{ c.status='Declined: TFM partner to add overtime instead'; drop(m.id); }]]});
+   feed({who:'Contract assurance agent',level:'wait',sev:'warn',title:'Month-end TFM partner pack drafted: Cat A 96.2%, Cat B 91.8% (turnaround KPI missed)',
+     body:'Built from Maximo work orders, PortfolioCare tickets and Yardi turnaround dates for all 17 sites. Proposed performance deduction SAR 184k under the Cat B schedule. Needs your review before it goes to the TFM partner.',
+     sys:['Maximo','PortfolioCare','Yardi','ERP'],actions:[['Send for review',c=>{ c.status='Sent to the head of FM for review'; },true],['Hold',c=>{ c.status='Held until the Khobar Waterfront recovery plan lands'; }]]});
+   feed({who:'Energy agent',level:'inform',sev:'cool',title:'Riyadh Tech Park night setback active on buildings 2–8; HQ command floor stays on',body:'Saves about 1.1 MW overnight. Pre-cool starts at 05:30.',sys:['BMS','Energy & metering'],focus:{twin:'techpark',target:'B1'}});
+   TW.techpark.parts.forEach(p=>{ if(p.unit&&p.id!=='B1') st.obj[p.id].setback=true; }); st.site.techpark.mw=+(st.site.techpark.mw*0.7).toFixed(1); }
 ];
 function start(){ timers.forEach(t=>clearTimeout(t.id)); timers=[]; st=fresh(); st.routes=[]; initTwinState(st); layer='all'; twin=null; sel=null; setView('map'); RUN[0](); renderAll(); }
 document.getElementById('next').onclick=()=>{ if(st.beat<BEATS.length-1){ flushTimers(); st.beat++; st.markers=st.markers.filter(m=>m.sev==='crit'); st.routes=[]; RUN[st.beat](); renderAll(); } };
