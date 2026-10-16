@@ -7,7 +7,8 @@
 Each page = engine/page.html markup (filled from venues/<v>/page*.json)
           + const V = <venue.json>  + engine/graph.js
           + engine/engine.js with the venue's scenario pack spliced in at /*@@PACK@@*/
-          + (Mappedin page only) mappedin/renderer.js at /*@@RENDERER@@*/ with the MVF bundle.
+          + (Mappedin pages) mappedin/renderer.js at /*@@RENDERER@@*/ with the venue's MVF bundle;
+            page meta mi_floor sets the floor the map opens on (default G).
 """
 import json, os, sys
 
@@ -16,11 +17,13 @@ HEAD = ('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n')
 
 PAGES = {
-    # page name: (venue folder, page meta file, pack file, renderer?)
-    'airport': ('airport', 'page.json', 'pack.js', False),
-    'stadium': ('stadium', 'page.json', 'pack.js', False),
-    'science': ('science', 'page.json', 'pack.js', False),
-    'science-mappedin': ('science', 'page.mappedin.json', 'pack.mappedin.js', True),
+    # page name: (venue folder, page meta file, pack file, MVF bundle for the Mappedin renderer or None)
+    'airport': ('airport', 'page.json', 'pack.js', None),
+    'stadium': ('stadium', 'page.json', 'pack.js', None),
+    'science': ('science', 'page.json', 'pack.js', None),
+    'science-mappedin': ('science', 'page.mappedin.json', 'pack.mappedin.js', 'hsc.mvf.json'),
+    'airport-mappedin': ('airport', 'page.mappedin.json', 'pack.mappedin.js', 'hli.mvf.json'),
+    'stadium-mappedin': ('stadium', 'page.mappedin.json', 'pack.mappedin.js', 'hls.mvf.json'),
 }
 
 
@@ -49,7 +52,8 @@ def build(name):
     js = js.replace('/*@@PACK@@*/', strip1(read('venues', venue, pack_file)))
     if mappedin:
         r = strip1(read('mappedin', 'renderer.js'))
-        r = r.replace('/*@@MVF@@*/', 'const MVF=' + strip1(read('mappedin', 'hsc.mvf.json')) + ';')
+        r = r.replace('/*@@MVF@@*/', 'const MVF=' + strip1(read('mappedin', mappedin)) + ';')
+        r = r.replace('@@MIFLOOR@@', meta.get('mi_floor', 'G'))   # floor the map opens on
         js = js.replace('/*@@RENDERER@@*/', r)
     else:
         js = js.replace('/*@@RENDERER@@*/\n', '')
@@ -75,7 +79,7 @@ def main():
         with open(os.path.join(out, name + '.html'), 'w', encoding='utf-8', newline='') as f:
             f.write(HEAD + body)
         msg = f'{name}.html  {len(HEAD + body):,} bytes'
-        if ref:
+        if ref and os.path.exists(os.path.join(ref, name + '.html')):
             with open(os.path.join(ref, name + '.html'), encoding='utf-8', newline='') as f:
                 want = f.read()
             same = want == body

@@ -4,7 +4,8 @@
     python3 src/build_public.py --out site          # build into ./site and look at it
     python3 src/build_public.py --out .             # build into the repo root = publish on the next push
 
-Pages: airport, stadium, science centre (three.js and Mappedin SDK) and the KSA portfolio command centre.
+Pages: the airport, stadium and science centre twins (each in three.js and on the Mappedin SDK) and the KSA portfolio
+command centre.
 Venue-switcher links that point at private claude.ai artifacts are rewritten to the public pages, each page
 gets a description, canonical URL and social tags, and the command centre gets a public disclaimer.
 Nothing here needs a network connection.
@@ -22,6 +23,8 @@ ARTIFACT_LINKS = {   # private artifact URL -> public page
     'https://claude.ai/artifact/F8k9ZcPV8fg2LYbrscgWM2': 'stadium.html',
     'https://claude.ai/artifact/4CRqCWZEHirN4QJ6doNMuB': 'science-centre.html',
     'https://claude.ai/artifact/XAnofiUwECKgYXNboSvbjL': 'science-centre-mappedin.html',
+    'https://claude.ai/artifact/8Lyg1Q2CxSbErxAsfmFAr7': 'airport-mappedin.html',
+    'https://claude.ai/artifact/5RhgLazLcRBo5JSRrKJWBb': 'stadium-mappedin.html',
 }
 PAGES = [   # (file, source, title, description, stats)
     ('airport.html', ('twin', 'airport'), 'Harbourline International · airport ops twin',
@@ -36,6 +39,12 @@ PAGES = [   # (file, source, title, description, stats)
     ('science-centre-mappedin.html', ('twin', 'science-mappedin'), 'Harbourline Science Centre on the Mappedin SDK',
      'The same science-centre scenarios running on the Mappedin JS SDK, from an MVF bundle generated straight from the venue brief: live room states, labels, markers and step-free directions.',
      'Mappedin JS 6.27 · generated MVF · no API key'),
+    ('airport-mappedin.html', ('twin', 'airport-mappedin'), 'Harbourline International on the Mappedin SDK',
+     'The airport scenarios on the Mappedin JS SDK, from a generated MVF bundle: security and border one-way flows, the APM to the satellite, and step-free directions from rail to gate.',
+     'Mappedin JS 6.27 · 6 floors · 259 spaces · 24 connections'),
+    ('stadium-mappedin.html', ('twin', 'stadium-mappedin'), 'Harbourline Stadium on the Mappedin SDK',
+     'The stadium event day on the Mappedin JS SDK, from a generated MVF bundle: gate queues, bay loading and step-free routes from rail, shuttle and rideshare.',
+     'Mappedin JS 6.27 · 6 floors · 425 spaces · 25 connections'),
     ('ksa-portfolio.html', ('file', 'ksa-portfolio/command-centre.html'), 'KSA Portfolio · command centre concept',
      'End-state concept for a national real-estate portfolio command centre: one view across commercial, retail and residential assets with integrated CMMS, security and IT/OT, six asset twins and agent-led scenarios.',
      '17 sites · 3 regions · 6 asset twins · integration fabric'),

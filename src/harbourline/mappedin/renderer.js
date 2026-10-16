@@ -2,13 +2,13 @@ const SDK_URL='https://cdn.jsdelivr.net/npm/@mappedin/mappedin-js@6.27.0/+esm';
 /*@@MVF@@*/
 // ================= Mappedin SDK renderer (replaces the three.js view) =================
 // The venue is hydrated from an MVF generated from the same venue brief; no Maker step and no API key.
-const MI={mv:null,md:null,sp:{},ob:{},fl:{},ready:false,cur:'G',markers:{},labels:[],pathTok:0,hover:null,mouse:[0,0]};
+const MI={mv:null,md:null,sp:{},ob:{},fl:{},ready:false,cur:'@@MIFLOOR@@',markers:{},labels:[],pathTok:0,hover:null,mouse:[0,0]};
 function initThree(){ const host=document.createElement('div'); host.id='mimap'; host.style.cssText='position:absolute;inset:0'; stage.insertBefore(host,overlay);
   stage.addEventListener('mousemove',e=>{ const r=stage.getBoundingClientRect(); MI.mouse=[e.clientX-r.left,e.clientY-r.top]; if(MI.hover) placeTip(); });
   stage.addEventListener('mouseleave',()=>{ MI.hover=null; tip.hidden=true; });
   (async()=>{ try{
     const SDK=await import(SDK_URL); const md=await SDK.hydrateMapData(MVF);
-    const mv=await SDK.show3dMap(host,md,{outdoorView:{enabled:false},initialFloor:'f_G',shadingAndOutlines:true,wallTopColor:'#9FB0C6',pitch:52,bearing:-18,
+    const mv=await SDK.show3dMap(host,md,{outdoorView:{enabled:false},initialFloor:'f_@@MIFLOOR@@',shadingAndOutlines:true,wallTopColor:'#9FB0C6',pitch:52,bearing:-18,
       style:{backgroundColor:css('--scene')||'#070D18',backgroundAlpha:1}});
     md.getByType('space').forEach(s=>MI.sp[s.externalId]=s); md.getByType('object').forEach(o=>MI.ob[o.externalId]=o); md.getByType('floor').forEach(f=>MI.fl[f.externalId]=f);
     MI.md=md; MI.mv=mv; MI.ready=true;
@@ -50,6 +50,10 @@ function flyTo(){}
 function setView(v,instant){ if(!MI.ready) return; const lv=curLv(); const sp=V.spaces.filter(s=>s.lv===lv&&MI.sp[s.id]).map(s=>MI.sp[s.id]);
   try{ MI.mv.Camera.focusOn(sp,{pitch:48,bearing:-18,duration:instant?0:900,screenOffsets:{top:40,bottom:20,left:20,right:200}}); }catch(e){} }
 function focusSpace(id){ const s=SPC[id]; if(!s) return; if(curLv()!==s.lv){ floor=s.lv; renderFloors(); paint(); }
-  if(!MI.ready) return; const t=targetOf(id); if(t) try{ MI.mv.Camera.focusOn(t,{pitch:50,duration:900,screenOffsets:{top:60,bottom:40,left:60,right:200}}); }catch(e){} }
+  if(!MI.ready) return; const t=targetOf(id); if(!t) return;
+  // frame the target with its neighbours (centres within 45 m on the same floor) so the context stays in view
+  const cx=s.x+s.w/2, cy=s.y+s.h/2;
+  const near=V.spaces.filter(o=>o.lv===s.lv&&MI.sp[o.id]&&o.kind!=='core'&&Math.hypot(o.x+o.w/2-cx,o.y+o.h/2-cy)<45).map(o=>MI.sp[o.id]);
+  try{ MI.mv.Camera.focusOn(near.length>1?[t,...near]:t,{pitch:50,duration:900,screenOffsets:{top:60,bottom:40,left:60,right:200}}); }catch(e){} }
 function applyTheme(){} function resize(){}
 

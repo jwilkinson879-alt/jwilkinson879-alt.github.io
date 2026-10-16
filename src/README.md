@@ -16,7 +16,7 @@ src/
       airport/   venue.json  pack.js  page.json
       stadium/   venue.json  pack.js  page.json
       science/   venue.json  pack.js  page.json
-                 pack.mappedin.js  page.mappedin.json   (Mappedin SDK variant)
+                 pack.mappedin.js  page.mappedin.json   (Mappedin SDK variant; airport and stadium have one too)
     mappedin/
       renderer.js             replaces the three.js view with Mappedin JS 6.27
       hsc.mvf.json            MVF v2 bundle for the science centre (the published one)
@@ -48,11 +48,20 @@ Each venue has three files. **venue.json** holds the levels, spaces, connectors,
 
 ```
 cd src/harbourline
-python3 build.py                  # writes dist/airport.html, stadium.html, science.html, science-mappedin.html
-python3 build.py --verify DIR     # also checks each page against DIR/<page>.html
+python3 build.py                  # writes dist/<venue>.html and dist/<venue>-mappedin.html for all three venues
+python3 build.py --verify DIR     # also checks each page against DIR/<page>.html where one exists
 ```
 
-The build has no dependencies beyond Python 3. The pages load three.js 0.128 (or Mappedin JS 6.27) and Google Fonts from CDNs at runtime. On 16 Oct 2026 all four rebuilt pages matched the published versions byte for byte. A headless run of the three.js twins stepped through every scenario with no page errors.
+The build has no dependencies beyond Python 3. The pages load three.js 0.128 (or Mappedin JS 6.27) and Google Fonts from CDNs at runtime. On 16 Oct 2026 all four recovered pages matched the published versions byte for byte, and a headless run stepped through every scenario with no page errors.
+
+The Mappedin pages run the same scenario packs on the SDK renderer (`mappedin/renderer.js`), fed by the venue's MVF bundle. `mi_floor` in a page's `page.mappedin.json` sets the floor the map opens on: L2 for the airport, L1 for the stadium, G for the science centre. On 16 Oct the airport and stadium Mappedin pages were added. The renderer's camera was also changed to frame a focused space together with its neighbours within 45 m instead of zooming tight on one room, which is why the science centre Mappedin page no longer matches its first published version. All three Mappedin pages loaded on the real SDK headless and ran every scenario with no page errors.
+
+Published as private artifacts:
+- Airport on Mappedin: https://claude.ai/artifact/8Lyg1Q2CxSbErxAsfmFAr7
+- Stadium on Mappedin: https://claude.ai/artifact/5RhgLazLcRBo5JSRrKJWBb
+- Science centre on Mappedin: https://claude.ai/artifact/XAnofiUwECKgYXNboSvbjL
+
+The three.js twins are at Kbqtt3PLAnaWaWJe5nsXzt (airport), F8k9ZcPV8fg2LYbrscgWM2 (stadium) and 4CRqCWZEHirN4QJ6doNMuB (science centre), each under claude.ai/artifact/.
 
 ## Tools
 
@@ -97,7 +106,7 @@ Requirements: Python 3 with `pip install ezdxf shapely` (DXF only) and Node 18+.
 
 **Build the public site.** `python3 src/build_public.py --out site` writes the following:
 - `index.html`, a landing page
-- the five pages, with venue links rewritten to point at each other instead of the private artifacts
+- the seven pages, with venue links rewritten to point at each other instead of the private artifacts
 - description, canonical and social tags on every page, and a disclaimer on the KSA page
 - `llms.txt`, `robots.txt`, `sitemap.xml` and `.nojekyll`
 
