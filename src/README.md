@@ -38,7 +38,13 @@ src/
     mockup-3d.html            first three.js mock-up of the Backlot model
   ksa-portfolio/
     command-centre.html       KSA portfolio command centre: national map, six asset twins,
-                              integration fabric and agent scenarios (single self-contained page)
+                              integration fabric and agent scenarios (single self-contained page).
+                              The asset twins render on the Mappedin SDK by default: the open twin is
+                              converted to an MVF in the browser (blocks extruded at real height and
+                              altitude, system points as objects, placed at the site's coordinates)
+                              and recoloured by the same layers and scenarios. A Mappedin / three.js
+                              switch sits on the twin panel, and it falls back to three.js if the
+                              SDK can't load.
   build_public.py             builds the public GitHub Pages site (landing page, pages, llms.txt, sitemap)
 ```
 
