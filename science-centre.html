@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Interactive 3D operations twin of a science centre: school groups, timed-entry crush, a conservation climate excursion and after-hours setback that protects the collection.">
+<meta name="author" content="Josh Wilkinson">
+<link rel="canonical" href="https://jwilkinson879-alt.github.io/science-centre.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Harbourline Science Centre · museum ops twin">
+<meta property="og:description" content="Interactive 3D operations twin of a science centre: school groups, timed-entry crush, a conservation climate excursion and after-hours setback that protects the collection.">
+<meta property="og:url" content="https://jwilkinson879-alt.github.io/science-centre.html">
+<meta name="twitter:card" content="summary">
+<title>Harbourline Science Centre Twin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Josh Wilkinson · control-room brand. Single dark look by design.
+   Layout: console header (mark · venue · switcher · clock) → scenario rail → 3D twin left, ops column right → credit footer */
+:root{
+  color-scheme:dark;
+  --bg:#0B1220; --surface:#111A2B; --raise:#16213A; --floor:#0E1727; --ink:#E6EDF5; --muted:#8696AD; --faint:#5C6B82; --line:#1F2C44; --line2:#2A3A58;
+  --accent:#3DDC97; --accent-ink:#06210F; --good:#3DDC97; --warn:#F5B841; --crit:#FF6B4A; --cool:#6EA8FF;
+  --scene:#070D18; --edge:#2E4466; --grid:#16233A; --grid2:#1E3150;
+  --c-ok:#1E5A45; --c-warn:#7A5E1C; --c-crit:#8A3324; --c-idle:#152036; --c-cool:#24467E; --c-acc:#1B6C66; --people:#CFE3FF;
+  --t-gate:#1C3550; --t-retail:#2E2848; --t-fnb:#3A2F24; --t-wash:#1D3633; --t-boh:#1B2333; --t-plant:#202838; --t-hall:#16203A; --t-lounge:#2A2645; --t-seat:#1C2A44; --t-field:#1C3A26;
+  --display:"Inter Tight","Inter","Segoe UI",system-ui,sans-serif;
+  --body:"Inter Tight","Inter","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:3px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.45;padding-inline:16px;padding-block:0 28px;margin:0;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1500px;margin:0 auto;display:grid;gap:14px}
+/* header */
+header.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.mark{flex:none;display:grid;place-items:center;width:40px;height:40px;border:1.5px solid var(--accent);color:var(--accent);font:700 15px var(--mono);letter-spacing:.02em;text-decoration:none;border-radius:var(--r);position:relative}
+.mark::after{content:"";position:absolute;right:-1.5px;bottom:-1.5px;width:9px;height:9px;background:var(--accent)}
+.brand{min-width:0;flex:1 1 320px;display:grid;gap:2px}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow span{color:var(--faint)}
+.brand h1{font:650 26px/1.1 var(--display);letter-spacing:-.015em;margin:0;text-wrap:balance}
+.brand h1 b{font:600 13px var(--mono);letter-spacing:.08em;color:var(--accent);border:1px solid var(--line2);padding:2px 6px;border-radius:var(--r);vertical-align:5px;margin-right:8px}
+.venues{display:flex;gap:2px;flex-wrap:wrap;border:1px solid var(--line);border-radius:var(--r);padding:2px;background:var(--surface)}
+.venues a{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:2px}
+.venues a:hover{color:var(--ink);background:var(--raise)}
+.venues a[aria-current="page"]{color:var(--accent-ink);background:var(--accent)}
+.clock{font:500 22px var(--mono);font-variant-numeric:tabular-nums;color:var(--ink);display:flex;align-items:center;gap:8px;padding:4px 0 4px 14px;border-left:1px solid var(--line)}
+.clock::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(61,220,151,.18);order:-1;animation:live 2s ease-in-out infinite}
+.clock small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+@keyframes live{50%{opacity:.35}}
+/* control bar */
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.bar>div{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);flex-wrap:wrap}
+.seg button{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:0;background:none;color:var(--muted);padding:8px 12px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--raise);color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+.btn{font:600 13.5px var(--body);border:1px solid var(--line2);background:var(--surface);color:var(--ink);border-radius:var(--r);padding:8px 14px;cursor:pointer}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.4;cursor:default;filter:none}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* scenario rail: real sequence, so it is numbered */
+.steps{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);gap:0;list-style:none;margin:0;padding:0;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);counter-reset:s}
+.steps li{position:relative;font-size:12.5px;color:var(--faint);padding:9px 12px 10px;border-right:1px solid var(--line);counter-increment:s;line-height:1.3;min-width:0}
+.steps li:last-child{border-right:0}
+.steps li::before{content:counter(s,decimal-leading-zero);display:block;font:500 10.5px var(--mono);letter-spacing:.1em;color:var(--faint);margin-bottom:2px}
+.steps li.done{color:var(--muted)} .steps li.done::before{color:var(--muted)}
+.steps li.now{color:var(--ink);background:var(--raise);box-shadow:inset 0 2px 0 var(--accent)}
+.steps li.now::before{color:var(--accent)}
+.steps .t{font:500 12px var(--mono);margin-right:7px;color:inherit}
+/* main */
+.main{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:14px;align-items:start}
+@media (max-width:1080px){.main{grid-template-columns:minmax(0,1fr)}}
+.mapcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:0;min-width:0;overflow:hidden}
+.maphead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line)}
+.maphead h2{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:0;color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:1px;margin-right:6px;vertical-align:-1px}
+.stage{position:relative;width:100%;aspect-ratio:16/10;max-width:100%;max-height:76vh;min-height:360px;overflow:hidden;background:var(--scene);touch-action:none}
+.stage canvas{display:block;width:100%;height:100%;cursor:grab}
+.overlay{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.rl{position:absolute;transform:translate(-50%,-50%);text-align:center;white-space:nowrap;line-height:1.15}
+.rl b{display:block;font:600 11px var(--body);color:var(--ink);text-shadow:0 0 4px var(--scene),0 0 4px var(--scene),0 0 2px var(--scene)}
+.rl span{font:500 10px var(--mono);color:var(--accent);text-shadow:0 0 4px var(--scene),0 0 3px var(--scene)}
+.lvtag{position:absolute;transform:translate(-100%,-50%);font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;text-shadow:0 0 4px var(--scene)}
+.pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center}
+.pin .tag{display:flex;align-items:center;gap:6px;background:rgba(11,18,32,.92);border:1px solid var(--c);border-radius:var(--r);padding:3px 8px 3px 3px;font:500 11px var(--mono);color:var(--ink);box-shadow:0 0 14px -2px var(--c);white-space:nowrap}
+.pin .g{width:18px;height:18px;border-radius:2px;background:var(--c);color:var(--bg);font:700 11px var(--mono);display:grid;place-items:center}
+.pin .stem{width:1px;height:24px;background:var(--c)}
+.pin.live .g{animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.pin.live .g,.clock::before{animation:none}}
+.tip{position:absolute;pointer-events:none;background:var(--raise);border:1px solid var(--line2);border-radius:var(--r);padding:7px 10px;font-size:12.5px;box-shadow:0 8px 24px rgba(0,0,0,.45);max-width:260px;z-index:3}
+.tip b{display:block;font-size:13px}
+.tip span{color:var(--muted);font-family:var(--mono);font-size:11px}
+.hint{position:absolute;left:12px;bottom:10px;font:500 11px var(--mono);letter-spacing:.04em;color:var(--faint);text-shadow:0 0 4px var(--scene)}
+.floors{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.floors .seg{flex-direction:column;background:rgba(17,26,43,.92)}
+.floors .seg button{padding:6px 10px;font-size:11px;text-align:left}
+.floors .seg button+button{border-left:0;border-top:1px solid var(--line)}
+.floors .seg button[aria-pressed="true"]{box-shadow:inset 2px 0 0 var(--accent)}
+.routebox{position:absolute;left:10px;top:10px;background:rgba(17,26,43,.94);border:1px solid var(--line2);border-left:2px solid var(--accent);border-radius:var(--r);padding:8px 12px;font-size:12.5px;display:grid;gap:4px;max-width:340px;color:var(--muted)}
+.routebox b{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.routebox label{display:flex;gap:6px;align-items:center;cursor:pointer;color:var(--ink)}
+.routebox input{accent-color:var(--accent)}
+.detail{border-top:1px solid var(--line);padding:10px 14px;display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;min-height:40px;align-items:baseline}
+.detail b{font:650 16px var(--display);letter-spacing:-.01em;color:var(--ink)}
+.detail .kv{color:var(--muted);font-size:12px} .detail .kv span{color:var(--ink);font-family:var(--mono);font-size:12.5px}
+aside{display:grid;gap:10px;min-width:0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+@media (max-width:460px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{padding:9px 11px;border-right:1px solid var(--line);min-width:0}
+.kpi:last-child{border-right:0}
+.kpi div{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.3}
+.kpi strong{display:block;margin-top:4px;font:500 16px var(--mono);font-variant-numeric:tabular-nums;color:var(--ink);overflow-wrap:anywhere}
+aside>.seg{display:flex}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px;display:grid;gap:8px;min-width:0}
+.feed{display:grid;gap:8px;max-height:640px;overflow:auto;padding-right:2px}
+.card{border:1px solid var(--line);border-left:3px solid var(--faint);border-radius:var(--r);padding:10px 12px;display:grid;gap:5px;background:var(--floor)}
+.card.sev-crit{border-left-color:var(--crit)} .card.sev-warn{border-left-color:var(--warn)} .card.sev-good{border-left-color:var(--good)} .card.sev-info{border-left-color:var(--muted)} .card.sev-cool{border-left-color:var(--cool)}
+.card .top{display:flex;justify-content:space-between;gap:8px;font:500 11px var(--mono);color:var(--muted);align-items:center}
+.card .who{letter-spacing:.1em;text-transform:uppercase}
+.card h3{margin:0;font:600 14.5px/1.3 var(--display);letter-spacing:-.005em;text-wrap:balance;color:var(--ink)}
+.card p{margin:0;font-size:13px;color:var(--muted)}
+.chip{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line2);border-radius:2px;padding:1px 6px;color:var(--muted);white-space:nowrap}
+.chip.wait{border-color:var(--warn);color:var(--warn)} .chip.act{border-color:var(--good);color:var(--good)} .chip.crit{border-color:var(--crit);color:var(--crit)} .chip.cool{border-color:var(--cool);color:var(--cool)} .chip.acc{border-color:var(--accent);color:var(--accent)}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px} .acts .btn{padding:6px 11px;font-size:13px}
+.status{font:500 12px var(--mono);color:var(--good)}
+.status::before{content:"✓ "}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:6px;border-bottom:1px solid var(--line2)}
+td{padding:6px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;color:var(--ink)}
+td.m{font-family:var(--mono);font-size:12.5px}
+tr.click{cursor:pointer} tr.click:hover td{background:var(--raise)}
+.scroll{max-height:560px;overflow:auto}
+.note{color:var(--muted);font-size:12.5px;max-width:95ch;margin:0}
+.fallback{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:14px;padding:24px;text-align:center}
+footer.credit{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.sig{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font:500 11.5px var(--mono);letter-spacing:.04em;color:var(--muted)}
+.sig b{color:var(--ink);font-weight:600}
+.sig a{color:var(--accent);text-decoration:none} .sig a:hover{text-decoration:underline}
+.sig .ver{color:var(--faint);margin-left:auto}
+.sig .jw{display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid var(--accent);color:var(--accent);font:700 9px var(--mono);border-radius:2px}
+::-webkit-scrollbar{width:8px;height:8px} ::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px} ::-webkit-scrollbar-track{background:transparent}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="https://joshwilkinson.uk" target="_blank" rel="noopener" aria-label="Josh Wilkinson">JW</a>
+    <div class="brand"><div class="eyebrow">Venue ops twin <span>· science centre · 5 levels · 162 spaces</span></div><h1><b>HSC</b> Harbourline Science Centre</h1></div>
+    <nav class="venues" aria-label="Venues"><a href="airport.html">Airport</a><a href="stadium.html">Stadium</a><a href="science-centre.html" aria-current="page">Science centre</a></nav>
+    <div class="clock" id="clock">05:30<small id="clockday">Tue</small></div>
+  </header>
+  <div class="bar">
+    <div>
+      <div class="seg" role="group" aria-label="Map layer" id="layers"></div>
+    </div>
+    <div>
+      <button class="btn" id="restart">Restart</button>
+      <button class="btn primary" id="next">Next scenario →</button>
+    </div>
+  </div>
+  <ol class="steps" id="steps"></ol>
+  <div class="main">
+    <section class="mapcard">
+      <div class="maphead"><h2 id="maptitle">All layers</h2><div class="legend" id="legend"></div></div>
+      <div class="stage" id="stage">
+        <div class="overlay" id="overlay"></div>
+        <div class="tip" id="tip" hidden></div>
+        <div class="routebox" id="routebox" hidden></div>
+        <div class="floors"><div class="seg" role="group" aria-label="Levels" id="floors"></div></div>
+        <div class="hint">Drag to orbit · right-drag to pan · scroll to zoom · hover or click any space</div>
+      </div>
+      <div class="detail" id="detail"><span class="note">Hover for a quick read, click a space for its live state. Pick a level on the right to see every label.</span></div>
+    </section>
+    <aside>
+      <div class="kpis" id="kpis"></div>
+      <div class="seg" role="group" aria-label="Panel" style="display:flex">
+        <button id="tab-feed" aria-pressed="true" style="flex:1">Agents &amp; people</button>
+        <button id="tab-list" aria-pressed="false" style="flex:1">Sessions</button>
+        <button id="tab-assets" aria-pressed="false" style="flex:1">Assets</button>
+      </div>
+      <div class="panel" id="p-feed"><div class="feed" id="feed"></div></div>
+      <div class="panel" id="p-list" hidden><div class="scroll"><table><thead><tr id="listhead"></tr></thead><tbody id="list"></tbody></table></div></div>
+      <div class="panel" id="p-assets" hidden><div class="scroll"><table><thead><tr><th>Asset</th><th>Location</th><th>Status</th></tr></thead><tbody id="assetlist"></tbody></table></div></div>
+      <p class="note">Agents propose; people decide. Anything that moves people, changes a building system or dispatches staff waits for approval. Briefings, triage and monitoring run on their own.</p>
+    </aside>
+  </div>
+  <footer class="credit"><p class="note">Generated from a structured venue brief on the same engine as Harbourline International and Harbourline Stadium: 162 spaces, 61 interactive exhibits, a free atrium with one-way ticket gates, a timed-entry touring hall, a planetarium, climate-controlled loan galleries and collection store, 13 connectors and 75 tracked assets. Only the venue brief and this scenario pack differ.</p>
+    <div class="sig"><span class="jw">JW</span><span>Designed &amp; prompted by <b>Josh Wilkinson</b></span><a href="https://joshwilkinson.uk" target="_blank" rel="noopener">joshwilkinson.uk</a><span class="ver">Harbourline twin engine · v1 · synthetic data</span></div></footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+const V = {"id":"HSC","name":"Harbourline Science Centre","kind":"museum","levels":[{"id":"B1","name":"Collections & BOH","elev":-5},{"id":"G","name":"Entry & discovery","elev":0},{"id":"L1","name":"Galleries & touring hall","elev":6},{"id":"L2","name":"Galleries & planetarium","elev":12},{"id":"L3","name":"Learning, roof & plant","elev":18}],"spaces":[{"id":"B1-COR","name":"Service corridor","lv":"B1","x":0,"y":45,"w":160,"h":10,"kind":"corridor","cat":"boh","side":"boh","zone":"BOH","cap":30,"ahu":"AHU-B1"},{"id":"B1-DOCK","name":"Loading dock","lv":"B1","x":0,"y":0,"w":30,"h":45,"kind":"room","cat":"boh","side":"boh","zone":"BOH","cap":20,"ahu":"AHU-B1"},{"id":"B1-WORKSHOP","name":"Exhibit workshop","lv":"B1","x":30,"y":0,"w":40,"h":45,"kind":"room","cat":"boh","side":"boh","zone":"BOH","cap":20,"ahu":"AHU-B1"},{"id":"B1-CONS","name":"Conservation lab","lv":"B1","x":70,"y":0,"w":30,"h":45,"kind":"room","cat":"office","side":"boh","zone":"BOH","cap":20,"ahu":"AHU-CS","clim":{"rh":50,"t":21}},{"id":"B1-STORE","name":"Collection store (climate controlled)","lv":"B1","x":100,"y":0,"w":60,"h":45,"kind":"room","cat":"boh","side":"boh","zone":"BOH","cap":20,"ahu":"AHU-CS","clim":{"rh":50,"t":21}},{"id":"B1-PLANT","name":"Chiller & boiler plant","lv":"B1","x":0,"y":55,"w":50,"h":55,"kind":"room","cat":"plant","side":"boh","zone":"BOH","cap":3,"ahu":"AHU-B1"},{"id":"B1-STAFF","name":"Staff room & lockers","lv":"B1","x":50,"y":55,"w":30,"h":30,"kind":"room","cat":"boh","side":"boh","zone":"BOH","cap":20,"ahu":"AHU-B1"},{"id":"B1-WASTE","name":"Waste & recycling","lv":"B1","x":80,"y":55,"w":20,"h":30,"kind":"room","cat":"boh","side":"boh","zone":"BOH","cap":20,"ahu":"AHU-B1"},{"id":"B1-STORES","name":"Exhibit stores","lv":"B1","x":100,"y":55,"w":60,"h":55,"kind":"room","cat":"boh","side":"boh","zone":"BOH","cap":20,"ahu":"AHU-B1"},{"id":"G-CAFE","name":"Harbour Caf\u00e9","lv":"G","x":0,"y":0,"w":50,"h":30,"kind":"room","cat":"fnb","side":"pub","zone":"Free zone","cap":160,"ahu":"AHU-G1"},{"id":"G-ENTRY","name":"Entrance hall","lv":"G","x":50,"y":0,"w":60,"h":30,"kind":"hall","cat":"plaza","side":"pub","zone":"Free zone","cap":500,"ahu":"AHU-G1"},{"id":"G-SHOP","name":"Science shop","lv":"G","x":110,"y":0,"w":50,"h":30,"kind":"room","cat":"retail","side":"pub","zone":"Free zone","cap":120,"ahu":"AHU-G1"},{"id":"G-ATRIUM","name":"Atrium \u00b7 Foucault pendulum","lv":"G","x":50,"y":30,"w":60,"h":50,"kind":"hall","cat":"plaza","side":"pub","zone":"Free zone","cap":700,"ahu":"AHU-G1"},{"id":"G-SCHOOL","name":"School entrance & coach drop","lv":"G","x":110,"y":30,"w":50,"h":25,"kind":"hall","cat":"plaza","side":"pub","zone":"Free zone","cap":200,"ahu":"AHU-G1"},{"id":"G-LUNCH","name":"School lunchroom","lv":"G","x":110,"y":55,"w":50,"h":15,"kind":"room","cat":"fnb","side":"pub","zone":"Free zone","cap":150,"ahu":"AHU-G1"},{"id":"G-TIX","name":"Tickets & information","lv":"G","x":52,"y":32,"w":14,"h":10,"kind":"room","cat":"service","side":"pub","zone":"Free zone","cap":30,"ahu":"AHU-G1"},{"id":"G-CLOAK","name":"Cloakroom & lockers","lv":"G","x":94,"y":32,"w":14,"h":10,"kind":"room","cat":"service","side":"pub","zone":"Free zone","cap":20,"ahu":"AHU-G1"},{"id":"G-LOBBY","name":"Gallery lobby","lv":"G","x":50,"y":80,"w":60,"h":12,"kind":"corridor","cat":"circulation","side":"paid","zone":"Galleries G","cap":300,"ahu":"AHU-G2"},{"id":"G-WAVES","name":"Water & Waves gallery","lv":"G","x":0,"y":30,"w":50,"h":80,"kind":"hall","cat":"gallery","side":"paid","zone":"Water & Waves","cap":350,"ahu":"AHU-G2"},{"id":"G-EX01","name":"Wave tank","lv":"G","x":5,"y":40,"w":14,"h":10,"kind":"object","cat":"exhibit","side":"paid","zone":"Water & Waves","cap":0,"asset":"EX01"},{"id":"G-EX02","name":"Tornado vortex","lv":"G","x":31,"y":40,"w":10,"h":10,"kind":"object","cat":"exhibit","side":"paid","zone":"Water & Waves","cap":0,"asset":"EX02"},{"id":"G-EX03","name":"Water play table","lv":"G","x":5,"y":66,"w":16,"h":12,"kind":"object","cat":"exhibit","side":"paid","zone":"Water & Waves","cap":0,"asset":"EX03"},{"id":"G-EX04","name":"Tide & harbour model","lv":"G","x":29,"y":66,"w":16,"h":14,"kind":"object","cat":"exhibit","side":"paid","zone":"Water & Waves","cap":0,"asset":"EX04"},{"id":"G-TINKER","name":"Tinker Lab","lv":"G","x":110,"y":70,"w":50,"h":40,"kind":"room","cat":"gallery","side":"paid","zone":"Tinker Lab","cap":120,"ahu":"AHU-G2"},{"id":"G-KIDS","name":"Little Scientists (under 6s)","lv":"G","x":60,"y":92,"w":50,"h":18,"kind":"room","cat":"gallery","side":"paid","zone":"Galleries G","cap":90,"ahu":"AHU-G2"},{"id":"G-WC","name":"Toilets & changing places","lv":"G","x":50,"y":92,"w":10,"h":18,"kind":"room","cat":"washroom","side":"paid","zone":"Galleries G","cap":24,"ahu":"AHU-G2"},{"id":"G-FIRSTAID","name":"First aid","lv":"G","x":110,"y":30,"w":12,"h":8,"kind":"room","cat":"medical","side":"pub","zone":"Free zone","cap":6,"ahu":"AHU-G1"},{"id":"L1-COR-N","name":"Gallery walk (north)","lv":"L1","x":50,"y":22,"w":60,"h":8,"kind":"corridor","cat":"circulation","side":"paid","zone":"Atrium ring","cap":150,"ahu":"AHU-L1"},{"id":"L1-COR-S","name":"Gallery walk (south)","lv":"L1","x":50,"y":80,"w":60,"h":10,"kind":"corridor","cat":"circulation","side":"paid","zone":"Atrium ring","cap":150,"ahu":"AHU-L1"},{"id":"L1-COR-W","name":"Mars entry queue (west walk)","lv":"L1","x":42,"y":22,"w":8,"h":68,"kind":"corridor","cat":"circulation","side":"paid","zone":"Atrium ring","cap":220,"ahu":"AHU-L1"},{"id":"L1-COR-E","name":"Gallery walk (east)","lv":"L1","x":110,"y":22,"w":8,"h":68,"kind":"corridor","cat":"circulation","side":"paid","zone":"Atrium ring","cap":120,"ahu":"AHU-L1"},{"id":"L1-MARS-ROVER","name":"Mars \u00b7 Rover garage","lv":"L1","x":0,"y":0,"w":42,"h":40,"kind":"room","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":150,"ahu":"AHU-T"},{"id":"L1-MARS-INTRO","name":"Mars \u00b7 Arrival hall","lv":"L1","x":0,"y":40,"w":42,"h":30,"kind":"room","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":150,"ahu":"AHU-T"},{"id":"L1-MARS-METEOR","name":"Mars \u00b7 Meteorite vault (loans)","lv":"L1","x":0,"y":70,"w":20,"h":40,"kind":"room","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":60,"ahu":"AHU-T","clim":{"rh":50,"t":21}},{"id":"L1-MARS-HAB","name":"Mars \u00b7 Habitat walk-through","lv":"L1","x":20,"y":70,"w":22,"h":25,"kind":"room","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":60,"ahu":"AHU-T"},{"id":"L1-MARS-SHOP","name":"Mars \u00b7 Exit shop","lv":"L1","x":20,"y":95,"w":22,"h":15,"kind":"room","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":40,"ahu":"AHU-T"},{"id":"L1-EX05","name":"Mars rover prototype","lv":"L1","x":8,"y":8,"w":16,"h":12,"kind":"object","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":0,"asset":"EX05"},{"id":"L1-LIGHT","name":"Light & Sound gallery","lv":"L1","x":50,"y":0,"w":60,"h":22,"kind":"room","cat":"gallery","side":"paid","zone":"Light & Sound","cap":180,"ahu":"AHU-L1"},{"id":"L1-BODY","name":"Human Body gallery","lv":"L1","x":118,"y":0,"w":42,"h":55,"kind":"hall","cat":"gallery","side":"paid","zone":"Human Body","cap":220,"ahu":"AHU-L1"},{"id":"L1-ENG","name":"Engineering Studio","lv":"L1","x":118,"y":55,"w":42,"h":55,"kind":"hall","cat":"gallery","side":"paid","zone":"Engineering","cap":200,"ahu":"AHU-L1"},{"id":"L1-EX06","name":"Earthquake house","lv":"L1","x":122,"y":4,"w":14,"h":12,"kind":"object","cat":"exhibit","side":"paid","zone":"Engineering","cap":0,"asset":"EX06"},{"id":"L1-EX07","name":"Van de Graaff theatre","lv":"L1","x":58,"y":4,"w":16,"h":12,"kind":"object","cat":"exhibit","side":"paid","zone":"Light & Sound","cap":0,"asset":"EX07"},{"id":"L1-EX08","name":"Bridge-building pit","lv":"L1","x":124,"y":84,"w":18,"h":14,"kind":"object","cat":"exhibit","side":"paid","zone":"Engineering","cap":0,"asset":"EX08"},{"id":"L1-CAFE","name":"Sky Caf\u00e9","lv":"L1","x":60,"y":90,"w":40,"h":20,"kind":"room","cat":"fnb","side":"paid","zone":"Atrium ring","cap":120,"ahu":"AHU-L1"},{"id":"L1-WC","name":"Toilets","lv":"L1","x":100,"y":90,"w":10,"h":20,"kind":"room","cat":"washroom","side":"paid","zone":"Atrium ring","cap":20,"ahu":"AHU-L1"},{"id":"L2-COR-N","name":"Gallery walk (north)","lv":"L2","x":50,"y":22,"w":60,"h":8,"kind":"corridor","cat":"circulation","side":"paid","zone":"Atrium ring","cap":150,"ahu":"AHU-L2"},{"id":"L2-COR-S","name":"Gallery walk (south)","lv":"L2","x":50,"y":80,"w":60,"h":10,"kind":"corridor","cat":"circulation","side":"paid","zone":"Atrium ring","cap":150,"ahu":"AHU-L2"},{"id":"L2-COR-W","name":"Gallery walk (west)","lv":"L2","x":42,"y":22,"w":8,"h":68,"kind":"corridor","cat":"circulation","side":"paid","zone":"Atrium ring","cap":120,"ahu":"AHU-L2"},{"id":"L2-COR-E","name":"Gallery walk (east)","lv":"L2","x":110,"y":22,"w":8,"h":68,"kind":"corridor","cat":"circulation","side":"paid","zone":"Atrium ring","cap":120,"ahu":"AHU-L2"},{"id":"L2-ORIGINS","name":"Earth & Origins gallery","lv":"L2","x":0,"y":0,"w":42,"h":60,"kind":"hall","cat":"gallery","side":"paid","zone":"Earth & Origins","cap":160,"ahu":"AHU-EO","clim":{"rh":50,"t":21}},{"id":"L2-CASE1","name":"Loan case \u00b7 pyrite & meteorites","lv":"L2","x":4,"y":4,"w":12,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Earth & Origins","cap":0,"clim":{"rh":50,"t":21}},{"id":"L2-CASE2","name":"Loan case \u00b7 Burgess-type fossils","lv":"L2","x":26,"y":4,"w":12,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Earth & Origins","cap":0,"clim":{"rh":50,"t":21}},{"id":"L2-CASE3","name":"Mineral wall","lv":"L2","x":4,"y":46,"w":34,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Earth & Origins","cap":0,"clim":{"rh":50,"t":21}},{"id":"L2-FLIGHT","name":"Space & Flight gallery","lv":"L2","x":0,"y":60,"w":42,"h":50,"kind":"hall","cat":"gallery","side":"paid","zone":"Space & Flight","cap":200,"ahu":"AHU-L2"},{"id":"L2-EX09","name":"Flight simulator pods","lv":"L2","x":4,"y":64,"w":14,"h":10,"kind":"object","cat":"exhibit","side":"paid","zone":"Space & Flight","cap":0,"asset":"EX09"},{"id":"L2-EX10","name":"Apollo command module (replica)","lv":"L2","x":24,"y":90,"w":14,"h":14,"kind":"object","cat":"exhibit","side":"paid","zone":"Space & Flight","cap":0,"asset":"EX10"},{"id":"L2-CLIMATE","name":"Climate Futures gallery","lv":"L2","x":50,"y":0,"w":60,"h":22,"kind":"room","cat":"gallery","side":"paid","zone":"Climate Futures","cap":160,"ahu":"AHU-L2"},{"id":"L2-PLFOYER","name":"Planetarium foyer","lv":"L2","x":118,"y":0,"w":42,"h":20,"kind":"room","cat":"circulation","side":"paid","zone":"Planetarium","cap":180,"ahu":"AHU-PL"},{"id":"L2-PLANET","name":"Planetarium dome (180 seats)","lv":"L2","x":118,"y":22,"w":42,"h":58,"kind":"room","cat":"gallery","side":"paid","zone":"Planetarium","cap":180,"ahu":"AHU-PL","shape":"ellipse"},{"id":"L2-EX11","name":"Planetarium projector","lv":"L2","x":135,"y":47,"w":8,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Planetarium","cap":0,"asset":"EX11"},{"id":"L2-QUIET","name":"Quiet & sensory room","lv":"L2","x":118,"y":82,"w":42,"h":28,"kind":"room","cat":"service","side":"paid","zone":"Atrium ring","cap":20,"ahu":"AHU-L2"},{"id":"L2-MAKE","name":"Make & Test bay","lv":"L2","x":60,"y":90,"w":40,"h":20,"kind":"room","cat":"gallery","side":"paid","zone":"Atrium ring","cap":80,"ahu":"AHU-L2"},{"id":"L2-WC","name":"Toilets","lv":"L2","x":100,"y":90,"w":10,"h":20,"kind":"room","cat":"washroom","side":"paid","zone":"Atrium ring","cap":20,"ahu":"AHU-L2"},{"id":"L3-COR","name":"Learning corridor","lv":"L3","x":0,"y":25,"w":160,"h":10,"kind":"corridor","cat":"circulation","side":"paid","zone":"Learning","cap":200,"ahu":"AHU-L3"},{"id":"L3-LEARN-1","name":"Learning studio 1","lv":"L3","x":0,"y":0,"w":20,"h":25,"kind":"room","cat":"service","side":"paid","zone":"Learning","cap":32,"ahu":"AHU-L3"},{"id":"L3-LEARN-2","name":"Learning studio 2","lv":"L3","x":20,"y":0,"w":20,"h":25,"kind":"room","cat":"service","side":"paid","zone":"Learning","cap":32,"ahu":"AHU-L3"},{"id":"L3-LEARN-3","name":"Learning studio 3","lv":"L3","x":40,"y":0,"w":20,"h":25,"kind":"room","cat":"service","side":"paid","zone":"Learning","cap":32,"ahu":"AHU-L3"},{"id":"L3-LEARN-4","name":"Learning studio 4","lv":"L3","x":60,"y":0,"w":20,"h":25,"kind":"room","cat":"service","side":"paid","zone":"Learning","cap":32,"ahu":"AHU-L3"},{"id":"L3-LEARN-5","name":"Learning studio 5","lv":"L3","x":80,"y":0,"w":20,"h":25,"kind":"room","cat":"service","side":"paid","zone":"Learning","cap":32,"ahu":"AHU-L3"},{"id":"L3-LEARN-6","name":"Learning studio 6","lv":"L3","x":100,"y":0,"w":20,"h":25,"kind":"room","cat":"service","side":"paid","zone":"Learning","cap":32,"ahu":"AHU-L3"},{"id":"L3-STAFFRM","name":"Educators' room","lv":"L3","x":120,"y":0,"w":40,"h":25,"kind":"room","cat":"office","side":"paid","zone":"Learning","cap":15,"ahu":"AHU-L3"},{"id":"L3-OBS","name":"Rooftop observatory","lv":"L3","x":0,"y":35,"w":40,"h":40,"kind":"room","cat":"gallery","side":"paid","zone":"Roof","cap":40,"ahu":"AHU-L3"},{"id":"L3-TERRACE","name":"Roof terrace","lv":"L3","x":40,"y":35,"w":70,"h":40,"kind":"hall","cat":"plaza","side":"paid","zone":"Roof","cap":250},{"id":"L3-SKY","name":"Skyline Room (events)","lv":"L3","x":110,"y":35,"w":50,"h":40,"kind":"room","cat":"fnb","side":"paid","zone":"Roof","cap":200,"ahu":"AHU-L3"},{"id":"L3-SVC","name":"Plant corridor","lv":"L3","x":0,"y":75,"w":160,"h":5,"kind":"corridor","cat":"boh","side":"boh","zone":"Plant","cap":10},{"id":"L3-SEC","name":"Security control room","lv":"L3","x":0,"y":80,"w":30,"h":30,"kind":"room","cat":"ops","side":"boh","zone":"Plant","cap":6,"ahu":"AHU-L3"},{"id":"L3-BMS","name":"BMS & facilities office","lv":"L3","x":30,"y":80,"w":30,"h":30,"kind":"room","cat":"ops","side":"boh","zone":"Plant","cap":6,"ahu":"AHU-L3"},{"id":"L3-AHU-B1","name":"AHU-B1 plant","lv":"L3","x":60,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-B1"},{"id":"L3-AHU-CS","name":"AHU-CS plant","lv":"L3","x":70,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-CS"},{"id":"L3-AHU-G1","name":"AHU-G1 plant","lv":"L3","x":80,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-G1"},{"id":"L3-AHU-G2","name":"AHU-G2 plant","lv":"L3","x":90,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-G2"},{"id":"L3-AHU-T","name":"AHU-T plant","lv":"L3","x":100,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-T"},{"id":"L3-AHU-L1","name":"AHU-L1 plant","lv":"L3","x":110,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-L1"},{"id":"L3-AHU-EO","name":"AHU-EO plant","lv":"L3","x":120,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-EO"},{"id":"L3-AHU-L2","name":"AHU-L2 plant","lv":"L3","x":130,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-L2"},{"id":"L3-AHU-PL","name":"AHU-PL plant","lv":"L3","x":140,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-PL"},{"id":"L3-AHU-L3","name":"AHU-L3 plant","lv":"L3","x":150,"y":80,"w":10,"h":30,"kind":"room","cat":"plant","side":"boh","zone":"Plant","cap":1,"asset":"AHU-L3"},{"id":"G-EX101","name":"Archimedes screw","lv":"G","x":3,"y":85,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Water & Waves","cap":0,"asset":"EX101"},{"id":"G-EX102","name":"Rain-making cloud","lv":"G","x":18,"y":85,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Water & Waves","cap":0,"asset":"EX102"},{"id":"G-EX103","name":"Harbour radar","lv":"G","x":33,"y":85,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Water & Waves","cap":0,"asset":"EX103"},{"id":"G-EX104","name":"Ship stability tank","lv":"G","x":3,"y":98,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Water & Waves","cap":0,"asset":"EX104"},{"id":"G-EX105","name":"Tinker bench 1","lv":"G","x":113,"y":73,"w":9,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Tinker Lab","cap":0,"asset":"EX105"},{"id":"G-EX106","name":"Tinker bench 2","lv":"G","x":126,"y":73,"w":9,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Tinker Lab","cap":0,"asset":"EX106"},{"id":"G-EX107","name":"Tinker bench 3","lv":"G","x":139,"y":73,"w":9,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Tinker Lab","cap":0,"asset":"EX107"},{"id":"G-EX108","name":"Tinker bench 4","lv":"G","x":113,"y":84,"w":9,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Tinker Lab","cap":0,"asset":"EX108"},{"id":"G-EX109","name":"Tinker bench 5","lv":"G","x":126,"y":84,"w":9,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Tinker Lab","cap":0,"asset":"EX109"},{"id":"G-EX110","name":"Tinker bench 6","lv":"G","x":139,"y":84,"w":9,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Tinker Lab","cap":0,"asset":"EX110"},{"id":"G-EX111","name":"Soft-play reef","lv":"G","x":63,"y":95,"w":10,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Galleries G","cap":0,"asset":"EX111"},{"id":"G-EX112","name":"Ball-run wall","lv":"G","x":77,"y":95,"w":10,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Galleries G","cap":0,"asset":"EX112"},{"id":"G-EX113","name":"Mini market","lv":"G","x":91,"y":95,"w":10,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Galleries G","cap":0,"asset":"EX113"},{"id":"L1-EX114","name":"Infinity mirrors","lv":"L1","x":78,"y":2,"w":9,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Light & Sound","cap":0,"asset":"EX114"},{"id":"L1-EX115","name":"Laser harp","lv":"L1","x":91,"y":2,"w":9,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Light & Sound","cap":0,"asset":"EX115"},{"id":"L1-EX116","name":"Echo tube","lv":"L1","x":78,"y":12,"w":9,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Light & Sound","cap":0,"asset":"EX116"},{"id":"L1-EX117","name":"Colour shadows","lv":"L1","x":91,"y":12,"w":9,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Light & Sound","cap":0,"asset":"EX117"},{"id":"L1-EX118","name":"Giant heart walk-through","lv":"L1","x":136,"y":3,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Human Body","cap":0,"asset":"EX118"},{"id":"L1-EX119","name":"Reaction timer","lv":"L1","x":121,"y":16,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Human Body","cap":0,"asset":"EX119"},{"id":"L1-EX120","name":"Skeleton bike","lv":"L1","x":136,"y":16,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Human Body","cap":0,"asset":"EX120"},{"id":"L1-EX121","name":"Microscope bar","lv":"L1","x":121,"y":29,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Human Body","cap":0,"asset":"EX121"},{"id":"L1-EX122","name":"Sleep lab","lv":"L1","x":136,"y":29,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Human Body","cap":0,"asset":"EX122"},{"id":"L1-EX123","name":"Wind tunnel","lv":"L1","x":121,"y":58,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Engineering","cap":0,"asset":"EX123"},{"id":"L1-EX124","name":"Robot arm bay","lv":"L1","x":136,"y":58,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Engineering","cap":0,"asset":"EX124"},{"id":"L1-EX125","name":"3D-print bar","lv":"L1","x":121,"y":71,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Engineering","cap":0,"asset":"EX125"},{"id":"L1-EX126","name":"Crane challenge","lv":"L1","x":136,"y":71,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Engineering","cap":0,"asset":"EX126"},{"id":"L1-EX127","name":"Mars terrain sandpit","lv":"L1","x":3,"y":29,"w":12,"h":8,"kind":"object","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":0,"asset":"EX127"},{"id":"L1-EX128","name":"Drill-core station","lv":"L1","x":19,"y":29,"w":12,"h":8,"kind":"object","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":0,"asset":"EX128"},{"id":"L1-EX129","name":"Meteorite case M1","lv":"L1","x":3,"y":73,"w":12,"h":8,"kind":"object","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":0,"asset":"EX129","clim":{"rh":50,"t":21}},{"id":"L1-EX130","name":"Meteorite case M2","lv":"L1","x":3,"y":86,"w":12,"h":8,"kind":"object","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":0,"asset":"EX130","clim":{"rh":50,"t":21}},{"id":"L1-EX131","name":"VR descent pods","lv":"L1","x":23,"y":73,"w":12,"h":8,"kind":"object","cat":"exhibit","side":"tour","zone":"Mars: The Red Frontier","cap":0,"asset":"EX131"},{"id":"L2-EX132","name":"Satellite gallery","lv":"L2","x":18,"y":63,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Space & Flight","cap":0,"asset":"EX132"},{"id":"L2-EX133","name":"Rocket engine cutaway","lv":"L2","x":3,"y":76,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Space & Flight","cap":0,"asset":"EX133"},{"id":"L2-EX134","name":"Jet engine","lv":"L2","x":18,"y":76,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Space & Flight","cap":0,"asset":"EX134"},{"id":"L2-EX135","name":"Ice-core freezer","lv":"L2","x":52,"y":2,"w":9,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Climate Futures","cap":0,"asset":"EX135"},{"id":"L2-EX136","name":"Carbon wall","lv":"L2","x":78,"y":2,"w":9,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Climate Futures","cap":0,"asset":"EX136"},{"id":"L2-EX137","name":"Sea-level table","lv":"L2","x":52,"y":12,"w":9,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Climate Futures","cap":0,"asset":"EX137"},{"id":"L2-EX138","name":"Storm simulator","lv":"L2","x":78,"y":12,"w":9,"h":5,"kind":"object","cat":"exhibit","side":"paid","zone":"Climate Futures","cap":0,"asset":"EX138"},{"id":"L2-EX139","name":"Harbourline raptor (cast)","lv":"L2","x":3,"y":16,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Earth & Origins","cap":0,"asset":"EX139"},{"id":"L2-EX140","name":"Rock-cycle table","lv":"L2","x":18,"y":16,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Earth & Origins","cap":0,"asset":"EX140"},{"id":"L2-EX141","name":"Seismograph","lv":"L2","x":3,"y":29,"w":11,"h":8,"kind":"object","cat":"exhibit","side":"paid","zone":"Earth & Origins","cap":0,"asset":"EX141"},{"id":"L2-EX142","name":"Test track","lv":"L2","x":63,"y":93,"w":12,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Atrium ring","cap":0,"asset":"EX142"},{"id":"L2-EX143","name":"Drop tower","lv":"L2","x":79,"y":93,"w":12,"h":6,"kind":"object","cat":"exhibit","side":"paid","zone":"Atrium ring","cap":0,"asset":"EX143"},{"id":"L3-EX144","name":"35 cm telescope","lv":"L3","x":3,"y":38,"w":10,"h":10,"kind":"object","cat":"exhibit","side":"paid","zone":"Roof","cap":0,"asset":"EX144"},{"id":"L3-EX145","name":"Studio 1 kit trolley","lv":"L3","x":3,"y":3,"w":6,"h":4,"kind":"object","cat":"exhibit","side":"paid","zone":"Learning","cap":0,"asset":"EX145"},{"id":"L3-EX146","name":"Studio 2 kit trolley","lv":"L3","x":23,"y":3,"w":6,"h":4,"kind":"object","cat":"exhibit","side":"paid","zone":"Learning","cap":0,"asset":"EX146"},{"id":"L3-EX147","name":"Studio 3 kit trolley","lv":"L3","x":43,"y":3,"w":6,"h":4,"kind":"object","cat":"exhibit","side":"paid","zone":"Learning","cap":0,"asset":"EX147"},{"id":"L3-EX148","name":"Studio 4 kit trolley","lv":"L3","x":63,"y":3,"w":6,"h":4,"kind":"object","cat":"exhibit","side":"paid","zone":"Learning","cap":0,"asset":"EX148"},{"id":"L3-EX149","name":"Studio 5 kit trolley","lv":"L3","x":83,"y":3,"w":6,"h":4,"kind":"object","cat":"exhibit","side":"paid","zone":"Learning","cap":0,"asset":"EX149"},{"id":"L3-EX150","name":"Studio 6 kit trolley","lv":"L3","x":103,"y":3,"w":6,"h":4,"kind":"object","cat":"exhibit","side":"paid","zone":"Learning","cap":0,"asset":"EX150"},{"id":"G-LIFT-A","name":"Lift A","lv":"G","x":57.5,"y":83.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L1-LIFT-A","name":"Lift A","lv":"L1","x":57.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L2-LIFT-A","name":"Lift A","lv":"L2","x":57.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L3-LIFT-A","name":"Lift A","lv":"L3","x":57.5,"y":27.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"G-LIFT-B","name":"Lift B","lv":"G","x":97.5,"y":83.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L1-LIFT-B","name":"Lift B","lv":"L1","x":97.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L2-LIFT-B","name":"Lift B","lv":"L2","x":97.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L3-LIFT-B","name":"Lift B","lv":"L3","x":97.5,"y":27.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"G-ESC-1","name":"Atrium escalators","lv":"G","x":87.5,"y":83.5,"w":5,"h":5,"kind":"core","cat":"esc","side":"paid","zone":"Cores","cap":0},{"id":"L1-ESC-1","name":"Atrium escalators","lv":"L1","x":87.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"esc","side":"paid","zone":"Cores","cap":0},{"id":"L2-ESC-1","name":"Atrium escalators","lv":"L2","x":87.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"esc","side":"paid","zone":"Cores","cap":0},{"id":"G-STAIR-1","name":"Grand stair","lv":"G","x":69.5,"y":83.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"paid","zone":"Cores","cap":0},{"id":"L1-STAIR-1","name":"Grand stair","lv":"L1","x":69.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"paid","zone":"Cores","cap":0},{"id":"L2-STAIR-1","name":"Grand stair","lv":"L2","x":69.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"paid","zone":"Cores","cap":0},{"id":"L3-STAIR-1","name":"Grand stair","lv":"L3","x":69.5,"y":27.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"paid","zone":"Cores","cap":0},{"id":"L1-STAIR-W","name":"West fire stair","lv":"L1","x":43.5,"y":21.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"paid","zone":"Cores","cap":0},{"id":"L2-STAIR-W","name":"West fire stair","lv":"L2","x":43.5,"y":21.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"paid","zone":"Cores","cap":0},{"id":"L3-STAIR-W","name":"West fire stair","lv":"L3","x":41.5,"y":27.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"paid","zone":"Cores","cap":0},{"id":"B1-LIFT-SVC","name":"Service & goods lift","lv":"B1","x":152.5,"y":47.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"boh","zone":"Cores","cap":0},{"id":"G-LIFT-SVC","name":"Service & goods lift","lv":"G","x":152.5,"y":83.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L1-LIFT-SVC","name":"Service & goods lift","lv":"L1","x":152.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L2-LIFT-SVC","name":"Service & goods lift","lv":"L2","x":152.5,"y":82.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"paid","zone":"Cores","cap":0},{"id":"L3-LIFT-SVC","name":"Service & goods lift","lv":"L3","x":152.5,"y":75.5,"w":5,"h":5,"kind":"core","cat":"lift","side":"boh","zone":"Cores","cap":0},{"id":"B1-STAIR-SVC","name":"Staff stair","lv":"B1","x":147.5,"y":47.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"boh","zone":"Cores","cap":0},{"id":"L3-STAIR-SVC","name":"Staff stair","lv":"L3","x":147.5,"y":75.5,"w":5,"h":5,"kind":"core","cat":"stairs","side":"boh","zone":"Cores","cap":0}],"spines":[{"lv":"B1","side":"boh","pts":[[5,50],[155,50]]},{"lv":"B1","side":"boh","pts":[[15.0,50],[15.0,22.5]]},{"lv":"B1","side":"boh","pts":[[50.0,50],[50.0,22.5]]},{"lv":"B1","side":"boh","pts":[[85.0,50],[85.0,22.5]]},{"lv":"B1","side":"boh","pts":[[130.0,50],[130.0,22.5]]},{"lv":"B1","side":"boh","pts":[[25.0,50],[25.0,82.5]]},{"lv":"B1","side":"boh","pts":[[65.0,50],[65.0,70.0]]},{"lv":"B1","side":"boh","pts":[[90.0,50],[90.0,70.0]]},{"lv":"B1","side":"boh","pts":[[130.0,50],[130.0,82.5]]},{"lv":"G","side":"pub","pts":[[25,15],[135,15]]},{"lv":"G","side":"pub","pts":[[80,15],[80,78]]},{"lv":"G","side":"pub","pts":[[80,50],[135,50],[158,50]]},{"lv":"G","side":"pub","pts":[[135,50],[135,68]]},{"lv":"G","side":"pub","pts":[[59,15],[59,37]]},{"lv":"G","side":"pub","pts":[[101,15],[101,37]]},{"lv":"G","side":"paid","pts":[[25,86],[155,86]]},{"lv":"G","side":"paid","pts":[[25,86],[25,35]]},{"lv":"G","side":"paid","pts":[[135,86],[135,100]]},{"lv":"G","side":"paid","pts":[[85,86],[85,101]]},{"lv":"G","side":"paid","pts":[[55,86],[55,101]]},{"lv":"G","side":"pub","pts":[[68,50],[68,78]]},{"lv":"G","side":"pub","pts":[[68,78],[80,78]]},{"lv":"L1","side":"paid","pts":[[46,26],[114,26],[114,85],[46,85],[46,26]]},{"lv":"L1","side":"paid","pts":[[114,85],[155,85]]},{"lv":"L1","side":"tour","pts":[[38,60],[21,60],[21,20]]},{"lv":"L1","side":"tour","pts":[[21,60],[21,102],[31,102]]},{"lv":"L1","side":"tour","pts":[[21,80],[38,80]]},{"lv":"L1","side":"tour","pts":[[21,90],[10,90]]},{"lv":"L1","side":"paid","pts":[[80,26],[80,10]]},{"lv":"L1","side":"paid","pts":[[114,30],[139,30]]},{"lv":"L1","side":"paid","pts":[[114,70],[139,70],[139,98]]},{"lv":"L1","side":"paid","pts":[[80,85],[80,100]]},{"lv":"L1","side":"paid","pts":[[105,85],[105,100]]},{"lv":"L2","side":"paid","pts":[[46,26],[114,26],[114,85],[46,85],[46,26]]},{"lv":"L2","side":"paid","pts":[[114,85],[155,85]]},{"lv":"L2","side":"paid","pts":[[46,30],[21,30],[21,8]]},{"lv":"L2","side":"paid","pts":[[21,30],[21,52]]},{"lv":"L2","side":"paid","pts":[[46,80],[21,80],[21,102]]},{"lv":"L2","side":"paid","pts":[[80,26],[80,10]]},{"lv":"L2","side":"paid","pts":[[114,10],[139,10]]},{"lv":"L2","side":"paid","pts":[[114,50],[139,50]]},{"lv":"L2","side":"paid","pts":[[139,85],[139,96]]},{"lv":"L2","side":"paid","pts":[[80,85],[80,100]]},{"lv":"L2","side":"paid","pts":[[105,85],[105,100]]},{"lv":"L2","side":"paid","pts":[[114,10],[114,26]]},{"lv":"L3","side":"paid","pts":[[5,30],[155,30]]},{"lv":"L3","side":"paid","pts":[[10,30],[10,12]]},{"lv":"L3","side":"paid","pts":[[30,30],[30,12]]},{"lv":"L3","side":"paid","pts":[[50,30],[50,12]]},{"lv":"L3","side":"paid","pts":[[70,30],[70,12]]},{"lv":"L3","side":"paid","pts":[[90,30],[90,12]]},{"lv":"L3","side":"paid","pts":[[110,30],[110,12]]},{"lv":"L3","side":"paid","pts":[[140,30],[140,12]]},{"lv":"L3","side":"paid","pts":[[20,30],[20,55]]},{"lv":"L3","side":"paid","pts":[[75,30],[75,55]]},{"lv":"L3","side":"paid","pts":[[135,30],[135,55]]},{"lv":"L3","side":"boh","pts":[[5,78],[155,78]]},{"lv":"L3","side":"boh","pts":[[15,78],[15,95]]},{"lv":"L3","side":"boh","pts":[[45,78],[45,95]]},{"lv":"L3","side":"boh","pts":[[65,78],[65,95]]},{"lv":"L3","side":"boh","pts":[[75,78],[75,95]]},{"lv":"L3","side":"boh","pts":[[85,78],[85,95]]},{"lv":"L3","side":"boh","pts":[[95,78],[95,95]]},{"lv":"L3","side":"boh","pts":[[105,78],[105,95]]},{"lv":"L3","side":"boh","pts":[[115,78],[115,95]]},{"lv":"L3","side":"boh","pts":[[125,78],[125,95]]},{"lv":"L3","side":"boh","pts":[[135,78],[135,95]]},{"lv":"L3","side":"boh","pts":[[145,78],[145,95]]},{"lv":"L3","side":"boh","pts":[[155,78],[155,95]]}],"connectors":[{"id":"GATE-MAIN","name":"Main ticket gates","type":"gate","acc":true,"stops":[{"lv":"G","x":80,"y":78,"side":"pub"},{"lv":"G","x":80,"y":86,"side":"paid"}],"oneway":true,"cost":20},{"id":"EXIT-MAIN","name":"Gallery exit","type":"gate","acc":true,"stops":[{"lv":"G","x":68,"y":86,"side":"paid"},{"lv":"G","x":68,"y":78,"side":"pub"}],"oneway":true,"cost":5},{"id":"GATE-SCHOOL","name":"School group check-in","type":"gate","acc":true,"stops":[{"lv":"G","x":135,"y":68,"side":"pub"},{"lv":"G","x":135,"y":86,"side":"paid"}],"oneway":true,"cost":30},{"id":"GATE-MARS","name":"Mars timed-entry scan","type":"gate","acc":true,"stops":[{"lv":"L1","x":46,"y":60,"side":"paid"},{"lv":"L1","x":38,"y":60,"side":"tour"}],"oneway":true,"cost":30},{"id":"EXIT-MARS","name":"Mars exit","type":"gate","acc":true,"stops":[{"lv":"L1","x":38,"y":80,"side":"tour"},{"lv":"L1","x":46,"y":80,"side":"paid"}],"oneway":true,"cost":5},{"id":"LIFT-A","name":"Lift A","type":"lift","acc":true,"stops":[{"lv":"G","x":60,"y":86,"side":"paid"},{"lv":"L1","x":60,"y":85,"side":"paid"},{"lv":"L2","x":60,"y":85,"side":"paid"},{"lv":"L3","x":60,"y":30,"side":"paid"}]},{"id":"LIFT-B","name":"Lift B","type":"lift","acc":true,"stops":[{"lv":"G","x":100,"y":86,"side":"paid"},{"lv":"L1","x":100,"y":85,"side":"paid"},{"lv":"L2","x":100,"y":85,"side":"paid"},{"lv":"L3","x":100,"y":30,"side":"paid"}]},{"id":"ESC-1","name":"Atrium escalators","type":"esc","acc":false,"stops":[{"lv":"G","x":90,"y":86,"side":"paid"},{"lv":"L1","x":90,"y":85,"side":"paid"},{"lv":"L2","x":90,"y":85,"side":"paid"}]},{"id":"STAIR-1","name":"Grand stair","type":"stairs","acc":false,"stops":[{"lv":"G","x":72,"y":86,"side":"paid"},{"lv":"L1","x":72,"y":85,"side":"paid"},{"lv":"L2","x":72,"y":85,"side":"paid"},{"lv":"L3","x":72,"y":30,"side":"paid"}]},{"id":"STAIR-W","name":"West fire stair","type":"stairs","acc":false,"stops":[{"lv":"L1","x":46,"y":24,"side":"paid"},{"lv":"L2","x":46,"y":24,"side":"paid"},{"lv":"L3","x":44,"y":30,"side":"paid"}]},{"id":"LIFT-SVC","name":"Service & goods lift","type":"lift","acc":true,"stops":[{"lv":"B1","x":155,"y":50,"side":"boh"},{"lv":"G","x":155,"y":86,"side":"paid"},{"lv":"L1","x":155,"y":85,"side":"paid"},{"lv":"L2","x":155,"y":85,"side":"paid"},{"lv":"L3","x":155,"y":78,"side":"boh"}],"staff":true},{"id":"STAIR-SVC","name":"Staff stair","type":"stairs","acc":false,"stops":[{"lv":"B1","x":150,"y":50,"side":"boh"},{"lv":"L3","x":150,"y":78,"side":"boh"}],"staff":true},{"id":"DOOR-L3","name":"Plant door (staff)","type":"stairs","acc":true,"stops":[{"lv":"L3","x":45,"y":30,"side":"paid"},{"lv":"L3","x":45,"y":78,"side":"boh"}],"staff":true,"cost":10}],"assets":[{"id":"AHU-B1","name":"AHU-B1 air handling unit","kind":"ahu","space":"L3-AHU-B1"},{"id":"AHU-CS","name":"AHU-CS air handling unit","kind":"ahu","space":"L3-AHU-CS"},{"id":"AHU-G1","name":"AHU-G1 air handling unit","kind":"ahu","space":"L3-AHU-G1"},{"id":"AHU-G2","name":"AHU-G2 air handling unit","kind":"ahu","space":"L3-AHU-G2"},{"id":"AHU-T","name":"AHU-T air handling unit","kind":"ahu","space":"L3-AHU-T"},{"id":"AHU-L1","name":"AHU-L1 air handling unit","kind":"ahu","space":"L3-AHU-L1"},{"id":"AHU-EO","name":"AHU-EO air handling unit","kind":"ahu","space":"L3-AHU-EO"},{"id":"AHU-L2","name":"AHU-L2 air handling unit","kind":"ahu","space":"L3-AHU-L2"},{"id":"AHU-PL","name":"AHU-PL air handling unit","kind":"ahu","space":"L3-AHU-PL"},{"id":"AHU-L3","name":"AHU-L3 air handling unit","kind":"ahu","space":"L3-AHU-L3"},{"id":"EX01","name":"Wave tank","kind":"exhibit","space":"G-EX01"},{"id":"EX02","name":"Tornado vortex","kind":"exhibit","space":"G-EX02"},{"id":"EX03","name":"Water play table","kind":"exhibit","space":"G-EX03"},{"id":"EX04","name":"Tide & harbour model","kind":"exhibit","space":"G-EX04"},{"id":"EX05","name":"Mars rover prototype","kind":"exhibit","space":"L1-EX05"},{"id":"EX06","name":"Earthquake house","kind":"exhibit","space":"L1-EX06"},{"id":"EX07","name":"Van de Graaff theatre","kind":"exhibit","space":"L1-EX07"},{"id":"EX08","name":"Bridge-building pit","kind":"exhibit","space":"L1-EX08"},{"id":"EX09","name":"Flight simulator pods","kind":"exhibit","space":"L2-EX09"},{"id":"EX10","name":"Apollo command module (replica)","kind":"exhibit","space":"L2-EX10"},{"id":"EX11","name":"Planetarium projector","kind":"exhibit","space":"L2-EX11"},{"id":"EX101","name":"Archimedes screw","kind":"exhibit","space":"G-EX101"},{"id":"EX102","name":"Rain-making cloud","kind":"exhibit","space":"G-EX102"},{"id":"EX103","name":"Harbour radar","kind":"exhibit","space":"G-EX103"},{"id":"EX104","name":"Ship stability tank","kind":"exhibit","space":"G-EX104"},{"id":"EX105","name":"Tinker bench 1","kind":"exhibit","space":"G-EX105"},{"id":"EX106","name":"Tinker bench 2","kind":"exhibit","space":"G-EX106"},{"id":"EX107","name":"Tinker bench 3","kind":"exhibit","space":"G-EX107"},{"id":"EX108","name":"Tinker bench 4","kind":"exhibit","space":"G-EX108"},{"id":"EX109","name":"Tinker bench 5","kind":"exhibit","space":"G-EX109"},{"id":"EX110","name":"Tinker bench 6","kind":"exhibit","space":"G-EX110"},{"id":"EX111","name":"Soft-play reef","kind":"exhibit","space":"G-EX111"},{"id":"EX112","name":"Ball-run wall","kind":"exhibit","space":"G-EX112"},{"id":"EX113","name":"Mini market","kind":"exhibit","space":"G-EX113"},{"id":"EX114","name":"Infinity mirrors","kind":"exhibit","space":"L1-EX114"},{"id":"EX115","name":"Laser harp","kind":"exhibit","space":"L1-EX115"},{"id":"EX116","name":"Echo tube","kind":"exhibit","space":"L1-EX116"},{"id":"EX117","name":"Colour shadows","kind":"exhibit","space":"L1-EX117"},{"id":"EX118","name":"Giant heart walk-through","kind":"exhibit","space":"L1-EX118"},{"id":"EX119","name":"Reaction timer","kind":"exhibit","space":"L1-EX119"},{"id":"EX120","name":"Skeleton bike","kind":"exhibit","space":"L1-EX120"},{"id":"EX121","name":"Microscope bar","kind":"exhibit","space":"L1-EX121"},{"id":"EX122","name":"Sleep lab","kind":"exhibit","space":"L1-EX122"},{"id":"EX123","name":"Wind tunnel","kind":"exhibit","space":"L1-EX123"},{"id":"EX124","name":"Robot arm bay","kind":"exhibit","space":"L1-EX124"},{"id":"EX125","name":"3D-print bar","kind":"exhibit","space":"L1-EX125"},{"id":"EX126","name":"Crane challenge","kind":"exhibit","space":"L1-EX126"},{"id":"EX127","name":"Mars terrain sandpit","kind":"exhibit","space":"L1-EX127"},{"id":"EX128","name":"Drill-core station","kind":"exhibit","space":"L1-EX128"},{"id":"EX129","name":"Meteorite case M1","kind":"exhibit","space":"L1-EX129"},{"id":"EX130","name":"Meteorite case M2","kind":"exhibit","space":"L1-EX130"},{"id":"EX131","name":"VR descent pods","kind":"exhibit","space":"L1-EX131"},{"id":"EX132","name":"Satellite gallery","kind":"exhibit","space":"L2-EX132"},{"id":"EX133","name":"Rocket engine cutaway","kind":"exhibit","space":"L2-EX133"},{"id":"EX134","name":"Jet engine","kind":"exhibit","space":"L2-EX134"},{"id":"EX135","name":"Ice-core freezer","kind":"exhibit","space":"L2-EX135"},{"id":"EX136","name":"Carbon wall","kind":"exhibit","space":"L2-EX136"},{"id":"EX137","name":"Sea-level table","kind":"exhibit","space":"L2-EX137"},{"id":"EX138","name":"Storm simulator","kind":"exhibit","space":"L2-EX138"},{"id":"EX139","name":"Harbourline raptor (cast)","kind":"exhibit","space":"L2-EX139"},{"id":"EX140","name":"Rock-cycle table","kind":"exhibit","space":"L2-EX140"},{"id":"EX141","name":"Seismograph","kind":"exhibit","space":"L2-EX141"},{"id":"EX142","name":"Test track","kind":"exhibit","space":"L2-EX142"},{"id":"EX143","name":"Drop tower","kind":"exhibit","space":"L2-EX143"},{"id":"EX144","name":"35 cm telescope","kind":"exhibit","space":"L3-EX144"},{"id":"EX145","name":"Studio 1 kit trolley","kind":"exhibit","space":"L3-EX145"},{"id":"EX146","name":"Studio 2 kit trolley","kind":"exhibit","space":"L3-EX146"},{"id":"EX147","name":"Studio 3 kit trolley","kind":"exhibit","space":"L3-EX147"},{"id":"EX148","name":"Studio 4 kit trolley","kind":"exhibit","space":"L3-EX148"},{"id":"EX149","name":"Studio 5 kit trolley","kind":"exhibit","space":"L3-EX149"},{"id":"EX150","name":"Studio 6 kit trolley","kind":"exhibit","space":"L3-EX150"},{"id":"LIFT-A","name":"Lift A","kind":"lift","space":"G-LIFT-A"},{"id":"LIFT-B","name":"Lift B","kind":"lift","space":"G-LIFT-B"},{"id":"ESC-1","name":"Atrium escalators","kind":"esc","space":"G-ESC-1"},{"id":"LIFT-SVC","name":"Service & goods lift","kind":"lift","space":"B1-LIFT-SVC"}],"view":{"cx":80,"cy":55,"dist":108,"lab":[-6,55]},"brief":"Science centre, 5 levels: B1 collections & BOH, G entry & discovery (free atrium, ticket gates, school entrance), L1 galleries + Mars touring hall (timed entry), L2 galleries + planetarium, L3 learning studios, roof, security control & plant."};
+// Walk-network builder + router for venue templates. Pure functions, used by the twin page and by tests.
+function buildGraph(V){
+  const nodes=[], adj=[]; const key=new Map();
+  const addNode=(lv,side,x,y)=>{const k=lv+'|'+side+'|'+Math.round(x*2)/2+'|'+Math.round(y*2)/2; if(key.has(k)) return key.get(k);
+    const id=nodes.length; nodes.push({id,lv,side,x,y}); adj.push([]); key.set(k,id); return id;};
+  const addEdge=(a,b,cost,via)=>{ if(a===b) return; adj[a].push({to:b,cost,via}); adj[b].push({to:a,cost,via}); };
+  // segments
+  const segs=[]; V.spines.forEach((s,si)=>{ for(let i=0;i<s.pts.length-1;i++){ const [x1,y1]=s.pts[i],[x2,y2]=s.pts[i+1]; if(x1===x2&&y1===y2) continue; segs.push({lv:s.lv,side:s.side,x1,y1,x2,y2,att:[]}); } });
+  const proj=(sg,x,y)=>{const dx=sg.x2-sg.x1,dy=sg.y2-sg.y1,L2=dx*dx+dy*dy; let t=((x-sg.x1)*dx+(y-sg.y1)*dy)/L2; t=Math.max(0,Math.min(1,t));
+    const px=sg.x1+t*dx,py=sg.y1+t*dy; return {t,px,py,d:Math.hypot(x-px,y-py)};};
+  const nearest=(lv,side,x,y)=>{let best=null; for(const sg of segs){ if(sg.lv!==lv||sg.side!==side) continue; const p=proj(sg,x,y); if(!best||p.d<best.p.d) best={sg,p}; } return best;};
+  // spine endpoints attach onto other segments (T-junctions)
+  for(const s of V.spines){ for(const pt of s.pts){ for(const sg of segs){ if(sg.lv!==s.lv||sg.side!==s.side) continue; const p=proj(sg,pt[0],pt[1]); if(p.d<0.75) sg.att.push({t:p.t,x:p.px,y:p.py}); } } }
+  // destinations
+  const spaceNode={};
+  const pending=[];
+  for(const sp of V.spaces){ if(sp.kind==='track'||sp.kind==='core') continue; const cx=sp.x+sp.w/2, cy=sp.y+sp.h/2; const n=nearest(sp.lv,sp.side,cx,cy); if(!n) continue;
+    n.sg.att.push({t:n.p.t,x:n.p.px,y:n.p.py}); pending.push([sp.id,n.sg.lv,n.sg.side,n.p.px,n.p.py,cx,cy]); }
+  const connStops=[];
+  for(const c of V.connectors){ const ids=[]; for(const st of c.stops){ const n=nearest(st.lv,st.side,st.x,st.y); if(!n){ids.push(null);continue;} n.sg.att.push({t:n.p.t,x:n.p.px,y:n.p.py}); ids.push([n.sg.lv,n.sg.side,n.p.px,n.p.py,st]); } connStops.push([c,ids]); }
+  // build segment chains
+  const WALK=1.3;
+  for(const sg of segs){ const pts=[{t:0,x:sg.x1,y:sg.y1},{t:1,x:sg.x2,y:sg.y2},...sg.att].sort((a,b)=>a.t-b.t); let prev=null;
+    for(const p of pts){ const id=addNode(sg.lv,sg.side,p.x,p.y); if(prev!==null&&prev!==id){ const a=nodes[prev],b=nodes[id]; addEdge(prev,id,Math.hypot(a.x-b.x,a.y-b.y)/WALK,'walk'); } prev=id; } }
+  for(const [sid,lv,side,px,py,cx,cy] of pending){ const a=addNode(lv,side,px,py); spaceNode[sid]=a; }
+  // connectors
+  const LV=Object.fromEntries(V.levels.map(l=>[l.id,l.elev]));
+  const connEdges=[];
+  for(const [c,ids] of connStops){ const ns=ids.map(v=>v?addNode(v[0],v[1],v[2],v[3]):null);
+    for(let i=0;i<ns.length-1;i++){ if(ns[i]==null||ns[i+1]==null) continue; const dh=Math.abs(LV[nodes[ns[i]].lv]-LV[nodes[ns[i+1]].lv]);
+      const cost = c.cost!=null?c.cost : c.type==='screen'?60 : c.type==='apm'?150 : c.type==='lift'?35+dh*1.5 : c.type==='esc'?12+dh*2.5 : 15+dh*3;
+      const E={cost,via:c.id,type:c.type,acc:c.acc,staff:!!c.staff}; adj[ns[i]].push({to:ns[i+1],...E}); if(!c.oneway) adj[ns[i+1]].push({to:ns[i],...E}); connEdges.push([ns[i],ns[i+1],c.id]); } }
+  return {nodes,adj,spaceNode,connEdges};
+}
+function route(G,from,to,opts={}){ // from/to node ids; opts.accessible excludes esc/stairs; opts.avoid = set of connector ids
+  const N=G.nodes.length, dist=new Float64Array(N).fill(Infinity), prev=new Int32Array(N).fill(-1), pv=new Array(N); dist[from]=0;
+  const heap=[[0,from]]; const push=(e)=>{heap.push(e); let i=heap.length-1; while(i>0){const p=(i-1)>>1; if(heap[p][0]<=heap[i][0]) break; [heap[p],heap[i]]=[heap[i],heap[p]]; i=p;}};
+  const pop=()=>{const top=heap[0], last=heap.pop(); if(heap.length){heap[0]=last; let i=0; for(;;){let l=2*i+1,r=l+1,m=i; if(l<heap.length&&heap[l][0]<heap[m][0]) m=l; if(r<heap.length&&heap[r][0]<heap[m][0]) m=r; if(m===i) break; [heap[m],heap[i]]=[heap[i],heap[m]]; i=m;}} return top;};
+  while(heap.length){ const [d,u]=pop(); if(d>dist[u]) continue; if(u===to) break;
+    for(const e of G.adj[u]){ if(opts.accessible&&e.type&&!e.acc) continue; if(e.staff&&!opts.staff) continue; if(opts.avoid&&opts.avoid.has(e.via)) continue;
+      const nd=d+e.cost; if(nd<dist[e.to]){dist[e.to]=nd; prev[e.to]=u; pv[e.to]=e; push([nd,e.to]);} } }
+  if(dist[to]===Infinity) return null; const path=[]; const vias=[]; for(let v=to; v!==-1; v=prev[v]){ path.push(v); if(pv[v]&&pv[v].type) vias.push(pv[v].via); }
+  return {path:path.reverse(), cost:dist[to], vias:[...new Set(vias.reverse())]};
+}
+if(typeof module!=='undefined') module.exports={buildGraph,route};
+
+(function(){
+const LVI=Object.fromEntries(V.levels.map((l,i)=>[l.id,i]));
+const SPC=Object.fromEntries(V.spaces.map(s=>[s.id,s]));
+const G=buildGraph(V);
+const VW=Object.assign({cx:160,cy:290,dist:240,lab:[-5,60]},V.view||{});
+const GAP=11, K=0.25, CX=VW.cx, CY=VW.cy; // metres -> units
+const W=(x,y,lv)=>[ (x-CX)*K, LVI[lv]*GAP, (y-CY)*K ];
+const P={
+ title:'Harbourline Science Centre Twin',
+ h1:'<b>HSC</b> Harbourline Science Centre',
+ sub:'science centre · 5 levels · 162 spaces',
+ listLabel:'Sessions',
+ foot:'Generated from a structured venue brief on the same engine as Harbourline International and Harbourline Stadium: 162 spaces, 61 interactive exhibits, a free atrium with one-way ticket gates, a timed-entry touring hall, a planetarium, climate-controlled loan galleries and collection store, 13 connectors and 75 tracked assets. Only the venue brief and this scenario pack differ.',
+ beats:[{t:'09:30',label:'Opening briefing'},{t:'10:15',label:'Schools + step-free visitor'},{t:'11:40',label:'Climate excursion'},
+  {t:'14:00',label:'Timed-entry crush'},{t:'22:40',label:'Energy setback'},{t:'01:12',label:'Motion alarm'}],
+ occBase:{B1:.3,G:.2,L1:.15,L2:.15,L3:.1},
+ layers:[['all','All','All layers'],['pax','Visitors','Visitors & queues'],['climate','Climate','Gallery climate (RH)'],['assets','Exhibits','Exhibits & assets'],['energy','Energy','Energy & HVAC']],
+ legend:{climate:[['--c-ok','Within 50 ± 5% RH'],['--c-warn','5–8% off target'],['--c-crit','More than 8% off'],['--t-hall','Not climate-controlled']],
+   assets:[['--c-ok','Running'],['--c-warn','Under repair / standby'],['--c-crit','Fault']]},
+ objLabelDist:45,
+ bigLabel:s=>s.cat==='gallery'||s.kind==='hall',
+ fresh(o){ V.spaces.forEach((s,i)=>{ if(s.clim){ o.sp[s.id].rh=49+(i%4)*.5; o.sp[s.id].temp=20.8+(i%3)*.2; } });
+   o.sess=[['Mars: The Red Frontier','10:00',148,150,'L1-MARS-INTRO','Scanning'],['Mars: The Red Frontier','11:00',150,150,'L1-MARS-INTRO','Sold out'],
+     ['Mars: The Red Frontier','12:00',139,150,'L1-MARS-INTRO','On sale'],['Mars: The Red Frontier','13:00',150,150,'L1-MARS-INTRO','Sold out'],
+     ['Mars: The Red Frontier','14:00',150,150,'L1-MARS-INTRO','Sold out'],['Mars: The Red Frontier','15:00',96,150,'L1-MARS-INTRO','On sale'],
+     ['Planetarium · Tour of the Night Sky','10:30',122,180,'L2-PLANET','On sale'],['Planetarium · Mars from Orbit','12:00',171,180,'L2-PLANET','On sale'],
+     ['Planetarium · Mars from Orbit','14:30',52,180,'L2-PLANET','On sale'],
+     ["St Mary's Primary (Yr 5) · 60",'10:15',60,60,'L3-LEARN-1','Expected'],['Bayside Primary (Yr 4) · 55','10:15',55,55,'L3-LEARN-2','Expected'],
+     ['Harbour High (Yr 9) · 58','10:20',58,58,'L3-LEARN-3','Expected'],['Northport College (Yr 10) · 57','10:20',57,57,'L3-LEARN-4','Expected']]
+     .map(([name,time,booked,cap,space,status])=>({name,time,booked,cap,space,status}));
+   o.asset['EX09'].status='repair'; o.sp['G-TIX'].queue=3; o.eventKw=0; },
+ key(s,layer,v){
+   if(layer==='climate'){ if(!s.clim) return 'tint'; const d=Math.abs(v.rh-s.clim.rh); return d>8?'crit':d>5?'warn':'ok'; }
+   if(layer==='assets'&&s.asset&&st.asset[s.asset]&&st.asset[s.asset].mode==='standby') return 'cool';
+   return null; },
+ extraKeys(s,v){ if(!s.clim) return []; const d=Math.abs(v.rh-s.clim.rh); return d>8?['crit']:d>5?['warn']:[]; },
+ metric(s,layer,v){ if(layer==='climate') return s.clim?`${v.temp.toFixed(1)}°C · ${Math.round(v.rh)}% RH`:'';
+   if(s.clim&&layer==='all'&&Math.abs(v.rh-s.clim.rh)>5) return `${Math.round(v.rh)}% RH`; return null; },
+ detail(s,kv,v){ return s.clim?kv('Climate',`${v.temp.toFixed(1)}°C · ${Math.round(v.rh)}% RH (target ${s.clim.t}°C · ${s.clim.rh} ± 5%)`):''; },
+ list:{ head:['Session','Time','Booked','Status'],
+   rows(){ return st.sess.map(x=>{ const ch={Scanning:'acc','Sold out':'',['On sale']:'act',Expected:'',Arrived:'act','Walk-ups paused':'wait','Re-timed':'cool','Over capacity':'crit',Done:''}[x.status]??'';
+     return `<tr class="click" data-s="${x.space}"><td>${x.name}</td><td class="m">${x.time}</td><td class="m">${x.booked}/${x.cap}</td><td><span class="chip ${ch}">${x.status}</span></td></tr>`; }).join(''); } },
+ kpis:[['Visitors in building',()=>paxCount().toLocaleString()],['Longest queue',()=>maxQueue()+' min'],
+   ['Worst gallery RH',()=>{ let w=50; V.spaces.forEach(s=>{ if(s.clim&&Math.abs(st.sp[s.id].rh-50)>Math.abs(w-50)) w=st.sp[s.id].rh; }); return Math.round(w)+'%'; }],
+   ['Power load',()=>kw().toLocaleString()+' kW']],
+ kwExtra(){ let k=st.eventKw||0; V.assets.forEach(a=>{ if(a.kind==='exhibit'){ const x=st.asset[a.id]; if(x.status==='ok'&&x.mode!=='standby') k+=1.4; } }); return Math.round(k); },
+ run:[
+ // 0 — briefing
+ ()=>{ setOcc(s=>s.lv!=='B1',.12); setOcc(s=>s.id==='G-ATRIUM'||s.id==='G-ENTRY',.35);
+   feed({who:'Ops briefing agent',level:'act',sev:'info',title:'09:30 briefing: 3,900 booked, Mars week 2, four school groups at 10:15–10:20',
+     body:'Mars timed slots are sold out at 11:00, 13:00 and 14:00. 230 students arrive by coach at the school entrance. Lift B is booked for maintenance 10:00–13:00. Flight simulator pods are under repair. Earth & Origins at 50% RH with lender loans on display; forecast 31°C and humid this afternoon, so the agent will watch that gallery closely.',focus:'G-ATRIUM'});
+   marker({target:'L2-EX09',sev:'info',glyph:'W',label:'Flight sim pods · repair',layer:'any'}); },
+ // 1 — schools + step-free
+ ()=>{ layer='pax'; floor='G'; renderFloors(); clearRoutes(); st.asset['LIFT-B'].status='repair';
+   setOcc(s=>s.lv!=='B1',.3); st.sp['G-SCHOOL'].occ=.97; st.sp['G-SCHOOL'].queue=18; st.sp['G-LUNCH'].occ=.7; st.sp['G-ATRIUM'].occ=.55; st.sp['G-TIX'].queue=6;
+   st.sess.slice(9).forEach(x=>x.status='Arrived');
+   const qm=marker({target:'G-SCHOOL',sev:'crit',glyph:'Q',label:'School check-in 18 min',layer:'any',live:true});
+   const lm=marker({target:'G-LIFT-B',sev:'warn',glyph:'L',label:'Lift B out until 13:00',layer:'any'});
+   const am=marker({target:'G-ENTRY',sev:'info',glyph:'♿',label:'Wheelchair user · planetarium 10:30',layer:'any',live:true});
+   focusSpace('G-SCHOOL',95);
+   const Ra=route(G,G.spaceNode['G-ENTRY'],G.spaceNode['L2-PLANET'],{accessible:true,avoid:new Set(['LIFT-B'])});
+   feed({who:'Learning & access agent',level:'wait',sev:'crit',title:'Four schools at once — split the groups, and route the 10:30 wheelchair user via Lift A',
+     body:`All four coaches arrived within 6 minutes and one check-in lane is running. Plan: open the second lane; send St Mary's and Bayside (primary) straight to Tinker Lab and Water & Waves; send Harbour High and Northport College up to learning studios 3 and 4, then the 11:00 planetarium preview. Separately, a wheelchair user and companion booked the 10:30 planetarium show. Lift B is out, so the step-free route uses Lift A (about ${Math.round(Ra.cost/60)} min). An educator will meet them at the ticket desk.`,focus:'G-SCHOOL',
+     actions:[['Approve',c=>{ c.status='Approved by visitor services lead'; drop(qm.id); drop(am.id);
+        const R=planRoute('G-ENTRY','L2-PLANET',{accessible:true,avoid:new Set(['LIFT-B'])},'--accent','Step-free route (Lift B out)');
+        showRouteBox(R,'<label><input type="checkbox" id="cmp"> Compare with the standard route</label>');
+        const cb=document.getElementById('cmp'); if(cb) cb.onchange=()=>{ st.routes=st.routes.filter(r=>r.label!=='Standard route (escalators)'); if(cb.checked) planRoute('G-ENTRY','L2-PLANET',{},'--warn','Standard route (escalators)',16000); drawRoutes(); };
+        planRoute('G-SCHOOL','L3-LEARN-3',{},'--warn','Harbour High → learning studio 3',20000);
+        feed({who:'Learning & access agent',level:'act',sev:'info',title:'Second school lane open; teachers sent itineraries; educator Priya R. meeting the visitor at tickets',body:'Planetarium crew told to hold the wheelchair bay and companion seat. The agent re-plans step-free routes if another lift goes down.'});
+        later(2500,()=>{ st.sp['G-SCHOOL'].queue=9; st.sp['G-SCHOOL'].occ=.7; st.sp['G-TINKER'].occ=.8; st.sp['G-WAVES'].occ=.6; });
+        later(5000,()=>{ st.sp['G-SCHOOL'].queue=2; st.sp['G-SCHOOL'].occ=.25; st.sp['L3-LEARN-3'].occ=.9; st.sp['L3-LEARN-4'].occ=.9; drop(lm.id);
+          feed({who:'Learning & access agent',level:'inform',sev:'good',title:'All 230 students checked in by 10:31; visitor seated at 10:27',body:'Lift B maintenance is still on schedule to finish at 13:00.'}); }); },true],
+      ['Second lane only',c=>{ c.status='Edited: second lane opened; groups follow their original itineraries'; drop(qm.id); later(3000,()=>{ st.sp['G-SCHOOL'].queue=11; }); }]]}); },
+ // 2 — climate excursion
+ ()=>{ layer='climate'; floor='L2'; renderFloors(); clearRoutes(); st.asset['LIFT-B'].status='repair';
+   setOcc(s=>s.lv==='L2'||s.lv==='L1',.5); st.sp['L2-ORIGINS'].occ=.97;
+   ['L2-ORIGINS','L2-CASE1','L2-CASE2','L2-CASE3'].forEach((id,i)=>{ st.sp[id].rh=61-i*.5; st.sp[id].temp=23.4; }); st.asset['AHU-EO'].status='fault';
+   const cm=marker({target:'L2-CASE1',sev:'crit',glyph:'%',label:'61% RH · pyrite loan case',layer:'any',live:true});
+   focusSpace('L2-ORIGINS',75);
+   feed({who:'Collections care agent',level:'wait',sev:'crit',title:'Earth & Origins at 61% RH and rising — lender loans need 45–55%',
+     body:'RH has climbed 2% every 15 min since 10:50. AHU-EO trend logs show its humidifier valve stuck at 40% open. 160 visitors are in a 31°C humid day, which adds load. The pyrite specimens in loan case 1 are at risk above 55%. Plan: force AHU-EO into dehumidify with full recirculation, cap the gallery at 60 visitors with a timed hold at the door, page loans conservator Dr Hana Ito, send the HVAC engineer from the B1 workshop to the AHU-EO plant room, and start an excursion log for the lender report.',focus:'L2-CASE1',
+     actions:[['Approve',c=>{ c.status='Approved by head of collections'; st.asset['AHU-EO'].status='repair';
+        const R=planRoute('B1-WORKSHOP','L3-AHU-EO',{staff:true},'--warn','HVAC engineer → AHU-EO plant room',10000); showRouteBox(R);
+        planRoute('B1-CONS','L2-ORIGINS',{staff:true},'--cool','Loans conservator → Earth & Origins',16000);
+        marker({target:'L2-ORIGINS',sev:'warn',glyph:'60',label:'Gallery capped at 60',layer:'any'});
+        feed({who:'Collections care agent',level:'act',sev:'info',title:'Dehumidify forced; gallery capped; conservator paged; excursion log EX-0412 opened',body:'Door staff are holding visitors in Climate Futures with a live ice-core demo.'});
+        later(2500,()=>{ ['L2-ORIGINS','L2-CASE1','L2-CASE2','L2-CASE3'].forEach(id=>{ st.sp[id].rh=56; st.sp[id].temp=22.4; }); st.sp['L2-ORIGINS'].occ=.4; });
+        later(5500,()=>{ ['L2-ORIGINS','L2-CASE1','L2-CASE2','L2-CASE3'].forEach(id=>{ st.sp[id].rh=51.5; st.sp[id].temp=21.4; }); st.asset['AHU-EO'].status='ok'; drop(cm.id);
+          st.markers.filter(m=>m.target==='L2-ORIGINS').forEach(m=>drop(m.id));
+          feed({who:'Collections care agent',level:'inform',sev:'good',title:'Back to 51% RH by 12:25; valve replaced; lender report drafted',body:'Peak 61% for 38 min. Case 1 microclimate peaked at 54% thanks to its silica buffer, so no object damage expected. The agent now alerts at 53% when the forecast is humid.'}); }); },true],
+      ['Cap gallery only',c=>{ c.status='Edited: gallery capped; HVAC left on automatic'; st.sp['L2-ORIGINS'].occ=.4; later(3000,()=>{ ['L2-ORIGINS','L2-CASE1'].forEach(id=>st.sp[id].rh=59); }); }]]}); },
+ // 3 — blockbuster crush
+ ()=>{ layer='pax'; floor='L1'; renderFloors(); clearRoutes(); st.asset['LIFT-B'].status='ok';
+   setOcc(s=>s.lv!=='B1',.5); ['L1-MARS-ROVER','L1-MARS-INTRO','L1-MARS-HAB','L1-MARS-METEOR'].forEach(i=>st.sp[i].occ=.96); st.sp['L1-COR-W'].occ=.98; st.sp['L1-COR-W'].queue=26;
+   st.sess.forEach(x=>{ if(x.time<'14:00') x.status='Done'; }); const s14=st.sess.find(x=>x.name.startsWith('Mars')&&x.time==='14:00'); s14.status='Over capacity'; s14.booked=212;
+   const mq=marker({target:'L1-COR-W',sev:'crit',glyph:'Q',label:'Mars queue 26 min',layer:'any',live:true}); const hm=marker({target:'L1-MARS-INTRO',sev:'warn',glyph:'!',label:'Touring hall 96% of 450',layer:'any'});
+   focusSpace('L1-COR-W',85);
+   feed({who:'Ticketing agent',level:'wait',sev:'crit',title:'Mars 14:00: 212 at the door for 150 places — pause walk-ups and offer a re-time with the 14:30 planetarium show',
+     body:'Late 13:00 holders plus 46 walk-up sales have built a 26-min queue along the west walk, and the touring hall is at 96% of its 450 safe capacity. The 14:30 planetarium "Mars from Orbit" has 128 free seats and the 15:00 Mars slot has 54. Plan: pause Mars walk-up sales until 15:00, offer the 62 unscanned 14:00 holders a free move to 15:00 with planetarium seats at 14:30, open the second scan lane, and run a live "Mars Live" demo in Light & Sound for the queue.',focus:'L1-COR-W',
+     actions:[['Approve',c=>{ c.status='Approved by front of house manager'; drop(mq.id);
+        const s15=st.sess.find(x=>x.name.startsWith('Mars')&&x.time==='15:00'); s15.booked=150; s15.status='Sold out'; s14.status='Walk-ups paused'; s14.booked=150;
+        const p=st.sess.find(x=>x.time==='14:30'); p.booked=114; p.status='Re-timed';
+        const R=planRoute('L1-COR-W','L2-PLANET',{},'--accent','Re-timed visitors → planetarium 14:30'); showRouteBox(R);
+        feed({who:'Ticketing agent',level:'act',sev:'info',title:'62 offers sent; walk-ups paused; lane 2 open; Mars Live demo starting',body:'"Swap to Mars at 15:00 and get free seats for Mars from Orbit in the planetarium at 14:30?" 41 accepted in the first 4 minutes.'});
+        later(2500,()=>{ st.sp['L1-COR-W'].queue=14; st.sp['L1-COR-W'].occ=.75; st.sp['L2-PLANET'].occ=.6; });
+        later(5000,()=>{ st.sp['L1-COR-W'].queue=6; st.sp['L1-COR-W'].occ=.5; ['L1-MARS-ROVER','L1-MARS-INTRO','L1-MARS-HAB'].forEach(i=>st.sp[i].occ=.8); drop(hm.id);
+          feed({who:'Ticketing agent',level:'inform',sev:'good',title:'Queue down to 6 min; touring hall at 81%',body:'Agent proposes capping walk-up Mars sales at 20 per slot for the rest of the run, and is drafting the change for the commercial team.'}); }); },true],
+      ['Second lane only',c=>{ c.status='Edited: second scan lane only'; drop(mq.id); later(3000,()=>{ st.sp['L1-COR-W'].queue=17; }); }]]}); },
+ // 4 — energy setback
+ ()=>{ layer='energy'; floor='all'; renderFloors(); clearRoutes(); st.sess.forEach(x=>x.status='Done');
+   V.spaces.forEach(s=>{ if(s.cap&&s.side!=='boh') { st.sp[s.id].occ=0; st.sp[s.id].queue=null; } }); st.sp['L3-SKY'].occ=.75; st.sp['L3-TERRACE'].occ=.2; st.eventKw=60;
+   focusSpace('L3-SKY',150);
+   feed({who:'Energy agent',level:'wait',sev:'cool',title:'Closed to the public: set back 7 air handlers and put 60 interactives on standby — but keep conservation control on',
+     body:'Last visitor out 17:41, galleries swept 18:05. Only the Skyline Room event (160 guests, until 23:30) is running. Plan: set back AHU-B1, G1, G2, T, L1, L2 and PL to 27°C/16°C until 08:00, with pre-start at 07:00. AHU-EO (Earth & Origins loans) and AHU-CS (collection store) stay on conservation control at 21°C/50% RH; they are never set back. AHU-L3 stays on until the event ends. Exhibits go to standby. Saves about 390 kW, about 3.3 MWh by morning.',focus:'L3-AHU-EO',
+     actions:[['Approve setback',c=>{ c.status='Approved by duty facilities engineer'; ['AHU-B1','AHU-G1','AHU-G2','AHU-T','AHU-L1','AHU-L2','AHU-PL'].forEach(a=>st.asset[a].mode='setback');
+        V.assets.forEach(a=>{ if(a.kind==='exhibit') st.asset[a.id].mode='standby'; });
+        marker({target:'L2-ORIGINS',sev:'info',glyph:'C',label:'Conservation control held',layer:'any'});
+        feed({who:'Energy agent',level:'inform',sev:'cool',title:'Setback active; conservation AHUs untouched',body:'Earth & Origins 21.0°C · 50% RH. Agent will propose AHU-L3 setback when the Skyline Room clears.'});
+        later(3000,()=>{ feed({who:'Energy agent',level:'wait',sev:'cool',title:'Skyline Room clear at 23:34 — set back AHU-L3 too?',body:'Caterers are out; security has swept the roof. Saves another 46 kW.',focus:'L3-SKY',
+          actions:[['Approve',c2=>{ c2.status='Approved'; st.asset['AHU-L3'].mode='setback'; st.eventKw=0; st.sp['L3-SKY'].occ=0; st.sp['L3-TERRACE'].occ=0; },true],['Not yet',c2=>{ c2.status='Declined: event crew packing down until 00:30'; }]]}); }); },true],
+      ['Exhibits standby only',c=>{ c.status='Edited: exhibits to standby, HVAC unchanged'; V.assets.forEach(a=>{ if(a.kind==='exhibit') st.asset[a.id].mode='standby'; }); }]]}); },
+ // 5 — motion alarm
+ ()=>{ layer='all'; floor='L2'; renderFloors(); clearRoutes(); st.eventKw=0; st.asset['AHU-L3'].mode='setback'; st.sp['L3-SKY'].occ=0; st.sp['L3-TERRACE'].occ=0; st.sp['L3-SEC'].occ=.5; V.spaces.forEach(s=>{ if(s.side!=='boh') st.sp[s.id].occ=0; });
+   const am=marker({target:'L2-EX10',sev:'crit',glyph:'!',label:'PIR alarm · Space & Flight',layer:'any',live:true}); focusSpace('L2-FLIGHT',80);
+   feed({who:'Security agent',level:'wait',sev:'crit',title:'01:12 motion alarm in Space & Flight near the Apollo replica — send a guard; police not needed yet',
+     body:'CCTV camera L2-07 shows a small moving shape at head height, no person-sized heat signature. No staff badge has been used on L2 since 00:41, and the cleaning contractor signed off at 00:30. All doors and windows on L2 are closed. Most likely cause: something drifting in the air flow. Plan: send guard 2 from the security control room via the plant door and Lift A, turn L2 lights to 50% for the camera, and keep the police on standby.',focus:'L2-EX10',
+     actions:[['Send guard',c=>{ c.status='Approved by night security supervisor'; const R=planRoute('L3-SEC','L2-FLIGHT',{staff:true},'--warn','Guard 2 → Space & Flight',9000); showRouteBox(R);
+        later(4000,()=>{ drop(am.id); marker({target:'L2-EX10',sev:'good',glyph:'✓',label:'All clear · stray balloon',layer:'any'});
+          feed({who:'Security agent',level:'inform',sev:'good',title:'All clear at 01:19: a helium balloon from the Skyline Room event drifted down the atrium void',body:'Guard 2 removed it. Agent added "balloons removed" to the event close-out checklist and set L2 lighting back to night mode.'}); }); },true],
+      ['Send guard and call police',c=>{ c.status='Approved: guard sent, police called'; planRoute('L3-SEC','L2-FLIGHT',{staff:true},'--warn','Guard 2 → Space & Flight',9000); }]]}); }
+ ]
+};
+function setOcc(pred,v){ V.spaces.forEach(s=>{ if(s.cap&&pred(s)) st.sp[s.id].occ=v; }); }
+
+const BEATS=P.beats;
+let st, layer='all', floor='all', sel=null, timers=[], T=null;
+
+// ---------------- state ----------------
+function fresh(){
+  const sp={};
+  V.spaces.forEach((s,i)=>{ const base=(P.occBase||{})[s.lv]??.2;
+    sp[s.id]={occ: s.cap? Math.min(.6, base*(.6+((i*37)%50)/60)) : 0, queue:null, status:'ok', temp:22.2+((i*13)%14)/10};
+  });
+  const ahu={}; V.assets.forEach(a=>{ ahu[a.id]={status:'ok',mode:'occupied',note:''}; });
+  const o={beat:0,sp,asset:ahu,markers:[],feed:[],routes:[],ids:0,kw:0}; if(P.fresh) P.fresh(o); return o;
+}
+const later=(ms,fn)=>{ const t={fn,done:false}; t.id=setTimeout(()=>{ if(t.done) return; t.done=true; fn(); render(); },ms); timers.push(t); };
+function flushTimers(){ timers.forEach(t=>{ clearTimeout(t.id); if(!t.done){ t.done=true; try{ t.fn(); }catch(e){} } }); timers=[]; }
+const uid=()=>++st.ids;
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const tint=Object.assign({seating:'--t-seat',field:'--t-field',medical:'--t-wash',merch:'--t-retail',members:'--t-lounge',suite:'--t-lounge',media:'--t-plant',gallery:'--t-lounge',exhibit:'--t-lounge'},P.tint||{},{gate:'--t-gate',retail:'--t-retail',fnb:'--t-fnb',washroom:'--t-wash',boh:'--t-boh',baggage:'--t-boh',plant:'--t-plant',ops:'--t-plant',office:'--t-plant',lounge:'--t-lounge',belt:'--t-boh',checkin:'--t-hall',security:'--t-hall',plaza:'--t-hall',border:'--t-hall',circulation:'--t-hall',landside:'--t-hall',transport:'--t-hall',apm:'--t-gate',service:'--t-hall'});
+function occKey(s,v){ if(!s.cap) return 'idle'; if(v.queue!=null&&v.queue>=20) return 'crit'; if(v.queue!=null&&v.queue>=12) return 'warn'; return v.occ>=.85?'crit':v.occ>=.65?'warn':'ok'; }
+function assetKeyFor(s){ const id=s.asset|| (s.kind==='object'&&s.cat==='belt'? s.id.replace('L1-',''):null) || (s.kind==='core'? s.id.slice(s.lv.length+1):null);
+  if(id&&st.asset[id]){ const a=st.asset[id].status; return a==='fault'?'crit':a==='repair'?'warn':'ok'; } if(s.ahu&&st.asset[s.ahu]&&st.asset[s.ahu].status==='fault') return 'warn'; return null; }
+function keyFor(s){ const v=st.sp[s.id]; const pk=P.key&&P.key(s,layer,v); if(pk) return pk;
+  if(layer==='pax') return occKey(s,v);
+  if(layer==='assets'){ const a=assetKeyFor(s); return a||'tint'; }
+  if(layer==='energy'){ if(!s.ahu) return 'tint'; return st.asset[s.ahu]&&st.asset[s.ahu].mode==='setback'?'cool':'ok'; }
+  if(layer!=='all') return 'tint';
+  const ks=[occKey(s,v), assetKeyFor(s)||'ok', ...(P.extraKeys?P.extraKeys(s,v):[])];
+  if(s.ahu&&st.asset[s.ahu]&&st.asset[s.ahu].mode==='setback') return 'cool';
+  return ks.includes('crit')?'crit':ks.includes('warn')?'warn':ks.includes('acc')?'acc':'tint';
+}
+function colorFor(s){ const k=keyFor(s); if(k==='tint') return css(tint[s.cat]||'--t-hall'); return css({ok:'--c-ok',warn:'--c-warn',crit:'--c-crit',idle:'--c-idle',cool:'--c-cool',acc:'--c-acc'}[k]); }
+function metric(s){ const v=st.sp[s.id]; const pm=P.metric&&P.metric(s,layer,v); if(pm!=null) return pm;
+  if(layer==='assets'||layer==='energy'){ if(s.asset&&st.asset[s.asset]) return st.asset[s.asset].status==='ok'?(st.asset[s.asset].mode==='setback'?'setback':'running'):st.asset[s.asset].status; if(s.ahu) return `${s.ahu} · ${st.asset[s.ahu].mode}`; return ''; }
+  if(v.queue!=null) return `queue ${v.queue} min`;
+  return s.cap?`${Math.round(v.occ*100)}%`:'';
+}
+
+// ---------------- 3D scene ----------------
+const stage=document.getElementById('stage'), overlay=document.getElementById('overlay'), tip=document.getElementById('tip');
+function initThree(){
+  if(!window.THREE){ stage.insertAdjacentHTML('beforeend','<div class="fallback">The 3D view needs WebGL and could not load here. The operations panels still work.</div>'); return; }
+  const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(2,devicePixelRatio||1));
+  stage.insertBefore(renderer.domElement,overlay);
+  const scene=new THREE.Scene(); const camera=new THREE.PerspectiveCamera(38,1.6,1,2000);
+  const controls=new THREE.OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.dampingFactor=.08; controls.maxPolarAngle=1.4; controls.minDistance=12; controls.maxDistance=420;
+  scene.add(new THREE.HemisphereLight(0xdfe9ff,0x223044,1.05)); const sun=new THREE.DirectionalLight(0xffffff,.5); sun.position.set(-60,140,80); scene.add(sun);
+  const levels=V.levels.map((l,i)=>{const g=new THREE.Group(); g.position.y=i*GAP; scene.add(g); return g;});
+  const H={room:1.3,hall:.18,corridor:.12,object:.55,core:2.2,track:.35,tier:1.8,field:.08};
+  const meshes={}, pick=[];
+  V.spaces.forEach(s=>{ const h=H[s.kind]||.5, w=Math.max(.4,s.w*K-.12), d=Math.max(.4,s.h*K-.12);
+    const [x,,z]=W(s.x+s.w/2,s.y+s.h/2,s.lv);
+    const mat=new THREE.MeshLambertMaterial({color:0xdddddd,transparent:s.kind==='room',opacity:s.kind==='room'?.9:1});
+    let geo; if(s.shape==='ellipse'){ geo=new THREE.CylinderGeometry(.5,.5,h,64); geo.scale(w,1,d); } else geo=new THREE.BoxGeometry(w,h,d);
+    const m=new THREE.Mesh(geo,mat); if(s.rot) m.rotation.y=-s.rot; m.position.set(x,h/2+(s.kind==='object'?.12:s.kind==='corridor'?.02:0),z); m.userData.id=s.id;
+    const e=new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry,20),new THREE.LineBasicMaterial({color:0x8899aa,transparent:true,opacity:s.kind==='hall'||s.kind==='corridor'||s.kind==='field'?.35:.7})); m.add(e);
+    levels[LVI[s.lv]].add(m); meshes[s.id]={m,mat,edge:e.material,cur:new THREE.Color(0xdddddd),target:new THREE.Color(0xdddddd)}; pick.push(m); });
+  // vertical cores as columns between stops
+  const coreMat=new THREE.MeshLambertMaterial({color:0x99aabb,transparent:true,opacity:.35}); const vert=new THREE.Group(); scene.add(vert);
+  V.connectors.forEach(c=>{ if(c.type==='apm'||c.type==='screen') return; const ys=c.stops.map(s=>LVI[s.lv]*GAP); const lo=Math.min(...ys), hi=Math.max(...ys); if(hi===lo) return;
+    const s0=c.stops[0]; const [x,,z]=W(s0.x,s0.y,s0.lv); const col=new THREE.Mesh(new THREE.CylinderGeometry(.35,.35,hi-lo,8),coreMat); col.position.set(x,(hi+lo)/2+1,z); vert.add(col); });
+  // people
+  const MAXP=6000, pos=new Float32Array(MAXP*3); const pg=new THREE.BufferGeometry(); pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const people=new THREE.Points(pg,new THREE.PointsMaterial({color:0x223344,size:.55,sizeAttenuation:true})); scene.add(people);
+  const agents=[]; V.spaces.forEach(s=>{ if(!s.cap||s.kind==='object'||s.kind==='core'||s.kind==='track') return; const n=Math.min(70,Math.round(s.cap/14)); for(let k=0;k<n&&agents.length<MAXP;k++) agents.push({s:s.id,k,n,x:s.x+Math.random()*s.w,y:s.y+Math.random()*s.h,vx:0,vy:0}); });
+  const grid=new THREE.GridHelper(260,52,new THREE.Color(css('--grid2')),new THREE.Color(css('--grid'))); grid.position.y=-2.5; scene.add(grid);
+  const routeGroup=new THREE.Group(); scene.add(routeGroup);
+  T={renderer,scene,camera,controls,levels,meshes,pick,vert,people,pg,pos,agents,routeGroup,fly:null,walkers:[]};
+  applyTheme(); new ResizeObserver(resize).observe(stage); resize(); setView('overview',true);
+  const ray=new THREE.Raycaster(), v2=new THREE.Vector2(); let down=null;
+  const hit=(e)=>{const r=renderer.domElement.getBoundingClientRect(); v2.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1); ray.setFromCamera(v2,camera);
+    const h=ray.intersectObjects(pick.filter(o=>o.parent.visible),false)[0]; return h&&h.object.userData.id;};
+  renderer.domElement.addEventListener('pointerdown',e=>{down=[e.clientX,e.clientY]});
+  renderer.domElement.addEventListener('pointerup',e=>{ if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5) return; const id=hit(e); sel=id||null; renderDetail(); paint(); });
+  renderer.domElement.addEventListener('pointermove',e=>{ if(e.buttons) {tip.hidden=true;return;} const id=hit(e); if(!id){tip.hidden=true;return;} const s=SPC[id]; const r=stage.getBoundingClientRect();
+    tip.innerHTML=`<b>${s.name}</b><span>${s.lv} · ${V.levels[LVI[s.lv]].name}${metric(s)?' · '+metric(s):''}</span>`; tip.hidden=false;
+    tip.style.left=Math.min(r.width-270,e.clientX-r.left+14)+'px'; tip.style.top=(e.clientY-r.top+14)+'px'; });
+  renderer.domElement.addEventListener('pointerleave',()=>{tip.hidden=true});
+  requestAnimationFrame(loop);
+}
+function applyTheme(){ if(!T) return; T.scene.background=new THREE.Color(css('--scene')); T.people.material.color.set(css('--people'));
+  Object.values(T.meshes).forEach(m=>m.edge.color.set(css('--edge'))); drawRoutes(); paint(true); }
+function resize(){ if(!T) return; const w=stage.clientWidth,h=stage.clientHeight; T.renderer.setSize(w,h,false); T.camera.aspect=w/h; T.camera.updateProjectionMatrix(); }
+function paint(instant){ if(!T) return; V.spaces.forEach(s=>{ const m=T.meshes[s.id]; m.target.set(sel===s.id?css('--accent'):colorFor(s)); if(instant) m.cur.copy(m.target); });
+  T.levels.forEach((g,i)=>{ g.visible= floor==='all' || V.levels[i].id===floor; }); T.vert.visible=floor==='all'; drawRoutes(); }
+function flyTo(tx,ty,tz,dist,instant){ if(!T) return; const tgt=new THREE.Vector3(tx,ty,tz); const dir=new THREE.Vector3(-.55,.9,.95).normalize(); const pos=tgt.clone().add(dir.multiplyScalar(dist));
+  if(instant){ T.camera.position.copy(pos); T.controls.target.copy(tgt); return; }
+  T.fly={t0:performance.now(),dur:1200,fp:T.camera.position.clone(),ft:T.controls.target.clone(),tp:pos,tt:tgt}; }
+function setView(v,instant){ if(v==='overview') flyTo(0,floor==='all'?GAP*(V.levels.length-1)/2:LVI[floor]*GAP,0,floor==='all'?VW.dist:VW.dist*.7,instant); }
+function focusSpace(id,dist){ const s=SPC[id]; if(!s) return; if(floor!=='all'&&floor!==s.lv){ floor=s.lv; renderFloors(); paint(); } const [x,y,z]=W(s.x+s.w/2,s.y+s.h/2,s.lv); flyTo(x,y,z,dist||70); }
+function routeNodesToPts(r){ return r.path.map(n=>{const nd=G.nodes[n]; const [x,y,z]=W(nd.x,nd.y,nd.lv); return new THREE.Vector3(x,y+.9,z);}); }
+function drawRoutes(){ if(!T) return; while(T.routeGroup.children.length) T.routeGroup.remove(T.routeGroup.children[0]); T.walkers=[];
+  st.routes.forEach(R=>{ const pts=R.pts.filter(p=> floor==='all' || Math.abs(p.y-.9-LVI[floor]*GAP)<.01); if(pts.length<2) return;
+    const path=new THREE.CurvePath(); for(let i=0;i<pts.length-1;i++){ if(pts[i].distanceTo(pts[i+1])<.01) continue; path.add(new THREE.LineCurve3(pts[i],pts[i+1])); } if(!path.curves.length) return;
+    const col=new THREE.Color(css(R.color||'--accent')); const mat=new THREE.MeshLambertMaterial({color:col,emissive:col,emissiveIntensity:.85});
+    T.routeGroup.add(new THREE.Mesh(new THREE.TubeGeometry(path,Math.min(600,path.curves.length*12),.32,6,false),mat));
+    const w=new THREE.Mesh(new THREE.SphereGeometry(.75,14,10),mat); T.routeGroup.add(w); T.walkers.push({w,path,speed:R.speed||14000}); }); }
+let lastLab=0;
+function loop(now){ requestAnimationFrame(loop);
+  if(T.fly){const k=Math.min(1,(now-T.fly.t0)/T.fly.dur), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2; T.camera.position.lerpVectors(T.fly.fp,T.fly.tp,e); T.controls.target.lerpVectors(T.fly.ft,T.fly.tt,e); if(k>=1) T.fly=null;}
+  T.controls.update();
+  for(const id in T.meshes){ const m=T.meshes[id]; m.cur.lerp(m.target,.08); m.mat.color.copy(m.cur); }
+  const pos=T.pos; const ag=T.agents;
+  for(let i=0;i<ag.length;i++){ const a=ag[i], s=SPC[a.s], v=st.sp[a.s]; const show=a.k<Math.round(v.occ*a.n)&&(floor==='all'||floor===s.lv);
+    if(!show){pos[i*3+1]=-999;continue}
+    a.vx=(a.vx+(Math.random()-.5)*.6)*.9; a.vy=(a.vy+(Math.random()-.5)*.6)*.9; a.x+=a.vx; a.y+=a.vy;
+    if(a.x<s.x+1||a.x>s.x+s.w-1){a.vx*=-1;a.x=Math.max(s.x+1,Math.min(s.x+s.w-1,a.x));} if(a.y<s.y+1||a.y>s.y+s.h-1){a.vy*=-1;a.y=Math.max(s.y+1,Math.min(s.y+s.h-1,a.y));}
+    let ax=a.x, ay=a.y; if(s.rot){ const cx=s.x+s.w/2, cy=s.y+s.h/2, c=Math.cos(s.rot), sn=Math.sin(s.rot), dx=ax-cx, dy=ay-cy; ax=cx+dx*c-dy*sn; ay=cy+dx*sn+dy*c; }
+    const [x,y,z]=W(ax,ay,s.lv); pos[i*3]=x; pos[i*3+1]=y+.5; pos[i*3+2]=z; }
+  T.pg.attributes.position.needsUpdate=true;
+  T.walkers.forEach(w=>{ const u=(now/w.speed)%1; w.w.position.copy(w.path.getPointAt(u)); });
+  T.renderer.render(T.scene,T.camera);
+  if(now-lastLab>40){lastLab=now; placeLabels();}
+}
+
+// ---------------- overlays ----------------
+const labelEls={}, pinEls={}, lvEls={}; let tmp=null;
+function project(x,y,z){ tmp=tmp||new THREE.Vector3(); tmp.set(x,y,z).project(T.camera); return tmp.z<1?[(tmp.x+1)/2*stage.clientWidth,(1-tmp.y)/2*stage.clientHeight]:null; }
+function placeLabels(){
+  const camD=T.camera.position.distanceTo(T.controls.target);
+  V.spaces.forEach(s=>{ let el=labelEls[s.id];
+    const big=s.w*s.h>=1800||s.cat==='gate'||s.kind==='hall'||(P.bigLabel&&P.bigLabel(s));
+    const want = (!(P.noLabel&&P.noLabel(s)) && floor===s.lv && (s.kind!=='object'||camD<(P.objLabelDist||80)) && s.kind!=='core' && s.kind!=='track' && (camD<110||big)) || (floor==='all' && sel===s.id);
+    if(!want){ if(el) el.hidden=true; return; }
+    if(!el){el=document.createElement('div');el.className='rl';overlay.appendChild(el);labelEls[s.id]=el;}
+    const [x,y,z]=W(s.x+s.w/2,s.y+s.h/2,s.lv); const p=project(x,y+({room:1.6,hall:.5}[s.kind]||.8),z); if(!p){el.hidden=true;return;}
+    el.hidden=false; el.style.left=p[0]+'px'; el.style.top=p[1]+'px'; const m=metric(s); const html=`<b>${s.name}</b>${m?`<span>${m}</span>`:''}`; if(el._h!==html){el.innerHTML=html;el._h=html;} });
+  V.levels.forEach((l,i)=>{ let el=lvEls[l.id]; if(!el){el=document.createElement('div');el.className='lvtag';overlay.appendChild(el);lvEls[l.id]=el;el.textContent=l.id+' · '+l.name;}
+    const show=floor==='all'||floor===l.id; const p=show&&project((VW.lab[0]-CX)*K,i*GAP,(VW.lab[1]-CY)*K); if(!p){el.hidden=true;return;} el.hidden=false; el.style.left=p[0]+'px'; el.style.top=p[1]+'px'; });
+  const seen={};
+  st.markers.forEach(m=>{ seen[m.id]=1; let el=pinEls[m.id];
+    if(!el){el=document.createElement('div');el.className='pin';el.innerHTML='<div class="tag"><span class="g"></span><span class="t"></span></div><div class="stem"></div>';overlay.appendChild(el);pinEls[m.id]=el;}
+    const s=SPC[m.target]; const show=s&&(floor==='all'||floor===s.lv)&&(layer==='all'||m.layer===layer||m.layer==='any'); const [x,y,z]=s?W(s.x+s.w/2,s.y+s.h/2,s.lv):[0,0,0]; const p=show&&project(x,y+2,z);
+    if(!p){el.hidden=true;return;} el.hidden=false; el.style.left=p[0]+'px'; el.style.top=p[1]+'px';
+    el.style.setProperty('--c',`var(--${{crit:'crit',warn:'warn',good:'good',info:'accent',cool:'cool'}[m.sev]})`); el.classList.toggle('live',!!m.live);
+    el.querySelector('.g').textContent=m.glyph; el.querySelector('.t').textContent=m.label; });
+  Object.keys(pinEls).forEach(id=>{ if(!seen[id]){ pinEls[id].remove(); delete pinEls[id]; } });
+}
+
+// ---------------- routing helpers ----------------
+function planRoute(from,to,opts,color,label,speed){ const r=route(G,G.spaceNode[from],G.spaceNode[to],opts||{}); if(!r) return null;
+  const R={id:uid(),from,to,label,color,speed,pts:T?routeNodesToPts(r):[],cost:r.cost,vias:r.vias,opts:opts||{}}; st.routes.push(R); drawRoutes(); return R; }
+function viaNames(R){ return R.vias.map(v=>(V.connectors.find(c=>c.id===v)||{}).name||v).join(' → '); }
+function showRouteBox(R,extra){ const b=document.getElementById('routebox'); if(!R){b.hidden=true;return;}
+  b.hidden=false; b.innerHTML=`<b>${R.label}</b><span>${SPC[R.from].name} → ${SPC[R.to].name}</span><span>${Math.round(R.cost/60)} min${R.opts.accessible?' · step-free':''}${R.vias.length?' · via '+viaNames(R):''}</span>${extra||''}`; }
+
+// ---------------- panels ----------------
+function renderLegend(){
+  const base={all:[['--c-warn','Needs a look'],['--c-crit','Act now'],['--c-cool','Energy setback'],['--accent','Route']],
+    pax:[['--c-ok','Comfortable'],['--c-warn','Busy · queue 12+ min'],['--c-crit','Crowded · queue 20+ min']],
+    assets:[['--c-ok','Running'],['--c-warn','Degraded / under repair'],['--c-crit','Fault']],
+    energy:[['--c-ok','Occupied mode'],['--c-cool','Setback mode']]};
+  const ly=P.layers.find(l=>l[0]===layer)||P.layers[0];
+  const L=(P.legend&&P.legend[layer])||base[layer]||[];
+  document.getElementById('legend').innerHTML=L.map(([c,t])=>`<span><i style="background:var(${c})"></i>${t}</span>`).join('');
+  document.getElementById('maptitle').textContent=ly[2]+(floor==='all'?'':' · '+floor+' '+V.levels[LVI[floor]].name);
+}
+function renderFloors(){ const f=document.getElementById('floors');
+  f.innerHTML=[['all','All levels'],...V.levels.slice().reverse().map(l=>[l.id,l.id+' '+l.name])].map(([id,n])=>`<button data-f="${id}" aria-pressed="${floor===id}">${n}</button>`).join('');
+  f.querySelectorAll('button').forEach(b=>b.onclick=()=>{ floor=b.dataset.f; renderFloors(); renderLegend(); paint(); setView('overview'); }); }
+function renderDetail(){ const d=document.getElementById('detail');
+  if(!sel){ d.innerHTML='<span class="note">Hover for a quick read, click a space for its live state. Pick a level on the right to see every label.</span>'; return; }
+  const s=SPC[sel], v=st.sp[sel], kv=(k,x)=>`<span class="kv">${k} <span>${x}</span></span>`;
+  let h=`<b>${s.name}</b>`+kv('ID',s.id)+kv('Level',s.lv+' '+V.levels[LVI[s.lv]].name)+kv('Zone',s.zone)+kv('Side',s.side);
+  if(s.cap) h+=kv('Occupancy',Math.round(v.occ*100)+'% of '+s.cap); if(v.queue!=null) h+=kv('Queue',v.queue+' min');
+  if(s.ahu&&st.asset[s.ahu]) h+=kv('HVAC',s.ahu+' · '+st.asset[s.ahu].mode); if(P.detail) h+=P.detail(s,kv,v);
+  if(s.asset&&st.asset[s.asset]) h+=kv('Asset',s.asset+' · '+st.asset[s.asset].status); d.innerHTML=h; }
+const LV={act:'<span class="chip act">Act</span>',wait:'<span class="chip wait">Propose &amp; wait</span>',inform:'<span class="chip">Inform</span>'};
+function renderFeed(){ const f=document.getElementById('feed'); f.textContent='';
+  st.feed.slice().reverse().forEach(c=>{ const div=document.createElement('div'); div.className='card sev-'+c.sev;
+    div.innerHTML=`<div class="top"><span class="who">${c.who}</span><span>${c.time} ${LV[c.level]||''}</span></div><h3>${c.title}</h3>${c.body?`<p>${c.body}</p>`:''}`;
+    if(c.status){const s=document.createElement('div');s.className='status';s.textContent=c.status;div.appendChild(s);}
+    else if(c.actions){const a=document.createElement('div');a.className='acts'; c.actions.forEach(([lab,fn,primary])=>{const b=document.createElement('button');b.className='btn'+(primary?' primary':'');b.textContent=lab;b.onclick=()=>{fn(c);render();};a.appendChild(b);}); div.appendChild(a);}
+    if(c.focus){ div.style.cursor='pointer'; div.addEventListener('click',e=>{ if(e.target.tagName!=='BUTTON') focusSpace(c.focus); }); }
+    f.appendChild(div); }); }
+function renderList(){ document.getElementById('listhead').innerHTML=P.list.head.map(h=>`<th>${h}</th>`).join('');
+  document.getElementById('list').innerHTML=P.list.rows();
+  document.querySelectorAll('#list tr').forEach(tr=>tr.onclick=()=>{ if(!SPC[tr.dataset.s]) return; sel=tr.dataset.s; focusSpace(sel,60); renderDetail(); paint(); }); }
+function renderAssets(){ const list=V.assets.filter(a=>a.kind!=='checkpoint');
+  document.getElementById('assetlist').innerHTML=list.map(a=>{const s=st.asset[a.id]; const sp=SPC[a.space]; const ch=s.status==='fault'?'crit':s.status==='repair'?'wait':s.mode==='setback'?'cool':'act';
+    return `<tr class="click" data-s="${a.space}"><td class="m">${a.id}</td><td>${sp?sp.lv+' '+(sp.zone||sp.name):''}</td><td><span class="chip ${ch}">${s.status==='ok'?(s.mode==='setback'?'Setback':'Running'):s.status==='fault'?'Fault':'Under repair'}</span></td></tr>`;}).join('');
+  document.querySelectorAll('#assetlist tr').forEach(tr=>tr.onclick=()=>{ if(!SPC[tr.dataset.s]) return; sel=tr.dataset.s; focusSpace(sel,60); renderDetail(); paint(); }); }
+function kw(){ let k=0; Object.entries(st.asset).forEach(([id,a])=>{ if(!id.startsWith('AHU')) return; k+= a.mode==='setback'?22:a.status==='fault'?40:68; }); return k+(P.kwExtra?P.kwExtra():0); }
+function paxCount(){ let pax=0; V.spaces.forEach(s=>{ if(s.cap&&!['boh','plant','ops','office','media'].includes(s.cat)) pax+=st.sp[s.id].occ*s.cap; }); return Math.round(pax); }
+function maxQueue(){ return Math.max(0,...Object.values(st.sp).map(v=>v.queue||0)); }
+function alerts(){ return st.markers.filter(m=>m.sev==='crit'||m.sev==='warn').length; }
+function renderTop(){ const b=BEATS[st.beat]; document.getElementById('clock').firstChild.nodeValue=b.t;
+  document.getElementById('steps').innerHTML=BEATS.map((x,i)=>`<li class="${i<st.beat?'done':i===st.beat?'now':''}"><span class="t">${x.t}</span>${x.label}</li>`).join('');
+  document.getElementById('next').disabled=st.beat>=BEATS.length-1;
+  const K=document.getElementById('kpis'); if(K.children.length!==P.kpis.length) K.innerHTML=P.kpis.map(k=>`<div class="kpi"><div>${k[0]}</div><strong></strong></div>`).join('');
+  P.kpis.forEach((k,i)=>{ K.children[i].querySelector('strong').textContent=k[1](); });
+  document.querySelectorAll('#layers button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.l===layer)); }
+function render(){ renderTop(); renderLegend(); renderDetail(); renderFeed(); renderList(); renderAssets(); paint(); }
+function feed(c){ c.id=uid(); c.time=c.time||BEATS[st.beat].t; st.feed.push(c); return c; }
+function marker(m){ m.id=uid(); m.beat=st.beat; st.markers.push(m); return m; }
+function drop(id){ st.markers=st.markers.filter(m=>m.id!==id); }
+function showTab(t){ ['feed','list','assets'].forEach(k=>{ document.getElementById('p-'+k).hidden=k!==t; document.getElementById('tab-'+k).setAttribute('aria-pressed',k===t); }); }
+function clearRoutes(){ st.routes=[]; drawRoutes(); showRouteBox(null); }
+
+// ---------------- scenarios ----------------
+function start(){ timers.forEach(t=>clearTimeout(t.id)); timers=[]; st=fresh(); layer='all'; floor='all'; sel=null; showTab('feed'); renderFloors(); P.run[0](); render(); paint(true); setView('overview'); showRouteBox(null); }
+document.getElementById('next').onclick=()=>{ if(st.beat<BEATS.length-1){ flushTimers(); st.beat++; st.markers=st.markers.filter(m=>m.sev==='crit'||m.sev==='warn'); P.run[st.beat](); render(); showTab('feed'); } };
+document.getElementById('restart').onclick=start;
+document.getElementById('layers').innerHTML=P.layers.map(l=>`<button data-l="${l[0]}" aria-pressed="false">${l[1]}</button>`).join('');
+document.querySelectorAll('#layers button').forEach(b=>b.onclick=()=>{ layer=b.dataset.l; render(); });
+['feed','list','assets'].forEach(k=>document.getElementById('tab-'+k).onclick=()=>showTab(k));
+try{ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',applyTheme); }catch(e){}
+new MutationObserver(applyTheme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+setInterval(()=>{ if(!st) return; let i=0; V.spaces.forEach(s=>{ i++; const v=st.sp[s.id]; if(!s.cap||v.occ<.05||v.occ>.8) return; const w=Math.sin(Date.now()/8000+i); v.occ=Math.min(.79,Math.max(.06,v.occ+w*.008)); }); renderTop(); },3000);
+st=fresh();
+try{ initThree(); }catch(e){ stage.insertAdjacentHTML('beforeend','<div class="fallback">The 3D view could not start in this browser. The operations panels still work.</div>'); }
+start();
+})();
+</script>
+
+</body></html>

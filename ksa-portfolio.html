@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="End-state concept for a national real-estate portfolio command centre: one view across commercial, retail and residential assets with integrated CMMS, security and IT/OT, six asset twins and agent-led scenarios.">
+<meta name="author" content="Josh Wilkinson">
+<link rel="canonical" href="https://jwilkinson879-alt.github.io/ksa-portfolio.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KSA Portfolio · command centre concept">
+<meta property="og:description" content="End-state concept for a national real-estate portfolio command centre: one view across commercial, retail and residential assets with integrated CMMS, security and IT/OT, six asset twins and agent-led scenarios.">
+<meta property="og:url" content="https://jwilkinson879-alt.github.io/ksa-portfolio.html">
+<meta name="twitter:card" content="summary">
+<title>KSA Portfolio Command Centre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Josh Wilkinson · control-room brand (single dark look by design).
+   Layout: console header → scenario rail → KPI strip → [national map | asset twin] + agent feed → asset-type lanes → integration fabric → credit */
+:root{
+  color-scheme:dark;
+  --bg:#0B1220; --surface:#111A2B; --raise:#16213A; --floor:#0E1727; --ink:#E6EDF5; --muted:#8696AD; --faint:#5C6B82; --line:#1F2C44; --line2:#2A3A58;
+  --accent:#3DDC97; --accent-ink:#06210F; --good:#3DDC97; --warn:#F5B841; --crit:#FF6B4A; --cool:#6EA8FF;
+  --scene:#070D18; --grid:#16233A; --grid2:#1E3150;
+  --com:#6EA8FF; --ret:#E39BFF; --res:#F5B841;
+  --land:#122036; --land-edge:#2B4466; --sea:#08101D;
+  --display:"Inter Tight","Inter","Segoe UI",system-ui,sans-serif;
+  --body:"Inter Tight","Inter","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:3px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.45;padding-inline:16px;padding-block:0 28px;margin:0;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1560px;margin:0 auto;display:grid;gap:14px}
+header.top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px;padding:14px 0 12px;border-bottom:1px solid var(--line)}
+.mark{flex:none;display:grid;place-items:center;width:40px;height:40px;border:1.5px solid var(--accent);color:var(--accent);font:700 15px var(--mono);text-decoration:none;border-radius:var(--r);position:relative}
+.mark::after{content:"";position:absolute;right:-1.5px;bottom:-1.5px;width:9px;height:9px;background:var(--accent)}
+.brand{min-width:0;flex:1 1 320px;display:grid;gap:2px}
+.eyebrow{font:500 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow span{color:var(--faint)}
+.brand h1{font:650 26px/1.1 var(--display);letter-spacing:-.015em;margin:0;text-wrap:balance}
+.brand h1 b{font:600 13px var(--mono);letter-spacing:.08em;color:var(--accent);border:1px solid var(--line2);padding:2px 6px;border-radius:var(--r);vertical-align:5px;margin-right:8px}
+.clock{font:500 22px var(--mono);font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:8px;padding:4px 0 4px 14px;border-left:1px solid var(--line)}
+.clock::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(61,220,151,.18);order:-1;animation:live 2s ease-in-out infinite}
+.clock small{font:500 11px var(--mono);color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+@keyframes live{50%{opacity:.35}}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.bar>div{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface);flex-wrap:wrap}
+.seg button{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:0;background:none;color:var(--muted);padding:8px 12px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--raise);color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+.btn{font:600 13.5px var(--body);border:1px solid var(--line2);background:var(--surface);color:var(--ink);border-radius:var(--r);padding:8px 14px;cursor:pointer}
+.btn:hover{border-color:var(--muted)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:disabled{opacity:.4;cursor:default}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.steps{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(160px,1fr);list-style:none;margin:0;padding:0;overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);counter-reset:s}
+.steps li{font-size:12.5px;color:var(--faint);padding:9px 12px 10px;border-right:1px solid var(--line);counter-increment:s;line-height:1.3;min-width:0}
+.steps li:last-child{border-right:0}
+.steps li::before{content:counter(s,decimal-leading-zero);display:block;font:500 10.5px var(--mono);letter-spacing:.1em;color:var(--faint);margin-bottom:2px}
+.steps li.done{color:var(--muted)}
+.steps li.now{color:var(--ink);background:var(--raise);box-shadow:inset 0 2px 0 var(--accent)}
+.steps li.now::before{color:var(--accent)}
+.steps .t{font:500 12px var(--mono);margin-right:7px}
+.kpis{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:520px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{padding:9px 12px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0;margin-bottom:-1px}
+.kpi div{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:1.3}
+.kpi strong{display:block;margin-top:4px;font:500 18px var(--mono);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.kpi small{font:500 10.5px var(--mono);color:var(--faint)}
+.kpi.bad strong{color:var(--crit)} .kpi.amber strong{color:var(--warn)}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:14px;align-items:start}
+@media (max-width:1100px){.main{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);min-width:0}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line)}
+.head h2{font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin:0}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.stage{position:relative;width:100%;aspect-ratio:16/10;max-width:100%;max-height:74vh;min-height:360px;overflow:hidden;background:var(--scene)}
+.stage>svg,.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage canvas{cursor:grab}
+.overlay{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.rl{position:absolute;transform:translate(-50%,-50%);text-align:center;white-space:nowrap;line-height:1.15}
+.rl b{display:block;font:600 11px var(--body);color:var(--ink);text-shadow:0 0 4px var(--scene),0 0 4px var(--scene)}
+.rl span{font:500 10px var(--mono);color:var(--accent);text-shadow:0 0 4px var(--scene)}
+.pin{position:absolute;transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center}
+.pin .tag{display:flex;align-items:center;gap:6px;background:rgba(11,18,32,.92);border:1px solid var(--c);border-radius:var(--r);padding:3px 8px 3px 3px;font:500 11px var(--mono);color:var(--ink);box-shadow:0 0 14px -2px var(--c);white-space:nowrap}
+.pin .g{width:18px;height:18px;border-radius:2px;background:var(--c);color:var(--bg);font:700 11px var(--mono);display:grid;place-items:center}
+.pin .stem{width:1px;height:22px;background:var(--c)}
+.pin.live .g{animation:blink 1.2s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.pin.live .g,.clock::before,.flow{animation:none!important}}
+.tip{position:absolute;pointer-events:none;background:var(--raise);border:1px solid var(--line2);border-radius:var(--r);padding:7px 10px;font-size:12.5px;box-shadow:0 8px 24px rgba(0,0,0,.45);max-width:280px;z-index:3}
+.tip b{display:block;font-size:13px}
+.tip span{display:block;color:var(--muted);font-family:var(--mono);font-size:11px}
+.hint{position:absolute;left:12px;bottom:10px;font:500 11px var(--mono);color:var(--faint);text-shadow:0 0 4px var(--scene)}
+.twinbar{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.twinbar .seg{flex-direction:column;background:rgba(17,26,43,.92)}
+.twinbar .seg button{padding:6px 10px;font-size:11px;text-align:left}
+.twinbar .seg button+button{border-left:0;border-top:1px solid var(--line)}
+.twinbar .seg button[aria-pressed="true"]{box-shadow:inset 2px 0 0 var(--accent)}
+.twinbar .ty{font:600 9.5px var(--mono);letter-spacing:.12em;padding:6px 10px 2px;color:var(--faint);text-transform:uppercase;background:rgba(17,26,43,.92)}
+.infobox{position:absolute;left:10px;top:10px;background:rgba(17,26,43,.94);border:1px solid var(--line2);border-left:2px solid var(--accent);border-radius:var(--r);padding:8px 12px;font-size:12.5px;display:grid;gap:3px;max-width:340px;color:var(--muted)}
+.infobox b{font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.detail{border-top:1px solid var(--line);padding:10px 14px;display:flex;flex-wrap:wrap;gap:4px 18px;font-size:13px;min-height:40px;align-items:baseline}
+.detail b{font:650 16px var(--display);color:var(--ink)}
+.detail .kv{color:var(--muted);font-size:12px} .detail .kv span{color:var(--ink);font-family:var(--mono);font-size:12.5px}
+aside{display:grid;gap:10px;min-width:0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px;display:grid;gap:8px;min-width:0}
+.feed{display:grid;gap:8px;max-height:720px;overflow:auto;padding-right:2px}
+.fc{border:1px solid var(--line);border-left:3px solid var(--faint);border-radius:var(--r);padding:10px 12px;display:grid;gap:5px;background:var(--floor)}
+.fc.sev-crit{border-left-color:var(--crit)} .fc.sev-warn{border-left-color:var(--warn)} .fc.sev-good{border-left-color:var(--good)} .fc.sev-info{border-left-color:var(--muted)} .fc.sev-cool{border-left-color:var(--cool)}
+.fc .top{display:flex;justify-content:space-between;gap:8px;font:500 11px var(--mono);color:var(--muted);align-items:center}
+.fc .who{letter-spacing:.1em;text-transform:uppercase}
+.fc h3{margin:0;font:600 14.5px/1.3 var(--display);text-wrap:balance}
+.fc p{margin:0;font-size:13px;color:var(--muted)}
+.fc .sys{display:flex;flex-wrap:wrap;gap:4px}
+.chip{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line2);border-radius:2px;padding:1px 6px;color:var(--muted);white-space:nowrap}
+.chip.wait{border-color:var(--warn);color:var(--warn)} .chip.act{border-color:var(--good);color:var(--good)} .chip.crit{border-color:var(--crit);color:var(--crit)} .chip.cool{border-color:var(--cool);color:var(--cool)}
+.acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px} .acts .btn{padding:6px 11px;font-size:13px}
+.status{font:500 12px var(--mono);color:var(--good)} .status::before{content:"✓ "}
+.lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:1100px){.lanes{grid-template-columns:minmax(0,1fr)}}
+.lane{border-top:2px solid var(--c)}
+.lane .head h2 i{display:inline-block;width:9px;height:9px;background:var(--c);margin-right:8px;border-radius:1px}
+.lane .head span{font:500 11.5px var(--mono);color:var(--muted)}
+.lm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.lm div{padding:8px 12px;border-right:1px solid var(--line);min-width:0}
+.lm div:last-child{border-right:0}
+.lm small{display:block;font:500 9.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lm strong{font:500 16px var(--mono);font-variant-numeric:tabular-nums}
+.sites{display:grid}
+.srow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:8px 12px;border-bottom:1px solid var(--line);cursor:pointer;align-items:center}
+.srow:last-child{border-bottom:0}
+.srow:hover{background:var(--raise)}
+.srow .n{font-weight:600;font-size:13.5px;min-width:0}
+.srow .n small{display:block;font:500 11px var(--mono);color:var(--muted);font-weight:400}
+.srow .v{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.srow .tw{font:600 9.5px var(--mono);letter-spacing:.08em;color:var(--accent);border:1px solid var(--accent);border-radius:2px;padding:0 4px;margin-left:6px;vertical-align:1px}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:0}
+.fabric{padding:10px 12px 14px;overflow-x:auto}
+.fabric svg{display:block;min-width:900px;width:100%;height:auto}
+.flow{animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-24}}
+.note{color:var(--muted);font-size:12.5px;max-width:110ch;margin:0}
+footer.credit{display:grid;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+.sig{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font:500 11.5px var(--mono);color:var(--muted)}
+.sig b{color:var(--ink)} .sig a{color:var(--accent);text-decoration:none}
+.sig .jw{display:inline-grid;place-items:center;width:20px;height:20px;border:1px solid var(--accent);color:var(--accent);font:700 9px var(--mono);border-radius:2px}
+.sig .ver{color:var(--faint);margin-left:auto}
+.fallback{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);padding:24px;text-align:center}
+::-webkit-scrollbar{width:8px;height:8px} ::-webkit-scrollbar-thumb{background:var(--line2);border-radius:4px}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="https://joshwilkinson.uk" target="_blank" rel="noopener" aria-label="Josh Wilkinson">JW</a>
+    <div class="brand"><div class="eyebrow">Portfolio command centre <span>· end-state concept · illustrative live data</span></div><h1><b>KSA</b>KSA Portfolio</h1></div>
+    <div class="clock" id="clock">07:00<small>Thu · Ramadan</small></div>
+  </header>
+  <div class="bar">
+    <div><div class="seg" role="group" aria-label="Operations layer" id="layers"></div></div>
+    <div><button class="btn" id="restart">Restart</button><button class="btn primary" id="next">Next scenario →</button></div>
+  </div>
+  <ol class="steps" id="steps"></ol>
+  <div class="kpis" id="kpis"></div>
+  <div class="main">
+    <section class="card">
+      <div class="head"><div class="seg" role="group" aria-label="View" id="views"><button data-v="map" aria-pressed="true">National</button><button data-v="twin" aria-pressed="false">Asset twin</button></div><div class="legend" id="legend"></div></div>
+      <div class="stage" id="stage">
+        <svg id="map" viewBox="0 0 900 680" role="img" aria-label="Map of Saudi Arabia showing KSA portfolio sites by region and asset type"></svg>
+        <div class="overlay" id="overlay"></div>
+        <div class="tip" id="tip" hidden></div>
+        <div class="infobox" id="infobox" hidden></div>
+        <div class="twinbar" id="twinbar" hidden></div>
+        <div class="hint" id="hint">Click a site · drag to orbit in twin view</div>
+      </div>
+      <div class="detail" id="detail"></div>
+    </section>
+    <aside>
+      <div class="head card" style="border-bottom:1px solid var(--line)"><h2>Agents &amp; people</h2><span class="chip">Agents propose · people approve</span></div>
+      <div class="panel"><div class="feed" id="feed"></div></div>
+    </aside>
+  </div>
+  <div class="lanes" id="lanes"></div>
+  <section class="card">
+    <div class="head"><h2>Integration fabric · CMMS, security and IT/OT on one event backbone</h2><div class="legend"><span><i style="background:var(--good)"></i>Healthy</span><span><i style="background:var(--warn)"></i>Degraded</span><span><i style="background:var(--crit)"></i>Down</span></div></div>
+    <div class="fabric"><svg id="fabric" viewBox="0 0 1200 430" role="img" aria-label="Integration architecture from field systems to command centre"></svg></div>
+  </section>
+  <footer class="credit">
+    <p class="note"><b>Disclaimer.</b> Independent concept built on synthetic data. Site names are generic and every incident, reading, site figure and contract value is illustrative; it does not describe any real operator.</p>
+    <p class="note">End-state concept for a KSA portfolio of government-owned residential, retail and commercial assets (32M sq ft), drawn from the 2022–23 digital transformation roadmap: IBM Maximo as the CMMS, Yardi for property management, PortfolioCare for tenants, and converged security and IT/OT networks across the West, Central and East regions. Portfolio total is verified; site-level figures, live readings and scenarios are illustrative.</p>
+    <div class="sig"><span class="jw">JW</span><span>Designed &amp; prompted by <b>Josh Wilkinson</b> · former Executive Director, Digital Transformation</span><a href="https://joshwilkinson.uk" target="_blank" rel="noopener">joshwilkinson.uk</a><span class="ver">Illustrative concept · synthetic data</span></div>
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+'use strict';
+// ---------------- portfolio data (portfolio total verified; site splits illustrative) ----------------
+const TYPES={com:{name:'Commercial',c:'--com'},ret:{name:'Retail',c:'--ret'},res:{name:'Residential',c:'--res'}};
+const SITES=[
+ {id:'officecl',name:'Riyadh Office Cluster',sub:'Office towers 1–3 and retail podium',city:'Riyadh',region:'Central',type:'com',lon:46.675,lat:24.700,gla:2.6,twin:'officecl'},
+ {id:'techpark',name:'Riyadh Tech Park',sub:'Business park · portfolio HQ',city:'Riyadh',region:'Central',type:'com',lon:46.635,lat:24.765,gla:3.4,twin:'techpark'},
+ {id:'northbp',name:'Riyadh North Business Park',sub:'Office campus',city:'Riyadh',region:'Central',type:'com',lon:46.722,lat:24.792,gla:1.9},
+ {id:'regmall',name:'Riyadh Regional Mall',sub:'Regional mall',city:'Riyadh',region:'Central',type:'ret',lon:46.738,lat:24.773,gla:2.2,twin:'regmall'},
+ {id:'westres',name:'Riyadh West Residences',sub:'Residential and mixed use',city:'Riyadh',region:'Central',type:'res',lon:46.622,lat:24.684,gla:1.2},
+ {id:'eastcmp',name:'Riyadh East Compound',sub:'Gated residential compound',city:'Riyadh',region:'Central',type:'res',lon:46.800,lat:24.800,gla:1.8,twin:'eastcmp'},
+ {id:'jedcoast',name:'Jeddah Coastal Community',sub:'Mixed-use residential community',city:'Jeddah',region:'West',type:'res',lon:39.14,lat:21.76,gla:10.1,twin:'jedcoast'},
+ {id:'jedcoastret',name:'Jeddah Coastal Community retail & amenities',sub:'Boulevard retail',city:'Jeddah',region:'West',type:'ret',lon:39.16,lat:21.72,gla:0.9},
+ {id:'jedcom',name:'Jeddah office building',sub:'Illustrative site',city:'Jeddah',region:'West',type:'com',lon:39.18,lat:21.55,gla:0.8},
+ {id:'mak1',name:'Makkah residential',sub:'Illustrative site',city:'Makkah',region:'West',type:'res',lon:39.83,lat:21.42,gla:1.3},
+ {id:'mak2',name:'Makkah retail',sub:'Illustrative site',city:'Makkah',region:'West',type:'ret',lon:39.88,lat:21.38,gla:0.5},
+ {id:'mad1',name:'Madinah residential',sub:'Illustrative site',city:'Madinah',region:'West',type:'res',lon:39.61,lat:24.47,gla:1.0},
+ {id:'mad2',name:'Madinah retail centre',sub:'Illustrative site',city:'Madinah',region:'West',type:'ret',lon:39.57,lat:24.51,gla:0.6},
+ {id:'khobarwf',name:'Khobar Waterfront Compound',sub:'Furnished waterfront villas',city:'Al Khobar',region:'East',type:'res',lon:50.17,lat:26.36,gla:1.6,twin:'khobarwf'},
+ {id:'dammamret',name:'Dammam retail centre',sub:'Illustrative site',city:'Dammam',region:'East',type:'ret',lon:50.08,lat:26.43,gla:0.8},
+ {id:'jubail',name:'Jubail business park',sub:'Illustrative site',city:'Jubail',region:'East',type:'com',lon:49.62,lat:27.00,gla:0.7},
+ {id:'khobar',name:'Khobar office tower',sub:'Illustrative site',city:'Al Khobar',region:'East',type:'com',lon:50.21,lat:26.29,gla:0.6}];
+const SITE=Object.fromEntries(SITES.map(s=>[s.id,s]));
+const LAYERS=[['all','All'],['maint','Maintenance & SLAs'],['care','PortfolioCare & tenants'],['lease','Leasing & occupancy'],['esec','Energy, metering & security']];
+const BEATS=[{t:'07:00',label:'Portfolio briefing'},{t:'09:15',label:'Chiller trip · Riyadh Tower 2'},{t:'11:40',label:'Fibre cut · Jeddah Coastal Community Zone 2'},
+ {t:'16:20',label:'Gate tailgating · Riyadh East Compound'},{t:'21:30',label:'Ramadan peak · Riyadh Regional Mall'},{t:'23:50',label:'Villa turnaround · Khobar Waterfront'}];
+function rng(seed){ let h=2166136261; for(const c of seed) h=Math.imul(h^c.charCodeAt(0),16777619); return ()=>{ h^=h<<13; h^=h>>>17; h^=h<<5; return ((h>>>0)%10000)/10000; }; }
+let st, layer='all', view='map', twin=null, sel=null, timers=[];
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt=n=>Math.round(n).toLocaleString('en-GB');
+function freshSite(s){ const r=rng(s.id); const g=s.gla;
+  const base={wo:Math.round(g*38*(0.8+r()*0.5)),woOver:0,ppm:93+r()*5,mttr:5+r()*5,sla:95+r()*3.5,care:Math.round(g*9*(0.7+r()*.6)),careAge:6+r()*10,csat:4.1+r()*0.6,
+    occ:s.type==='res'?86+r()*8:s.type==='com'?88+r()*8:91+r()*6,turn:s.type==='res'?2.2+r()*1.2:null,arrears:+(g*0.9*(0.5+r())).toFixed(1),
+    mw:+(g*(s.type==='ret'?2.4:s.type==='com'?1.9:1.1)*(0.85+r()*.3)).toFixed(1),alarms:r()<0.72?0:1,cams:98.5+r()*1.4,net:99.2+r()*0.7,footfall:s.type==='ret'?Math.round(g*16000*(0.8+r()*.4)):null};
+  base.woOver=Math.round(base.wo*(0.03+r()*0.04)); return base; }
+function fresh(){ const site={}; SITES.forEach(s=>site[s.id]=freshSite(s));
+  const fab={}; FAB_NODES.forEach(n=>fab[n.id]={s:'ok',rate:n.rate}); return {beat:0,site,fab,markers:[],feed:[],ids:0,obj:{},pts:{}}; }
+// ---------------- status helpers ----------------
+function siteStatus(s,v){ const L=layer; const ks=[];
+  if(L==='all'||L==='maint'){ ks.push(v.sla<92?'crit':v.sla<95?'warn':'ok'); ks.push(v.woOver/Math.max(1,v.wo)>.1?'warn':'ok'); }
+  if(L==='all'||L==='care'){ ks.push(v.careAge>20?'crit':v.careAge>14?'warn':'ok'); }
+  if(L==='all'||L==='lease'){ ks.push(v.occ<80?'crit':v.occ<86?'warn':'ok'); if(v.turn!=null) ks.push(v.turn>4.5?'crit':v.turn>3?'warn':'ok'); }
+  if(L==='all'||L==='esec'){ ks.push(v.alarms>=3?'crit':v.alarms>=1?'warn':'ok'); ks.push(v.net<97?'crit':v.net<99?'warn':'ok'); ks.push(v.cams<95?'crit':v.cams<98?'warn':'ok'); }
+  return ks.includes('crit')?'crit':ks.includes('warn')?'warn':'ok'; }
+const SC={ok:'--good',warn:'--warn',crit:'--crit'};
+function siteChips(s,v){ const L=layer, c=(t,k)=>`<span class="chip${k?' '+k:''}">${t}</span>`;
+  if(L==='maint') return c(v.wo+' WOs')+c('SLA '+v.sla.toFixed(1)+'%',v.sla<95?'wait':'');
+  if(L==='care') return c(v.care+' open')+c(v.careAge.toFixed(0)+' h age',v.careAge>14?'wait':'');
+  if(L==='lease') return c(v.occ.toFixed(0)+'% occ',v.occ<86?'wait':'')+(v.turn!=null?c(v.turn.toFixed(1)+' d turn',v.turn>3?'wait':''):c('SAR '+v.arrears+'M arrears'));
+  if(L==='esec') return c(v.mw+' MW')+c(v.alarms+' alarms',v.alarms?'wait':'')+(v.net<99?c('net '+v.net.toFixed(1)+'%','crit'):'');
+  return c(v.wo+' WOs')+c(v.occ.toFixed(0)+'% occ')+(v.alarms?c(v.alarms+' alarms','wait'):''); }
+// ---------------- KPIs ----------------
+function agg(){ let wo=0,over=0,care=0,al=0,occN=0,occD=0,slaN=0,net=0,mw=0; SITES.forEach(s=>{ const v=st.site[s.id]; wo+=v.wo; over+=v.woOver; care+=v.care; al+=v.alarms; occN+=v.occ*s.gla; occD+=s.gla; slaN+=v.sla*s.gla; net+=v.net*s.gla; mw+=v.mw; });
+  return {wo,over,care,al,occ:occN/occD,sla:slaN/occD,net:net/occD,mw}; }
+function renderKpis(){ const a=agg(); const K=[['Portfolio GLA','32.0M','sq ft · verified'],['Sites','17','3 regions'],['Open work orders',fmt(a.wo),fmt(a.over)+' overdue',a.over>420?'amber':''],
+  ['SLA compliance · Cat A',a.sla.toFixed(1)+'%','TFM partner',a.sla<95?'amber':''],['PortfolioCare open',fmt(a.care),'tickets'],['Occupancy',a.occ.toFixed(1)+'%','GLA-weighted'],
+  ['Active alarms',a.al,'BMS · fire · security',a.al>=6?'bad':a.al>=3?'amber':''],['IT/OT network',a.net.toFixed(2)+'%','availability',a.net<99.4?'amber':'']];
+  document.getElementById('kpis').innerHTML=K.map(k=>`<div class="kpi ${k[3]||''}"><div>${k[0]}</div><strong>${k[1]}</strong><small>${k[2]}</small></div>`).join(''); }
+// ---------------- asset-type lanes ----------------
+function laneMetrics(type){ const ss=SITES.filter(s=>s.type===type), V=ss.map(s=>st.site[s.id]); const g=ss.reduce((a,s)=>a+s.gla,0);
+  const w=f=>ss.reduce((a,s,i)=>a+f(V[i])*s.gla,0)/g, sum=f=>V.reduce((a,v)=>a+f(v),0); const L=layer;
+  if(L==='maint') return [['Open WOs',fmt(sum(v=>v.wo))],['Overdue',fmt(sum(v=>v.woOver))],['PPM',w(v=>v.ppm).toFixed(1)+'%'],['SLA A',w(v=>v.sla).toFixed(1)+'%']];
+  if(L==='care') return [['Open',fmt(sum(v=>v.care))],['Avg age',w(v=>v.careAge).toFixed(0)+' h'],['CSAT',w(v=>v.csat).toFixed(1)+'/5'],['Digital',type==='res'?'41%':type==='ret'?'22%':'34%']];
+  if(L==='lease') return [['Occupancy',w(v=>v.occ).toFixed(1)+'%'],[type==='res'?'Turnaround':'Arrears',type==='res'?w(v=>v.turn).toFixed(1)+' d':'SAR '+sum(v=>v.arrears).toFixed(1)+'M'],['Leasing',type==='ret'?'14 deals':type==='com'?'9 deals':'312 apps'],['Renewals 90d',type==='res'?'1,240':type==='ret'?'38':'21']];
+  if(L==='esec') return [['Power',sum(v=>v.mw).toFixed(1)+' MW'],['Alarms',sum(v=>v.alarms)],['Cameras',w(v=>v.cams).toFixed(1)+'%'],['Network',w(v=>v.net).toFixed(2)+'%']];
+  return [['GLA',g.toFixed(1)+'M'],['Open WOs',fmt(sum(v=>v.wo))],['Occupancy',w(v=>v.occ).toFixed(1)+'%'],['Alarms',sum(v=>v.alarms)]]; }
+function renderLanes(){ document.getElementById('lanes').innerHTML=Object.entries(TYPES).map(([k,t])=>{ const ss=SITES.filter(s=>s.type===k).sort((a,b)=>b.gla-a.gla); const g=ss.reduce((a,s)=>a+s.gla,0);
+  return `<section class="card lane" style="--c:var(${t.c})"><div class="head"><h2><i></i>${t.name}</h2><span>${ss.length} sites · ${g.toFixed(1)}M sq ft</span></div>
+   <div class="lm">${laneMetrics(k).map(m=>`<div><small>${m[0]}</small><strong>${m[1]}</strong></div>`).join('')}</div>
+   <div class="sites">${ss.map(s=>{ const v=st.site[s.id], k2=siteStatus(s,v); return `<div class="srow" tabindex="0" data-s="${s.id}"><div class="n"><span class="dot" style="background:var(${SC[k2]})"></span>${s.name}${s.twin?'<span class="tw">TWIN</span>':''}<small>${s.city} · ${s.gla.toFixed(1)}M sq ft · ${s.sub}</small></div><div class="v">${siteChips(s,v)}</div></div>`; }).join('')}</div></section>`; }).join('');
+  document.querySelectorAll('.srow').forEach(r=>{ const go=()=>openSite(r.dataset.s); r.onclick=go; r.onkeydown=e=>{ if(e.key==='Enter') go(); }; }); }
+// ---------------- national map ----------------
+const KSA=[[34.95,29.35],[36.5,29.5],[37.6,30.3],[38.0,31.5],[39.2,32.15],[40.4,31.9],[42.0,31.1],[44.7,29.2],[46.5,29.1],[47.7,28.5],[48.4,28.55],[48.8,27.6],[49.6,26.9],[50.15,26.4],[50.2,25.7],[50.8,24.75],[51.6,24.25],[52.6,22.95],[55.2,22.7],[55.65,22.0],[55.0,20.0],[52.0,19.0],[49.1,18.6],[48.2,18.15],[46.5,17.3],[45.2,17.4],[44.0,17.4],[43.3,17.5],[42.8,16.4],[42.6,16.8],[41.8,17.8],[41.2,18.7],[40.5,19.8],[39.6,20.9],[39.15,21.5],[38.9,22.4],[38.4,23.7],[37.5,24.6],[37.2,25.3],[36.6,26.0],[36.0,26.9],[35.5,27.6],[35.15,28.05],[34.6,28.1],[34.8,28.9]];
+const PX=lon=>(lon-34)*38+18, PY=lat=>(32.6-lat)*38+16;
+const INSET={x:620,y:418,w:262,h:246,lon0:46.58,lon1:46.86,lat0:24.655,lat1:24.83};
+const IX=lon=>INSET.x+14+(lon-INSET.lon0)/(INSET.lon1-INSET.lon0)*(INSET.w-28), IY=lat=>INSET.y+30+(INSET.lat1-lat)/(INSET.lat1-INSET.lat0)*(INSET.h-44);
+function siteXY(s){ return s.city==='Riyadh'?[IX(s.lon),IY(s.lat)]:[PX(s.lon),PY(s.lat)]; }
+function renderMap(){ const svg=document.getElementById('map'); const R=SITES.filter(s=>s.city!=='Riyadh');
+  const poly=KSA.map(p=>PX(p[0]).toFixed(1)+','+PY(p[1]).toFixed(1)).join(' ');
+  const reg=[['WEST',38.2,25.6],['CENTRAL',44.6,26.2],['EAST',48.6,24.0]];
+  const cities=[['Jeddah',39.17,21.54,-1],['Makkah',39.83,21.42,1],['Madinah',39.61,24.47,-1],['Riyadh',46.71,24.71,1],['Dammam',50.1,26.43,1],['Jubail',49.66,27.0,1]];
+  let h=`<rect width="900" height="680" fill="var(--sea)"/>`;
+  for(let i=0;i<=22;i+=2) h+=`<line x1="${PX(34+i)}" y1="0" x2="${PX(34+i)}" y2="680" stroke="var(--grid)" stroke-width="1"/>`;
+  for(let j=16;j<=32;j+=2) h+=`<line x1="0" y1="${PY(j)}" x2="900" y2="${PY(j)}" stroke="var(--grid)" stroke-width="1"/>`;
+  h+=`<polygon points="${poly}" fill="var(--land)" stroke="var(--land-edge)" stroke-width="1.5"/>`;
+  h+=reg.map(r=>`<text x="${PX(r[1])}" y="${PY(r[2])}" fill="var(--faint)" font-family="IBM Plex Mono,monospace" font-size="13" letter-spacing="4">${r[0]}</text>`).join('');
+  h+=`<text x="${PX(36.3)}" y="${PY(24.0)}" fill="#2B4466" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="3" transform="rotate(-58 ${PX(36.3)} ${PY(24.0)})">RED SEA</text><text x="${PX(50.6)}" y="${PY(27.6)}" fill="#2B4466" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="3">GULF</text>`;
+  h+=cities.map(c=>`<text x="${PX(c[1])+(c[3]>0?10:-10)}" y="${PY(c[2])+4}" text-anchor="${c[3]>0?'start':'end'}" fill="var(--muted)" font-family="IBM Plex Mono,monospace" font-size="11">${c[0]}</text>`).join('');
+  // Riyadh hub + leader to inset
+  h+=`<circle cx="${PX(46.71)}" cy="${PY(24.71)}" r="9" fill="none" stroke="var(--accent)" stroke-width="1.5"/><path d="M${PX(46.71)+7} ${PY(24.71)+7} L${INSET.x+20} ${INSET.y}" stroke="var(--accent)" stroke-width="1" stroke-dasharray="3 4" fill="none"/>`;
+  h+=`<rect x="${INSET.x}" y="${INSET.y}" width="${INSET.w}" height="${INSET.h}" fill="rgba(11,18,32,.94)" stroke="var(--line2)"/><text x="${INSET.x+12}" y="${INSET.y+19}" fill="var(--ink)" font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="2">RIYADH · 6 SITES</text>`;
+  const all=SITES.map(s=>{ const v=st.site[s.id], k=siteStatus(s,v), [x,y]=siteXY(s), r=Math.max(5,Math.sqrt(s.gla)*(s.city==='Riyadh'?6:5.5));
+    const live=st.markers.some(m=>m.site===s.id&&m.sev==='crit');
+    return `<g class="msite" data-s="${s.id}" tabindex="0" style="cursor:pointer"><circle cx="${x}" cy="${y}" r="${r+4}" fill="none" stroke="var(${SC[k]})" stroke-width="${k==='ok'?1:2}" opacity="${k==='ok'?.55:1}">${live?'<animate attributeName="r" values="'+(r+3)+';'+(r+10)+';'+(r+3)+'" dur="1.4s" repeatCount="indefinite"/>':''}</circle><circle cx="${x}" cy="${y}" r="${r}" fill="var(${TYPES[s.type].c})" opacity=".9" stroke="${sel===s.id?'var(--ink)':'none'}" stroke-width="2"/>${s.twin?`<text x="${x}" y="${y-r-8}" text-anchor="middle" fill="var(--ink)" font-family="Inter Tight,sans-serif" font-weight="600" font-size="11">${s.name}</text>`:''}</g>`; }).join('');
+  h+=all; svg.innerHTML=h;
+  svg.querySelectorAll('.msite').forEach(g=>{ const id=g.dataset.s; g.onclick=()=>openSite(id); g.onkeydown=e=>{ if(e.key==='Enter') openSite(id); };
+    g.onmousemove=e=>showTip(e,`<b>${SITE[id].name}</b><span>${SITE[id].city} · ${TYPES[SITE[id].type].name} · ${SITE[id].gla.toFixed(1)}M sq ft</span><span>${stripTags(siteChips(SITE[id],st.site[id]))}</span>${SITE[id].twin?'<span style="color:var(--accent)">Click to open the 3D twin</span>':''}`);
+    g.onmouseleave=hideTip; });
+  renderLegend(); }
+const stripTags=h=>h.replace(/<[^>]+>/g,' · ').replace(/(\s·\s)+/g,' · ').replace(/^ · | · $/g,'');
+// ---------------- tooltip / detail ----------------
+const tip=document.getElementById('tip'), stage=document.getElementById('stage');
+function showTip(e,html){ const r=stage.getBoundingClientRect(); tip.innerHTML=html; tip.hidden=false; tip.style.left=Math.min(r.width-290,e.clientX-r.left+14)+'px'; tip.style.top=Math.min(r.height-90,e.clientY-r.top+14)+'px'; }
+function hideTip(){ tip.hidden=true; }
+function renderLegend(){ const L=document.getElementById('legend'); let items;
+  if(view==='map') items=[['--com','Commercial'],['--ret','Retail'],['--res','Residential'],['--warn','Needs a look'],['--crit','Act now']];
+  else items=(TWIN_LEGEND[layer]||TWIN_LEGEND.all);
+  L.innerHTML=items.map(([c,t])=>`<span><i style="background:var(${c})"></i>${t}</span>`).join(''); }
+const TWIN_LEGEND={all:[['--good','OK'],['--warn','Needs a look'],['--crit','Act now'],['--cool','Setback / standby']],
+  maint:[['--good','No open WOs'],['--warn','Open WO'],['--crit','Overdue / fault']],care:[['--good','No tickets'],['--warn','Open ticket'],['--crit','Escalated']],
+  lease:[['--cool','Occupied'],['--faint','Vacant'],['--warn','Turnaround'],['--crit','Turnaround overdue']],esec:[['--good','Online'],['--warn','Degraded'],['--crit','Offline / alarm']]};
+function renderDetail(){ const d=document.getElementById('detail'); const kv=(k,v)=>`<span class="kv">${k} <span>${v}</span></span>`;
+  if(view==='twin'&&twin){ const T=TW[twin]; const s=SITE[T.site]; const o=sel&&T.byId[sel];
+    if(o){ const os=st.obj[o.id]||{}, ps=st.pts[o.id];
+      d.innerHTML=`<b>${o.name}</b>`+kv('Asset',s.name)+(o.sys?kv('System',SYS[o.sys].name)+kv('Status',(ps||'ok').toUpperCase()):'')+(os.occ?kv('Lease',{occ:'Occupied',vac:'Vacant',turn:'Turnaround',over:'Turnaround overdue'}[os.occ]):'')+(os.wo!=null?kv('Open WOs',os.wo):'')+(os.tk!=null?kv('PortfolioCare',os.tk+' open'):'')+(os.kw!=null?kv('Load',os.kw+' kW'):'');
+      return; }
+    d.innerHTML=`<b>${s.name}</b>`+kv('Type',TYPES[s.type].name)+kv('City',s.city)+kv('GLA',s.gla.toFixed(1)+'M sq ft')+kv('Systems',T.systems)+`<span class="note">Hover or click any part of the twin. Field points are live CMMS, BMS, security and network endpoints.</span>`; return; }
+  if(sel&&SITE[sel]){ const s=SITE[sel], v=st.site[sel]; d.innerHTML=`<b>${s.name}</b>`+kv('Type',TYPES[s.type].name)+kv('City',s.city)+kv('Open WOs',v.wo)+kv('SLA A',v.sla.toFixed(1)+'%')+kv('Occupancy',v.occ.toFixed(1)+'%')+kv('PortfolioCare',v.care+' open')+kv('Power',v.mw+' MW')+(s.twin?'':`<span class="note">No twin for this site yet.</span>`); return; }
+  d.innerHTML=`<span class="note">17 sites across West, Central and East. Rings show the worst status for the selected layer. Six hero assets open as 3D twins wired to the same CMMS, security and IT/OT backbone.</span>`; }
+// ---------------- integration fabric ----------------
+const FAB_NODES=[
+ {id:'f-bms',col:0,name:'BMS & chillers',sub:'BACnet · Modbus',rate:2400},{id:'f-lift',col:0,name:'Lifts & escalators',sub:'Remote monitoring',rate:180},{id:'f-fire',col:0,name:'Fire & life safety',sub:'Panels · sprinklers',rate:60},
+ {id:'f-meter',col:0,name:'Utility meters',sub:'Electric · water · cooling',rate:5200},{id:'f-cctv',col:0,name:'CCTV cameras',sub:'ONVIF · analytics',rate:900},{id:'f-acs',col:0,name:'Access control',sub:'Gates · turnstiles · doors',rate:640},{id:'f-iot',col:0,name:'Footfall & occupancy',sub:'People counters · sensors',rate:1300},
+ {id:'n-ot',col:1,name:'Converged OT network',sub:'Segmented VLANs',rate:0},{id:'n-fibre',col:1,name:'Fibre rings',sub:'Jeddah coastal · campuses',rate:0},{id:'n-it',col:1,name:'IT network & SD-WAN',sub:'17 sites',rate:0},{id:'n-sec',col:1,name:'OT cyber monitoring',sub:'NAC · anomaly detection',rate:0},
+ {id:'p-max',col:2,name:'IBM Maximo',sub:'CMMS / EAM · work orders',rate:310},{id:'p-yardi',col:2,name:'Yardi',sub:'Property mgmt · leasing',rate:120},{id:'p-care',col:2,name:'PortfolioCare',sub:'Helpdesk · tenant app',rate:150},
+ {id:'p-psim',col:2,name:'PSIM / VMS',sub:'Security operations',rate:420},{id:'p-energy',col:2,name:'Energy & metering',sub:'Billing · analytics',rate:260},{id:'p-erp',col:2,name:'ERP & procurement',sub:'Finance · contracts',rate:40},
+ {id:'d-hub',col:3,name:'Integration hub',sub:'Event bus · APIs · MQTT',rate:0},{id:'d-data',col:3,name:'Data platform',sub:'Lakehouse · digital twins',rate:0},{id:'d-agents',col:3,name:'Agent layer',sub:'Propose · act · inform',rate:0},
+ {id:'c-cmd',col:4,name:'Command centre',sub:'Duty managers · Riyadh Tech Park',rate:0},{id:'c-field',col:4,name:'TFM partner & contractors',sub:'Mobile work orders',rate:0},{id:'c-ten',col:4,name:'Tenants & visitors',sub:'App · portal · SMS',rate:0}];
+const FAB_LINKS=[['f-bms','n-ot'],['f-lift','n-ot'],['f-fire','n-ot'],['f-meter','n-fibre'],['f-meter','n-ot'],['f-cctv','n-fibre'],['f-cctv','n-ot'],['f-acs','n-ot'],['f-iot','n-it'],['n-sec','n-ot'],
+ ['n-ot','d-hub'],['n-fibre','d-hub'],['n-it','d-hub'],['d-hub','p-max'],['d-hub','p-yardi'],['d-hub','p-care'],['d-hub','p-psim'],['d-hub','p-energy'],['d-hub','p-erp'],
+ ['p-max','d-data'],['p-yardi','d-data'],['p-care','d-data'],['p-psim','d-data'],['p-energy','d-data'],['p-erp','d-data'],['d-data','d-agents'],['d-agents','c-cmd'],['c-cmd','c-field'],['c-cmd','c-ten'],['p-max','c-field'],['p-care','c-ten']];
+// column order: field | networks | integration hub | platforms | data & agents | people  (hub sits between networks and platforms)
+const FCOL={0:20,1:250,2:640,3:450,4:1010}; const FW={0:190,1:170,2:170,3:150,4:170};
+function fabPos(){ const P={}; const cols={}; FAB_NODES.forEach(n=>{ const c=n.id==='d-hub'?3:n.id==='d-data'||n.id==='d-agents'?5:n.col; (cols[c]=cols[c]||[]).push(n); });
+  const X={0:20,1:240,3:440,2:625,5:830,4:1010}, W={0:180,1:170,3:150,2:170,5:150,4:170};
+  Object.entries(cols).forEach(([c,ns])=>{ const gap=(430-20)/ns.length; ns.forEach((n,i)=>{ P[n.id]={x:X[c],y:12+i*gap+(gap-44)/2,w:W[c],h:44}; }); }); return P; }
+function renderFabric(){ const P=fabPos(); const svg=document.getElementById('fabric'); let h='';
+  const heads=[[20,'FIELD · OT & IoT'],[240,'NETWORKS'],[440,'INTEGRATION'],[625,'PLATFORMS'],[830,'DATA & AGENTS'],[1010,'PEOPLE']];
+  h+=heads.map(([x,t])=>`<text x="${x}" y="8" fill="var(--faint)" font-family="IBM Plex Mono,monospace" font-size="9.5" letter-spacing="2">${t}</text>`).join('');
+  FAB_LINKS.forEach(([a,b])=>{ const A=P[a],B=P[b]; if(!A||!B) return; const x1=A.x+A.w, y1=A.y+22, x2=B.x, y2=B.y+22, dx=(x2-x1)/2; const s=worst(st.fab[a].s,st.fab[b].s);
+    const col=s==='crit'?'var(--crit)':s==='warn'?'var(--warn)':'var(--line2)';
+    h+=`<path d="M${x1} ${y1} C${x1+dx} ${y1},${x2-dx} ${y2},${x2} ${y2}" fill="none" stroke="${col}" stroke-width="1.2" opacity="${s==='ok'?.8:1}"/>`;
+    if(s!=='crit') h+=`<path class="flow" d="M${x1} ${y1} C${x1+dx} ${y1},${x2-dx} ${y2},${x2} ${y2}" fill="none" stroke="${s==='warn'?'var(--warn)':'var(--accent)'}" stroke-width="1.6" stroke-dasharray="2 22" opacity=".9"/>`; });
+  FAB_NODES.forEach(n=>{ const p=P[n.id], f=st.fab[n.id]; const c=f.s==='crit'?'var(--crit)':f.s==='warn'?'var(--warn)':'var(--good)';
+    h+=`<g><rect x="${p.x}" y="${p.y}" width="${p.w}" height="${p.h}" rx="3" fill="var(--floor)" stroke="${f.s==='ok'?'var(--line2)':c}" stroke-width="${f.s==='ok'?1:1.6}"/><circle cx="${p.x+11}" cy="${p.y+15}" r="4" fill="${c}"/>
+     <text x="${p.x+21}" y="${p.y+19}" fill="var(--ink)" font-family="Inter Tight,sans-serif" font-weight="600" font-size="12">${n.name}</text>
+     <text x="${p.x+21}" y="${p.y+34}" fill="var(--muted)" font-family="IBM Plex Mono,monospace" font-size="9.5">${f.note||n.sub}${f.rate?' · '+fmt(f.rate)+'/min':''}</text></g>`; });
+  svg.innerHTML=h; }
+const worst=(a,b)=>a==='crit'||b==='crit'?'crit':a==='warn'||b==='warn'?'warn':'ok';
+function fab(id,s,note){ st.fab[id].s=s; if(note!==undefined) st.fab[id].note=note; }
+// ---------------- asset twins (massing + system endpoints, metres; x east, y north, z up) ----------------
+const SYS={hvac:{name:'HVAC / chillers (BMS)',c:'#6EA8FF'},power:{name:'Power & generators',c:'#F5B841'},lift:{name:'Lifts & escalators',c:'#9FB3CC'},fire:{name:'Fire & life safety',c:'#FF8A6B'},
+ cctv:{name:'CCTV (VMS)',c:'#E39BFF'},access:{name:'Access control',c:'#3DDC97'},meter:{name:'Utility meter',c:'#F5D06B'},net:{name:'IT/OT network node',c:'#48D1E0'},iot:{name:'Footfall / occupancy sensor',c:'#C8D6E5'}};
+const LAYER_SYS={all:null,maint:['hvac','lift','fire','power'],care:['access'],lease:[],esec:['meter','cctv','access','net','iot','power']};
+function makeTwin(site,name,systems,fn){ const T={site,name,systems,parts:[],points:[],lines:[],byId:{}};
+  const box=(id,nm,x,y,z,w,d,h,cat,unit,extra)=>{ const p=Object.assign({id,name:nm,x,y,z,w,d,h,cat,unit:!!unit},extra||{}); T.parts.push(p); T.byId[id]=p; return p; };
+  const pt=(id,nm,sys,x,y,z,extra)=>{ const p=Object.assign({id,name:nm,sys,x,y,z},extra||{}); T.points.push(p); T.byId[id]=p; return p; };
+  const line=(a,b)=>T.lines.push([a,b]);
+  fn(box,pt,line); return T; }
+const TW={
+ officecl:makeTwin('officecl','Riyadh Tower 2','BMS · Maximo · PSIM · metering · OT network',(box,pt)=>{
+   box('og','Riyadh Office Cluster site',0,0,-.3,170,120,.3,'ground');
+   box('T1','Riyadh Tower 1',-60,8,0,30,30,88,'office',false,{label:1}); box('T3','Riyadh Tower 3',60,8,0,30,30,96,'office',false,{label:1});
+   ['Retail podium · ground','Retail podium · level 1','Retail podium · level 2'].forEach((n,i)=>box('P'+(i+1),n,0,0,i*5,62,44,4.8,'retail',true));
+   for(let f=4;f<=33;f++) box('L'+String(f).padStart(2,'0'),'Tower 2 · level '+f,0,6,15+(f-4)*4,36,36,3.8,'office',true);
+   box('RP','Tower 2 roof plant',0,6,135,30,30,5,'plant',false,{label:1});
+   [-9,0,9].forEach((x,i)=>pt('CH-'+(i+1),'Chiller CH-'+(i+1),'hvac',x,8,142));
+   [['AHU-L',40],['AHU-M',80],['AHU-H',120]].forEach(([id,z])=>pt(id,'Air handler '+id.slice(4)+' zone','hvac',19,6,z));
+   ['A','B','C','D','E','F'].forEach((l,i)=>pt('LIFT-'+l,'Passenger lift '+l,'lift',-7.5+i*3,-12,1.5));
+   pt('FACP','Fire alarm panel','fire',-26,-23,2); pt('GEN-1','Standby generator','power',30,-30,1.5);
+   for(let i=0;i<10;i++){ const a=i/10*Math.PI*2; pt('CCTV-'+String(i+1).padStart(2,'0'),'Camera '+(i+1),'cctv',Math.cos(a)*36,Math.sin(a)*27,6); }
+   for(let i=1;i<=4;i++) pt('ACS-'+i,'Lobby turnstile '+i,'access',-9+i*3.6,-23,1.2);
+   for(let f=5;f<=30;f+=5) pt('MTR-L'+f,'Tenant meter · level '+f,'meter',-18.5,6,15+(f-4)*4+2);
+   pt('NET-B1','Core switch · basement','net',22,22,0.5); pt('NET-L15','OT switch · level 15','net',18.5,18,57); pt('NET-RF','OT switch · roof','net',14,20,138);
+ }),
+ techpark:makeTwin('techpark','Riyadh Tech Park','BMS · district cooling · Maximo · PSIM · fibre ring',(box,pt,line)=>{
+   box('dg','Riyadh Tech Park site',0,0,-.3,330,250,.3,'ground'); box('plaza','Central plaza',0,0,0,230,26,.4,'amen',false,{label:1});
+   const fl=[8,6,5,7,4,6,5,8]; const nm=['Portfolio HQ · command centre','Building 2','Building 3','Building 4','Building 5','Building 6','Building 7','Building 8'];
+   for(let i=0;i<8;i++){ const x=-120+(i%4)*80, y=i<4?52:-52; box('B'+(i+1),nm[i],x,y,0,52,34,fl[i]*4.2,'office',true,{label:1});
+     pt('RN-'+(i+1),'Fibre ring node · B'+(i+1),'net',x+28,y,2); pt('MTR-B'+(i+1),'Building meter · B'+(i+1),'meter',x-28,y,2); }
+   for(let i=1;i<=8;i++) line('RN-'+i,'RN-'+(i%8+1));
+   box('ECP','District cooling plant',0,-108,0,44,24,11,'plant',false,{label:1}); [-14,-5,4,13].forEach((x,i)=>pt('CH-'+(i+1),'Chiller CH-'+(i+1),'hvac',x,-108,12));
+   pt('G1','West gate','access',-160,0,1.5); pt('G2','East gate','access',160,0,1.5); pt('FACP','Campus fire panel','fire',0,-92,2); pt('GEN-1','Standby generators','power',30,-108,2);
+   for(let i=0;i<12;i++){ const a=i/12*Math.PI*2; pt('CCTV-'+String(i+1).padStart(2,'0'),'Camera '+(i+1),'cctv',Math.cos(a)*158,Math.sin(a)*112,5); }
+ }),
+ regmall:makeTwin('regmall','Riyadh Regional Mall','Footfall · BMS · Maximo · PSIM · parking',(box,pt)=>{
+   box('gg','Riyadh Regional Mall site',0,0,-.3,400,300,.3,'ground');
+   for(let lv=0;lv<2;lv++) for(let i=0;i<12;i++){ const c=i%6, r=Math.floor(i/6); const id=(lv?'L':'G')+String(i+1).padStart(2,'0');
+     const fc=lv===1&&(i===2||i===3); box(id,fc?'Food court':(lv?'Level 1':'Ground')+' shops · zone '+(i+1),-90+c*36,r?25:-25,lv*7,35,49,6.8,'retail',true); }
+   box('ANC-W','Anchor store · west',-135,0,0,40,100,14,'retail',true,{label:1}); box('ANC-E','Anchor store · east',135,0,0,40,100,14,'retail',true,{label:1});
+   box('P1','Car park P1 · north',0,95,0,270,56,.5,'park',true,{label:1}); box('P2','Car park P2 · south',0,-95,0,270,56,.5,'park',true,{label:1});
+   box('P3','Car park P3 · east',182,0,0,30,200,.5,'park',true,{label:1}); box('P4','Overflow P4 · west',-182,0,0,30,200,.5,'park',true,{label:1});
+   [[-60,-52],[0,-52],[60,-52],[-60,52],[0,52],[60,52]].forEach(([x,y],i)=>pt('E'+(i+1),'Entrance '+(i+1)+' people counter','iot',x,y,2));
+   for(let i=0;i<8;i++) pt('AHU-'+(i+1),'Air handler '+(i+1),'hvac',-105+i*30,0,15.5);
+   [[150,-80],[160,-80],[170,-80]].forEach(([x,y],i)=>pt('CH-'+(i+1),'Chiller CH-'+(i+1),'hvac',x,y,2));
+   for(let i=0;i<16;i++){ const a=i/16*Math.PI*2; pt('CCTV-'+String(i+1).padStart(2,'0'),'Camera '+(i+1),'cctv',Math.cos(a)*120,Math.sin(a)*64,8); }
+   [[-110,-52],[110,-52],[-110,52],[110,52]].forEach(([x,y],i)=>pt('ACS-'+(i+1),'Service door '+(i+1),'access',x,y,1.5));
+   pt('FACP','Fire alarm panel','fire',-20,-52,2); pt('NET-1','Core switch','net',20,-52,2); pt('GEN-1','Standby generator','power',150,-95,1.5);
+ }),
+ eastcmp:makeTwin('eastcmp','Riyadh East Compound','Access control · resident app · CCTV · Maximo · metering',(box,pt)=>{
+   box('ig','Riyadh East Compound',0,0,-.3,350,290,.3,'ground');
+   box('W-S','Perimeter wall · south',0,-140,0,340,1.5,3,'wall'); box('W-N','Perimeter wall · north',0,140,0,340,1.5,3,'wall');
+   box('W-W','Perimeter wall · west',-170,0,0,1.5,280,3,'wall'); box('W-E','Perimeter wall · east',170,0,0,1.5,280,3,'wall');
+   const rows='ABCDEFGHIJ'; let n=0;
+   for(let r=0;r<10;r++) for(let c=0;c<11;c++){ const x=-140+c*28, y=-112+r*24.5; if(Math.abs(x)<45&&Math.abs(y)<34) continue; n++;
+     box('V-'+rows[r]+String(c+1).padStart(2,'0'),'Villa '+rows[r]+'-'+String(c+1).padStart(2,'0'),x,y,0,17,13,7,'res',true); }
+   box('CLUB','Clubhouse & gym',0,10,0,48,22,8,'amen',false,{label:1}); box('POOL','Pool',0,-18,0,30,12,.4,'amen');
+   pt('G1','Gate 1 · residents','access',0,-140,1.5); pt('G2','Gate 2 · visitors & deliveries','access',170,10,1.5);
+   box('GH1','Guard house 1',12,-146,0,8,6,3.5,'plant'); box('GH2','Guard house 2',176,22,0,6,8,3.5,'plant');
+   for(let i=0;i<16;i++){ const a=i/16*Math.PI*2; pt('CCTV-'+String(i+1).padStart(2,'0'),'Perimeter camera '+(i+1),'cctv',Math.max(-168,Math.min(168,Math.cos(a)*190)),Math.max(-138,Math.min(138,Math.sin(a)*160)),4); }
+   for(let r=0;r<10;r++) pt('MTR-'+rows[r],'Row '+rows[r]+' meters','meter',-162,-112+r*24.5,1);
+   pt('NET-1','Compound network hub','net',20,30,1); pt('FACP','Clubhouse fire panel','fire',-20,30,1); pt('GEN-1','Standby generator','power',-150,-130,1.5);
+   pt('HVAC-C','Clubhouse chiller','hvac',0,22,8.5);
+ }),
+ jedcoast:makeTwin('jedcoast','Jeddah Coastal Community','Fibre ring · smart meters · CCTV · Maximo · Yardi',(box,pt,line)=>{
+   box('obg','Jeddah Coastal Community',0,0,-.3,540,380,.3,'ground'); box('BLVD','Central boulevard',0,0,0,500,22,.4,'amen',false,{label:1});
+   const Z=[[-130,95,'Zone 1'],[130,95,'Zone 2'],[-130,-95,'Zone 3'],[130,-95,'Zone 4']];
+   Z.forEach(([cx,cy,zn],zi)=>{ for(let i=0;i<8;i++){ const x=cx-75+(i%4)*50, y=cy+(i<4?28:-28); const fl=6+((zi*3+i)%5); const id='Z'+(zi+1)+'-B'+String(i+1).padStart(2,'0');
+       box(id,zn+' · block '+(i+1),x,y,0,36,17,fl*3.4,'res',true,{zone:zi+1}); pt('MTR-'+id,zn+' · block '+(i+1)+' meters','meter',x+19,y,2,{zone:zi+1}); }
+     box('ZL'+(zi+1),zn,cx,cy,0,1,1,.1,'ground',false,{label:1}); });
+   for(let i=0;i<4;i++) box('R'+(i+1),'Boulevard retail '+(i+1),-180+i*120,0,0,70,14,6,'retail',true);
+   const ring=[[-250,170],[0,180],[250,170],[260,0],[250,-170],[0,-180],[-250,-170],[-260,0]];
+   ring.forEach(([x,y],i)=>pt('FN-'+(i+1),'Fibre ring node '+(i+1),'net',x,y,1.5,{zone:y>0?(x<0?1:2):(x<0?3:4)}));
+   for(let i=1;i<=8;i++) line('FN-'+i,'FN-'+(i%8+1));
+   box('NOC','Network & security hub',-215,0,0,26,18,7,'plant',false,{label:1});
+   for(let i=0;i<16;i++){ const zi=i%4, [cx,cy]=Z[zi]; pt('CCTV-'+String(i+1).padStart(2,'0'),Z[zi][2]+' camera '+(Math.floor(i/4)+1),'cctv',cx-90+Math.floor(i/4)*60,cy+(cy>0?52:-52),5,{zone:zi+1}); }
+   [[-260,95],[260,95],[-260,-95],[260,-95]].forEach(([x,y],i)=>pt('ACS-'+(i+1),'Car park gate '+(i+1),'access',x,y,1.5,{zone:i+1}));
+   pt('FACP','Community fire panel','fire',-200,22,1); pt('HVAC-DC','District cooling','hvac',-215,-30,1.5); pt('GEN-1','Standby generators','power',-230,-30,1.5);
+ }),
+ khobarwf:makeTwin('khobarwf','Khobar Waterfront Compound','Yardi turnaround · Maximo · access · CCTV · metering',(box,pt)=>{
+   box('rg','Khobar Waterfront Compound',0,0,-.3,440,320,.3,'ground'); box('SEA','Gulf waterfront',0,135,0,440,50,.2,'sea',false,{label:1});
+   const rows=[[70,22,'A'],[38,22,'B'],[6,22,'C'],[-26,20,'D']];
+   rows.forEach(([yb,n,rl])=>{ for(let i=0;i<n;i++){ const x=-189+i*18+(rl==='D'?18:0), y=yb+Math.sin(i/3)*6; box('V-'+rl+String(i+1).padStart(2,'0'),'Villa '+rl+'-'+String(i+1).padStart(2,'0'),x,y,0,14,11,6.5,'res',true); } });
+   box('CLUB','Clubhouse & marina café',0,-70,0,50,22,8,'amen',false,{label:1}); box('PLANT','Desalination & plant room',150,-90,0,30,18,6,'plant',false,{label:1});
+   pt('G1','Main gate','access',0,-150,1.5); for(let i=0;i<10;i++) pt('CCTV-'+String(i+1).padStart(2,'0'),'Camera '+(i+1),'cctv',-200+i*44,i%2?108:-130,4);
+   ['A','B','C','D'].forEach((r,i)=>pt('MTR-'+r,'Row '+r+' meters','meter',-205,rows[i][0],1));
+   pt('NET-1','Network hub','net',150,-72,1); pt('HVAC-P','Central chillers','hvac',140,-90,6.5); pt('FACP','Fire panel','fire',-20,-58,1); pt('GEN-1','Generator','power',165,-90,1.5);
+ })};
+function initTwinState(S){ Object.values(TW).forEach(T=>{ T.parts.forEach(p=>{ if(!p.unit) return; const r=rng(p.id+T.site);
+   const a=r(),b=r(),c=r(); const o={kw:Math.round(p.w*p.d*(p.h||1)*(p.cat==='retail'?0.09:p.cat==='office'?0.06:0.03)+5)};
+   if(p.cat==='park') o.occ=a<.5?'occ':'vac', o.fill=Math.round(45+a*35); else o.occ=p.cat==='res'?(a<.88?'occ':a<.95?'vac':'turn'):(a<.93?'occ':'vac');
+   o.wo=b<.1?1:b<.13?2:0; o.tk=c<.08?1:0; S.obj[p.id]=o; });
+   T.points.forEach(q=>{ S.pts[q.id]='ok'; }); }); }
+// ---------------- 3D renderer ----------------
+const C3={office:'#1C3550',retail:'#33294F',res:'#3A2F24',plant:'#253049',park:'#141F33',ground:'#0D1626',wall:'#2F4466',amen:'#1D3633',sea:'#0E2440',
+ ok:'#1E5A45',warn:'#8A6A1C',crit:'#9A3626',idle:'#18233A',cool:'#24467E',occ:'#24467E',vac:'#1A2438'};
+let T3=null;
+function initThree(){ if(!window.THREE) return false;
+  const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(2,devicePixelRatio||1)); stage.insertBefore(renderer.domElement,document.getElementById('overlay')); renderer.domElement.hidden=true;
+  const scene=new THREE.Scene(); scene.background=new THREE.Color('#070D18'); const camera=new THREE.PerspectiveCamera(36,1.6,1,8000);
+  const controls=new THREE.OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.dampingFactor=.08; controls.maxPolarAngle=1.45;
+  scene.add(new THREE.HemisphereLight(0xdfe9ff,0x1a2436,1.05)); const sun=new THREE.DirectionalLight(0xffffff,.55); sun.position.set(-200,400,250); scene.add(sun);
+  const grid=new THREE.GridHelper(1200,60,0x1E3150,0x13203A); grid.position.y=-.6; scene.add(grid);
+  const group=new THREE.Group(); scene.add(group);
+  T3={renderer,scene,camera,controls,group,meshes:{},pm:{},pick:[],lines:[],routes:[],fly:null};
+  new ResizeObserver(resize3).observe(stage); resize3();
+  const ray=new THREE.Raycaster(), v2=new THREE.Vector2(); let down=null;
+  const hit=e=>{ const r=renderer.domElement.getBoundingClientRect(); v2.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1); ray.setFromCamera(v2,camera); const h=ray.intersectObjects(T3.pick,false)[0]; return h&&h.object.userData.id; };
+  renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);
+  renderer.domElement.addEventListener('pointerup',e=>{ if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5) return; sel=hit(e)||null; renderDetail(); paint3(); });
+  renderer.domElement.addEventListener('pointermove',e=>{ if(e.buttons){hideTip();return;} const id=hit(e); if(!id){hideTip();return;} const o=TW[twin].byId[id]; showTip(e,tipFor(o)); });
+  renderer.domElement.addEventListener('pointerleave',hideTip);
+  requestAnimationFrame(loop3); return true; }
+function tipFor(o){ if(o.sys) return `<b>${o.name}</b><span>${SYS[o.sys].name} · ${(st.pts[o.id]||'ok').toUpperCase()}</span>`;
+  const s=st.obj[o.id]; if(!s) return `<b>${o.name}</b>`;
+  return `<b>${o.name}</b><span>${s.occ?{occ:'Occupied',vac:'Vacant',turn:'Turnaround',over:'Turnaround overdue'}[s.occ]:''}${s.fill!=null?' · '+s.fill+'% full':''}</span><span>${s.wo} open WOs · ${s.tk} PortfolioCare · ${s.kw} kW</span>`; }
+function resize3(){ if(!T3) return; const w=stage.clientWidth,h=stage.clientHeight; T3.renderer.setSize(w,h,false); T3.camera.aspect=w/h; T3.camera.updateProjectionMatrix(); }
+const P3=(x,y,z)=>new THREE.Vector3(x,z,-y);
+function buildTwin(key){ const T=TW[key]; const G=T3.group; while(G.children.length) G.remove(G.children[0]); T3.meshes={}; T3.pm={}; T3.pick=[]; T3.lines=[]; T3.routes=[];
+  let minx=1e9,maxx=-1e9,miny=1e9,maxy=-1e9,maxz=0;
+  T.parts.forEach(p=>{ const geo=new THREE.BoxGeometry(Math.max(.3,p.w-.4),Math.max(.1,p.h),Math.max(.3,p.d-.4)); const mat=new THREE.MeshLambertMaterial({color:C3[p.cat]||'#333',transparent:p.cat==='office'&&p.unit,opacity:p.cat==='office'&&p.unit?.92:1});
+    const m=new THREE.Mesh(geo,mat); m.position.copy(P3(p.x,p.y,p.z+p.h/2)); m.userData.id=p.id; G.add(m);
+    if(p.cat!=='ground'&&p.cat!=='sea'){ const e=new THREE.LineSegments(new THREE.EdgesGeometry(geo),new THREE.LineBasicMaterial({color:0x34507A,transparent:true,opacity:p.cat==='park'||p.cat==='amen'?.35:.6})); m.add(e); T3.pick.push(m); }
+    T3.meshes[p.id]={m,mat,cur:new THREE.Color(mat.color),target:new THREE.Color(mat.color)};
+    if(p.cat==='ground'){ minx=Math.min(minx,p.x-p.w/2); maxx=Math.max(maxx,p.x+p.w/2); miny=Math.min(miny,p.y-p.d/2); maxy=Math.max(maxy,p.y+p.d/2); } maxz=Math.max(maxz,p.z+p.h); });
+  const sg=new THREE.SphereGeometry(1,12,8);
+  T.points.forEach(q=>{ const mat=new THREE.MeshBasicMaterial({color:SYS[q.sys].c}); const m=new THREE.Mesh(sg,mat); const sz=Math.max(1.6,(maxx-minx)/160); m.scale.setScalar(sz); m.userData.base=sz; m.position.copy(P3(q.x,q.y,q.z)); m.userData.id=q.id; G.add(m); T3.pm[q.id]={m,mat}; T3.pick.push(m); });
+  T.lines.forEach(([a,b])=>{ const A=T.byId[a],B=T.byId[b]; const geo=new THREE.BufferGeometry().setFromPoints([P3(A.x,A.y,A.z),P3(B.x,B.y,B.z)]); const mat=new THREE.LineBasicMaterial({color:0x48D1E0}); const l=new THREE.Line(geo,mat); G.add(l); T3.lines.push({a,b,mat}); });
+  T3.span=Math.max(maxx-minx,maxy-miny,maxz*1.4); T3.center=P3((minx+maxx)/2,(miny+maxy)/2,maxz*.25); fly3(T3.center,T3.span*1.15,true); paint3(true); }
+function fly3(tgt,dist,instant){ const dir=new THREE.Vector3(-.5,.75,.95).normalize(); const pos=tgt.clone().add(dir.multiplyScalar(dist));
+  if(instant){ T3.camera.position.copy(pos); T3.controls.target.copy(tgt); return; } T3.fly={t0:performance.now(),dur:1100,fp:T3.camera.position.clone(),ft:T3.controls.target.clone(),tp:pos,tt:tgt}; }
+function focus3(id,mult){ const o=TW[twin].byId[id]; if(!o) return; fly3(P3(o.x,o.y,(o.z||0)+(o.h||0)/2),T3.span*(mult||.9)); }
+function partKey(p){ const o=st.obj[p.id]; if(!p.unit||!o) return null; const L=layer;
+  if(o.setback&&(L==='esec'||L==='all')) return 'cool';
+  if(L==='lease'){ if(p.cat==='park') return o.fill>=95?'crit':o.fill>=85?'warn':o.fill<5?'vac':'occ'; return o.occ==='over'?'crit':o.occ==='turn'?'warn':o.occ==='vac'?'vac':'occ'; }
+  if(L==='maint') return o.fault?'crit':o.wo>=2?'crit':o.wo===1?'warn':'ok';
+  if(L==='care') return o.tk>=3?'crit':o.tk>=1?'warn':'ok';
+  if(L==='esec') return o.alarm?'crit':null;
+  const ks=[o.fault||o.wo>=3?'crit':o.wo>=2?'warn':'ok',o.tk>=3?'crit':o.tk>=2?'warn':'ok',o.occ==='over'?'crit':'ok',o.alarm?'crit':'ok',p.cat==='park'?(o.fill>=95?'crit':o.fill>=85?'warn':'ok'):'ok'];
+  return ks.includes('crit')?'crit':ks.includes('warn')?'warn':null; }
+function kwColor(p){ const o=st.obj[p.id]; const t=Math.min(1,o.kw/(p.cat==='retail'?900:p.cat==='office'?420:120)); const a=new THREE.Color('#142338'), b=new THREE.Color('#2A5A8A'); return a.lerp(b,t); }
+function paint3(instant){ if(!T3||!twin) return; const T=TW[twin]; const vis=LAYER_SYS[layer];
+  T.parts.forEach(p=>{ const M=T3.meshes[p.id]; if(!M) return; let col; const k=partKey(p);
+    if(sel===p.id) col=new THREE.Color('#3DDC97'); else if(k) col=new THREE.Color(C3[k]); else if(layer==='esec'&&p.unit) col=kwColor(p); else col=new THREE.Color(C3[p.cat]);
+    M.target.copy(col); if(instant) M.cur.copy(col); });
+  T.points.forEach(q=>{ const P=T3.pm[q.id]; const s=st.pts[q.id]||'ok'; const show=!vis||vis.includes(q.sys)||s!=='ok'||sel===q.id; P.m.visible=show;
+    P.mat.color.set(sel===q.id?'#ffffff':s==='crit'?'#FF6B4A':s==='warn'?'#F5B841':s==='cool'?'#6EA8FF':SYS[q.sys].c); P.m.userData.pulse=s==='crit'; });
+  T3.lines.forEach(L=>{ const s=worst(st.pts[L.a],st.pts[L.b]); L.mat.color.set(s==='crit'?'#FF6B4A':s==='warn'?'#F5B841':'#48D1E0'); L.mat.visible=!vis||vis.includes('net')||s!=='ok'; });
+  drawRoutes3(); }
+function drawRoutes3(){ T3.routes.forEach(r=>T3.group.remove(r.mesh,r.w)); T3.routes=[];
+  (st.routes||[]).filter(r=>r.twin===twin).forEach(r=>{ const path=new THREE.CurvePath(); const pts=r.pts.map(p=>P3(p[0],p[1],p[2]));
+    for(let i=0;i<pts.length-1;i++) path.add(new THREE.LineCurve3(pts[i],pts[i+1])); const col=new THREE.Color(r.color); const mat=new THREE.MeshLambertMaterial({color:col,emissive:col,emissiveIntensity:.8});
+    const mesh=new THREE.Mesh(new THREE.TubeGeometry(path,pts.length*20,Math.max(.6,T3.span/420),6,false),mat); const w=new THREE.Mesh(new THREE.SphereGeometry(Math.max(1.6,T3.span/170),12,8),mat);
+    T3.group.add(mesh); T3.group.add(w); T3.routes.push({mesh,w,path,speed:r.speed||9000}); }); }
+let lastLab=0;
+function loop3(now){ requestAnimationFrame(loop3); if(!T3||view!=='twin') return;
+  if(T3.fly){ const k=Math.min(1,(now-T3.fly.t0)/T3.fly.dur), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2; T3.camera.position.lerpVectors(T3.fly.fp,T3.fly.tp,e); T3.controls.target.lerpVectors(T3.fly.ft,T3.fly.tt,e); if(k>=1) T3.fly=null; }
+  T3.controls.update(); for(const id in T3.meshes){ const M=T3.meshes[id]; M.cur.lerp(M.target,.1); M.mat.color.copy(M.cur); }
+  for(const id in T3.pm){ const m=T3.pm[id].m; if(m.userData.pulse) m.scale.setScalar(m.userData.base*(1.3+.5*Math.sin(now/180))); else m.scale.setScalar(m.userData.base); }
+  T3.routes.forEach(r=>r.w.position.copy(r.path.getPointAt((now/r.speed)%1)));
+  T3.renderer.render(T3.scene,T3.camera); if(now-lastLab>50){ lastLab=now; placeLabels(); } }
+const overlay=document.getElementById('overlay'); const labEls={}, pinEls={};
+function project(v){ const p=v.clone().project(T3.camera); return p.z<1?[(p.x+1)/2*stage.clientWidth,(1-p.y)/2*stage.clientHeight]:null; }
+function placeLabels(){ const T=TW[twin]; const seen={};
+  const want=view==='twin'?T.parts.filter(p=>p.label).concat(T.points.filter(q=>st.pts[q.id]==='crit')):[];
+  want.forEach(o=>{ const key=twin+':'+o.id; seen[key]=1; let el=labEls[key]; if(!el){ el=document.createElement('div'); el.className='rl'; overlay.appendChild(el); labEls[key]=el; }
+    const p=project(P3(o.x,o.y,(o.z||0)+(o.h||0)+3)); if(!p){el.hidden=true;return;} el.hidden=false; el.style.left=p[0]+'px'; el.style.top=p[1]+'px';
+    const html=`<b>${o.name}</b>${o.sys?`<span style="color:${st.pts[o.id]==='crit'?'var(--crit)':'var(--warn)'}">${(st.pts[o.id]).toUpperCase()}</span>`:''}`; if(el._h!==html){el.innerHTML=html;el._h=html;} });
+  Object.keys(labEls).forEach(k=>{ if(!seen[k]) labEls[k].hidden=true; });
+  const seenP={}; (view==='twin'?st.markers.filter(m=>m.twin===twin):[]).forEach(m=>{ seenP[m.id]=1; let el=pinEls[m.id]; const o=T.byId[m.target]; if(!o) return;
+    if(!el){ el=document.createElement('div'); el.className='pin'; el.innerHTML='<div class="tag"><span class="g"></span><span class="t"></span></div><div class="stem"></div>'; overlay.appendChild(el); pinEls[m.id]=el; }
+    const p=project(P3(o.x,o.y,(o.z||0)+(o.h||0)+6)); if(!p){el.hidden=true;return;} el.hidden=false; el.style.left=p[0]+'px'; el.style.top=p[1]+'px';
+    el.style.setProperty('--c',`var(--${{crit:'crit',warn:'warn',good:'good',info:'accent',cool:'cool'}[m.sev]})`); el.classList.toggle('live',!!m.live); el.querySelector('.g').textContent=m.glyph; el.querySelector('.t').textContent=m.label; });
+  Object.keys(pinEls).forEach(k=>{ if(!seenP[k]){ pinEls[k].remove(); delete pinEls[k]; } }); }
+// ---------------- views ----------------
+const mapEl=document.getElementById('map'), infobox=document.getElementById('infobox'), twinbar=document.getElementById('twinbar');
+const TWIN_ORDER=[['com',['officecl','techpark']],['ret',['regmall']],['res',['eastcmp','jedcoast','khobarwf']]];
+function setView(v){ view=v; document.querySelectorAll('#views button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===v));
+  const cv=T3&&T3.renderer.domElement; mapEl.style.display=v==='map'?'block':'none'; if(cv) cv.hidden=v!=='twin';
+  twinbar.hidden=v!=='twin'; infobox.hidden=v!=='twin'||!twin; document.getElementById('hint').textContent=v==='map'?'Hover or click a site · the six TWIN sites open in 3D':'Drag to orbit · right-drag to pan · scroll to zoom · click any part';
+  if(v==='twin'&&!twin) setTwin('officecl'); if(v==='map'){ Object.values(labEls).forEach(e=>e.hidden=true); Object.values(pinEls).forEach(e=>e.hidden=true); renderMap(); }
+  renderLegend(); renderDetail(); }
+function setTwin(key){ if(!T3){ setView('map'); return; } twin=key; sel=null; buildTwin(key); renderTwinbar(); renderInfo(); setView('twin'); }
+function openSite(id){ const s=SITE[id]; sel=id; if(s.twin&&T3){ setTwin(s.twin); } else { setView('map'); renderMap(); renderDetail(); } }
+function renderTwinbar(){ twinbar.innerHTML=TWIN_ORDER.map(([ty,keys])=>`<div class="ty" style="color:var(${TYPES[ty].c})">${TYPES[ty].name}</div><div class="seg">${keys.map(k=>`<button data-k="${k}" aria-pressed="${twin===k}">${TW[k].name}</button>`).join('')}</div>`).join('');
+  twinbar.querySelectorAll('button').forEach(b=>b.onclick=()=>setTwin(b.dataset.k)); }
+function renderInfo(){ if(!twin) return; const T=TW[twin], s=SITE[T.site], v=st.site[T.site];
+  const L={all:`${v.wo} open WOs · ${v.occ.toFixed(0)}% occupied · ${v.alarms} alarms`,maint:`${v.wo} open WOs · ${v.woOver} overdue · SLA ${v.sla.toFixed(1)}%`,care:`${v.care} PortfolioCare tickets · avg age ${v.careAge.toFixed(0)} h`,
+    lease:`${v.occ.toFixed(1)}% occupied${v.turn!=null?' · turnaround '+v.turn.toFixed(1)+' days (target 3)':''}`,esec:`${v.mw} MW · cameras ${v.cams.toFixed(1)}% · network ${v.net.toFixed(2)}%`}[layer];
+  infobox.innerHTML=`<b>${T.name}</b><span>${TYPES[s.type].name} · ${s.city} · ${T.systems}</span><span style="color:var(--ink)">${L}</span>`; infobox.hidden=view!=='twin'; }
+// ---------------- feed ----------------
+const LV={act:'<span class="chip act">Act</span>',wait:'<span class="chip wait">Propose &amp; wait</span>',inform:'<span class="chip">Inform</span>'};
+function feed(c){ c.id=++st.ids; c.time=c.time||BEATS[st.beat].t; st.feed.push(c); return c; }
+function renderFeed(){ const f=document.getElementById('feed'); f.textContent='';
+  st.feed.slice().reverse().forEach(c=>{ const d=document.createElement('div'); d.className='fc sev-'+c.sev;
+    d.innerHTML=`<div class="top"><span class="who">${c.who}</span><span>${c.time} ${LV[c.level]||''}</span></div><h3>${c.title}</h3>${c.body?`<p>${c.body}</p>`:''}${c.sys?`<div class="sys">${c.sys.map(s=>`<span class="chip">${s}</span>`).join('')}</div>`:''}`;
+    if(c.status){ const s=document.createElement('div'); s.className='status'; s.textContent=c.status; d.appendChild(s); }
+    else if(c.actions){ const a=document.createElement('div'); a.className='acts'; c.actions.forEach(([lab,fn,primary])=>{ const b=document.createElement('button'); b.className='btn'+(primary?' primary':''); b.textContent=lab; b.onclick=()=>{ fn(c); renderAll(); }; a.appendChild(b); }); d.appendChild(a); }
+    if(c.focus){ d.style.cursor='pointer'; d.addEventListener('click',e=>{ if(e.target.tagName==='BUTTON') return; if(c.focus.twin){ if(twin!==c.focus.twin) setTwin(c.focus.twin); else setView('twin'); if(c.focus.target) focus3(c.focus.target); } else openSite(c.focus.site); }); }
+    f.appendChild(d); }); }
+// ---------------- top + render ----------------
+function renderTop(){ const b=BEATS[st.beat]; document.getElementById('clock').firstChild.nodeValue=b.t;
+  document.getElementById('steps').innerHTML=BEATS.map((x,i)=>`<li class="${i<st.beat?'done':i===st.beat?'now':''}"><span class="t">${x.t}</span>${x.label}</li>`).join('');
+  document.getElementById('next').disabled=st.beat>=BEATS.length-1;
+  document.getElementById('layers').innerHTML=LAYERS.map(([k,n])=>`<button data-l="${k}" aria-pressed="${layer===k}">${n}</button>`).join('');
+  document.querySelectorAll('#layers button').forEach(btn=>btn.onclick=()=>{ layer=btn.dataset.l; renderAll(); }); }
+function renderAll(){ renderTop(); renderKpis(); renderLanes(); renderFabric(); renderFeed(); renderInfo(); renderLegend(); renderDetail(); if(view==='map') renderMap(); paint3(); }
+// ---------------- scenario helpers ----------------
+const later=(ms,fn)=>{ const t={fn,done:false}; t.id=setTimeout(()=>{ if(t.done) return; t.done=true; fn(); renderAll(); },ms); timers.push(t); };
+function flushTimers(){ timers.forEach(t=>{ clearTimeout(t.id); if(!t.done){ t.done=true; try{t.fn();}catch(e){} } }); timers=[]; }
+function marker(m){ m.id=++st.ids; m.beat=st.beat; st.markers.push(m); return m; }
+function drop(id){ st.markers=st.markers.filter(m=>m.id!==id); }
+function route(twinKey,pts,color,speed){ st.routes.push({twin:twinKey,pts,color,speed}); }
+const setPts=(ids,s)=>ids.forEach(i=>st.pts[i]=s);
+const ptsWhere=(key,f)=>TW[key].points.filter(f).map(q=>q.id);
+// ---------------- scenarios ----------------
+const RUN=[
+ ()=>{ layer='all'; feed({who:'Portfolio ops agent',level:'act',sev:'info',title:'07:00 briefing · 17 sites, 32.0M sq ft, Ramadan operating hours in force',
+   body:'Malls trade until 02:00; Riyadh Regional Mall footfall forecast +35% after Iftar. 1,420 planned maintenance tasks due this week across 3 regions. Khobar Waterfront has 6 villas in turnaround against the 3-day target. OT cyber monitoring flagged 2 unpatched camera recorders at Jeddah Coastal Community for tonight\'s maintenance window. All CMMS, security and network integrations healthy.',
+   sys:['Maximo','Yardi','PortfolioCare','PSIM','OT network'],focus:{site:'techpark'}});
+   st.site.jedcoast.alarms=1; },
+ ()=>{ layer='maint'; setTwin('officecl'); const S=st.site.officecl; S.alarms=3; S.care+=18; setPts(['CH-2'],'crit'); setPts(['AHU-M','AHU-H'],'warn');
+   for(let f=18;f<=26;f++){ const o=st.obj['L'+f]; o.tk=2+(f%2); o.wo=Math.max(o.wo,1); }
+   fab('f-bms','warn','CH-2 trip · Riyadh Tower 2'); fab('p-max','ok','WO-48213 auto-raised');
+   const m=marker({twin:'officecl',site:'officecl',target:'CH-2',sev:'crit',glyph:'!',label:'CH-2 trip · L22 at 26.8°C',live:true}); focus3('L22');
+   feed({who:'Building ops agent',level:'act',sev:'warn',title:'Chiller CH-2 tripped on high head pressure; WO-48213 raised in Maximo (P1)',body:'BMS alarm at 09:12 created the work order automatically, with the asset history, the last PPM and the O&M manual page attached. 9 tenants on levels 18–26 have already logged "too hot" in PortfolioCare.',sys:['BMS','Maximo','PortfolioCare'],focus:{twin:'officecl',target:'CH-2'}});
+   feed({who:'Building ops agent',level:'wait',sev:'crit',title:'Bring CH-3 online, trim fresh air on 18–26 by 15%, dispatch TFM HVAC, and update tenants',
+     body:'CH-3 is on standby and can carry 70% of the load. With fresh air trimmed on the mid and high zones, levels 18–26 should be back under 24.5°C in about 35 min. Nearest qualified TFM technician is at Riyadh Tower 1 (6 min). Tenants on 18–26 get an PortfolioCare update with an ETA.',
+     sys:['BMS','Maximo','FM mobile','PortfolioCare'],focus:{twin:'officecl',target:'CH-2'},
+     actions:[['Approve',c=>{ c.status='Approved by duty facilities manager'; drop(m.id); setPts(['CH-3'],'ok'); setPts(['CH-2'],'warn');
+       marker({twin:'officecl',site:'officecl',target:'CH-3',sev:'info',glyph:'↑',label:'CH-3 online'});
+       route('officecl',[[-60,-12,0],[-30,-30,0],[0,-20,0],[0,-12,0],[0,-12,138],[0,8,142]],'#F5B841',9000);
+       feed({who:'Field dispatch',level:'act',sev:'info',title:'TFM technician accepted WO-48213 on mobile · ETA 6 min',body:'Tenants on 18–26 notified: "Cooling is being restored, expected by 09:55."',sys:['FM mobile','PortfolioCare']});
+       later(2500,()=>{ for(let f=18;f<=26;f++) st.obj['L'+f].tk=1; setPts(['AHU-M','AHU-H'],'ok'); });
+       later(5000,()=>{ for(let f=18;f<=26;f++) st.obj['L'+f].tk=0; S.alarms=1; S.care-=16; fab('f-bms','ok',''); fab('p-max','ok','');
+         feed({who:'Building ops agent',level:'inform',sev:'good',title:'Levels 18–26 back to 23.6°C; CH-2 compressor fault confirmed, parts ordered',body:'WO-48213 updated with the root cause and a spare-part request. 9 PortfolioCare tickets closed with a note to each tenant.',sys:['BMS','Maximo','PortfolioCare']}); }); },true],
+      ['Dispatch only',c=>{ c.status='Edited: technician dispatched, no load changes'; drop(m.id); }]]}); },
+ ()=>{ layer='esec'; setTwin('jedcoast'); const S=st.site.jedcoast; S.net=96.4; S.alarms=5; S.cams=93.8;
+   setPts(['FN-3'],'crit'); setPts(['FN-2'],'warn'); setPts(ptsWhere('jedcoast',q=>q.zone===2&&q.sys==='cctv'),'crit'); setPts(ptsWhere('jedcoast',q=>q.zone===2&&q.sys==='meter'),'warn'); setPts(['ACS-2'],'warn');
+   fab('n-fibre','crit','Zone 2 segment down'); fab('f-cctv','warn','4 cameras offline'); fab('f-meter','warn','8 blocks no reads'); fab('n-sec','ok','');
+   const m=marker({twin:'jedcoast',site:'jedcoast',target:'FN-3',sev:'crit',glyph:'✕',label:'Fibre cut FN-2 → FN-3',live:true}); focus3('Z2-B03');
+   feed({who:'Network ops agent',level:'act',sev:'warn',title:'Fibre ring Zone 2 segment down; ring protection rerouted traffic in 48 ms',body:'Most of Zone 2 is back on the protect path. Still dark: 4 cameras and 8 blocks of smart meters on a spur off FN-3, and car park gate 2 is running on its local controller.',sys:['OT network','NMS','PSIM'],focus:{twin:'jedcoast',target:'FN-3'}});
+   feed({who:'Network ops agent',level:'wait',sev:'crit',title:'Dispatch the fibre contractor, put Zone 2 cameras on edge recording, and estimate the missing meter reads',
+     body:'OTDR puts the break about 1.3 km from FN-2, next to the Zone 2 roadworks permit. Plan: raise a P1 work order in Maximo, send the fibre contractor, switch the 4 cameras to on-board recording so footage is kept, and flag the 8 blocks for estimated billing in Yardi until reads resume. Residents in Zone 2 get an app notice about gate 2.',
+     sys:['Maximo','PSIM','Yardi','Resident app'],focus:{twin:'jedcoast',target:'FN-3'},
+     actions:[['Approve',c=>{ c.status='Approved by IT/OT duty engineer'; drop(m.id); setPts(ptsWhere('jedcoast',q=>q.zone===2&&q.sys==='cctv'),'warn');
+       route('jedcoast',[[-215,0,1],[0,0,1],[125,0,1],[125,170,1],[200,172,1]],'#F5B841',10000);
+       feed({who:'Field dispatch',level:'act',sev:'info',title:'Fibre contractor on site in 40 min; cameras recording to edge storage',sys:['Maximo','PSIM']});
+       later(5000,()=>{ setPts(ptsWhere('jedcoast',q=>q.zone===2),'ok'); setPts(['FN-2','FN-3','ACS-2'],'ok'); S.net=99.6; S.alarms=1; S.cams=99.2; fab('n-fibre','ok',''); fab('f-cctv','ok',''); fab('f-meter','ok','');
+         feed({who:'Network ops agent',level:'inform',sev:'good',title:'Zone 2 spliced and back on the ring at 13:05',body:'Edge footage backfilled to the VMS. 8 blocks of meter reads recovered, so no estimated bills needed. Roadworks contractor notified to update the permit drawing with the fibre route.',sys:['OT network','PSIM','Yardi']}); }); },true],
+      ['Contractor only',c=>{ c.status='Edited: contractor dispatched, cameras left offline'; drop(m.id); }]]}); },
+ ()=>{ layer='esec'; setTwin('eastcmp'); const S=st.site.eastcmp; S.alarms=3; setPts(['G2'],'crit'); setPts(['CCTV-01','CCTV-02'],'warn'); fab('f-acs','warn','Gate 2 tailgating'); fab('p-psim','warn','3 events · 10 min');
+   const m=marker({twin:'eastcmp',site:'eastcmp',target:'G2',sev:'crit',glyph:'!',label:'3 tailgates · Gate 2',live:true}); focus3('G2');
+   feed({who:'Security agent',level:'wait',sev:'crit',title:'Gate 2: 3 tailgating events in 10 minutes, confirmed on camera; 41 Iftar visitors due 16:00–19:00',
+     body:'Video analytics matched each event to a second vehicle following a resident through the barrier. Plan: make lane 2 resident-only with a guard from guard house 1, send pre-registered visitors to lane 1 with a QR code from the resident app (500 residents already use it), and alert the security supervisor.',
+     sys:['Access control','VMS analytics','PSIM','Resident app'],focus:{twin:'eastcmp',target:'G2'},
+     actions:[['Approve',c=>{ c.status='Approved by security supervisor'; drop(m.id); setPts(['G2'],'warn'); route('eastcmp',[[12,-146,0],[12,-152,0],[175,-152,0],[175,10,0]],'#3DDC97',8000);
+       feed({who:'Security agent',level:'act',sev:'info',title:'Lane 2 set to resident-only; 41 visitors sent QR passes for lane 1',sys:['Access control','Resident app']});
+       later(4500,()=>{ setPts(['G2','CCTV-01','CCTV-02'],'ok'); S.alarms=0; fab('f-acs','ok',''); fab('p-psim','ok','');
+         feed({who:'Security agent',level:'inform',sev:'good',title:'No further tailgating; 38 of 41 visitors arrived on QR',body:'Agent proposes a permanent anti-tailgate loop at Gate 2 and has drafted the capex request.',sys:['PSIM','ERP']}); }); },true],
+      ['Alert supervisor only',c=>{ c.status='Edited: supervisor alerted, lanes unchanged'; drop(m.id); }]]}); },
+ ()=>{ layer='all'; setTwin('regmall'); const S=st.site.regmall; S.footfall=Math.round(S.footfall*1.18); S.care+=34; S.alarms=2;
+   st.obj.P1.fill=98; st.obj.P2.fill=96; st.obj.P3.fill=91; st.obj.P4.fill=0; ['L03','L04'].forEach(k=>st.obj[k].tk=3); setPts(['E1','E2','E3','E4','E5','E6'],'warn'); setPts(['AHU-3','AHU-4'],'warn');
+   fab('f-iot','warn','Footfall 118% of forecast'); fab('p-care','warn','+34 tickets · 1 h');
+   const m=marker({twin:'regmall',site:'regmall',target:'L03',sev:'crit',glyph:'!',label:'Food court · CO₂ 1,150 ppm',live:true}); const pm=marker({twin:'regmall',site:'regmall',target:'P1',sev:'warn',glyph:'P',label:'P1 98% · P2 96%'});
+   focus3('L04');
+   feed({who:'Retail ops agent',level:'wait',sev:'crit',title:'Ramadan peak: footfall 118% of forecast, car parks nearly full, food court CO₂ at 1,150 ppm',
+     body:'People counters show 9,800 visitors in the last hour. Plan: open overflow car park P4 and switch the road signs, move 6 guards to the food court and entrances 1–3, double the food-court cleaning cycle with TFM soft services, and raise fresh air on AHU-3 and AHU-4 until CO₂ is under 900 ppm. 34 PortfolioCare messages in the last hour are mostly about parking.',
+     sys:['Footfall','Parking','BMS','FM mobile','PortfolioCare'],focus:{twin:'regmall',target:'L03'},
+     actions:[['Approve',c=>{ c.status='Approved by mall duty manager'; drop(m.id); drop(pm.id); st.obj.P4.fill=38; st.obj.P1.fill=88; st.obj.P2.fill=86; setPts(['AHU-3','AHU-4'],'ok');
+       route('regmall',[[-110,-52,0],[-60,-40,0],[-30,0,7]],'#3DDC97',7000);
+       feed({who:'Retail ops agent',level:'act',sev:'info',title:'P4 open and signed; 6 guards repositioned; cleaning cycle every 20 min',sys:['Parking','PSIM','FM mobile']});
+       later(4500,()=>{ ['L03','L04'].forEach(k=>st.obj[k].tk=0); setPts(['E1','E2','E3','E4','E5','E6'],'ok'); S.care-=30; S.alarms=0; fab('f-iot','ok','Footfall 104% of forecast'); fab('p-care','ok','');
+         feed({who:'Retail ops agent',level:'inform',sev:'good',title:'CO₂ down to 820 ppm; parking complaints stopped after P4 opened',body:'Agent logged tonight as a pattern for the last 10 nights of Ramadan and pre-scheduled P4 and extra cleaning from 21:00.',sys:['BMS','Footfall','Maximo']}); }); },true],
+      ['Parking only',c=>{ c.status='Edited: P4 opened only'; drop(pm.id); st.obj.P4.fill=38; }]]}); },
+ ()=>{ layer='lease'; setTwin('khobarwf'); const S=st.site.khobarwf; const vs=TW.khobarwf.parts.filter(p=>p.unit);
+   vs.forEach((p,i)=>{ if(i%6===1&&i<85) st.obj[p.id].occ='over'; else if(i%9===4) st.obj[p.id].occ='turn'; }); const over=vs.filter(p=>st.obj[p.id].occ==='over').length; S.turn=5.6;
+   fab('p-yardi','warn',over+' villas past 3-day target'); fab('p-max','warn','Make-ready WOs ageing');
+   const m=marker({twin:'khobarwf',site:'khobarwf',target:'V-B08',sev:'crit',glyph:'!',label:over+' villas overdue',live:true});
+   feed({who:'Leasing agent',level:'wait',sev:'crit',title:`${over} villas past the 3-day turnaround target; 9 have move-ins booked this week`,
+     body:'Make-ready work orders are waiting on one TFM crew for painting and AC servicing. Plan: give the 9 villas with move-ins to a second approved contractor on a weekend shift, keep the rest with the TFM partner, and update availability dates in Yardi so leasing stops offering 23 Mar.',
+     sys:['Yardi','Maximo','FM mobile'],focus:{twin:'khobarwf',target:'V-B08'},
+     actions:[['Approve',c=>{ c.status='Approved by residential operations lead'; drop(m.id);
+       vs.forEach(p=>{ if(st.obj[p.id].occ==='over') st.obj[p.id].occ='turn'; }); S.turn=3.4; fab('p-yardi','ok','Availability updated'); fab('p-max','ok','');
+       feed({who:'Leasing agent',level:'inform',sev:'good',title:'Second contractor booked; all 9 move-ins protected',body:'Yardi availability updated; prospects offered new dates automatically.',sys:['Yardi','Maximo']}); },true],
+      ['Keep TFM partner only',c=>{ c.status='Declined: TFM partner to add overtime instead'; drop(m.id); }]]});
+   feed({who:'Contract assurance agent',level:'wait',sev:'warn',title:'Month-end TFM partner pack drafted: Cat A 96.2%, Cat B 91.8% (turnaround KPI missed)',
+     body:'Built from Maximo work orders, PortfolioCare tickets and Yardi turnaround dates for all 17 sites. Proposed performance deduction SAR 184k under the Cat B schedule. Needs your review before it goes to the TFM partner.',
+     sys:['Maximo','PortfolioCare','Yardi','ERP'],actions:[['Send for review',c=>{ c.status='Sent to the head of FM for review'; },true],['Hold',c=>{ c.status='Held until the Khobar Waterfront recovery plan lands'; }]]});
+   feed({who:'Energy agent',level:'inform',sev:'cool',title:'Riyadh Tech Park night setback active on buildings 2–8; HQ command floor stays on',body:'Saves about 1.1 MW overnight. Pre-cool starts at 05:30.',sys:['BMS','Energy & metering'],focus:{twin:'techpark',target:'B1'}});
+   TW.techpark.parts.forEach(p=>{ if(p.unit&&p.id!=='B1') st.obj[p.id].setback=true; }); st.site.techpark.mw=+(st.site.techpark.mw*0.7).toFixed(1); }
+];
+function start(){ timers.forEach(t=>clearTimeout(t.id)); timers=[]; st=fresh(); st.routes=[]; initTwinState(st); layer='all'; twin=null; sel=null; setView('map'); RUN[0](); renderAll(); }
+document.getElementById('next').onclick=()=>{ if(st.beat<BEATS.length-1){ flushTimers(); st.beat++; st.markers=st.markers.filter(m=>m.sev==='crit'); st.routes=[]; RUN[st.beat](); renderAll(); } };
+document.getElementById('restart').onclick=start;
+document.querySelectorAll('#views button').forEach(b=>b.onclick=()=>setView(b.dataset.v));
+let ok3=false; try{ ok3=initThree(); }catch(e){ ok3=false; }
+if(!ok3){ document.querySelector('#views [data-v="twin"]').disabled=true; }
+st=fresh(); st.routes=[]; initTwinState(st); start();
+window.__occ={get st(){return st;}};
+})();
+</script>
+
+</body></html>

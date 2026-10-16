@@ -1,0 +1,18 @@
+# Venue ops twins by Josh Wilkinson
+
+> Interactive 3D operations digital twins of an airport, a stadium, a science centre and a real-estate portfolio, with AI agents and human approval. All data is synthetic.
+
+## Pages
+
+- [Harbourline International · airport ops twin](https://jwilkinson879-alt.github.io/airport.html): Interactive 3D operations twin of a hub airport with a satellite concourse: security surges, gate changes, baggage faults and step-free journeys, with AI agents that propose and people who approve.
+- [Harbourline Stadium · stadium ops twin](https://jwilkinson879-alt.github.io/stadium.html): Interactive 3D operations twin of an 86,400-seat oval stadium: ingress surges, concessions peaks, staggered egress to rail and shuttles, and post-event setback.
+- [Harbourline Science Centre · museum ops twin](https://jwilkinson879-alt.github.io/science-centre.html): Interactive 3D operations twin of a science centre: school groups, timed-entry crush, a conservation climate excursion and after-hours setback that protects the collection.
+- [Harbourline Science Centre on the Mappedin SDK](https://jwilkinson879-alt.github.io/science-centre-mappedin.html): The same science-centre scenarios running on the Mappedin JS SDK, from an MVF bundle generated straight from the venue brief: live room states, labels, markers and step-free directions.
+- [Harbourline International on the Mappedin SDK](https://jwilkinson879-alt.github.io/airport-mappedin.html): The airport scenarios on the Mappedin JS SDK, from a generated MVF bundle: security and border one-way flows, the APM to the satellite, and step-free directions from rail to gate.
+- [Harbourline Stadium on the Mappedin SDK](https://jwilkinson879-alt.github.io/stadium-mappedin.html): The stadium event day on the Mappedin JS SDK, from a generated MVF bundle: gate queues, bay loading and step-free routes from rail, shuttle and rideshare.
+- [KSA Portfolio · command centre concept](https://jwilkinson879-alt.github.io/ksa-portfolio.html): End-state concept for a national real-estate portfolio command centre: one view across commercial, retail and residential assets with integrated CMMS, security and IT/OT, six asset twins and agent-led scenarios.
+
+## About
+
+- Author: Josh Wilkinson, CRE and workplace technology executive (https://joshwilkinson.uk)
+- Built from structured venue briefs on a shared twin engine; the science centre also runs on the Mappedin JS SDK from a generated MVF bundle.
